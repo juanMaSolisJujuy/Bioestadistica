@@ -1,0 +1,31 @@
+# Pautas de cursada
+
+## Modalidad: Aprendizaje Basado en Competencias
+
+![Saber, saber hacer, saber ser](IMAGENES/cirugia.png){#fig-enfoques}
+
+
+```{mermaid}
+%%| fig-cap: "Modelo de competencias en Bioestadística"
+flowchart LR
+    A["[ CONOCIMIENTO ]<br/>(Saber qué)"] --> B["+"] --> C["[ HABILIDAD ]<br/>(Saber cómo)"] --> D["+"] --> E["[ ACTITUD ]<br/>(Saber ser)"] --> F["="] --> G["COMPETENCIA<br/>(Saber actuar)"]
+
+```
+
+
+
+::: callout-note
+## Descripción de la cursada
+
+- La modalidad del dictado presencial es de `tipo taller o laboratorio de análisis estadístico`, donde los alumnos deben `aplicar` los conceptos desarrollados durante la introducción teórica en la resolución de ejercicios propuestos utilizando software estadístico. A tal fin, se admite la conformación de `grupos de hasta dos estudiantes por computadora`. Los estudiantes tendrán libertad de asistir a cualquiera de las comisiones prácticas, siempre y cuando hayan asistido previamente a la clase teórica del tema en curso, debido a que la cátedra adoptará una modalidad teórico-práctica.
+
+- Las actividades se complementan con al menos una actividad de campo, para la obtención de datos y su posterior análisis y aplicación de los métodos aprendidos.
+
+- También se implementa un trabajo o Proyecto de Investigación, en el cual los estudiantes deben analizar datos proporcionados en el contexto de casos reales o publicaciones realizadas y comparar sus conclusiones y el planteo de resolución que propusieron, con los descritos en las publicaciones. O bien, la aplicación de análisis de datos en estudios que hayan realizado previamente para otras materias.
+
+- Existe una instancia de evaluación permanente por medio de ejercicios de entrenamiento y auto-evaluación proporcionados en el Aula Virtual, que los alumnos deben resolver fuera del horario de clase. Estos ejercicios estarán acompañados por mecanismos de `retroalimentación` en la forma de encuestas y monitoreo para realizar el seguimiento de sus actividades. `Deberán tener aprobadas todas las actividades de entrenamiento para poder acceder a los parciales correspondientes`. 
+
+- La nota obtenida en cada parcial se compone de un `promedio entre la nota del parcial y de las actividades prácticas`. 
+
+
+:::

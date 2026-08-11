@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction – Bioestadistica</title>
+<title>4&nbsp; Algunas herramientas – | BIOSTADÍSTICA</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,61 +23,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -87,8 +33,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./03_intro_R.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -98,7 +44,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8a2d8be20f8a8d2de273f5d07d3beade.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -113,17 +59,17 @@ div.csl-indent {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
   }
 }</script>
 
@@ -136,13 +82,13 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./herramientas.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Algunas herramientas</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -154,12 +100,12 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Bioestadistica</a> 
+      <a href="./">| BIOSTADÍSTICA</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Buscar"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -167,25 +113,37 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">index.html</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  <a href="./01_pautas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pautas de cursada</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  <a href="./02_competencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Competencias prácticas de la bioestadística</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_intro_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción al manejo de R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./herramientas.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Algunas herramientas</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+ <span class="menu-text">Referencias</span></a>
   </div>
 </li>
     </ul>
@@ -193,15 +151,22 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#r-en-la-web" id="toc-r-en-la-web" class="nav-link active" data-scroll-target="#r-en-la-web">R en la web</a></li>
+  <li><a href="#geogebra-visualización-interactiva" id="toc-geogebra-visualización-interactiva" class="nav-link" data-scroll-target="#geogebra-visualización-interactiva"><span class="header-section-number">4.1</span> GeoGebra (Visualización interactiva)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Algunas herramientas</span></h1>
 </div>
 
 
@@ -218,21 +183,94 @@ div.csl-indent {
 </header>
 
 
-<p>This is a book created from markdown and executable code.</p>
-<p>See <span class="citation" data-cites="knuth84">Knuth (<a href="references.html#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
+<section id="r-en-la-web" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="r-en-la-web">R en la web</h2>
+<p>En este entorno podrás ejecutar algunas funciones de R.</p>
+<pre class="{webr-r}"><code>
+# Códigos acá
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-knuth84" class="csl-entry" role="listitem">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> (USA) 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+</code></pre>
+<hr>
+</section>
+<section id="geogebra-visualización-interactiva" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="geogebra-visualización-interactiva"><span class="header-section-number">4.1</span> GeoGebra (Visualización interactiva)</h2>
+<p>Como complemento al uso de software estadístico especializado, se recomienda el empleo del módulo de <strong>Distribuciones Estadísticas de GeoGebra</strong>. Esta herramienta permite al estudiante seleccionar una distribución y especificar sus parámetros para obtener de forma inmediata la representación gráfica de la función de densidad (en variables continuas) o de la función de probabilidad (en variables discretas).</p>
+<p>El valor didáctico de GeoGebra yace en su capacidad para calcular la probabilidad en un intervalo de forma visual, lo cual coincide con el área bajo la función de densidad o la suma de probabilidades discretas.</p>
+<p>&nbsp;</p>
+<div style="overflow: auto; width: 100%; margin: 0 auto; justify-content: center">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+
+
+
+<div id="ggbApplet"></div>
+
+<script>
+var parameters = {
+"id": "ggbApplet",
+"width":798,
+"height":580,
+"showMenuBar":true,
+"showAlgebraInput":true,
+"showToolBar":true,
+"customToolBar":"0",
+"showToolBarHelp":true,
+"showResetIcon":false,
+"enableLabelDrags":false,
+"enableShiftDragZoom":true,
+"enableRightClick":false,
+"errorDialogsActive":false,
+"useBrowserForJS":false,
+"allowStyleBar":false,
+"preventFocus":false,
+"showZoomButtons":true,
+"capturingThreshold":3,
+// add code here to run when the applet starts
+"appletOnLoad":function(api){ /* api.evalCommand('Segment((1,2),(3,4))');*/ },
+"showFullscreenButton":true,
+"scale":1,
+"disableAutoScale":false,
+"allowUpscale":false,
+"clickToLoad":false,
+"appName":"classic",
+"buttonRounding":0.7,
+"buttonShadows":false,
+"language":"es",
+// use this instead of ggbBase64 to load a material from geogebra.org
+// "material_id":"RHYH3UQ8",
+// use this instead of ggbBase64 to load a .ggb file
+// "filename":"myfile.ggb",
+"ggbBase64":"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",
+};
+// is3D=is 3D applet using 3D view, AV=Algebra View, SV=Spreadsheet View, CV=CAS View, EV2=Graphics View 2, CP=Construction Protocol, PC=Probability Calculator DA=Data Analysis, FI=Function Inspector, macro=Macros
+var views = {'is3D': 0,'AV': 0,'SV': 0,'CV': 0,'EV2': 0,'CP': 0,'PC': 1,'DA': 0,'FI': 0,'macro': 0};
+var applet = new GGBApplet(parameters, '5.0', views);
+window.onload = function() {applet.inject('ggbApplet')};
+applet.setPreviewImage('data:image/gif;base64,R0lGODlhAQABAAAAADs=','https://www.geogebra.org/images/GeoGebra_loading.png','https://www.geogebra.org/images/applet_play.png');
+</script>
+
+
 </div>
 </div>
+</div>
+<p>&nbsp;</p>
+<p>Integrar esta práctica ofrece las siguientes <strong>ventajas estratégicas</strong>:</p>
+<ul>
+<li><font style="color:darkcyan;">Andamiaje visual</font>: Antes de realizar un cálculo con un programa estadístico, GeoGebra permite construir un modelo mental de la distribución. Esto ayuda a internalizar cómo los cambios en parámetros alteran la forma y posición de la curva.</li>
+<li><font style="color:darkcyan;">Validación de resultados</font>: Funciona como un mecanismo de control para verificar si los valores de probabilidad obtenidos mediante software son consistentes con la representación geométrica.</li>
+<li><font style="color:darkcyan;">Transición del razonamiento al pensamiento</font>: Al facilitar la manipulación interactiva de los límites de un intervalo, cada estudiante puede explorar escenarios del tipo <em>“¿qué pasaría si…?”</em>, fortaleciendo su capacidad de pensamiento estadístico al conectar la teoría abstracta con una representación espacial concreta.</li>
+</ul>
+<p>La utilización del simulador de GeoGebra es muy intuitiva y de fácil apropiación por parte de los estudiantes. No obstante, durante los encuentros presenciales se realizarán instancias de acompañamiento y demostraciones guiadas orientadas a explicitar su funcionamiento y vincular las acciones realizadas en el entorno interactivo con los conceptos estadísticos subyacentes.</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -260,12 +298,12 @@ Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copiado");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copiado");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -305,6 +343,57 @@ Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -637,17 +726,30 @@ Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./03_intro_R.html" class="pagination-link" aria-label="Introducción al manejo de R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción al manejo de R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="Summary">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="Referencias">
+        <span class="nav-page-text">Referencias</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Año 2026</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Cátedra de Bioestadística y Diseño Experimental | Facultad de Ciencias Agrarias | Universidad Nacional de Jujuy</p>
+</div>
+    <div class="nav-footer-right">
+<p><img src="logounju.png" class="img-fluid" width="80"> <img src="logofca.png" class="img-fluid" width="80"></p>
+</div>
+  </div>
+</footer>
 
 
 

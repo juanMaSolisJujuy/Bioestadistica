@@ -10,5 +10,17 @@
   },
   "references.qmd": {
     "references.html": "e57dcdd0"
+  },
+  "01_pautas.qmd": {
+    "01_pautas.html": "4ae6d5ab"
+  },
+  "02_competencias.qmd": {
+    "02_competencias.html": "dbbfbfd6"
+  },
+  "03_intro_R.qmd": {
+    "03_intro_R.html": "9804404c"
+  },
+  "herramientas.qmd": {
+    "herramientas.html": "1024e13e"
   }
 }

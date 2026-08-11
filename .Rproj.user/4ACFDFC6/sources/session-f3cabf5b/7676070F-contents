@@ -2,26 +2,41 @@ project:
      type: book
      output-dir: docs
 
-
 book:
-  title: "Bioestadistica"
-  author: "Norah Jones"
-  date: "11/8/2026"
+  title: "| BIOSTADÍSTICA"
+  subtitle: "Universidad Nacional de Jujuy | Facultad de Ciencias Agrarias | Lic. en Ciencias Biológicas"
+  author: "Juan Manuel Solís"
+  date: "08/11/2026"
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - 01_pautas.qmd
+    - 02_competencias.qmd
+    - 03_intro_R.qmd
+    - herramientas.qmd
     - references.qmd
-
+  page-footer: 
+    center: Cátedra de Bioestadística y Diseño Experimental | Facultad de Ciencias Agrarias | Universidad Nacional de Jujuy 
+    right: |
+      ![](logounju.png){ width=80px }
+      ![](logofca.png){ width=80px }
+    left: Año 2026
+    
 bibliography: references.bib
+
+lang: es
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: litera
+    toc-title: En esta página
+    code-summary: "<span style='color: darkcyan; border: 2px solid darkcyan; border-radius: 8px; padding: 4px;'>Mostrar código</span>"
+    code-fold: false
+    code-overflow: wrap
+    code-tools: 
+      source: false
+      toggle: true
   pdf:
     documentclass: scrreprt
 
-editor: visual
+editor: source
 

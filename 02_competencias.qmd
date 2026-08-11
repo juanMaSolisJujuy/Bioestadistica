@@ -1,0 +1,179 @@
+
+
+# Competencias prácticas de la bioestadística
+
+## Niveles de competencias
+
+Se adopta la jerarquía de niveles de conocimiento estadístico propuesta por **Ben-Zvi y Garfield (2005)**: a) alfabetización estadística, b) razonamiento estadístico y c) pensamiento estadístico, como un continuo de desarrollo formativo, adaptado a un entorno de múltiples herramientas informáticas. Desde una perspectiva práctica, esto significa que cada nivel no solo se declara, sino que se pone en juego en la resolución concreta de los ejercicios propuestos. El motivo es que el profesional no sólo debe reconocer qué procedimiento estadístico es adecuado para cada situación, sino que también debe saber cómo implementarlo. 
+
+Cada nivel de conocimiento estadístico se construye sobre el anterior, incorporando progresivamente elementos de niveles superiores a lo largo de la cursada.
+
+- <font style="color:darkcyan;">Alfabetización estadística</font>: representa la comprensión del "qué" (conceptos, gráficos, símbolos, funciones). En la práctica, supone reconocer el procedimiento o sintaxis necesarios para ejecutar una prueba, leer correctamente su salida y verificar que no haya errores de especificación en el software elegido. Constituye la base en las competencias estadísticas.
+
+- <font style="color:darkcyan;">Razonamiento estadístico</font>: capacidad de seleccionar y justificar procedimientos, interpretar resultados más allá de la consigna y detectar errores. En la práctica, supone tareas como elegir la prueba estadística adecuada ante un problema dado, explicar por qué se rechaza o no una hipótesis, o detectar que un gráfico generado por software no es apropiado para los datos analizados.
+
+- <font style="color:darkcyan;">Pensamiento estadístico</font>: comprensión del "para qué" y "en qué contexto", formular problemas en términos estadísticos, reconocer la variabilidad como un aspecto inherente, evaluar supuestos, conectar datos con procesos generadores, tomar decisiones bajo incertidumbre, comunicar conclusiones con rigor disciplinar.
+
+&nbsp;
+
+::: {.callout-note }
+#### Objetivo del curso (actividades prácticas)
+
+El objetivo mínimo de este curso es que, al finalizar, cada estudiante demuestre al menos habilidades relacionadas con el **razonamiento estadístico** en problemas estructurados, y principios de **pensamiento estadístico** en problemas abiertos de su disciplina: no se exige dominio pleno del pensamiento estadístico, pero sí que el estudiante sea capaz de identificar cuándo el razonamiento no es suficiente y qué preguntas de contexto quedan abiertas.
+:::
+
+En virtud de lo anterior, ciertos contenidos usualmente incluidos en cursos introductorios de bioestadística (como algunos tipos de gráficos, ciertas distribuciones de probabilidad, etc.) han sido deliberadamente omitidos a fin de priorizar un tratamiento en mayor profundidad de aquellos conceptos y herramientas que se considera permiten desarrollar mejor los criterios de análisis, interpretación y toma de decisiones.
+
+---
+
+## Evaluación práctica
+
+La propuesta didáctica de este material se inspira en recomendaciones internacionales para la enseñanza de la estadística, como el estándar **GAISE**, adaptándolas al contexto de formación situada en la provincia de Jujuy.  
+
+::: {.callout-note }
+#### Metas del estándar GAISE
+
+1. Enseñar pensamiento estadístico.
+2. Enseñar la estadística como un proceso de investigación para la resolución de problemas y la toma de decisiones.
+3. Brindar a los estudiantes experiencia en pensamiento multivariable.
+4. Enfocarse en la comprensión conceptual.
+5. Integrar datos reales con un contexto y un propósito.
+6. Fomentar el aprendizaje activo.
+7. Utilizar la tecnología para explorar conceptos y analizar datos.
+8. Usar evaluaciones para mejorar y valorar el aprendizaje de los estudiantes.
+:::
+
+Con ese marco, al finalizar el curso, **cada estudiante debe ser capaz de**:
+
+- `Seleccionar y aplicar correctamente`, de forma autónoma, una técnica estadística ante un problema concreto.
+- `Justificar su elección` (supuestos, limitaciones, alternativas).
+- `Ejecutar correctamente` la técnica estadística seleccionada en al menos un entorno de software (acción y resultado).
+- `Interpretar los resultados` tanto en términos estadísticos como disciplinares: agronomía, biología, ciencias ambientales, bromatología, etc.
+- Poder `identificar al menos una fuente de variabilidad` no controlada en el problema.
+- `Señalar una limitación del análisis` que requeriría datos adicionales, un ajuste del diseño o un análisis diferente.
+
+---
+
+
+
+::: {.callout-warning }
+#### Modalidad de las evaluaciones
+
+- Los parciales serán presenciales y podrán ser realizados en grupos de hasta 2 (dos) personas. Deberán contar con una computadora ya que deberán realizar cálculos estadísticos (tomar las previsiones con tiempo, informar a la cátedra si se dificulta contar con una computadora para tratar de resolver la situación). En función de la cantidad de estudiantes, el formato de entrega podrá ser escrito o bien mediante la entrega del script con la resolución de los ejercicios. Además de la entrega, los parciales deberán ser defendidos/validados en forma oral, cuya implementación será oportunamente consensuada.
+
+- Los informes de análisis y tareas de campo deberán ser defendidas en forma oral, cuya implementación será oportunamente consensuada.
+
+:::
+
+
+---
+
+## Estrategia pedagógica
+
+Se propone una integración gradual entre la práctica guiada y la construcción del razonamiento. Desde la primera clase se combinan:
+
+- **Secuencias simples de manipulación y análisis de datos** con software estadístico especializado, como mecanismos de estímulo-respuesta (acción - resultado inmediato) que permiten al alumno asociar rápidamente una operación, como hacer click en un menú o ejecutar una línea de código, obteniendo una salida numérica o gráfica, generando así un primer anclaje sobre conceptos abstractos.
+- **Ejercicios dirigidos** (para fijar alfabetización y primeros pasos del razonamiento).
+- **Preguntas de reflexión crítica** (¿por qué un gráfico puede sugerir comportamientos atípicos? ¿qué pasaría si se modifican valores en el set de datos?).
+- **Análisis y discusión de datos reales** (para desarrollar un sentido crítico y razonamiento estadístico).
+
+`Las clases prácticas se organizarán en dos etapas: la primera etapa, hasta el primer parcial, tendrá una orientación principalmente focalizada en lograr que los estudiantes adquieran destrezas procedimentales de análisis estadístico, tanto en el manejo conceptual de terminología estadística orientada a su aplicación, como la manipulación del software estadístico. Es por ello que se aplicará una estrategia de aprendizaje basado en problemas (ejercicios). Una vez finalizada esta etapa, se asumirá que el estudiante ya cuenta con las competencias básicas para avanzar hacia el desarrollo del razonamiento y el pensamiento estadístico, momento en que se incorporará, además, un enfoque basado en proyectos`.
+
+En este marco, se reconoce una progresión en los niveles de aprendizaje:
+
+1. Cuando el estudiante se centra en la sintaxis de un programa o en la identificación de procedimientos adecuados, se encuentra en una etapa de <font style="color:darkcyan;">alfabetización estadística</font>.
+2. Cuando es capaz de justificar la elección de un método o modelo en función de los datos, avanza hacia el <font style="color:darkcyan;">razonamiento estadístico</font>.
+3. Cuando cuestiona la adecuación de ese modelo considerando los mecanismos subyacentes del fenómeno en estudio, incorpora elementos del <font style="color:darkcyan;">pensamiento estadístico</font>.
+
+Esta secuencia no debe interpretarse como etapas rígidas o lineales, sino como niveles que se superponen y retroalimentan a lo largo del proceso de aprendizaje.
+
+---
+
+## Estrategias de estudio
+
+Las siguientes estrategias están orientadas a fortalecer el razonamiento estadístico y mejorar la comunicación de resultados, priorizando la comprensión de los conceptos por sobre la aplicación mecánica de técnicas. Su objetivo es guiar el estudio y la preparación de evaluaciones, promoviendo una mirada integrada entre teoría, práctica e interpretación.
+
+- <font style="color:darkcyan;">Comprender antes de memorizar</font>: identificar qué problema estadístico resuelve cada método.
+- <font style="color:darkcyan;">Practicar interpretación</font>: explicar siempre qué significa un resultado en términos de un fenómeno real.
+- <font style="color:darkcyan;">Conectar conceptos</font>: vincular muestreo, inferencia, modelos y diseño experimental.
+- <font style="color:darkcyan;">Preparar ejemplos</font>: practicar la explicación con una o dos situaciones de ejemplo. Aplicar el lema: *"ejemplos, ejemplos y más ejemplos"*.
+- <font style="color:darkcyan;">Explicar supuestos</font>: todo método estadístico tiene condiciones de validez.
+- <font style="color:darkcyan;">Pensar como investigador</font>: preguntarse siempre cuál es la pregunta científica.
+- <font style="color:darkcyan;">Sostener el razonamiento</font>: si no se recuerda una fórmula exacta, explicar el razonamiento estadístico.
+
+&nbsp;
+
+::: {.callout-tip }
+#### Jerarquía para explicar un problema estadístico
+
+Es importante poder explicar cualquier problema estadístico en el siguiente orden jerárquico:
+
+1. **Pregunta de investigación** (o problema a resolver)
+2. **Datos** (reconocer variables, estructura, procedencia, calidad, etc.)
+3. **Descripción** (caracterizar estadísticamente los datos)
+4. **Método a utilizar** (incluye especificar criterios de selección del método o modelo)
+5. **Resultado**
+6. **Interpretación**
+7. **Comunicación**
+:::
+
+---
+
+## Inteligencia artificial generativa: Pautas de trabajo en el curso
+
+En 2024, la UNESCO (2024) publicó la *Guía para el uso de IA generativa en educación e investigación*. En ella, recomienda:
+
+::: {.callout-note }
+#### Recomendación UNESCO (2024)
+
+> *"Evitar el uso de la IA generativa cuando pudiera privar a los estudiantes de oportunidades para desarrollar capacidades cognitivas a través del razonamiento lógico independiente."*
+:::
+
+Esta recomendación guiará el enfoque pedagógico adoptado en el presente curso, orientando el uso de estas herramientas hacia un rol complementario y no sustitutivo del aprendizaje.
+
+El desarrollo vertiginoso de la inteligencia artificial generativa (IAGEN o simplemente IA) supone la coexistencia de dos aspectos complementarios, inseparables, con implicancias profundas en el proceso de formación profesional:
+
+1. **Oportunidad extraordinaria**: permite lograr una formación técnica y profesional de mayor profundidad, superando limitaciones de accesibilidad a la información y aspectos técnicos u operativos para focalizar en las bases científicas y éticas del conocimiento.
+2. **Responsabilidad y desafío**: exige desarrollar un uso crítico, reflexivo y éticamente fundamentado, evitando la delegación acrítica del razonamiento. Se vuelve central fortalecer la capacidad de formular problemas, evaluar la pertinencia de métodos, validar resultados y sostener una interpretación fundada en criterios disciplinares.
+
+### ¿Qué puede aportar la IA en Bioestadística?
+
+- Explicar qué hace una función, o interpretar un mensaje de error. 
+- Sugerir código o secuencias de análisis para resolver tareas analíticas. 
+- Reformular explicaciones estadísticas desde distintos enfoques. 
+- Proponer alternativas cuando un procedimiento no funciona. 
+
+### Lo que la IA NO puede hacer
+
+- **Comprender** el contexto específico del análisis, ni asumir las consecuencias de los resultados obtenidos. 
+- **Garantizar** que el código generado o la secuencia de análisis propuesta sean correctos para un determinado problema. 
+- **Sustituir el criterio** para elegir una medida o un método estadístico. 
+- **Interpretar resultados** con fundamento disciplinar (agronómico, bromatológico, biológico o ambiental). 
+
+### Esquema de trabajo propuesto
+
+Se propone el siguiente esquema de trabajo con herramientas de IA (como **NotebookLM** de Google u opciones similares):
+
+1. **Crear un espacio de trabajo** (carpeta o notebook) y llamarlo con el nombre de la materia: `Bioestadística`.
+2. **Cargar los materiales del curso**:
+   - La guía: *Apuntes de Bioestadística con ejercicios resueltos*.
+   - La bibliografía sugerida por la cátedra.
+3. **Interactuar bajo el rol de asistente pedagógico**:
+   - Resolver dudas conceptuales. 
+   - Guiar el aprendizaje mediante preguntas orientadoras. 
+   - Generar explicaciones alternativas (analogías, ejemplos). 
+   - Producir recursos complementarios (cuestionarios, esquemas, resúmenes, etc.). 
+   - Entender mensajes de error.
+   - Comprender la sintaxis u opciones en diferentes programas estadísticos.
+   - Explorar alternativas de análisis.
+
+&nbsp;
+
+::: {.callout-warning }
+#### Criterios de precaución y verificación obligatoria
+
+- <font style="color:darkcyan;">Naturaleza Probabilística</font>: Las herramientas de IA operan mediante modelos probabilísticos de lenguaje y no mediante algoritmos lógicos o fórmulas matemáticas cerradas. Por lo tanto, pueden generar "alucinaciones", produciendo explicaciones que parecen técnicamente coherentes, pero que no siempre son coherentes con los fundamentos teóricos de la estadística.
+- <font style="color:darkcyan;">Prevalencia bibliográfica</font>: En caso de discrepancia entre una explicación generada por la IA y los marcos conceptuales desarrollados en la bibliografía propuesta por la cátedra, **deben prevalecer siempre el contenido de la obra y la bibliografía académica**.
+- <font style="color:darkcyan;">Criterio disciplinar</font>: El criterio del investigador es el único capaz de validar si una interpretación es agronómica, biológica, ambiental o bromatológicamente plausible, más allá de la corrección sintáctica del código sugerido.
+- <font style="color:darkcyan;">Verificación Obligatoria</font>: Todo código generado (especialmente en R, Python o Julia) debe ser verificado. Pequeños errores en funciones (por ejemplo, confundir parámetros de varianza con desvío estándar) pueden invalidar completamente una prueba.
+:::

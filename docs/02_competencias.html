@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Competencias prácticas de la bioestadística – | BIOSTADÍSTICA</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./03_intro_R.html" rel="next">
+<link href="./01_pautas.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-8a2d8be20f8a8d2de273f5d07d3beade.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_competencias.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Competencias prácticas de la bioestadística</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">| BIOSTADÍSTICA</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">index.html</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_pautas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pautas de cursada</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_competencias.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Competencias prácticas de la bioestadística</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_intro_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción al manejo de R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./herramientas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Algunas herramientas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#niveles-de-competencias" id="toc-niveles-de-competencias" class="nav-link active" data-scroll-target="#niveles-de-competencias"><span class="header-section-number">2.1</span> Niveles de competencias</a></li>
+  <li><a href="#evaluación-práctica" id="toc-evaluación-práctica" class="nav-link" data-scroll-target="#evaluación-práctica"><span class="header-section-number">2.2</span> Evaluación práctica</a></li>
+  <li><a href="#estrategia-pedagógica" id="toc-estrategia-pedagógica" class="nav-link" data-scroll-target="#estrategia-pedagógica"><span class="header-section-number">2.3</span> Estrategia pedagógica</a></li>
+  <li><a href="#estrategias-de-estudio" id="toc-estrategias-de-estudio" class="nav-link" data-scroll-target="#estrategias-de-estudio"><span class="header-section-number">2.4</span> Estrategias de estudio</a></li>
+  <li><a href="#inteligencia-artificial-generativa-pautas-de-trabajo-en-el-curso" id="toc-inteligencia-artificial-generativa-pautas-de-trabajo-en-el-curso" class="nav-link" data-scroll-target="#inteligencia-artificial-generativa-pautas-de-trabajo-en-el-curso"><span class="header-section-number">2.5</span> Inteligencia artificial generativa: Pautas de trabajo en el curso</a>
+  <ul class="collapse">
+  <li><a href="#qué-puede-aportar-la-ia-en-bioestadística" id="toc-qué-puede-aportar-la-ia-en-bioestadística" class="nav-link" data-scroll-target="#qué-puede-aportar-la-ia-en-bioestadística"><span class="header-section-number">2.5.1</span> ¿Qué puede aportar la IA en Bioestadística?</a></li>
+  <li><a href="#lo-que-la-ia-no-puede-hacer" id="toc-lo-que-la-ia-no-puede-hacer" class="nav-link" data-scroll-target="#lo-que-la-ia-no-puede-hacer"><span class="header-section-number">2.5.2</span> Lo que la IA NO puede hacer</a></li>
+  <li><a href="#esquema-de-trabajo-propuesto" id="toc-esquema-de-trabajo-propuesto" class="nav-link" data-scroll-target="#esquema-de-trabajo-propuesto"><span class="header-section-number">2.5.3</span> Esquema de trabajo propuesto</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Competencias prácticas de la bioestadística</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="niveles-de-competencias" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="niveles-de-competencias"><span class="header-section-number">2.1</span> Niveles de competencias</h2>
+<p>Se adopta la jerarquía de niveles de conocimiento estadístico propuesta por <strong>Ben-Zvi y Garfield (2005)</strong>: a) alfabetización estadística, b) razonamiento estadístico y c) pensamiento estadístico, como un continuo de desarrollo formativo, adaptado a un entorno de múltiples herramientas informáticas. Desde una perspectiva práctica, esto significa que cada nivel no solo se declara, sino que se pone en juego en la resolución concreta de los ejercicios propuestos. El motivo es que el profesional no sólo debe reconocer qué procedimiento estadístico es adecuado para cada situación, sino que también debe saber cómo implementarlo.</p>
+<p>Cada nivel de conocimiento estadístico se construye sobre el anterior, incorporando progresivamente elementos de niveles superiores a lo largo de la cursada.</p>
+<ul>
+<li><p><font style="color:darkcyan;">Alfabetización estadística</font>: representa la comprensión del “qué” (conceptos, gráficos, símbolos, funciones). En la práctica, supone reconocer el procedimiento o sintaxis necesarios para ejecutar una prueba, leer correctamente su salida y verificar que no haya errores de especificación en el software elegido. Constituye la base en las competencias estadísticas.</p></li>
+<li><p><font style="color:darkcyan;">Razonamiento estadístico</font>: capacidad de seleccionar y justificar procedimientos, interpretar resultados más allá de la consigna y detectar errores. En la práctica, supone tareas como elegir la prueba estadística adecuada ante un problema dado, explicar por qué se rechaza o no una hipótesis, o detectar que un gráfico generado por software no es apropiado para los datos analizados.</p></li>
+<li><p><font style="color:darkcyan;">Pensamiento estadístico</font>: comprensión del “para qué” y “en qué contexto”, formular problemas en términos estadísticos, reconocer la variabilidad como un aspecto inherente, evaluar supuestos, conectar datos con procesos generadores, tomar decisiones bajo incertidumbre, comunicar conclusiones con rigor disciplinar.</p></li>
+</ul>
+<p>&nbsp;</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Objetivo del curso (actividades prácticas)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El objetivo mínimo de este curso es que, al finalizar, cada estudiante demuestre al menos habilidades relacionadas con el <strong>razonamiento estadístico</strong> en problemas estructurados, y principios de <strong>pensamiento estadístico</strong> en problemas abiertos de su disciplina: no se exige dominio pleno del pensamiento estadístico, pero sí que el estudiante sea capaz de identificar cuándo el razonamiento no es suficiente y qué preguntas de contexto quedan abiertas.</p>
+</div>
+</div>
+<p>En virtud de lo anterior, ciertos contenidos usualmente incluidos en cursos introductorios de bioestadística (como algunos tipos de gráficos, ciertas distribuciones de probabilidad, etc.) han sido deliberadamente omitidos a fin de priorizar un tratamiento en mayor profundidad de aquellos conceptos y herramientas que se considera permiten desarrollar mejor los criterios de análisis, interpretación y toma de decisiones.</p>
+<hr>
+</section>
+<section id="evaluación-práctica" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="evaluación-práctica"><span class="header-section-number">2.2</span> Evaluación práctica</h2>
+<p>La propuesta didáctica de este material se inspira en recomendaciones internacionales para la enseñanza de la estadística, como el estándar <strong>GAISE</strong>, adaptándolas al contexto de formación situada en la provincia de Jujuy.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Metas del estándar GAISE
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Enseñar pensamiento estadístico.</li>
+<li>Enseñar la estadística como un proceso de investigación para la resolución de problemas y la toma de decisiones.</li>
+<li>Brindar a los estudiantes experiencia en pensamiento multivariable.</li>
+<li>Enfocarse en la comprensión conceptual.</li>
+<li>Integrar datos reales con un contexto y un propósito.</li>
+<li>Fomentar el aprendizaje activo.</li>
+<li>Utilizar la tecnología para explorar conceptos y analizar datos.</li>
+<li>Usar evaluaciones para mejorar y valorar el aprendizaje de los estudiantes.</li>
+</ol>
+</div>
+</div>
+<p>Con ese marco, al finalizar el curso, <strong>cada estudiante debe ser capaz de</strong>:</p>
+<ul>
+<li><code>Seleccionar y aplicar correctamente</code>, de forma autónoma, una técnica estadística ante un problema concreto.</li>
+<li><code>Justificar su elección</code> (supuestos, limitaciones, alternativas).</li>
+<li><code>Ejecutar correctamente</code> la técnica estadística seleccionada en al menos un entorno de software (acción y resultado).</li>
+<li><code>Interpretar los resultados</code> tanto en términos estadísticos como disciplinares: agronomía, biología, ciencias ambientales, bromatología, etc.</li>
+<li>Poder <code>identificar al menos una fuente de variabilidad</code> no controlada en el problema.</li>
+<li><code>Señalar una limitación del análisis</code> que requeriría datos adicionales, un ajuste del diseño o un análisis diferente.</li>
+</ul>
+<hr>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Modalidad de las evaluaciones
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Los parciales serán presenciales y podrán ser realizados en grupos de hasta 2 (dos) personas. Deberán contar con una computadora ya que deberán realizar cálculos estadísticos (tomar las previsiones con tiempo, informar a la cátedra si se dificulta contar con una computadora para tratar de resolver la situación). En función de la cantidad de estudiantes, el formato de entrega podrá ser escrito o bien mediante la entrega del script con la resolución de los ejercicios. Además de la entrega, los parciales deberán ser defendidos/validados en forma oral, cuya implementación será oportunamente consensuada.</p></li>
+<li><p>Los informes de análisis y tareas de campo deberán ser defendidas en forma oral, cuya implementación será oportunamente consensuada.</p></li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+<section id="estrategia-pedagógica" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="estrategia-pedagógica"><span class="header-section-number">2.3</span> Estrategia pedagógica</h2>
+<p>Se propone una integración gradual entre la práctica guiada y la construcción del razonamiento. Desde la primera clase se combinan:</p>
+<ul>
+<li><strong>Secuencias simples de manipulación y análisis de datos</strong> con software estadístico especializado, como mecanismos de estímulo-respuesta (acción - resultado inmediato) que permiten al alumno asociar rápidamente una operación, como hacer click en un menú o ejecutar una línea de código, obteniendo una salida numérica o gráfica, generando así un primer anclaje sobre conceptos abstractos.</li>
+<li><strong>Ejercicios dirigidos</strong> (para fijar alfabetización y primeros pasos del razonamiento).</li>
+<li><strong>Preguntas de reflexión crítica</strong> (¿por qué un gráfico puede sugerir comportamientos atípicos? ¿qué pasaría si se modifican valores en el set de datos?).</li>
+<li><strong>Análisis y discusión de datos reales</strong> (para desarrollar un sentido crítico y razonamiento estadístico).</li>
+</ul>
+<p><code>Las clases prácticas se organizarán en dos etapas: la primera etapa, hasta el primer parcial, tendrá una orientación principalmente focalizada en lograr que los estudiantes adquieran destrezas procedimentales de análisis estadístico, tanto en el manejo conceptual de terminología estadística orientada a su aplicación, como la manipulación del software estadístico. Es por ello que se aplicará una estrategia de aprendizaje basado en problemas (ejercicios). Una vez finalizada esta etapa, se asumirá que el estudiante ya cuenta con las competencias básicas para avanzar hacia el desarrollo del razonamiento y el pensamiento estadístico, momento en que se incorporará, además, un enfoque basado en proyectos</code>.</p>
+<p>En este marco, se reconoce una progresión en los niveles de aprendizaje:</p>
+<ol type="1">
+<li>Cuando el estudiante se centra en la sintaxis de un programa o en la identificación de procedimientos adecuados, se encuentra en una etapa de <font style="color:darkcyan;">alfabetización estadística</font>.</li>
+<li>Cuando es capaz de justificar la elección de un método o modelo en función de los datos, avanza hacia el <font style="color:darkcyan;">razonamiento estadístico</font>.</li>
+<li>Cuando cuestiona la adecuación de ese modelo considerando los mecanismos subyacentes del fenómeno en estudio, incorpora elementos del <font style="color:darkcyan;">pensamiento estadístico</font>.</li>
+</ol>
+<p>Esta secuencia no debe interpretarse como etapas rígidas o lineales, sino como niveles que se superponen y retroalimentan a lo largo del proceso de aprendizaje.</p>
+<hr>
+</section>
+<section id="estrategias-de-estudio" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="estrategias-de-estudio"><span class="header-section-number">2.4</span> Estrategias de estudio</h2>
+<p>Las siguientes estrategias están orientadas a fortalecer el razonamiento estadístico y mejorar la comunicación de resultados, priorizando la comprensión de los conceptos por sobre la aplicación mecánica de técnicas. Su objetivo es guiar el estudio y la preparación de evaluaciones, promoviendo una mirada integrada entre teoría, práctica e interpretación.</p>
+<ul>
+<li><font style="color:darkcyan;">Comprender antes de memorizar</font>: identificar qué problema estadístico resuelve cada método.</li>
+<li><font style="color:darkcyan;">Practicar interpretación</font>: explicar siempre qué significa un resultado en términos de un fenómeno real.</li>
+<li><font style="color:darkcyan;">Conectar conceptos</font>: vincular muestreo, inferencia, modelos y diseño experimental.</li>
+<li><font style="color:darkcyan;">Preparar ejemplos</font>: practicar la explicación con una o dos situaciones de ejemplo. Aplicar el lema: <em>“ejemplos, ejemplos y más ejemplos”</em>.</li>
+<li><font style="color:darkcyan;">Explicar supuestos</font>: todo método estadístico tiene condiciones de validez.</li>
+<li><font style="color:darkcyan;">Pensar como investigador</font>: preguntarse siempre cuál es la pregunta científica.</li>
+<li><font style="color:darkcyan;">Sostener el razonamiento</font>: si no se recuerda una fórmula exacta, explicar el razonamiento estadístico.</li>
+</ul>
+<p>&nbsp;</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Jerarquía para explicar un problema estadístico
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Es importante poder explicar cualquier problema estadístico en el siguiente orden jerárquico:</p>
+<ol type="1">
+<li><strong>Pregunta de investigación</strong> (o problema a resolver)</li>
+<li><strong>Datos</strong> (reconocer variables, estructura, procedencia, calidad, etc.)</li>
+<li><strong>Descripción</strong> (caracterizar estadísticamente los datos)</li>
+<li><strong>Método a utilizar</strong> (incluye especificar criterios de selección del método o modelo)</li>
+<li><strong>Resultado</strong></li>
+<li><strong>Interpretación</strong></li>
+<li><strong>Comunicación</strong></li>
+</ol>
+</div>
+</div>
+<hr>
+</section>
+<section id="inteligencia-artificial-generativa-pautas-de-trabajo-en-el-curso" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="inteligencia-artificial-generativa-pautas-de-trabajo-en-el-curso"><span class="header-section-number">2.5</span> Inteligencia artificial generativa: Pautas de trabajo en el curso</h2>
+<p>En 2024, la UNESCO (2024) publicó la <em>Guía para el uso de IA generativa en educación e investigación</em>. En ella, recomienda:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Recomendación UNESCO (2024)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p><em>“Evitar el uso de la IA generativa cuando pudiera privar a los estudiantes de oportunidades para desarrollar capacidades cognitivas a través del razonamiento lógico independiente.”</em></p>
+</blockquote>
+</div>
+</div>
+<p>Esta recomendación guiará el enfoque pedagógico adoptado en el presente curso, orientando el uso de estas herramientas hacia un rol complementario y no sustitutivo del aprendizaje.</p>
+<p>El desarrollo vertiginoso de la inteligencia artificial generativa (IAGEN o simplemente IA) supone la coexistencia de dos aspectos complementarios, inseparables, con implicancias profundas en el proceso de formación profesional:</p>
+<ol type="1">
+<li><strong>Oportunidad extraordinaria</strong>: permite lograr una formación técnica y profesional de mayor profundidad, superando limitaciones de accesibilidad a la información y aspectos técnicos u operativos para focalizar en las bases científicas y éticas del conocimiento.</li>
+<li><strong>Responsabilidad y desafío</strong>: exige desarrollar un uso crítico, reflexivo y éticamente fundamentado, evitando la delegación acrítica del razonamiento. Se vuelve central fortalecer la capacidad de formular problemas, evaluar la pertinencia de métodos, validar resultados y sostener una interpretación fundada en criterios disciplinares.</li>
+</ol>
+<section id="qué-puede-aportar-la-ia-en-bioestadística" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="qué-puede-aportar-la-ia-en-bioestadística"><span class="header-section-number">2.5.1</span> ¿Qué puede aportar la IA en Bioestadística?</h3>
+<ul>
+<li>Explicar qué hace una función, o interpretar un mensaje de error.</li>
+<li>Sugerir código o secuencias de análisis para resolver tareas analíticas.</li>
+<li>Reformular explicaciones estadísticas desde distintos enfoques.</li>
+<li>Proponer alternativas cuando un procedimiento no funciona.</li>
+</ul>
+</section>
+<section id="lo-que-la-ia-no-puede-hacer" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="lo-que-la-ia-no-puede-hacer"><span class="header-section-number">2.5.2</span> Lo que la IA NO puede hacer</h3>
+<ul>
+<li><strong>Comprender</strong> el contexto específico del análisis, ni asumir las consecuencias de los resultados obtenidos.</li>
+<li><strong>Garantizar</strong> que el código generado o la secuencia de análisis propuesta sean correctos para un determinado problema.</li>
+<li><strong>Sustituir el criterio</strong> para elegir una medida o un método estadístico.</li>
+<li><strong>Interpretar resultados</strong> con fundamento disciplinar (agronómico, bromatológico, biológico o ambiental).</li>
+</ul>
+</section>
+<section id="esquema-de-trabajo-propuesto" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="esquema-de-trabajo-propuesto"><span class="header-section-number">2.5.3</span> Esquema de trabajo propuesto</h3>
+<p>Se propone el siguiente esquema de trabajo con herramientas de IA (como <strong>NotebookLM</strong> de Google u opciones similares):</p>
+<ol type="1">
+<li><strong>Crear un espacio de trabajo</strong> (carpeta o notebook) y llamarlo con el nombre de la materia: <code>Bioestadística</code>.</li>
+<li><strong>Cargar los materiales del curso</strong>:
+<ul>
+<li>La guía: <em>Apuntes de Bioestadística con ejercicios resueltos</em>.</li>
+<li>La bibliografía sugerida por la cátedra.</li>
+</ul></li>
+<li><strong>Interactuar bajo el rol de asistente pedagógico</strong>:
+<ul>
+<li>Resolver dudas conceptuales.</li>
+<li>Guiar el aprendizaje mediante preguntas orientadoras.</li>
+<li>Generar explicaciones alternativas (analogías, ejemplos).</li>
+<li>Producir recursos complementarios (cuestionarios, esquemas, resúmenes, etc.).</li>
+<li>Entender mensajes de error.</li>
+<li>Comprender la sintaxis u opciones en diferentes programas estadísticos.</li>
+<li>Explorar alternativas de análisis.</li>
+</ul></li>
+</ol>
+<p>&nbsp;</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Criterios de precaución y verificación obligatoria
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><font style="color:darkcyan;">Naturaleza Probabilística</font>: Las herramientas de IA operan mediante modelos probabilísticos de lenguaje y no mediante algoritmos lógicos o fórmulas matemáticas cerradas. Por lo tanto, pueden generar “alucinaciones”, produciendo explicaciones que parecen técnicamente coherentes, pero que no siempre son coherentes con los fundamentos teóricos de la estadística.</li>
+<li><font style="color:darkcyan;">Prevalencia bibliográfica</font>: En caso de discrepancia entre una explicación generada por la IA y los marcos conceptuales desarrollados en la bibliografía propuesta por la cátedra, <strong>deben prevalecer siempre el contenido de la obra y la bibliografía académica</strong>.</li>
+<li><font style="color:darkcyan;">Criterio disciplinar</font>: El criterio del investigador es el único capaz de validar si una interpretación es agronómica, biológica, ambiental o bromatológicamente plausible, más allá de la corrección sintáctica del código sugerido.</li>
+<li><font style="color:darkcyan;">Verificación Obligatoria</font>: Todo código generado (especialmente en R, Python o Julia) debe ser verificado. Pequeños errores en funciones (por ejemplo, confundir parámetros de varianza con desvío estándar) pueden invalidar completamente una prueba.</li>
+</ul>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./01_pautas.html" class="pagination-link" aria-label="Pautas de cursada">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pautas de cursada</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./03_intro_R.html" class="pagination-link" aria-label="Introducción al manejo de R">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción al manejo de R</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Año 2026</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Cátedra de Bioestadística y Diseño Experimental | Facultad de Ciencias Agrarias | Universidad Nacional de Jujuy</p>
+</div>
+    <div class="nav-footer-right">
+<p><img src="logounju.png" class="img-fluid" width="80"> <img src="logofca.png" class="img-fluid" width="80"></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
