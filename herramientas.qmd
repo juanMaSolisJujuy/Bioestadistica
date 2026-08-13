@@ -1,5 +1,5 @@
 
-# Algunas herramientas
+# Algunas herramientas {.unnumbered}
 
 ## R en la web {.unnumbered}
 
@@ -16,7 +16,7 @@ En este entorno podrás ejecutar algunas funciones de R.
 
 ---
 
-## GeoGebra (Visualización interactiva)
+## GeoGebra (Visualización interactiva) {.unnumbered}
 
 Como complemento al uso de software estadístico especializado, se recomienda el empleo del módulo de **Distribuciones Estadísticas de GeoGebra**. Esta herramienta permite al estudiante seleccionar una distribución y especificar sus parámetros para obtener de forma inmediata la representación gráfica de la función de densidad (en variables continuas) o de la función de probabilidad (en variables discretas).
 
