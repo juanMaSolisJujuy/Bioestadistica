@@ -1,0 +1,230 @@
+---
+title: "Marco Conceptual: Bioestadística y el Análisis Exploratorio de Datos"
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+::: callout-important
+## Lectura Sugerida para el Trabajo Práctico
+
+Se recomienda a los estudiantes consultar el libro **«Apuntes de
+Bioestadística. Con ejercicios resueltos»** para profundizar los
+conceptos teóricos y metodológicos desarrollados en este marco:
+
+- **Sección 1: Introducción y Generalidades**: Reflexionar sobre *el
+  Proceso de Investigación Cuantitativa y Modelación Estadística*. Esta
+  lectura nos da información acerca de la importancia del contexto en la
+  interpretación de un resultado estadístico, en el marco de una
+  investigación científica.
+- **Sección 2: Población, Muestra y Variables**: Consultar las
+  definiciones de *Población, Muestra, Unidades de Análisis **y sobre
+  todo,** Clasificación de Variables y Escalas de Medición*.
+- **Sección 3: Estadística Descriptiva**: Revisar los apartados de
+  *Análisis Exploratorio de Datos para Series Simples y Series
+  Agrupadas*, prestando atención sobre todo a la **interpretación** de
+  las fórmulas, las medidas de resumen y gráficos descriptivos.
+:::
+
+# Introducción y Generalidades
+
+## Definición de Estadística
+
+Desde una perspectiva **práctico-procedimental**, la Estadística es la
+parte del método científico que tiene por objeto la recolección,
+organización, análisis, interpretación y presentación de datos. Bajo un
+**enfoque sistémico**, los métodos estadísticos constituyen un proceso
+que transforma entradas (datos) en salidas (información).
+
+```{mermaid}
+%%| fig-cap: "Enfoque sistémico del análisis estadístico"
+flowchart LR
+    A[Entradas / Input<br/>Datos] --> B[Proceso de Análisis<br/>Estadístico] --> C[Salidas / Output<br/>Información]
+```
+
+Esta información se integra dentro del proceso de investigación
+cuantitativa para generar o actualizar conocimiento en contextos de
+incertidumbre. El proceso forma un ciclo de retroalimentación continua
+mediante la contrastación (validación, ampliación, modificación o
+refutación del conocimiento previo).
+
+![Estadística dentro del proceso de investigación
+cuantitativa](IMAGENES/2_INTRODUCCIÓN/Estadística%20dentro%20del%20proceso%20de%20investigación%20cuantitativa.jpg)
+
+Desde un punto de vista **conceptual**, la estadística es la ciencia que
+permite **aprender de los datos en contextos de incertidumbre**. Su
+objetivo central es aislar la «señal» del «ruido» mediante la
+**modelación estadística**.
+
+`Modelo Estadístico`: Representación matemática con componentes
+determinísticos y aleatorios para describir un proceso generador de
+datos, basado en ciertos supuestos acerca de dicho proceso.
+
+## Tipos de Problemas de Aprendizaje a partir de Datos
+
+Según Vapnik (2000), el aprendizaje a partir de datos abarca tres tipos
+de problemas:
+
+1.  **Reconocimiento de patrones:** Identificación de regularidades o
+    características significativas para clasificar o categorizar
+    observaciones.
+2.  **Estimaciones por regresión:** Uso de relaciones matemáticas para
+    predecir valores de una variable dependiente o realizar contrastes
+    de hipótesis.
+3.  **Estimaciones de densidad:** Estimación de la probabilidad de
+    ocurrencia de diferentes valores en un rango determinado.
+
+## Criterios de Clasificación de la Información Estadística
+
+La naturaleza de la información generada depende de los siguientes
+factores:
+
+- **Objetivos de la investigación:**
+  - **Estadística Exploratoria / Descriptiva:** Busca descubrir
+    relaciones o describir comportamientos de datos disponibles sin
+    generalizar por fuera de la muestra.
+  - **Estadística Inferencial:** Permite contrastar hipótesis, estimar
+    parámetros poblacionales o ajustar modelos generalizables. Incluye
+    métodos *explicativos* (mecanismos causales) y *predictivos*
+    (pronósticos).
+- **Tipo de investigación (intervención):**
+  - **Experimental:** Intervención activa y deliberada; describe
+    relaciones de causa/efecto.
+  - **Observacional:** Sin intervención activa; describe asociaciones
+    entre variables.
+  - **Semiexperimental:** Combina elementos observacionales y
+    experimentales.
+- **Naturaleza de la variable respuesta:**
+  - **Respuesta numérica:** Requiere modelos de regresión (paramétricos
+    o no paramétricos).
+  - **Respuesta categórica:** Requiere modelos de clasificación (métodos
+    no paramétricos).
+- **Número de variables analizadas:** Univariados, bivariados y
+  multivariados.
+- **Relación Datos - Modelo - Predicción:**
+  - **Inductivo/Inferencial:** Datos empíricos $\rightarrow$ Regla
+    general / Modelo teórico.
+  - **Deductivo:** Modelo teórico $\rightarrow$ Evaluación de
+    plausibilidad de predicciones.
+  - **Transductivo/Predictivo:** Datos empíricos $\rightarrow$
+    Predicciones directas.
+
+![Enfoques inductivo, deductivo y
+transductivo](IMAGENES/2_INTRODUCCIÓN/enfoques.jpg){#fig-enfoques}
+
+![Proceso de selección de métodos de análisis
+estadístico](IMAGENES/2_INTRODUCCIÓN/Proceso%20de%20selección%20de%20métodos%20de%20análisis%20estadístico.jpg){#fig-seleccion-metodos}
+
+## Bioestadística
+
+La **Bioestadística** es la rama que estudia los criterios para la
+aplicación adecuada de los métodos estadísticos en las ciencias
+biológicas, agrícolas, ambientales y de la salud, caracterizadas por la
+elevada complejidad y variabilidad de los fenómenos biológicos.
+
+------------------------------------------------------------------------
+
+# Población y Muestra
+
+## Conceptos
+
+- **Población:** Conjunto de elementos acotados en un tiempo y espacio
+  determinados, con alguna característica común observable o medible. Se
+  delimita formalmente para definir el alcance de la inferencia.
+- **Tamaño Poblacional (**$N$): Número total de elementos de la
+  población.
+- **Muestra:** Subconjunto representativo de la población.
+- **Tamaño Muestral (**$n$): Número de elementos incluidos en la
+  muestra.
+
+## Tipos de Poblaciones y Muestreo
+
+- **Población Finita:** Aquella cuyos elementos constitutivos pueden ser
+  contados y es posible determinar $N$.
+- **Población Infinita:** Aquella en la que no es posible determinar el
+  número total $N$ mediante conteo.
+- **Muestreo Probabilístico vs. Oportunista:** Para garantizar
+  representatividad y medir el error de estimación se requieren métodos
+  probabilísticos mediante marcos muestrales; no obstante, en biología
+  se recurre frecuentemente a muestreos oportunistas por restricciones
+  prácticas.
+
+## Unidades de Estudio
+
+- **Unidad de Observación (U.O.):** Elemento individual en la muestra
+  sobre el cual se realiza la medición, conteo o clasificación.
+- **Unidad de Análisis (U.A.):** Objeto final del estudio sobre el cual
+  se extraen las conclusiones inferenciales.
+
+::: callout-note
+La Unidad de Observación (U.O.) y la Unidad de Análisis (U.A.) pueden o
+no coincidir según el diseño muestral.
+:::
+
+------------------------------------------------------------------------
+
+# Variables Estadísticas y Escalas de Medición
+
+## Definiciones
+
+- **Variable:** Característica o atributo que puede adoptar distintos
+  valores numéricos o categóricos a partir de un conjunto de valores
+  posibles. Se denota con letras mayúsculas ($X, Y$).
+- **Realización / Dato (**$x_i$): Valor específico que asume la variable
+  en una unidad de observación ($x_i, i=1, 2, \dots, n$).
+- **Constante:** Atributo cuyo valor permanece invariante entre las
+  unidades observadas.
+
+## Clasificación por Naturaleza y Escala de Medición
+
+![Clasificación de variables
+estadísticas](IMAGENES/2_INTRODUCCIÓN/Clasificación%20de%20variables%20estadísticas.jpg){#fig-clasificacion-variables}
+
+### Atributos de las Escalas de Medición
+
+| Escala | Propiedades Operativas | Definición |
+|:-----------------------|:-----------------------|:-----------------------|
+| **Nominal** | Clasificación | Clasifica en categorías mutuamente excluyentes sin orden implícito. |
+| **Ordinal** | Clasificación, Orden | Establece un orden lógico o jerarquía entre categorías, pero no mide distancias. |
+| **Intervalo** | Clasificación, Orden, Distancia | Medición numérica con cero arbitrario (no indica ausencia del atributo). |
+| **Razón** | Clasificación, Orden, Distancia, Origen | Medición numérica con cero real (ausencia del atributo); admite todas las operaciones matemáticas. |
+
+------------------------------------------------------------------------
+
+# Estadística Descriptiva
+
+Su objetivo es sintetizar y caracterizar los atributos de **centralidad,
+variabilidad y forma** de la distribución de los datos empíricos.
+
+![Tipos de atributos para describir datos
+empíricos](IMAGENES/3_ESTADÍSTICA%20DESCRIPTIVA/descriptiva_sintesis.jpg){#fig-atributos-datos
+width="80%"}
+
+![Ejemplos de algunas formas características de
+distribuciones](IMAGENES/3_ESTADÍSTICA%20DESCRIPTIVA/Ejemplos%20de%20algunas%20formas%20características.jpg){#fig-formas-distribuciones
+width="80%"}
+
+------------------------------------------------------------------------
+
+# Análisis Exploratorio de Series Simples y Agrupadas
+
+Revisar la Unidad 3 del libro
+`Apuntes de Bioestadística. Con ejercicios resueltos`.
+
+# Estrategias de interacción con la IA
+
+::: callout-tip
+## Estrategias de interacción con la IA
+
+- Dilema del número de clases: Pedir a la IA que compare los resultados del número de clases para cualquier serie de 30 valores utilizando los métodos de Sturges, Scott y Freedman-Diaconis. Preguntar: "¿En qué situaciones preferiríamos una distribución más 'suavizada' (Sturges) frente a una que resalte más los picos de variabilidad local?".
+- Contraste de precisión (Muestra simple vs. Agrupada): Solicitar a la IA que explique por qué existe una diferencia (aunque sea mínima) entre la media aritmética de la serie simple y la media ponderada calculada a partir de las marcas de clase. Reflexionar sobre el concepto de que la marca de clase "asume" que los datos se distribuyen uniformemente dentro del intervalo.
+- Razonamiento sobre la Mediana por Interpolación: Presentar a la IA la fórmula de interpolación para la mediana en variables continuas y pedirle que explique, mediante una analogía física, qué representan los componentes y por qué se multiplican por la amplitud.
+- Gráficos acumulados: Solicitar a la IA que justifique por qué una variable discreta (como el recuento de huevos de barrenador) debe graficarse con un gráfico escalonado que muestre saltos o discontinuidades, mientras que una variable continua (como el arsénico) permite una ojiva de líneas rectas que asumen una transición suave entre límites.
+- Análisis de la Moda en intervalos: Debatir con la IA sobre la sensibilidad de la clase modal. Preguntar: "Si cambiamos la amplitud de los intervalos en el ejemplo de arsénico en Tumbaya, ¿podría la moda desplazarse de intervalo? ¿Qué nos dice esto sobre la estabilidad de esta medida en datos agrupados?".
+- Simulación de sesgos por intervalos: Pedir a la IA que genere un escenario donde un investigador "manipula" visualmente un histograma aumentando excesivamente el número de clases hasta que cada barra tenga frecuencia 1, y discutir por qué esto anula el propósito del análisis de series agrupadas.
+- Traducción de algoritmos de software: Preguntar a la IA cómo el argumento breaks en la función hist() de R o la opción de "Número de clases personalizado" en InfoStat afectan el cálculo automático de las frecuencias, comparándolo con el procedimiento manual.
+
+
+
+:::

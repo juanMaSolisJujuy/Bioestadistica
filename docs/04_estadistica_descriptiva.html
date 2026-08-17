@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Marco Conceptual y Análisis Descriptivo de Datos – | BIOSTADÍSTICA</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./herramientas.html" rel="next">
+<link href="./03_intro_R.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-8a2d8be20f8a8d2de273f5d07d3beade.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04_estadistica_descriptiva.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Marco Conceptual y Análisis Descriptivo de Datos</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">| BIOSTADÍSTICA</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">index.html</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_pautas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pautas de cursada</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_competencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Competencias prácticas de la bioestadística</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_intro_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción al manejo de R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_estadistica_descriptiva.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Marco Conceptual y Análisis Descriptivo de Datos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./herramientas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Algunas herramientas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#introducción-y-generalidades" id="toc-introducción-y-generalidades" class="nav-link active" data-scroll-target="#introducción-y-generalidades"><span class="header-section-number">4.1</span> Introducción y Generalidades</a>
+  <ul class="collapse">
+  <li><a href="#definición-de-estadística" id="toc-definición-de-estadística" class="nav-link" data-scroll-target="#definición-de-estadística"><span class="header-section-number">4.1.1</span> Definición de Estadística</a></li>
+  </ul></li>
+  <li><a href="#tipos-de-problemas-de-aprendizaje-a-partir-de-datos" id="toc-tipos-de-problemas-de-aprendizaje-a-partir-de-datos" class="nav-link" data-scroll-target="#tipos-de-problemas-de-aprendizaje-a-partir-de-datos"><span class="header-section-number">4.2</span> Tipos de Problemas de Aprendizaje a partir de Datos</a>
+  <ul class="collapse">
+  <li><a href="#criterios-de-clasificación-de-la-información-estadística" id="toc-criterios-de-clasificación-de-la-información-estadística" class="nav-link" data-scroll-target="#criterios-de-clasificación-de-la-información-estadística"><span class="header-section-number">4.2.1</span> Criterios de Clasificación de la Información Estadística</a></li>
+  <li><a href="#bioestadística" id="toc-bioestadística" class="nav-link" data-scroll-target="#bioestadística"><span class="header-section-number">4.2.2</span> Bioestadística</a></li>
+  </ul></li>
+  <li><a href="#población-y-muestra" id="toc-población-y-muestra" class="nav-link" data-scroll-target="#población-y-muestra"><span class="header-section-number">4.3</span> Población y Muestra</a>
+  <ul class="collapse">
+  <li><a href="#conceptos" id="toc-conceptos" class="nav-link" data-scroll-target="#conceptos"><span class="header-section-number">4.3.1</span> Conceptos</a></li>
+  <li><a href="#tipos-de-poblaciones-y-muestreo" id="toc-tipos-de-poblaciones-y-muestreo" class="nav-link" data-scroll-target="#tipos-de-poblaciones-y-muestreo"><span class="header-section-number">4.3.2</span> Tipos de Poblaciones y Muestreo</a></li>
+  <li><a href="#unidades-de-estudio" id="toc-unidades-de-estudio" class="nav-link" data-scroll-target="#unidades-de-estudio"><span class="header-section-number">4.3.3</span> Unidades de Estudio</a></li>
+  </ul></li>
+  <li><a href="#variables-estadísticas-y-escalas-de-medición" id="toc-variables-estadísticas-y-escalas-de-medición" class="nav-link" data-scroll-target="#variables-estadísticas-y-escalas-de-medición"><span class="header-section-number">4.4</span> Variables Estadísticas y Escalas de Medición</a>
+  <ul class="collapse">
+  <li><a href="#definiciones" id="toc-definiciones" class="nav-link" data-scroll-target="#definiciones"><span class="header-section-number">4.4.1</span> Definiciones</a></li>
+  <li><a href="#clasificación-por-naturaleza-y-escala-de-medición" id="toc-clasificación-por-naturaleza-y-escala-de-medición" class="nav-link" data-scroll-target="#clasificación-por-naturaleza-y-escala-de-medición"><span class="header-section-number">4.4.2</span> Clasificación por Naturaleza y Escala de Medición</a></li>
+  </ul></li>
+  <li><a href="#estadística-descriptiva" id="toc-estadística-descriptiva" class="nav-link" data-scroll-target="#estadística-descriptiva"><span class="header-section-number">4.5</span> Estadística Descriptiva</a></li>
+  <li><a href="#análisis-exploratorio-de-series-simples-y-agrupadas" id="toc-análisis-exploratorio-de-series-simples-y-agrupadas" class="nav-link" data-scroll-target="#análisis-exploratorio-de-series-simples-y-agrupadas"><span class="header-section-number">4.6</span> Análisis Exploratorio de Series Simples y Agrupadas</a></li>
+  <li><a href="#estrategias-de-interacción-con-la-ia" id="toc-estrategias-de-interacción-con-la-ia" class="nav-link" data-scroll-target="#estrategias-de-interacción-con-la-ia"><span class="header-section-number">4.7</span> Estrategias de interacción con la IA</a></li>
+  <li><a href="#micro-ejercicios-de-aplicación-optativos" id="toc-micro-ejercicios-de-aplicación-optativos" class="nav-link" data-scroll-target="#micro-ejercicios-de-aplicación-optativos"><span class="header-section-number">4.8</span> Micro-ejercicios de aplicación (optativos)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Marco Conceptual y Análisis Descriptivo de Datos</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div style="
+  background-color: #e3f2fd; 
+  border-radius: 15px; 
+  padding: 20px 25px; 
+  margin: 20px 0;
+  border-left: 5px solid #1e88e5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #0d3c5e;
+  line-height: 1.6;
+">
+<p style="margin: 0; font-size: 1.05rem;">
+<strong>Objetivos del Trabajo Práctico</strong><br><br> El trabajo práctico tiene como objetivos: <strong>(1)</strong> Reconocer que el rol de la estadística, dentro de un proceso de investigación cuantitativa, provee métodos para obtener información a partir de datos ; <strong>(2)</strong> Clasificar correctamente las variables según su naturaleza y escala de medición; <strong>(3)</strong> Aplicar técnicas de análisis exploratorio de datos, incluyendo medidas de resumen y gráficos para series simples y agrupadas; <strong>(4)</strong>Reconocer las principales dimensiones de la descripción de datos: centro + forma + dispersión; y <strong>(5)</strong> Realizar lecturas y síntesis interpretativas a partir de las medidas de resumen y gráficos descriptivos.
+</p>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Lectura Sugerida para el Trabajo Práctico
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se recomienda a los estudiantes consultar el libro <strong>«Apuntes de Bioestadística. Con ejercicios resueltos»</strong> para profundizar los conceptos teóricos y metodológicos desarrollados en este marco:</p>
+<ul>
+<li><strong>Unidad 2: Introducción y Generalidades</strong>: Reflexionar sobre <em>el Proceso de Investigación Cuantitativa y Modelación Estadística</em>. Esta lectura nos da información acerca de la importancia del contexto en la interpretación de un resultado estadístico, en el marco de una investigación científica.</li>
+<li><strong>Unidad 2: Población, Muestra y Variables</strong>: Consultar las definiciones de <em>Población, Muestra, Unidades de Análisis <strong>y sobre todo,</strong> Clasificación de Variables y Escalas de Medición</em>.</li>
+<li><strong>Unidad 3: Estadística Descriptiva</strong>: Revisar los apartados de <em>Análisis Exploratorio de Datos para Series Simples y Series Agrupadas</em>, prestando atención sobre todo a la <strong>interpretación</strong> de las fórmulas, las medidas de resumen y gráficos descriptivos.</li>
+</ul>
+</div>
+</div>
+<section id="introducción-y-generalidades" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="introducción-y-generalidades"><span class="header-section-number">4.1</span> Introducción y Generalidades</h2>
+<section id="definición-de-estadística" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="definición-de-estadística"><span class="header-section-number">4.1.1</span> Definición de Estadística</h3>
+<p>Desde una perspectiva <strong>práctico-procedimental</strong>, la Estadística es la parte del método científico que tiene por objeto la recolección, organización, análisis, interpretación y presentación de datos. Bajo un <strong>enfoque sistémico</strong>, los métodos estadísticos constituyen un proceso que transforma entradas (datos) en salidas (información).</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Entradas / Input&lt;br/&gt;Datos] --&gt; B[Proceso de Análisis&lt;br/&gt;Estadístico] --&gt; C[Salidas / Output&lt;br/&gt;Información]
+</pre>
+</div>
+<p></p><figcaption> Enfoque sistémico del análisis estadístico</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
+<p>Esta información se integra dentro del proceso de investigación cuantitativa para generar o actualizar conocimiento en contextos de incertidumbre. El proceso forma un ciclo de retroalimentación continua mediante la contrastación (validación, ampliación, modificación o refutación del conocimiento previo).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="IMAGENES/2_INTRODUCCIÓN/Estadística dentro del proceso de investigación cuantitativa.jpg" class="img-fluid figure-img"></p>
+<figcaption>Estadística dentro del proceso de investigación cuantitativa</figcaption>
+</figure>
+</div>
+<p>Desde un punto de vista <strong>conceptual</strong>, la estadística es la ciencia que permite <strong>aprender de los datos en contextos de incertidumbre</strong>. Su objetivo central es aislar la «señal» del «ruido» mediante la <strong>modelación estadística</strong>.</p>
+<p><code>Modelo Estadístico</code>: Representación matemática con componentes determinísticos y aleatorios para describir un proceso generador de datos, basado en ciertos supuestos acerca de dicho proceso.</p>
+</section>
+</section>
+<section id="tipos-de-problemas-de-aprendizaje-a-partir-de-datos" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="tipos-de-problemas-de-aprendizaje-a-partir-de-datos"><span class="header-section-number">4.2</span> Tipos de Problemas de Aprendizaje a partir de Datos</h2>
+<p>Según Vapnik (2000), el aprendizaje a partir de datos abarca tres tipos de problemas:</p>
+<ol type="1">
+<li><strong>Reconocimiento de patrones:</strong> Identificación de regularidades o características significativas para clasificar o categorizar observaciones.</li>
+<li><strong>Estimaciones por regresión:</strong> Uso de relaciones matemáticas para predecir valores de una variable dependiente o realizar contrastes de hipótesis.</li>
+<li><strong>Estimaciones de densidad:</strong> Estimación de la probabilidad de ocurrencia de diferentes valores en un rango determinado.</li>
+</ol>
+<section id="criterios-de-clasificación-de-la-información-estadística" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="criterios-de-clasificación-de-la-información-estadística"><span class="header-section-number">4.2.1</span> Criterios de Clasificación de la Información Estadística</h3>
+<p>La naturaleza de la información generada depende de los siguientes factores:</p>
+<ul>
+<li><strong>Objetivos de la investigación:</strong>
+<ul>
+<li><strong>Estadística Exploratoria / Descriptiva:</strong> Busca descubrir relaciones o describir comportamientos de datos disponibles sin generalizar por fuera de la muestra.</li>
+<li><strong>Estadística Inferencial:</strong> Permite contrastar hipótesis, estimar parámetros poblacionales o ajustar modelos generalizables. Incluye métodos <em>explicativos</em> (mecanismos causales) y <em>predictivos</em> (pronósticos).</li>
+</ul></li>
+<li><strong>Tipo de investigación (intervención):</strong>
+<ul>
+<li><strong>Experimental:</strong> Intervención activa y deliberada; describe relaciones de causa/efecto.</li>
+<li><strong>Observacional:</strong> Sin intervención activa; describe asociaciones entre variables.</li>
+<li><strong>Semiexperimental:</strong> Combina elementos observacionales y experimentales.</li>
+</ul></li>
+<li><strong>Naturaleza de la variable respuesta:</strong>
+<ul>
+<li><strong>Respuesta numérica:</strong> Requiere modelos de regresión (paramétricos o no paramétricos).</li>
+<li><strong>Respuesta categórica:</strong> Requiere modelos de clasificación (métodos no paramétricos).</li>
+</ul></li>
+<li><strong>Número de variables analizadas:</strong> Univariados, bivariados y multivariados.</li>
+<li><strong>Relación Datos - Modelo - Predicción:</strong>
+<ul>
+<li><strong>Inductivo/Inferencial:</strong> Datos empíricos <span class="math inline">\(\rightarrow\)</span> Regla general / Modelo teórico.</li>
+<li><strong>Deductivo:</strong> Modelo teórico <span class="math inline">\(\rightarrow\)</span> Evaluación de plausibilidad de predicciones.</li>
+<li><strong>Transductivo/Predictivo:</strong> Datos empíricos <span class="math inline">\(\rightarrow\)</span> Predicciones directas.</li>
+</ul></li>
+</ul>
+<div id="fig-enfoques" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-enfoques-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="IMAGENES/2_INTRODUCCIÓN/enfoques.jpg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-enfoques-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4.1: Enfoques inductivo, deductivo y transductivo
+</figcaption>
+</figure>
+</div>
+<div id="fig-seleccion-metodos" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seleccion-metodos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="IMAGENES/2_INTRODUCCIÓN/Proceso de selección de métodos de análisis estadístico.jpg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-seleccion-metodos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4.2: Proceso de selección de métodos de análisis estadístico
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="bioestadística" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="bioestadística"><span class="header-section-number">4.2.2</span> Bioestadística</h3>
+<p>La <strong>Bioestadística</strong> es la rama que estudia los criterios para la aplicación adecuada de los métodos estadísticos en las ciencias biológicas, agrícolas, ambientales y de la salud, caracterizadas por la elevada complejidad y variabilidad de los fenómenos biológicos.</p>
+<hr>
+</section>
+</section>
+<section id="población-y-muestra" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="población-y-muestra"><span class="header-section-number">4.3</span> Población y Muestra</h2>
+<section id="conceptos" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="conceptos"><span class="header-section-number">4.3.1</span> Conceptos</h3>
+<ul>
+<li><strong>Población:</strong> Conjunto de elementos acotados en un tiempo y espacio determinados, con alguna característica común observable o medible. Se delimita formalmente para definir el alcance de la inferencia.</li>
+<li><strong>Tamaño Poblacional (</strong><span class="math inline">\(N\)</span>): Número total de elementos de la población.</li>
+<li><strong>Muestra:</strong> Subconjunto representativo de la población.</li>
+<li><strong>Tamaño Muestral (</strong><span class="math inline">\(n\)</span>): Número de elementos incluidos en la muestra.</li>
+</ul>
+</section>
+<section id="tipos-de-poblaciones-y-muestreo" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="tipos-de-poblaciones-y-muestreo"><span class="header-section-number">4.3.2</span> Tipos de Poblaciones y Muestreo</h3>
+<ul>
+<li><strong>Población Finita:</strong> Aquella cuyos elementos constitutivos pueden ser contados y es posible determinar <span class="math inline">\(N\)</span>.</li>
+<li><strong>Población Infinita:</strong> Aquella en la que no es posible determinar el número total <span class="math inline">\(N\)</span> mediante conteo.</li>
+<li><strong>Muestreo Probabilístico vs.&nbsp;Oportunista:</strong> Para garantizar representatividad y medir el error de estimación se requieren métodos probabilísticos mediante marcos muestrales; no obstante, en biología se recurre frecuentemente a muestreos oportunistas por restricciones prácticas.</li>
+</ul>
+</section>
+<section id="unidades-de-estudio" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="unidades-de-estudio"><span class="header-section-number">4.3.3</span> Unidades de Estudio</h3>
+<ul>
+<li><strong>Unidad de Observación (U.O.):</strong> Elemento individual en la muestra sobre el cual se realiza la medición, conteo o clasificación.</li>
+<li><strong>Unidad de Análisis (U.A.):</strong> Objeto final del estudio sobre el cual se extraen las conclusiones inferenciales.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La Unidad de Observación (U.O.) y la Unidad de Análisis (U.A.) pueden o no coincidir según el diseño muestral.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="variables-estadísticas-y-escalas-de-medición" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="variables-estadísticas-y-escalas-de-medición"><span class="header-section-number">4.4</span> Variables Estadísticas y Escalas de Medición</h2>
+<section id="definiciones" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="definiciones"><span class="header-section-number">4.4.1</span> Definiciones</h3>
+<ul>
+<li><strong>Variable:</strong> Característica o atributo que puede adoptar distintos valores numéricos o categóricos a partir de un conjunto de valores posibles. Se denota con letras mayúsculas (<span class="math inline">\(X, Y\)</span>).</li>
+<li><strong>Realización / Dato (</strong><span class="math inline">\(x_i\)</span>): Valor específico que asume la variable en una unidad de observación (<span class="math inline">\(x_i, i=1, 2, \dots, n\)</span>).</li>
+<li><strong>Constante:</strong> Atributo cuyo valor permanece invariante entre las unidades observadas.</li>
+</ul>
+</section>
+<section id="clasificación-por-naturaleza-y-escala-de-medición" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="clasificación-por-naturaleza-y-escala-de-medición"><span class="header-section-number">4.4.2</span> Clasificación por Naturaleza y Escala de Medición</h3>
+<div id="fig-clasificacion-variables" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-clasificacion-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="IMAGENES/2_INTRODUCCIÓN/Clasificación de variables estadísticas.jpg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-clasificacion-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4.3: Clasificación de variables estadísticas
+</figcaption>
+</figure>
+</div>
+<section id="atributos-de-las-escalas-de-medición" class="level4" data-number="4.4.2.1">
+<h4 data-number="4.4.2.1" class="anchored" data-anchor-id="atributos-de-las-escalas-de-medición"><span class="header-section-number">4.4.2.1</span> Atributos de las Escalas de Medición</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Escala</th>
+<th style="text-align: left;">Propiedades Operativas</th>
+<th style="text-align: left;">Definición</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Nominal</strong></td>
+<td style="text-align: left;">Clasificación</td>
+<td style="text-align: left;">Clasifica en categorías mutuamente excluyentes sin orden implícito.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Ordinal</strong></td>
+<td style="text-align: left;">Clasificación, Orden</td>
+<td style="text-align: left;">Establece un orden lógico o jerarquía entre categorías, pero no mide distancias.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Intervalo</strong></td>
+<td style="text-align: left;">Clasificación, Orden, Distancia</td>
+<td style="text-align: left;">Medición numérica con cero arbitrario (no indica ausencia del atributo).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Razón</strong></td>
+<td style="text-align: left;">Clasificación, Orden, Distancia, Origen</td>
+<td style="text-align: left;">Medición numérica con cero real (ausencia del atributo); admite todas las operaciones matemáticas.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+</section>
+<section id="estadística-descriptiva" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="estadística-descriptiva"><span class="header-section-number">4.5</span> Estadística Descriptiva</h2>
+<p>Su objetivo es sintetizar y caracterizar los atributos de <strong>centralidad, variabilidad y forma</strong> de la distribución de los datos empíricos.</p>
+<div id="fig-atributos-datos" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-atributos-datos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="IMAGENES/3_ESTADÍSTICA DESCRIPTIVA/descriptiva_sintesis.jpg" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-atributos-datos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4.4: Tipos de atributos para describir datos empíricos
+</figcaption>
+</figure>
+</div>
+<div id="fig-formas-distribuciones" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-formas-distribuciones-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="IMAGENES/3_ESTADÍSTICA DESCRIPTIVA/Ejemplos de algunas formas características.jpg" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-formas-distribuciones-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4.5: Ejemplos de algunas formas características de distribuciones
+</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="análisis-exploratorio-de-series-simples-y-agrupadas" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="análisis-exploratorio-de-series-simples-y-agrupadas"><span class="header-section-number">4.6</span> Análisis Exploratorio de Series Simples y Agrupadas</h2>
+<p>Realizar una lactura complementaria de la Unidad 3 del libro <code>Apuntes de Bioestadística. Con ejercicios resueltos</code>.</p>
+</section>
+<section id="estrategias-de-interacción-con-la-ia" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="estrategias-de-interacción-con-la-ia"><span class="header-section-number">4.7</span> Estrategias de interacción con la IA</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Estrategias de interacción con la IA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Dilema del número de clases: Pedir a la IA que compare los resultados del número de clases para cualquier serie de 30 valores utilizando los métodos de Sturges, Scott y Freedman-Diaconis. Preguntar: “¿En qué situaciones preferiríamos una distribución más ‘suavizada’ (Sturges) frente a una que resalte más los picos de variabilidad local?”.</li>
+<li>Contraste de precisión (Muestra simple vs.&nbsp;Agrupada): Solicitar a la IA que explique por qué existe una diferencia (aunque sea mínima) entre la media aritmética de la serie simple y la media ponderada calculada a partir de las marcas de clase. Reflexionar sobre el concepto de que la marca de clase “asume” que los datos se distribuyen uniformemente dentro del intervalo.</li>
+<li>Razonamiento sobre la Mediana por Interpolación: Presentar a la IA la fórmula de interpolación para la mediana en variables continuas y pedirle que explique, mediante una analogía física, qué representan los componentes y por qué se multiplican por la amplitud.</li>
+<li>Gráficos acumulados: Solicitar a la IA que justifique por qué una variable discreta (como el recuento de huevos de barrenador) debe graficarse con un gráfico escalonado que muestre saltos o discontinuidades, mientras que una variable continua (como el arsénico) permite una ojiva de líneas rectas que asumen una transición suave entre límites.</li>
+<li>Análisis de la Moda en intervalos: Debatir con la IA sobre la sensibilidad de la clase modal. Preguntar: “Si cambiamos la amplitud de los intervalos en el ejemplo de arsénico en Tumbaya, ¿podría la moda desplazarse de intervalo? ¿Qué nos dice esto sobre la estabilidad de esta medida en datos agrupados?”.</li>
+<li>Simulación de sesgos por intervalos: Pedir a la IA que genere un escenario donde un investigador “manipula” visualmente un histograma aumentando excesivamente el número de clases hasta que cada barra tenga frecuencia 1, y discutir por qué esto anula el propósito del análisis de series agrupadas.</li>
+<li>Traducción de algoritmos de software: Preguntar a la IA cómo el argumento breaks en la función hist() de R o la opción de “Número de clases personalizado” en InfoStat afectan el cálculo automático de las frecuencias, comparándolo con el procedimiento manual.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="micro-ejercicios-de-aplicación-optativos" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="micro-ejercicios-de-aplicación-optativos"><span class="header-section-number">4.8</span> Micro-ejercicios de aplicación (optativos)</h2>
+<p>Los siguientes micro-ejercicios te permitirán practicar los conceptos revisados en esta unidad. Puedes copiar y pegar las preguntas en un script de R local, o bien utilizar <code>webR</code>, que es la versión <em>online</em> de R, disponible en esta guía.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================================================</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># MICRO-EJERCICIOS OPTATIVOS — Estadística Descriptiva</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================================================</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># I. POBLACIÓN, MUESTRA Y UNIDAD DE ANÁLISIS</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Contexto: En la Reserva de Biosfera Laguna de Pozuelos habita una población</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#    de aproximadamente 800 vicuñas (Vicugna vicugna). Durante una jornada de</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#    esquila comunitaria (chaku) se arrean y capturan 40 individuos para medir</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#    el diámetro de su fibra.</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#    a) Identifique la población en estudio.</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#    b) Identifique la muestra y su tamaño (n).</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#    c) Identifique la unidad de análisis.</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#    Comente.</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Contexto: Un equipo de investigación releva la altura de individuos de cardón</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#    (Trichocereus atacamensis) en un sector de la Quebrada de Humahuaca que</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">#    contiene aproximadamente 1200 ejemplares. Se seleccionan al azar 60</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">#    individuos para la medición.</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">#    a) Identifique la población y la muestra.</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">#    b) Identifique la unidad observacional.</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">#    Comente.</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) Contexto: Se estudia el ataque de una plaga sobre cultivos de papa andina</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co">#    (Solanum tuberosum ssp. andigena) en la Quebrada de Humahuaca. De un total</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co">#    de 300 hectáreas cultivadas, un técnico selecciona 12 parcelas y, dentro</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co">#    de cada una, examina 20 plantas.</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co">#    a) Identifique la población en estudio.</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co">#    b) Identifique la unidad de análisis y la unidad observacional.</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co">#    c) Indique si la variable de interés surge a nivel de parcela o de planta.</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co">#    Comente.</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># 4) Contexto: Un equipo de limnología estudia la calidad del agua de los</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co">#    bofedales altoandinos de la cuenca de la Laguna de Pozuelos. De un total de 25</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co">#    bofedales en la cuenca, se seleccionan 8 al azar y se mide el pH del agua</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co">#    en cada uno.</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="co">#    a) Identifique la población y la muestra.</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="co">#    b) Identifique la unidad de análisis.</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="co">#    Comente.</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="co"># 5) Contexto: Un investigador afirma:</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="co">#    "Coloqué 5 cámaras trampa en el Parque Nacional Calilegua y cada cámara</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="co">#    registró en promedio 15 fotografías de puma (Puma concolor) durante el</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="co">#    mes, por lo tanto mi tamaño muestral es n = 75."</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co">#    a) Analice la afirmación del investigador.</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="co">#    b) Identifique cuál es la verdadera unidad de análisis del estudio.</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co">#    c) Explique la consecuencia de confundir las fotografías repetidas de un</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="co">#       mismo individuo (pseudorréplicas) con el tamaño muestral real.</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="co">#    Comente.</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="co"># 6) Contexto: Se evalúa el efecto de la clausura al pastoreo sobre la</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="co">#    regeneración de bosques de queñoa (Polylepis australis) en lel Bosque Montano</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="co">#    de las Yungas Jujeñas. Un investigador instala 5 parcelas clausuradas y, dentro de cada</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="co">#    una, cuenta el número de plantines en 4 subparcelas de 1 m².</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="co">#    a) ¿Cuál es la unidad de análisis correcta: la parcela clausurada o la</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="co">#       subparcela?</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="co">#    b) Explique por qué tratar cada subparcela como una réplica independiente</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="co">#       podría subestimar la variabilidad real del estudio.</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="co">#    Comente.</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="co"># II. ESCALAS DE MEDICIÓN</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="co"># 7) Contexto: En un estudio de termorregulación de Liolaemus sp. en la Puna,</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="co">#    se registra la temperatura corporal de un individuo asoleándose: 15 °C</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="co">#    en la mañana y 30 °C al mediodía.</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="co">#    Situación: un estudiante afirma: "El lagarto tiene exactamente el doble</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="co">#    de temperatura corporal al mediodía que en la mañana."</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co">#    Comente.</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="co"># 8) Contexto: Se mide la precipitación anual (mm) en dos sitios del NOA: uno</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="co">#    recibe 400 mm y otro 800 mm.</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="co">#    Situación: un investigador afirma: "El segundo sitio recibe exactamente</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="co">#    el doble de precipitación que el primero."</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="co">#    a) Comente si esta afirmación es válida.</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="co">#    b) Compare con el caso de la temperatura en °C del ejercicio anterior:</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="co">#       ¿por qué en este caso sí es correcto hablar de "el doble"?</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="co"># 9) Contexto: Se clasifica el estado de conservación de poblaciones de</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="co">#    Vultur gryphus según las categorías de la UICN: Preocupación menor,</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="co">#    Casi amenazada, Vulnerable, En peligro, En peligro crítico.</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="co">#    Situación: un investigador afirma: "Una población 'En peligro crítico'</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="co">#    está exactamente el doble de amenazada que una 'Vulnerable'."</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="co">#    Comente.</span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="co"># 10) Contexto: Se registra el tipo de cobertura vegetal dominante en sitios</span></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="co">#     de muestreo de la Puna jujeña: Pastizal, Bofedal, Roquedal.</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="co">#     Situación: un estudiante afirma: "El bofedal representa un nivel de</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="co">#     cobertura mayor que el roquedal."</span></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="co">#     Comente, identificando la escala de medición de la variable.</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="co"># III. SERIES SIMPLES — MEDIDAS DE RESUMEN</span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="co"># 11) Se midió la longitud del ala (mm) de 10 individuos de aguilucho común</span></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="co">#     (Geranoaetus polyosoma) capturados:</span></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>ala_aguilucho <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">365</span>, <span class="dv">372</span>, <span class="dv">358</span>, <span class="dv">380</span>, <span class="dv">369</span>, <span class="dv">374</span>, <span class="dv">361</span>, <span class="dv">377</span>, <span class="dv">366</span>, <span class="dv">371</span>)</span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Identifique el tipo de variable y su escala de medición.</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Calcule la media y la mediana.</span></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="co">#     c) Calcule el desvío estándar muestral.</span></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a><span class="co">#     d) Interprete</span></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="co"># 12) Se midió el diámetro medio (cm) de 8 individuos de yareta</span></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="co">#     (Azorella compacta) en laderas rocosas de la Puna:</span></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a>diametro_yareta <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">102</span>, <span class="dv">78</span>, <span class="dv">95</span>, <span class="dv">110</span>, <span class="dv">88</span>, <span class="dv">92</span>, <span class="dv">99</span>)</span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Calcule el coeficiente de variación (cv_x) manualmente.</span></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Interprete si la muestra es homogénea o heterogénea.</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a><span class="co"># 13) Se registró el peso (g) de 12 huevos de cóndor andino (Vultur gryphus)</span></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a><span class="co">#     recolectados en un programa de cría en cautiverio:</span></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>peso_huevo_condor <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">280</span>, <span class="dv">265</span>, <span class="dv">290</span>, <span class="dv">275</span>, <span class="dv">268</span>, <span class="dv">285</span>, <span class="dv">272</span>, <span class="dv">278</span>, <span class="dv">283</span>, <span class="dv">269</span>, <span class="dv">276</span>, <span class="dv">288</span>)</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Calcule el rango (range()) y la amplitud (r_x, manual).</span></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Calcule el primer y tercer cuartil con quantile().</span></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="co">#     c) Interprete</span></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="co"># 14) Se registró la duración (segundos) de despliegues territoriales de</span></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="co">#     machos de Liolaemus sp. observados en la Quebrada de Humahuaca:</span></span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>despliegue_liolaemus <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">6</span>, <span class="dv">15</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">7</span>, <span class="dv">14</span>, <span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">16</span>)</span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Calcule la media y el desvío estándar.</span></span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Calcule el coeficiente de asimetría con skewness() de {moments}.</span></span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a><span class="co">#     c) Interprete el signo del coeficiente obtenido.</span></span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a><span class="co"># 15) Se midió la concentración de oxígeno disuelto (mg/L) en 10 puntos de un</span></span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="co">#     arroyo de montaña de las Yungas jujeñas:</span></span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a>oxigeno_arroyo <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">7.2</span>, <span class="fl">6.8</span>, <span class="fl">7.5</span>, <span class="fl">6.9</span>, <span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">6.5</span>, <span class="fl">7.8</span>, <span class="fl">7.0</span>, <span class="fl">7.4</span>)</span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Calcule la media y la mediana.</span></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Calcule la curtosis con kurtosis() de {moments}.</span></span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a><span class="co">#     c) Interprete el grado de concentración de los datos alrededor de la media.</span></span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="co"># 16) Se midió la longitud del pico (mm) de 9 individuos de picaflor puneño</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a><span class="co">#     (Oreotrochilus sp.) capturados con red de niebla:</span></span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>pico_picaflor <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">23.5</span>, <span class="fl">24.1</span>, <span class="fl">22.8</span>, <span class="fl">24.6</span>, <span class="fl">23.2</span>, <span class="fl">24.0</span>, <span class="fl">23.8</span>, <span class="fl">22.9</span>, <span class="fl">24.3</span>)</span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Aplique s_simple() de {resumiR} para obtener todas las medidas de</span></span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a><span class="co">#        resumen de una vez.</span></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Identifique el valor del coeficiente de variación en la salida.</span></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="co">#     c) Interprete</span></span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="co"># 17) Se registró el peso de fibra esquilada (g) por vicuña en una jornada de</span></span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="co">#     esquila comunitaria de la Puna jujeña:</span></span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a>fibra_vicuna <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">220</span>, <span class="dv">245</span>, <span class="dv">198</span>, <span class="dv">260</span>, <span class="dv">235</span>, <span class="dv">210</span>, <span class="dv">250</span>, <span class="dv">228</span>, <span class="dv">242</span>, <span class="dv">205</span>, <span class="dv">233</span>, <span class="dv">218</span>)</span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Calcule la media, la mediana y el desvío estándar.</span></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Calcule el cv_x (manual) e interprete la homogeneidad del rendimiento</span></span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="co">#        de fibra en la jornada.</span></span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a><span class="co"># 18) Se midió la altura (m) de 10 individuos de queñoa (Polylepis australis)</span></span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a><span class="co">#     en un bosque relictual de la Puna:</span></span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a>altura_quenoa_bosque <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">2.4</span>, <span class="fl">3.1</span>, <span class="fl">2.8</span>, <span class="fl">3.5</span>, <span class="fl">2.6</span>, <span class="fl">3.0</span>, <span class="fl">2.9</span>, <span class="fl">3.3</span>, <span class="fl">2.7</span>, <span class="fl">3.2</span>)</span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Calcule el cv_x (manual).</span></span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Compare mentalmente con el cv obtenido en el ejercicio 12 (yareta):</span></span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a><span class="co">#        ¿cuál de las dos especies presenta mayor variabilidad relativa?</span></span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a><span class="co"># IV. SERIES AGRUPADAS — VARIABLES CONTINUAS</span></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a><span class="co"># 19) Se midió el pH del agua en 20 bofedales altoandinos de la cuenca de la</span></span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a><span class="co">#     Laguna de Pozuelos:</span></span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a>ph_bofedales <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">6.8</span>, <span class="fl">7.2</span>, <span class="fl">7.5</span>, <span class="fl">6.9</span>, <span class="fl">7.1</span>, <span class="fl">7.8</span>, <span class="fl">6.6</span>, <span class="fl">7.4</span>, <span class="fl">7.0</span>, <span class="fl">7.3</span>,</span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a>                  <span class="fl">6.7</span>, <span class="fl">7.6</span>, <span class="fl">7.2</span>, <span class="fl">6.9</span>, <span class="fl">7.5</span>, <span class="fl">7.1</span>, <span class="fl">6.8</span>, <span class="fl">7.7</span>, <span class="fl">7.0</span>, <span class="fl">7.3</span>)</span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Aplique s_agrupada() de {resumiR} para construir la tabla de</span></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a><span class="co">#        frecuencias por intervalos.</span></span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Identifique el intervalo de clase más frecuente.</span></span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a><span class="co"># 20) Se midió el diámetro a la altura del pecho (DAP, cm) de 20 individuos de</span></span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a><span class="co">#     algarrobo negro (Prosopis nigra) en un relicto de bosque chaqueño:</span></span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a>dap_algarrobo <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">19</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">17</span>, <span class="dv">24</span>, <span class="dv">20</span>, <span class="dv">26</span>,</span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">27</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">20</span>, <span class="dv">24</span>, <span class="dv">21</span>, <span class="dv">26</span>)</span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Aplique s_agrupada() y obtenga la tabla de frecuencias.</span></span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Calcule la media y el desvío estándar a partir de la salida.</span></span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a><span class="co"># 21) Se midió la turbidez del agua (NTU) en 20 muestras de una laguna</span></span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a><span class="co">#     altoandina utilizada como bebedero de fauna silvestre:</span></span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a>turbidez_laguna <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">18</span>, <span class="dv">25</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">28</span>,</span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">14</span>, <span class="dv">24</span>, <span class="dv">19</span>, <span class="dv">11</span>, <span class="dv">26</span>, <span class="dv">16</span>, <span class="dv">21</span>, <span class="dv">13</span>, <span class="dv">27</span>, <span class="dv">23</span>)</span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Aplique s_agrupada() y obtenga la tabla de frecuencias.</span></span>
+<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) A partir de la tabla, elabore una conclusión sobre la distribución de</span></span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a><span class="co">#        los datos.</span></span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a><span class="co"># 22) Se midió la temperatura corporal (°C) de 20 sapos andinos (Rhinella</span></span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a><span class="co">#     spinulosa) activos en un bofedal de la Puna jujeña:</span></span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a>temp_corporal_sapo <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">13.5</span>, <span class="fl">15.2</span>, <span class="fl">16.8</span>, <span class="fl">14.1</span>, <span class="fl">15.5</span>, <span class="fl">17.2</span>, <span class="fl">12.9</span>, <span class="fl">16.0</span>, <span class="fl">14.5</span>, <span class="fl">17.5</span>,</span>
+<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a>                        <span class="fl">13.8</span>, <span class="fl">16.3</span>, <span class="fl">15.0</span>, <span class="fl">12.5</span>, <span class="fl">17.0</span>, <span class="fl">14.8</span>, <span class="fl">15.8</span>, <span class="fl">13.2</span>, <span class="fl">16.5</span>, <span class="fl">15.3</span>)</span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Aplique s_agrupada() y obtenga la tabla de frecuencias.</span></span>
+<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Identifique el intervalo modal de la distribución.</span></span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a><span class="co"># NOTA: EN TODOS LOS EJERCICIOS, CONSTRUYA EL HISTOGRAMA DE FRECUENCIAS Y EL </span></span>
+<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a><span class="co"># GRÁFICO DE OJIVA.</span></span>
+<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a><span class="co"># V. SERIES AGRUPADAS — VARIABLES DISCRETAS</span></span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a><span class="co"># 23) Se registró el número de crías por camada en 25 hembras de zorro</span></span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a><span class="co">#     colorado (Lycalopex culpaeus) monitoreadas en la Quebrada de Humahuaca:</span></span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a>crias_zorro <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a>                 <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>,</span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a>                 <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Construya la tabla de distribución de frecuencias con table().</span></span>
+<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Identifique la moda de la distribución.</span></span>
+<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a><span class="co"># 24) Se registró el número de huevos por puesta en 30 hembras de sapo andino</span></span>
+<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a><span class="co">#     (Rhinella spinulosa) de un bofedal altoandino:</span></span>
+<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a>huevos_sapo <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>,</span>
+<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a>                <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>,</span>
+<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a>                <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Construya la tabla de frecuencias absolutas y relativas</span></span>
+<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a><span class="co">#        (prop.table()).</span></span>
+<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Calcule la media aritmética ponderada de huevos por puesta.</span></span>
+<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a><span class="co"># 25) Se registró el número de individuos por bandada en 20 avistamientos de</span></span>
+<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a><span class="co">#     parina grande (Phoenicoparrus andinus) en las Salinas Grandes de Jujuy:</span></span>
+<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a>bandada_parina <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">15</span>, <span class="dv">9</span>, <span class="dv">25</span>, <span class="dv">11</span>, <span class="dv">7</span>, <span class="dv">18</span>,</span>
+<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a>                    <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">22</span>, <span class="dv">10</span>, <span class="dv">16</span>, <span class="dv">9</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">17</span>)</span>
+<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Construya la tabla de frecuencias agrupando en intervalos si lo</span></span>
+<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a><span class="co">#        considera necesario.</span></span>
+<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Calcule los cuartiles (quantile()) e interprete el valor de Q3.</span></span>
+<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-294"><a href="#cb1-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a><span class="co"># 26) Se registró, en 30 trampas Sherman instaladas en un transecto de</span></span>
+<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a><span class="co">#     micromamíferos del Parque Nacional Calilegua, el número de capturas por</span></span>
+<span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a><span class="co">#     trampa durante una noche de muestreo:</span></span>
+<span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a>capturas_trampa <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>,</span>
+<span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>,</span>
+<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Construya la tabla de frecuencias absolutas y la frecuencia relativa</span></span>
+<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a><span class="co">#        acumulada.</span></span>
+<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) A partir de la frecuencia acumulada, responda: ¿qué porcentaje de</span></span>
+<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a><span class="co">#        las trampas registró como máximo 1 captura?</span></span>
+<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-310"><a href="#cb1-310" aria-hidden="true" tabindex="-1"></a><span class="co"># 27) Se registró el número de brotes nuevos por plantín en 25 individuos de</span></span>
+<span id="cb1-311"><a href="#cb1-311" aria-hidden="true" tabindex="-1"></a><span class="co">#     queñoa (Polylepis australis) reforestados en la Puna jujeña:</span></span>
+<span id="cb1-312"><a href="#cb1-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-313"><a href="#cb1-313" aria-hidden="true" tabindex="-1"></a>brotes_quenoa <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>,</span>
+<span id="cb1-314"><a href="#cb1-314" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">2</span>,</span>
+<span id="cb1-315"><a href="#cb1-315" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb1-316"><a href="#cb1-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-317"><a href="#cb1-317" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Construya la tabla de distribución de frecuencias completa (absoluta,</span></span>
+<span id="cb1-318"><a href="#cb1-318" aria-hidden="true" tabindex="-1"></a><span class="co">#        relativa, acumulada y relativa acumulada).</span></span>
+<span id="cb1-319"><a href="#cb1-319" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Redacte una breve interpretación sobre el vigor de rebrote de los</span></span>
+<span id="cb1-320"><a href="#cb1-320" aria-hidden="true" tabindex="-1"></a><span class="co">#        plantines reforestados.</span></span>
+<span id="cb1-321"><a href="#cb1-321" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-322"><a href="#cb1-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-323"><a href="#cb1-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-324"><a href="#cb1-324" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb1-325"><a href="#cb1-325" aria-hidden="true" tabindex="-1"></a><span class="co"># VI. GRÁFICOS PARA VARIABLES DISCRETAS</span></span>
+<span id="cb1-326"><a href="#cb1-326" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb1-327"><a href="#cb1-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-328"><a href="#cb1-328" aria-hidden="true" tabindex="-1"></a><span class="co"># 28) A partir del vector 'huevos_sapo' (ejercicio 24), construya:</span></span>
+<span id="cb1-329"><a href="#cb1-329" aria-hidden="true" tabindex="-1"></a><span class="co">#     a) Un gráfico de bastones para la frecuencia absoluta.</span></span>
+<span id="cb1-330"><a href="#cb1-330" aria-hidden="true" tabindex="-1"></a><span class="co">#     b) Un gráfico escalonado para la frecuencia relativa acumulada.</span></span>
+<span id="cb1-331"><a href="#cb1-331" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-332"><a href="#cb1-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-333"><a href="#cb1-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-334"><a href="#cb1-334" aria-hidden="true" tabindex="-1"></a><span class="co"># 29) A partir del vector 'crias_zorro' (ejercicio 23), construya un gráfico</span></span>
+<span id="cb1-335"><a href="#cb1-335" aria-hidden="true" tabindex="-1"></a><span class="co">#     de bastones para la frecuencia relativa (fri) e interprete cuál es la</span></span>
+<span id="cb1-336"><a href="#cb1-336" aria-hidden="true" tabindex="-1"></a><span class="co">#     cantidad de crías por camada más común en la población monitoreada.</span></span>
+<span id="cb1-337"><a href="#cb1-337" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-339"><a href="#cb1-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-340"><a href="#cb1-340" aria-hidden="true" tabindex="-1"></a><span class="co"># 30) A partir del vector 'bandada_parina' (ejercicio 25), construya un</span></span>
+<span id="cb1-341"><a href="#cb1-341" aria-hidden="true" tabindex="-1"></a><span class="co">#     gráfico de bastones para la frecuencia absoluta y un gráfico escalonado</span></span>
+<span id="cb1-342"><a href="#cb1-342" aria-hidden="true" tabindex="-1"></a><span class="co">#     para la frecuencia acumulada. Interprete el tamaño de bandada por debajo</span></span>
+<span id="cb1-343"><a href="#cb1-343" aria-hidden="true" tabindex="-1"></a><span class="co">#     del cual se concentra el 50% de los avistamientos.</span></span>
+<span id="cb1-344"><a href="#cb1-344" aria-hidden="true" tabindex="-1"></a><span class="co"># Su código aquí:</span></span>
+<span id="cb1-345"><a href="#cb1-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-346"><a href="#cb1-346" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================================================</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./03_intro_R.html" class="pagination-link" aria-label="Introducción al manejo de R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción al manejo de R</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./herramientas.html" class="pagination-link" aria-label="Algunas herramientas">
+        <span class="nav-page-text">Algunas herramientas</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Año 2026</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Cátedra de Bioestadística y Diseño Experimental | Facultad de Ciencias Agrarias | Universidad Nacional de Jujuy</p>
+</div>
+    <div class="nav-footer-right">
+<p><img src="logounju.png" class="img-fluid" width="80"> <img src="logofca.png" class="img-fluid" width="80"></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

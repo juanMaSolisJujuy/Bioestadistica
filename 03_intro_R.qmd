@@ -933,7 +933,7 @@ for (num in numeros) {
 
 ## Micro-ejercicios de aplicación (optativos)
 
-Los siguientes micro-ejercicios que te permitirán practicar los conceptos revisados en esta unidad (objetos, vectores, matrices, data frames, importación de datos, funciones y estructuras de control).
+Los siguientes micro-ejercicios te permitirán practicar los conceptos revisados en esta unidad (objetos, vectores, matrices, data frames, importación de datos, funciones y estructuras de control).
 Puedes copiar y pegar las preguntas en un script de R local, o bien utilizar `webR`, que es la versión *online* de R, disponible en esta guía.
 
 
@@ -941,7 +941,6 @@ Puedes copiar y pegar las preguntas en un script de R local, o bien utilizar `we
 
 # =============================================================================
 # MICRO-EJERCICIOS DE APLICACIÓN — Introducción a R
-# Ejemplos biológicos y ambientales del NOA
 # =============================================================================
 
 # -----------------------------------------------------------------------------
