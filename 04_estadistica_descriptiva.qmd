@@ -1,5 +1,5 @@
 ---
-title: "Marco Conceptual y Análisis Descriptivo de Datos"
+title: "Trabajo Práctico 1: Estadística Descriptiva"
 format: html
 editor: 
   markdown: 
