@@ -1,0 +1,14 @@
+# Mi primer cuaderno *Notebooklm* {.unnumbered}
+
+## Primeros pasos
+
+A continuación se presenta un micro tutorial para que crear sus primeros cuadernos en *Notebooklm*, un entorno de aprendizaje basado en la IA Gemini de Google.
+
+{{< video https://youtu.be/T4cqdV9f5vE?si=aQ3QO2WE0_t6G1-w&t=2 >}}
+
+
+Te recomendamos una lectura complementaria sobre la herramienta en este [enlace](https://www.datacamp.com/es/tutorial/notebooklm).
+
+Y por supuesto, complementa con la lectura de la Unidad 2 del libro "Apuntes de Bioestadística. Con ejercicios resueltos", acerca de pautas de empleo de los cuadernos.
+
+---

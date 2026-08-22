@@ -282,31 +282,41 @@
   {
     "objectID": "herramientas.html",
     "href": "herramientas.html",
-    "title": "Algunas herramientas",
+    "title": "R en la web y Geogebra",
     "section": "",
     "text": "R en la web\nEn este entorno podrás ejecutar algunas funciones de R.",
     "crumbs": [
-      "Algunas herramientas"
+      "R en la web y Geogebra"
     ]
   },
   {
     "objectID": "herramientas.html#r-en-la-web",
     "href": "herramientas.html#r-en-la-web",
-    "title": "Algunas herramientas",
+    "title": "R en la web y Geogebra",
     "section": "",
     "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Algunas herramientas"
+      "R en la web y Geogebra"
     ]
   },
   {
     "objectID": "herramientas.html#geogebra-visualización-interactiva",
     "href": "herramientas.html#geogebra-visualización-interactiva",
-    "title": "Algunas herramientas",
+    "title": "R en la web y Geogebra",
     "section": "GeoGebra (Visualización interactiva)",
     "text": "GeoGebra (Visualización interactiva)\nComo complemento al uso de software estadístico especializado, se recomienda el empleo del módulo de Distribuciones Estadísticas de GeoGebra. Esta herramienta permite al estudiante seleccionar una distribución y especificar sus parámetros para obtener de forma inmediata la representación gráfica de la función de densidad (en variables continuas) o de la función de probabilidad (en variables discretas).\nEl valor didáctico de GeoGebra yace en su capacidad para calcular la probabilidad en un intervalo de forma visual, lo cual coincide con el área bajo la función de densidad o la suma de probabilidades discretas.\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \nIntegrar esta práctica ofrece las siguientes ventajas estratégicas:\n\nAndamiaje visual: Antes de realizar un cálculo con un programa estadístico, GeoGebra permite construir un modelo mental de la distribución. Esto ayuda a internalizar cómo los cambios en parámetros alteran la forma y posición de la curva.\nValidación de resultados: Funciona como un mecanismo de control para verificar si los valores de probabilidad obtenidos mediante software son consistentes con la representación geométrica.\nTransición del razonamiento al pensamiento: Al facilitar la manipulación interactiva de los límites de un intervalo, cada estudiante puede explorar escenarios del tipo “¿qué pasaría si…?”, fortaleciendo su capacidad de pensamiento estadístico al conectar la teoría abstracta con una representación espacial concreta.\n\nLa utilización del simulador de GeoGebra es muy intuitiva y de fácil apropiación por parte de los estudiantes. No obstante, durante los encuentros presenciales se realizarán instancias de acompañamiento y demostraciones guiadas orientadas a explicitar su funcionamiento y vincular las acciones realizadas en el entorno interactivo con los conceptos estadísticos subyacentes.",
     "crumbs": [
-      "Algunas herramientas"
+      "R en la web y Geogebra"
+    ]
+  },
+  {
+    "objectID": "mi_primer_cuaderno_notebooklm.html",
+    "href": "mi_primer_cuaderno_notebooklm.html",
+    "title": "Mi primer cuaderno Notebooklm",
+    "section": "",
+    "text": "Primeros pasos\nA continuación se presenta un micro tutorial para que crear sus primeros cuadernos en Notebooklm, un entorno de aprendizaje basado en la IA Gemini de Google.\nTe recomendamos una lectura complementaria sobre la herramienta en este enlace.\nY por supuesto, complementa con la lectura de la Unidad 2 del libro “Apuntes de Bioestadística. Con ejercicios resueltos”, acerca de pautas de empleo de los cuadernos.",
+    "crumbs": [
+      "Mi primer cuaderno *Notebooklm*"
     ]
   },
   {

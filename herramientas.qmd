@@ -1,5 +1,5 @@
 
-# Algunas herramientas {.unnumbered}
+# R en la web y Geogebra {.unnumbered}
 
 ## R en la web {.unnumbered}
 
