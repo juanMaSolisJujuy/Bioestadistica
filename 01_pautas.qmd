@@ -2,7 +2,7 @@
 
 ## Modalidad: Aprendizaje Basado en Competencias
 
-![Saber, saber hacer, saber ser](IMAGENES/cirugia.png){#fig-enfoques}
+![Saber, saber hacer, saber ser (Imágen creada con IA)](IMAGENES/cirugia.png){#fig-enfoques}
 
 
 ```{mermaid}
