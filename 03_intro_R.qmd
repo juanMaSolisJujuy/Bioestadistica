@@ -1,4 +1,4 @@
-# Introducción al manejo de R
+# Trabajo Práctico 0: Introducción al manejo de R
 
 ## Primeros pasos
 

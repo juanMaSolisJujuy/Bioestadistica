@@ -1,0 +1,622 @@
+---
+title: "Trabajo Práctico 2: Probabilidad"
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+<div style="
+  background-color: #e3f2fd; 
+  border-radius: 15px; 
+  padding: 20px 25px; 
+  margin: 20px 0;
+  border-left: 5px solid #1e88e5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #0d3c5e;
+  line-height: 1.6;
+">
+  <p style="margin: 0; font-size: 1.05rem;">
+    <strong>Objetivos del Trabajo Práctico</strong><br><br>
+    El trabajo práctico tiene como objetivos: 
+    <strong>(1)</strong> Reconocer a la probabilidad como una **medida de incertidumbre** en el marco de un proceso aleatorio, el espacio muestral y los eventos asociados a fenómenos biológicos y ambientales; 
+    <strong>(2)</strong> Clasificar eventos según su relación (independientes o dependientes, mutuamente excluyentes o solapados, complementarios); 
+    <strong>(3)</strong> Aplicar los axiomas y las reglas de probabilidad (clásica, frecuentista, aditiva y multiplicativa) para calcular probabilidades de eventos simples y compuestos; 
+    <strong>(4)</strong> Calcular probabilidades condicionales y aplicar el Teorema de Bayes en problemas de diagnóstico biológico, sanitario y ambiental; 
+    <strong>(5)</strong> Interpretar los resultados probabilísticos obtenidos en el marco de la práctica profesional en Ciencias Biológicas.
+  </p>
+</div>
+
+::: callout-important
+## Lectura Sugerida para el Trabajo Práctico
+
+Se recomienda a los estudiantes consultar el libro **«Apuntes de
+Bioestadística. Con ejercicios resueltos»** para profundizar los
+conceptos teóricos y metodológicos desarrollados en este marco:
+
+- **Unidad 4: Proceso Aleatorio, Espacio Muestral y Eventos**:
+  Consultar las definiciones de *proceso aleatorio, experimento
+  aleatorio, espacio muestral y punto muestral*, y repasar las
+  relaciones entre eventos (unión, intersección, complemento y
+  eventos mutuamente excluyentes).
+- **Unidad 4: Probabilidad y sus Reglas**: Revisar los *axiomas de
+  Kolmogorov*, los enfoques clásico, frecuentista y bayesiano de la
+  probabilidad, y las *reglas aditiva, multiplicativa y de
+  probabilidad condicional* (incluyendo el Teorema de Bayes).
+- **Unidad 4: Variables Aleatorias Discretas**: Prestar especial
+  atención a la *función de probabilidad de masa*, la *función de
+  distribución acumulada*, y al cálculo e interpretación de la
+  **esperanza matemática y la varianza**.
+
+Como lectura complementaria, se sugiere también revisar la unidad
+*«Variables aleatorias y probabilidades»* del libro **«Introducción a
+la Bioestadística»** de Balzarini et al.
+:::
+
+## Generalidades
+
+A diferencia de la Unidad anterior, centrada en describir datos ya
+observados, esta unidad se ocupa de modelar la ocurrencia de eventos
+futuros o desconocidos. La probabilidad es la herramienta conceptual
+que permite trabajar formalmente con la incertidumbre inherente a los
+fenómenos biológicos y ambientales, y constituye la base sobre la que
+se apoyan la inferencia estadística y los modelos de regresión
+(incluidos los Modelos Lineales Generalizados) que se desarrollarán en
+las unidades siguientes.
+
+### ¿Qué es un proceso aleatorio?
+
+Se llama proceso aleatorio o estocástico a todo fenómeno cuyo
+resultado no puede predecirse con certeza absoluta, aun cuando se
+conozcan las condiciones que lo originan. Por ejemplo, el fenotipo de
+coloración que presentará un ejemplar de murciélago de cola libre
+(*Tadarida brasiliensis*) al ser capturado en un muestreo, o si una
+plántula de queñoa (*Polylepis australis*) logrará establecerse tras
+una reforestación, son resultados de procesos aleatorios: no se
+pueden anticipar con exactitud, aunque sí es posible cuantificar su
+incertidumbre mediante una medida de probabilidad. Formalmente, este
+tipo de proceso se modela a través de un **espacio muestral** (Ω), que
+reúne todos los resultados posibles, y de los **eventos**, que son
+subconjuntos de interés dentro de ese espacio.
+
+### La Probabilidad como medida.
+
+Una vez definidos el espacio muestral y los eventos, la probabilidad
+asigna a cada evento un número entre 0 y 1 que expresa su chance de
+ocurrencia, respetando ciertos axiomas básicos. A partir de estos
+axiomas se derivan las reglas que se emplean para combinar eventos:
+la regla aditiva (para calcular la probabilidad de que ocurra un
+evento u otro), la regla multiplicativa (para la ocurrencia conjunta
+de eventos) y la probabilidad condicional (para actualizar la
+probabilidad de un evento a la luz de información adicional, como en
+el Teorema de Bayes). Estas herramientas son las que permiten, por
+ejemplo, evaluar si dos especies coexisten de forma independiente en
+un mismo microhábitat, o estimar la confiabilidad de una prueba
+diagnóstica en sanidad animal.
+
+### Por qué esta unidad es un marco para las siguientes
+
+El objetivo de este Trabajo Práctico es fijar un marco conceptual común desde el
+cual abordar las unidades siguientes. En particular, las nociones de
+**variable aleatoria discreta** y **variable aleatoria continua**, anticipa el tratamiento de las distribuciones de probabilidad (binomial, Poisson, Normal) que se emplearán más adelante.
+
+```{mermaid}
+%%| fig-cap: "Marco conceptual de la Unidad de Probabilidad"
+flowchart LR
+    A[Proceso Aleatorio] --> B[Espacio Muestral Ω]
+    B --> C[Eventos]
+    C --> D[Axiomas de Probabilidad]
+    D --> E["Reglas: Aditiva / Multiplicativa / Condicional (Bayes)"]
+    E --> F[Variable Aleatoria Discreta<br/>Esperanza y Varianza]
+    F --> G[Distribuciones de Probabilidad<br/>Unidades siguientes]
+```
+
+
+## Micro-ejercicios de aplicación (optativos)
+
+Los siguientes micro-ejercicios te permitirán practicar los conceptos revisados en esta unidad.
+Puedes copiar y pegar las preguntas en un script de R local, o bien utilizar `webR`, que es la versión *online* de R, disponible en esta guía.
+
+
+```{r eval = FALSE, collapse=TRUE}
+
+
+# =============================================================================
+# MICRO-EJERCICIOS OPTATIVOS — Probabilidad
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# I. EXPERIMENTO ALEATORIO, ESPACIO MUESTRAL Y EVENTOS
+# -----------------------------------------------------------------------------
+
+# 1) Contexto: En un relevamiento de fauna en la Reserva de Biosfera Laguna de
+#    Pozuelos, un observador selecciona al azar un grupo familiar de guanaco
+#    (Lama guanicoe) y registra si el macho dominante del grupo es territorial
+#    (T) o no (E).
+#    a) Identifique el experimento aleatorio.
+#    b) Escriba el espacio muestral Ω.
+#    c) ¿Cuántos puntos muestrales tiene Ω?
+#    Comente.
+
+
+# 2) Contexto: Se capturan 2 individuos de taruca (Hippocamelus antisensis) en
+#    un cerco de arreo en los Nevados de Cachi (límite Jujuy-Salta) y se
+#    registra el sexo de cada uno (Macho/Hembra), respetando el orden de
+#    captura.
+#    a) Escriba el espacio muestral Ω del experimento.
+#    b) ¿Cuántos puntos muestrales tiene Ω?
+#    c) Defina el evento A = "ambos individuos son hembras" y liste los
+#       puntos muestrales que lo componen.
+#    Comente si A es un evento simple o compuesto.
+
+
+# 3) Contexto: En un nido de ñandú de la Puna (Rhea pennata garleppi) se
+#    registra si cada uno de los 3 huevos incubados resulta viable (V) o no
+#    viable (N).
+#    a) Escriba el espacio muestral Ω.
+#    b) ¿Cuántos puntos muestrales lo componen?
+#    c) Defina el evento B = "exactamente dos huevos viables" y liste sus
+#       puntos muestrales.
+#    Comente.
+
+
+# 4) Contexto: Se define la variable G = "germinación de una semilla de
+#    queñoa (Polylepis australis) en un ensayo de vivero", con dos resultados
+#    posibles: germina (G) o no germina (NoG).
+#    a) Escriba el espacio muestral Ω.
+#    b) Clasifique a Ω según su cardinalidad (finito/infinito, numerable/no
+#       numerable).
+#    Comente, comparando con el ejemplo de germinación de maíz capia visto en
+#    la guía de cátedra.
+
+
+# 5) Contexto: En un punto de conteo de aves en las Yungas de Jujuy, un
+#    ornitólogo registra el número de individuos de parina grande
+#    (Phoenicoparrus andinus) avistados en una bandada, sin un máximo teórico
+#    acotado de antemano.
+#    a) Escriba el espacio muestral Ω.
+#    b) Clasifique a Ω según su cardinalidad.
+#    Comente por qué, en la práctica, se trunca el conteo a un valor máximo
+#    razonable.
+
+
+# -----------------------------------------------------------------------------
+# II. PROBABILIDAD CLÁSICA Y FRECUENTISTA
+# -----------------------------------------------------------------------------
+
+# 6) Contexto: En un estudio de estructura poblacional de vizcacha de la
+#    sierra (Lagidium viscacia) en afloramientos rocosos de la Puna, se
+#    examinan 150 individuos y se registra su sexo y la presencia de
+#    ectoparásitos.
+#
+#    Matriz de frecuencias observadas (Sexo vs Parasitismo):
+#    Filas: Hembra (H), Macho (M)
+#    Columnas: Parasitado (P), No parasitado (NP)
+
+vizcachas = matrix(c(38, 52, 27, 33), nrow = 2, byrow = TRUE)
+rownames(vizcachas) = c("Hembra", "Macho")
+colnames(vizcachas) = c("Parasitado", "No_parasitado")
+
+#    a) Calcule el total de individuos (N) y las frecuencias marginales
+#       (addmargins()).
+#    b) Calcule P(Hembra), P(Parasitado) y P(Hembra y Parasitado).
+#    c) Interprete
+# Su código aquí:
+
+
+# 7) Contexto: En un chaku (esquila comunitaria) de vicuñas (Vicugna vicugna)
+#    en la Puna jujeña se capturan 90 individuos, de los cuales 63 son
+#    adultos y el resto juveniles.
+
+n_vicunas = 90
+adultos_vicuna = 63
+
+#    a) Defina el evento E = "individuo adulto" y calcule su probabilidad
+#       frecuentista P(E).
+#    b) Interprete el resultado en términos de la estructura etaria de la
+#       población muestreada.
+# Su código aquí:
+
+
+# 8) Contexto: En un muestreo de artrópodos edáficos en un sector de Yungas
+#    degradado por incendios, se registran 120 individuos pertenecientes a 5
+#    especies.
+#
+#    Especie       Abundancia
+#    Especie A          50
+#    Especie B          28
+#    Especie C          20
+#    Especie D          14
+#    Especie E           8
+
+abundancias_artropodos = c(50, 28, 20, 14, 8)
+
+#    a) Calcule el Índice de Simpson (D).
+#    b) Calcule el Índice de Diversidad (1 - D) e interprete en términos probabilísticos.
+# Su código aquí:
+
+
+# 9) Contexto: En una parcela de regeneración natural de algarrobo negro
+#    (Prosopis nigra) en el Chaco jujeño se relevaron 85 plantines de un año,
+#    de los cuales 61 sobrevivieron a la primera estación seca.
+
+n_plantines_algarrobo = 85
+sobrevivientes_algarrobo = 61
+
+#    a) Defina el evento S = "plantín sobrevive a la primera estación seca" y
+#       calcule P(S).
+#    b) Calcule la probabilidad complementaria P(Sᶜ) e interprete en términos
+#       de manejo de la regeneración.
+# Su código aquí:
+
+
+# 10) Contexto: En un relicto de bosque de Yungas se identifican 4 tipos de
+#     sustrato de nidificación utilizados por el pato de torrentes
+#     (Merganetta armata): oquedad en roca, vegetación ribereña, barranco de
+#     tierra y raíces expuestas, considerados igualmente probables a priori
+#     por el investigador.
+#     a) Escriba el espacio muestral y asigne la probabilidad clásica a cada
+#        punto muestral.
+#     b) Calcule la probabilidad de que un nido se ubique en un sustrato
+#        vegetal (vegetación ribereña o raíces expuestas).
+#     Comente si el supuesto de equiprobabilidad es razonable en un estudio
+#     real de campo.
+
+
+# -----------------------------------------------------------------------------
+# III. REGLA ADITIVA, EVENTOS SOLAPADOS Y MUTUAMENTE EXCLUYENTES
+# -----------------------------------------------------------------------------
+
+# 11) Contexto: En un relevamiento herpetológico en los Valles Templados de
+#     Jujuy se evalúan 130 transectas para registrar la presencia de dos
+#     especies de lagartija del género Liolaemus: L. irregularis (Evento A,
+#     presente en 48 transectas) y L. quilmes (Evento B, presente en 35
+#     transectas). En 14 transectas se registró la coexistencia de ambas
+#     especies.
+
+n_transectas_liolaemus = 130
+nA_liolaemus = 48; nB_liolaemus = 35; nAB_liolaemus = 14
+
+#     a) Calcule P(A), P(B) y P(A ∩ B).
+#     b) ¿Los eventos A y B son mutuamente excluyentes? Aplique la regla
+#        aditiva correspondiente para calcular P(A ∪ B).
+#     c) Calcule la probabilidad de que en una transecta no se registre
+#        ninguna de las dos especies.
+# Su código aquí:
+
+
+# 12) Contexto: En un ensayo de sanidad vegetal sobre 90 plantines de quinoa
+#     (Chenopodium quinoa) inoculados con Trichoderma spp., se registra la
+#     presencia de dos problemas fitosanitarios: mildiu (Evento M, en 22
+#     plantines) y pudrición radicular (Evento R, en 15 plantines), con 6
+#     plantines afectados por ambos problemas simultáneamente.
+
+n_plantines_quinoa = 90
+nM_quinoa = 22; nR_quinoa = 15; nMR_quinoa = 6
+
+#     a) Calcule P(M), P(R) y P(M ∩ R).
+#     b) Calcule la probabilidad de que un plantín presente al menos uno de
+#        los dos problemas.
+#     c) Calcule la probabilidad de que un plantín esté completamente sano.
+# Su código aquí:
+
+
+# 13) Contexto: En un muestreo de calidad de agua en 40 vertientes de la
+#     Quebrada de Humahuaca se clasifica cada vertiente según supere (Evento
+#     X) o no el límite de arsénico, y según supere (Evento Y) o no el
+#     límite de boro. Se sabe que P(X) = 0.30, P(Y) = 0.25 y P(X ∩ Y) = 0.10.
+
+p_X_arsenico = 0.30
+p_Y_boro = 0.25
+p_XY_arsenico_boro = 0.10
+
+#     a) Calcule P(X ∪ Y): probabilidad de que una vertiente supere al menos
+#        uno de los dos límites.
+#     b) Calcule la probabilidad de que una vertiente sea apta según ambos
+#        parámetros simultáneamente.
+# Su código aquí:
+
+
+# 14) Contexto: Se clasifica la cobertura vegetal dominante en 60 sitios de
+#     muestreo de la Puna jujeña en tres categorías mutuamente excluyentes:
+#     Pastizal (24 sitios), Bofedal (16 sitios) y Roquedal (20 sitios).
+
+cobertura_puna = c(Pastizal = 24, Bofedal = 16, Roquedal = 20)
+
+#     a) Verifique que las tres categorías son mutuamente excluyentes y
+#        exhaustivas.
+#     b) Calcule la probabilidad de que un sitio sea Pastizal o Bofedal.
+# Su código aquí:
+
+
+# 15) Contexto: En un estudio de conservación de humedales altoandinos se
+#     evalúa la presencia de tres especies de aves acuáticas en 100
+#     bofedales: flamenco austral (30 bofedales), parina chica (25
+#     bofedales) y pato puna (20 bofedales), sabiendo que ningún bofedal
+#     registró más de una especie en el muestreo (categorías mutuamente
+#     excluyentes por diseño).
+
+n_bofedales_aves = 100
+flamenco_austral = 30; parina_chica = 25; pato_puna = 20
+
+#     a) Calcule la probabilidad de que un bofedal seleccionado al azar
+#        tenga alguna de las tres especies.
+#     b) Calcule la probabilidad de que no se registre ninguna de las tres
+#        especies.
+# Su código aquí:
+
+
+# -----------------------------------------------------------------------------
+# IV. INDEPENDENCIA DE EVENTOS
+# -----------------------------------------------------------------------------
+
+# 16) Retome la matriz de vizcachas del ejercicio 6 (sexo vs. parasitismo).
+#     a) Determine si el sexo del individuo y la presencia de ectoparásitos
+#        son eventos independientes.
+#     b) Interprete el resultado en términos de la dinámica de transmisión
+#        de parásitos en la población.
+# Su código aquí:
+
+
+# 17) Contexto: En 200 parcelas de bosque chaqueño se registra si cada
+#     parcela fue afectada por un incendio en los últimos 5 años (Evento F,
+#     70 parcelas) y si presenta regeneración de quebracho blanco
+#     (Aspidosperma quebracho-blanco) (Evento R, 90 parcelas). De las
+#     parcelas quemadas, 28 presentan regeneración.
+
+n_parcelas_chaco = 200
+nF_incendio = 70; nR_regeneracion = 90; nFR_incendio_regen = 28
+
+#     a) Calcule P(F), P(R) y P(F ∩ R).
+#     b) Determine si los eventos F y R son independientes.
+#     c) Interprete el resultado en términos de la resiliencia post-fuego
+#        del quebracho blanco.
+# Su código aquí:
+
+
+# 18) Contexto: En un relevamiento genético de 180 individuos de bagre de
+#     torrente (Trichomycterus sp.) en dos afluentes del Río Grande de
+#     Jujuy, se registra el sitio de captura y la presencia de un morfotipo
+#     de coloración particular.
+
+morfotipos_bagre = matrix(c(42, 48, 38, 52), nrow = 2, byrow = TRUE)
+rownames(morfotipos_bagre) = c("Afluente_1", "Afluente_2")
+colnames(morfotipos_bagre) = c("Morfotipo_presente", "Morfotipo_ausente")
+
+#     a) Calcule las probabilidades marginales y la probabilidad conjunta de
+#        "Afluente 1 y Morfotipo presente".
+#     b) Determine si el sitio de captura y la presencia del morfotipo son
+#        eventos independientes.
+#     c) Interprete en términos de flujo génico entre las subpoblaciones.
+# Su código aquí:
+
+
+# 19) Contexto: Un gen loci en una población de chinchilla silvestre
+#     (Chinchilla chinchilla) de la Puna presenta dos alelos (A1, A2) con
+#     frecuencias p = 0.65 y q = 0.35. Asumiendo equilibrio de
+#     Hardy-Weinberg y selección aleatoria e independiente de ambos
+#     gametos:
+
+p_A1_chinchilla = 0.65
+p_A2_chinchilla = 0.35
+
+#     a) Calcule la probabilidad de que un individuo sea homocigoto A1A1.
+#     b) Calcule la probabilidad de que un individuo sea heterocigoto A1A2.
+#     c) Verifique que la suma de las probabilidades de todos los genotipos
+#        posibles es igual a 1.
+# Su código aquí:
+
+
+# -----------------------------------------------------------------------------
+# V. PROBABILIDAD CONDICIONAL Y TEOREMA DE BAYES
+# -----------------------------------------------------------------------------
+
+# 20) Contexto: En un programa de vigilancia sanitaria de camélidos, se
+#     evalúa la presencia de sarna sarcóptica en tropas de llama (Lama
+#     glama) de la Puna mediante inspección visual de campo.
+#
+#     Situación:
+#     - Prevalencia estimada de sarna en la población: P(D) = 0.12.
+#     - Sensibilidad de la inspección visual: P(+|D) = 0.85.
+#     - Especificidad de la inspección visual: P(-|Dᶜ) = 0.90.
+
+p_D_sarna = 0.12
+p_pos_dado_D_sarna = 0.85
+p_neg_dado_Dc_sarna = 0.90
+
+#     a) Calcule la probabilidad total de que un animal inspeccionado al
+#        azar dé resultado positivo P(+).
+#     b) Aplique el Teorema de Bayes para calcular el Valor Predictivo
+#        Positivo P(D|+).
+#     c) Interprete la utilidad de la inspección visual como herramienta de
+#        tamizaje en terreno.
+# Su código aquí:
+
+
+# 21) Contexto: En un peritaje biológico sobre decomiso de fauna silvestre,
+#     se realiza una prueba de identificación molecular para determinar si
+#     una muestra de pelo corresponde a Puma concolor o a un cánido
+#     doméstico.
+#
+#     Situación:
+#     - Probabilidad a priori de que la muestra sea de puma: P(Pu) = 0.20.
+#     - La prueba da positivo cuando la muestra es de puma: P(+|Pu) = 0.97.
+#     - La prueba da falso positivo en muestras de cánido: P(+|Puᶜ) = 0.04.
+
+p_Pu = 0.20
+p_pos_dado_Pu = 0.97
+p_pos_dado_Pucomp = 0.04
+
+#     a) Calcule la probabilidad de que una muestra elegida al azar dé
+#        resultado positivo P(+).
+#     b) Calcule el Valor Predictivo Positivo P(Pu|+).
+#     c) Elabore una breve conclusión técnica sobre la confiabilidad de la
+#        prueba para un dictamen pericial.
+# Su código aquí:
+
+
+# 22) Contexto: En el monitoreo de calidad de agua de una cuenca minera de la
+#     Puna, se utiliza al anfípodo Hyalella sp. como bioindicador.
+#
+#     - La probabilidad de que un punto de muestreo supere el límite de
+#       plomo es P(Pb) = 0.18.
+#     - Si se supera el límite de plomo, la probabilidad de mortalidad
+#       significativa de Hyalella es P(M|Pb) = 0.75.
+#     - Si no se supera el límite, la probabilidad de mortalidad
+#       significativa es P(M|Pbᶜ) = 0.08.
+
+p_Pb = 0.18
+p_M_dado_Pb = 0.75
+p_M_dado_Pbcomp = 0.08
+
+#     a) Calcule la probabilidad total de observar mortalidad significativa
+#        de Hyalella P(M).
+#     b) Si se observa mortalidad significativa en un punto, calcule la
+#        probabilidad de que dicho punto supere el límite de plomo P(Pb|M).
+#     c) Interprete la eficiencia de Hyalella sp. como bioindicador de
+#        contaminación por plomo.
+# Su código aquí:
+
+
+# 23) Contexto: Se caracterizaron 20 majadas caprinas de dos departamentos de
+#     la Puna jujeña (Susques y Rinconada) según su estado sanitario
+#     respecto a fasciolosis (Libre / No libre).
+#
+#     Tabla de contingencia (majadas):
+#                  Libre   No_libre
+#     Susques        7         3
+#     Rinconada      5         5
+
+fasciolosis = matrix(c(7, 3, 5, 5), nrow = 2, byrow = TRUE)
+rownames(fasciolosis) = c("Susques", "Rinconada")
+colnames(fasciolosis) = c("Libre", "No_libre")
+
+#     a) Calcule la probabilidad de que una majada esté libre de
+#        fasciolosis, sabiendo que es de Susques.
+#     b) Calcule la probabilidad de que una majada sea de Rinconada,
+#        sabiendo que está libre de fasciolosis.
+#     c) Compare ambos resultados con las probabilidades marginales
+#        correspondientes e interprete.
+# Su código aquí:
+
+
+# 24) Contexto: En una estación de monitoreo de fauna silvestre se
+#     identifican individuos de zorro colorado (Lycalopex culpaeus) mediante
+#     trampas cámara, clasificándolos como adultos o juveniles, y
+#     registrando además si presentan signos de sarna.
+#     - P(Adulto) = 0.70 ; P(Juvenil) = 0.30.
+#     - P(Sarna | Adulto) = 0.10 ; P(Sarna | Juvenil) = 0.25.
+
+p_adulto_zorro = 0.70; p_juvenil_zorro = 0.30
+p_sarna_dado_adulto = 0.10; p_sarna_dado_juvenil = 0.25
+
+#     a) Aplique el teorema de la probabilidad total para calcular
+#        P(Sarna).
+#     b) Calcule P(Juvenil | Sarna) mediante el Teorema de Bayes.
+#     c) Interprete el resultado en términos de vulnerabilidad sanitaria
+#        por clase etaria.
+# Su código aquí:
+
+
+# 25) Contexto: Se evalúa el desempeño de una prueba serológica rápida para
+#     detectar Trypanosoma cruzi (agente del Mal de Chagas) en reservorios
+#     silvestres (Dasypus novemcinctus, quirquincho) capturados en el Chaco
+#     jujeño. Se sabe que P(D) = 0.08, P(+|D) = 0.93 y P(+|Dᶜ) = 0.06.
+
+p_D_chagas = 0.08
+p_pos_dado_D_chagas = 0.93
+p_pos_dado_Dcomp_chagas = 0.06
+
+#     a) Calcule P(+) y P(D|+).
+#     b) Calcule el Valor Predictivo Negativo P(Dᶜ|-).
+#     c) Discuta la utilidad de la prueba para el monitoreo epidemiológico
+#        de reservorios silvestres.
+# Su código aquí:
+
+
+# -----------------------------------------------------------------------------
+# VI. VARIABLES ALEATORIAS DISCRETAS — FUNCIÓN DE PROBABILIDAD, ESPERANZA Y VARIANZA
+# -----------------------------------------------------------------------------
+
+# 26) Contexto: En un programa de conservación del cóndor andino (Vultur
+#     gryphus) en la Quebrada de Humahuaca, se define la variable aleatoria
+#     X: "número de pichones eclosionados por pareja reproductora en una
+#     temporada", con la siguiente función de probabilidad estimada a partir
+#     de 80 parejas monitoreadas:
+
+x_condor = c(0, 1)
+prob_condor = c(0.35, 0.65)
+
+#     a) Verifique que p(x) cumple los axiomas de una función de
+#        probabilidad.
+#     b) Calcule la Esperanza E(X) e interprete en términos de éxito
+#        reproductivo.
+#     c) Calcule la Varianza Var(X) y el desvío estándar.
+# Su código aquí:
+
+
+# 28) Contexto: En un estudio de comportamiento reproductivo del picaflor
+#     puneño (Oreotrochilus estella), se define X: "número de huevos por
+#     puesta", con la siguiente función de probabilidad observada a partir
+#     de 60 nidos:
+
+x_picaflor = c(1, 2, 3)
+prob_picaflor = c(0.15, 0.70, 0.15)
+
+#     a) Verifique los axiomas de probabilidad.
+#     b) Calcule F(x) mediante suma acumulada (cumsum()).
+#     c) Calcule E(X) y Var(X), e interprete el tamaño de puesta esperado.
+# Su código aquí:
+
+
+# 29) Contexto: En 40 trampas Sherman instaladas en un transecto de
+#     micromamíferos de las Yungas jujeñas, se registró el número de
+#     capturas por trampa durante una noche de muestreo, obteniéndose la
+#     siguiente distribución de frecuencias relativas, interpretada como una
+#     aproximación de la función de probabilidad de X: "número de capturas
+#     por trampa":
+
+x_capturas = c(0, 1, 2, 3)
+prob_capturas = c(0.50, 0.30, 0.15, 0.05)
+
+#     a) Verifique los axiomas de probabilidad.
+#     b) Calcule E(X) y Var(X).
+#     c) Calcule la probabilidad acumulada de registrar como máximo 1
+#        captura P(X ≤ 1).
+#     d) Construya el gráfico de bastones de la función de probabilidad
+#        (barplot()).
+# Su código aquí:
+
+
+# 30) Contexto integrador: En un bofedal de la Puna jujeña se realiza el
+#     monitoreo de sapo andino (Rhinella spinulosa). Se sabe que la
+#     probabilidad de que un bofedal presente contaminación por
+#     agroquímicos es P(C) = 0.20. En bofedales contaminados, el número de
+#     individuos de sapo observados por transecta (X) sigue la función de
+#     probabilidad:
+
+x_sapo_contaminado = c(0, 1, 2)
+prob_sapo_contaminado = c(0.60, 0.30, 0.10)
+
+#     mientras que en bofedales no contaminados:
+
+x_sapo_sano = c(0, 1, 2, 3, 4)
+prob_sapo_sano = c(0.05, 0.15, 0.30, 0.30, 0.20)
+
+#     a) Calcule E(X) y Var(X) para cada escenario (contaminado / no
+#        contaminado).
+#     b) Compare ambos valores esperados e interprete el efecto de la
+#        contaminación sobre la abundancia de sapo andino.
+#     c) Si se selecciona una transecta al azar y se observan 0 individuos,
+#        y sabiendo además que P(X=0 | Cᶜ) = 0.05, aplique el Teorema de
+#        Bayes para calcular la probabilidad de que el bofedal esté
+#        contaminado dado ese resultado P(C | X=0).
+# Su código aquí:
+
+# =============================================================================
+```
+
+
+
+
