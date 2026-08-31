@@ -121,7 +121,7 @@ flowchart LR
 
 ## **Actividad de pre-clase**
 
-Deberá copiar y pegar el siguiente *prompt* dentro del chat del cuaderno de *Notebooklm* creado luego de la clase anterior. Luego deberá copiar y pegar la ele ejercicio generado por la IA en un archivo .txt o bien en un documento de word o similar. 
+Deberá copiar y pegar el siguiente *prompt* dentro del chat del cuaderno de *Notebooklm* creado luego de la clase anterior. Luego deberá copiar y pegar el ejercicio generado por la IA en un archivo .txt o bien en un documento de word o similar. 
 `Se le solicitará la presentación del ejercicio durante la clase`.
 
 ```{html}
