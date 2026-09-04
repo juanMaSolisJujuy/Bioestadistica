@@ -1,0 +1,434 @@
+---
+title: "Trabajo Práctico 4: Distribución Normal"
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+<div style="
+  background-color: #e3f2fd; 
+  border-radius: 15px; 
+  padding: 20px 25px; 
+  margin: 20px 0;
+  border-left: 5px solid #1e88e5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #0d3c5e;
+  line-height: 1.6;
+">
+  <p style="margin: 0; font-size: 1.05rem;">
+    <strong>Objetivos del Trabajo Práctico</strong><br><br>
+    El trabajo práctico tiene como objetivos: 
+    <strong>(1)</strong> Reconocer situaciones en las que una variable biológica o ambiental continua puede modelarse adecuadamente mediante una distribución Normal, identificando sus parámetros (μ y σ); 
+    <strong>(2)</strong> Interpretar los parámetros de la distribución Normal en términos de la ubicación (media) y la dispersión (desvío estándar) del fenómeno bajo estudio; 
+    <strong>(3)</strong> Calcular e interpretar probabilidades acumuladas, de intervalo y cuantiles a partir de la función de distribución Normal, utilizando las funciones <code>pnorm()</code> y <code>qnorm()</code> de R; 
+    <strong>(4)</strong> Aplicar la estandarización (transformación Z) de forma manual y contrastarla con el cálculo directo en la escala original mediante R; 
+    <strong>(5)</strong> Simular observaciones de una variable Normal con <code>rnorm()</code> y contrastar las propiedades empíricas de la distribución (regla empírica 68-95-99,7%) con los resultados teóricos; y 
+    <strong>(6)</strong> Interpretar los resultados probabilísticos obtenidos en el marco de la práctica profesional en Ciencias Biológicas.
+  </p>
+</div>
+
+::: callout-important
+## Lectura Sugerida para el Trabajo Práctico
+
+Se recomienda a los estudiantes consultar el libro **«Apuntes de
+Bioestadística. Con ejercicios resueltos»** para profundizar los
+conceptos teóricos y metodológicos desarrollados en este marco:
+
+- **Unidad 6: Distribución Normal**: Consultar la definición formal de
+  la distribución, sus parámetros (μ, σ) y sus propiedades
+  características (simetría, campo de definición, curtosis constante),
+  así como la transformación de estandarización o tipificación (Z).
+- **Unidad 6: Cálculo de Probabilidades y Cuantiles**: Revisar el uso
+  de la función de distribución acumulada para el cálculo de
+  probabilidades de cola e intervalo, la obtención de cuantiles, y las
+  propiedades empíricas de la distribución Normal (68-95-99,7%).
+
+Como lecturas complementarias, se sugiere también revisar la unidad
+*«Modelos probabilísticos»* del libro **«Estadística y Biometría»**
+de Balzarini et al.; la unidad *«Normal distribution»* del libro
+**«Biostatistics with R: An Introductory Guide for Field Biologists»**
+de Leps; y la unidad *«Statistical Models»* del libro **«Data Analysis
+for the Life Sciences»** de Irizarry et al.
+:::
+
+## Generalidades
+
+La distribución Normal (o gaussiana) es, posiblemente, la distribución
+continua de probabilidad más importante de la estadística. Numerosas
+variables biológicas y ambientales de naturaleza continua como longitudes,
+pesos, biomasas, tasas fisiológicas,  tienden a distribuirse de forma
+aproximadamente simétrica alrededor de un valor central, y ese patrón
+es el que este modelo permite describir formalmente. Comprender sus
+propiedades constituye, además, la base sobre la cual se apoyan los
+métodos paramétricos de la estadística inferencial que se abordarán
+en unidades posteriores.
+
+### ¿Qué es y qué la caracteriza?
+
+Una variable aleatoria continua X sigue una distribución Normal,
+X ~ N(μ, σ), cuando su densidad de probabilidad tiene forma de campana:
+simétrica y centrada en la media (μ), con una dispersión determinada
+por el desvío estándar (σ). Su campo de definición abarca todos los
+valores reales, y su forma (apuntamiento y colas) es siempre la misma
+independientemente de los valores de μ y σ. 
+
+### Tipificación (Estandarización Z)
+
+Trabajar con infinitas combinaciones posibles de μ y σ resultaría poco
+práctico, por lo que se recurre a la **estandarización o
+tipificación**: la transformación Z = (X − μ) / σ convierte cualquier
+variable Normal en una variable Normal estándar, Z ~ N(0, 1), expresada
+en unidades de desvío estándar respecto de la media. Esta
+transformación permite generalizar los cálculos de probabilidad y
+comparar directamente observaciones que provienen de variables con
+escalas o unidades completamente distintas (por ejemplo, un largo de
+ala en milímetros frente a una biomasa en gramos por metro cuadrado).
+
+### Probabilidades, cuantiles y la regla empírica
+
+A partir del modelo Normal, trabajando en la escala original o en la
+escala Z, es posible resolver dos tipos de preguntas complementarias:
+dado un valor de la variable, calcular la probabilidad acumulada
+asociada (mediante `pnorm()`); o, a la inversa, dado un valor de
+probabilidad, obtener el valor de la variable (cuantil) que la
+determina (mediante `qnorm()`). Como aproximación rápida, la **regla
+empírica** establece que, en toda distribución Normal, aproximadamente
+el 68%, el 95% y el 99,7% de las observaciones se concentran dentro de
+1, 2 y 3 desvíos estándar de la media, respectivamente; esta
+propiedad puede además verificarse empíricamente simulando
+observaciones con `rnorm()`.
+
+Cabe destacar que, bajo ciertas condiciones, la distribución Normal
+también permite aproximar otras distribuciones de probabilidad, como
+la Binomial estudiada en la unidad anterior. Esta aproximación no
+forma parte de los contenidos prácticos de este Trabajo Práctico, pero
+será retomada más adelante en unidades futuras.
+
+```{mermaid}
+%%| fig-cap: "Marco conceptual de la Unidad de Distribución Normal"
+flowchart LR
+    A[Variable Continua X] --> B["X ~ N(μ, σ)"]
+    B --> C["Estandarización<br/>Z = (X - μ) / σ"]
+    C --> D["Z ~ N(0, 1)"]
+    D --> E["pnorm() → Probabilidades<br/>qnorm() → Cuantiles"]
+    B --> F["rnorm() → Simulación<br/>Regla empírica 68-95-99,7%"]
+    D -.->|Unidades futuras| G["Aproximación Normal de<br/>otras distribuciones (ej. Binomial)"]
+```
+
+## **Actividad de pre-clase**
+
+Deberá copiar y pegar el siguiente *prompt* dentro del chat del cuaderno de *Notebooklm*. Luego deberá copiar y pegar la respuesta generada por la IA en un archivo .txt o bien en un documento de word o similar. 
+`Se le solicitará la presentación del ejercicio durante la clase`.
+
+
+```{html}
+
+Actúa como un asistente de Bioestadística de segundo año de la Licenciatura en Ciencias Biológicas. 
+La próxima clase veremos Distribución Normal o Gaussiana: propiedades, regla empírica, tipificación y cálculo de probabilidades.
+
+Debes sugerirme UNA pregunta para hacerle al profesor al finalizar la clase. La pregunta debe:
+- No ser una definición.
+- Vincular el tema con un problema biológico real.
+
+
+```
+
+
+## Micro-ejercicios de aplicación (optativos)
+
+Los siguientes micro-ejercicios te permitirán practicar los conceptos revisados en esta unidad.
+Puedes copiar y pegar las preguntas en un script de R local, o bien utilizar `webR`, que es la versión *online* de R, disponible en esta guía.
+
+`Nota`: los ejercicios están inspirados en trabajos científicos publicados, pero contienen datos simulados.
+Por lo tanto, los resultados obtenidos deben interpretarse únicamente con fines didácticos y no como evidencia científica.
+
+La finalidad es familiarizarse con el análisis estadístico y con el uso de R a partir de situaciones similares a las que pueden encontrarse en investigaciones reales.
+
+
+
+```{r eval = FALSE, collapse=TRUE}
+
+# =============================================================================
+#  Bioestadística — Facultad de Ciencias Agrarias - UNJu — Año 2026
+#  Ejercicios Optativos: Distribución Normal o Gaussiana
+# =============================================================================
+#
+#  Instrucciones generales
+#  -----------------------
+#  En cada ejercicio:
+#    (a) identifique la variable aleatoria, sus unidades y los parámetros (μ, σ)
+#    (b) plantee el cálculo de probabilidad o cuantil en notación estadística
+#    (c) realice la estandarización Z cuando corresponda y seleccione la función de R adecuada (pnorm, qnorm, rnorm, dnorm)
+#    (d) interprete la probabilidad calculada, el cuantil o los parámetros en el contexto biológico
+#    (e) elabore una conclusión o síntesis en el contexto del problema biológico
+#
+# =============================================================================
+
+#  Funciones disponibles (R base):
+#
+#    pnorm(q, mean = 0, sd = 1, lower.tail = TRUE)  # Calcula probabilidad acumulada P(X <= q)
+#    qnorm(p, mean = 0, sd = 1, lower.tail = TRUE)  # Calcula cuantil x_p correspondiente a probabilidad p
+#    rnorm(n, mean = 0, sd = 1)                     # Genera n observaciones aleatorias normales
+#    dnorm(x, mean = 0, sd = 1)                     # Evalúa función de densidad de probabilidad f(x)
+#
+#  Estadísticos y fórmulas "manuales":
+#    Estandarización Z:            z = (x - mu) / sigma
+#    Estandarización inversa:         x = mu + z * sigma
+#    Regla Empírica:               mu +/- 1*sigma (~68%), mu +/- 2*sigma (~95%), mu +/- 3*sigma (~99.7%)
+#    Aproximación Normal-Binomial: mu = n * p, sigma = sqrt(n * p * (1 - p))
+#
+# =============================================================================
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  SECCIÓN 1 — PROBABILIDADES ACUMULADAS Y DE INTERVALO
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Ejercicio N1
+# ------------
+# En investigaciones sobre regeneración natural de bosques secos en la Quebrada
+# de Humahuaca (Jujuy), se estudia la morfometría de vainas de Algarrobo Blanco
+# (Prosopis alba). Registros biométricos indican que la longitud de las vainas (cm)
+# se distribuye normalmente con media μ = 16.2 cm y desvío estándar σ = 2.4 cm.
+#
+#  X: Longitud de la vaina de Prosopis alba (cm)
+#  X ~ N(μ = 16.2, σ = 2.4)
+#
+# a) Identifique la variable aleatoria, sus unidades e ingrese los
+#    parámetros μ y σ en objetos de R.
+# b) ¿Cuál es la probabilidad de que una vaina seleccionada al azar presente
+#    una longitud menor o igual a 13.5 cm?
+# c) ¿Cuál es la probabilidad de encontrar una vaina con una longitud superior
+#    a 19.0 cm?
+# d) ¿Cuál es la probabilidad de que la longitud de una vaina se encuentre entre
+#    14.0 cm y 18.0 cm?
+# e) En un lote muestral de N = 120 vainas colectadas en campo, ¿cuántas vainas
+#    se espera que tengan una longitud comprendida entre 14.0 cm y 18.0 cm?
+
+# Su código aquí:
+
+
+# Ejercicio N2
+# ------------
+# En ensayos de caracterización ecofisiológica de ecotipos de Papa Andina
+# (Solanum tuberosum subsp. andigenum) en Tilcara, se mide la concentración de
+# clorofila foliar (unidades SPAD) mediante clorofilómetro óptico. Se asume que
+# la variable sigue una distribución normal con μ = 42.5 SPAD y σ = 5.2 SPAD.
+#
+#  X: Contenido de clorofila foliar en Papa Andina (SPAD)
+#  X ~ N(μ = 42.5, σ = 5.2)
+#
+# a) Defina la variable en R y configure el modelo probabilístico.
+# b) Plantee y calcule la probabilidad de que una planta presente un nivel de
+#    clorofila menor o igual a 35.0 SPAD (indicativo de deficiencia de nitrógeno).
+# c) Determine la probabilidad de que una planta supere los 50.0 SPAD de clorofila.
+# d) Sobre un total de N = 80 plantas evaluadas en la parcela experimental,
+#    ¿cuántas se espera que manifiesten deficiencia foliar (<= 35.0 SPAD)?
+# e) Elabore una síntesis sobre el impacto de estas probabilidades en la
+#    evaluación del estado nutricional del cultivo.
+
+# Su código aquí:
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  SECCIÓN 2 — CUANTILES, PERCENTILES Y UMBRALES DE CRITERIO
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Ejercicio N3
+# ------------
+# En monitoreos herpetológicos en humedales de alta montaña en la Puna jujeña,
+# se evalúa la biomasa corporal (g) de renacuajos del Sapo Andino (Rhinella
+# spinulosa) en estadios larvales avanzados. Se estableció que el peso sigue
+# una distribución normal con media μ = 3.8 g y desvío estándar σ = 0.75 g.
+#
+#  X: Peso corporal de renacuajos de Rhinella spinulosa (g)
+#  X ~ N(μ = 3.8, σ = 0.75)
+#
+# a) Ingrese los parámetros de la distribución en objetos de R.
+# b) Mediante la función qnorm(), determine el peso máximo por debajo del cual
+#    se ubica el 15% de los renacuajos con menor masa corporal (Percentil 15).
+# c) Calcule el umbral de peso por encima del cual se encuentra el 10% de los
+#    individuos más desarrollados (Percentil 90).
+# d) Obtenga los límites del intervalo simétrico central que contiene al 80% de
+#    la población de renacuajos en la cuenca.
+# e) Interprete biológicamente la utilidad de estos cuantiles para la detección
+#    de alertas por degradación del ecosistema acuático.
+
+# Su código aquí:
+
+
+# Ejercicio N4
+# ------------
+# En estudios del ciclo de carbono y respiración edáfica en la Selva Pedemontana
+# del Parque Nacional Calilegua, se mide el flujo de emisión de CO2 del suelo
+# (μmol CO2 / m² s). Datos históricos muestran que la respiración del suelo
+# presenta una distribución normal con μ = 4.60 μmol CO2 / m² s y σ = 0.85 μmol CO2 / m² s.
+#
+#  X: Tasa de respiración edáfica (μmol CO2 / m² s)
+#  X ~ N(μ = 4.60, σ = 0.85)
+#
+# a) Cargue los parámetros en objetos de R.
+# b) Determine el primer cuartil (Q1 o Percentil 25) del flujo de CO2.
+# c) Verifique que el segundo cuartil (Q2 o Mediana) coincide exactamente con
+#    la media poblacional μ = 4.60 μmol CO2 / m² s.
+# d) Obtenga el cuantil del 95% (Percentil 95) para la emisión respiratoria.
+# e) Discuta la relevancia de los cuantiles para caracterizar la variabilidad de
+#    la actividad biológica en suelos forestales de Yungas.
+
+# Su código aquí:
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  SECCIÓN 3 — ESTANDARIZACIÓN Z, REGLA EMPÍRICA Y PROPIEDADES DE LA NORMAL
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Ejercicio N5
+# ------------
+# En investigaciones ecofisiológicas y conservación de avifauna amenazada en las
+# Serranías de Zenta (Jujuy), se mide la envergadura alar (cm) de machos adultos
+# de Cóndor Andino (Vultur gryphus). La variable sigue una distribución normal
+# con μ = 295.0 cm y σ = 12.0 cm. En una jornada de captura temporal para colocar
+# un emisor satelital, se registró un individuo con una envergadura x = 318.0 cm.
+#
+#  X: Envergadura alar en machos de Vultur gryphus (cm)
+#  X ~ N(μ = 295.0, σ = 12.0)
+#
+# a) Cargue en objetos de R los parámetros μ, σ y el valor observado x = 318.0.
+# b) Realice la estandarización manual calculando el estadístico z = (x - mu) / sigma
+#    e interprete el valor obtenido en términos de desvíos estándar.
+# c) Calcule la probabilidad acumulada P(Z <= z) sobre la variable tipificada N(0,1)
+#    utilizando la función pnorm(z).
+# d) Verifique la equivalencia probabilística calculando P(X <= 318.0) en la escala
+#    original mediante pnorm(318.0, mean = mu, sd = sigma).
+# e) Calcule P(X > 318.0) y concluya sobre la posición morfológica relativa de
+#    este ejemplar dentro de la población.
+
+# Su código aquí:
+
+
+# Ejercicio N6
+# ------------
+# En un vivero forestal, se monitorea el crecimiento en altura (cm)
+# de plántulas de 1 año de Cedro Coya (Cedrela lilloi) para programas de enriquecimiento.
+# La altura se distribuye normalmente con media μ = 58.0 cm y desvío estándar σ = 7.5 cm.
+#
+#  X: Altura total de plántulas de Cedrela lilloi (cm)
+#  X ~ N(μ = 58.0, σ = 7.5)
+#
+# a) Ingrese los parámetros en objetos de R.
+# b) Mediante la regla empírica (mu +/- 1*sigma, mu +/- 2*sigma, mu +/- 3*sigma),
+#    calcule los rangos de altura que contienen aproximadamente al 68%, 95% y
+#    99.7% central de las plántulas.
+# c) Compruebe las probabilidades teóricas exactas para cada intervalo utilizando
+#    la función pnorm().
+# d) Si un lote consta de N = 500 plántulas, ¿cuántas se espera que midan entre
+#    43.0 cm y 73.0 cm (intervalo de mu +/- 2*sigma)?
+# e) Redacte una síntesis sobre el uso de la regla empírica para la rápida inspección
+#    de calidad en viveros forestales.
+
+# Su código aquí:
+
+
+# Ejercicio N7
+# ------------
+# En estudios de fisiología adaptativa en mamíferos de alta montaña, se examina
+# la frecuencia cardíaca en reposo (latidos/minuto) de hembras de Taruca
+# (Hippocamelus antisensis). La variable se distribuye normalmente con media
+# μ = 62.0 lat/min y desvío estándar σ = 6.0 lat/min.
+#
+#  X: Frecuencia cardíaca en reposo de Hippocamelus antisensis (lat/min)
+#  X ~ N(μ = 62.0, σ = 6.0)
+#
+# a) Defina los parámetros poblacionales en R.
+# b) Para una hembra con x = 74.0 lat/min, calcule el valor Z estandarizado y la
+#    probabilidad de registrar una frecuencia cardíaca aún mayor (P(X > 74.0)).
+# c) Determine mediante qnorm() los límites exactos del intervalo simétrico
+#    central que abarca el 95% de las frecuencias cardíacas de la población.
+# d) Compare el intervalo simétrico exacto obtenido en c) con la aproximación de
+#    la regla empírica (mu +/- 2*sigma).
+# e) Comente la importancia ecofisiológica del control de la frecuencia cardíaca
+#    como indicador de estrés ambiental en la fauna autóctona.
+
+# Su código aquí:
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  SECCIÓN 4 — SIMULACIÓN MUESTRAL Y APROXIMACIÓN NORMAL DE LA BINOMIAL
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Ejercicio N8
+# ------------
+# En investigaciones sobre frutales nativos en la localidad de Yala, se estudia
+# el peso de fruto fresco (g) en colectas de Tomate de Árbol (Solanum betaceum).
+# El peso sigue una distribución normal N(μ = 82.0, σ = 9.5).
+#
+#  X: Peso del fruto fresco de Solanum betaceum (g)
+#  X ~ N(μ = 82.0, σ = 9.5)
+#
+# a) Fije la semilla aleatoria con set.seed(123) y genere una muestra simulada
+#    de n = 100 frutos utilizando la función rnorm().
+# b) Calcule la media muestral y el desvío estándar muestral de los datos simulados
+#    utilizando mean() y sd(), y compárelos con los parámetros teóricos.
+# c) Determine la proporción empírica de frutos simulados que presentaron un
+#    peso menor o igual a 70.0 g.
+# d) Calcule la probabilidad teórica exacta P(X <= 70.0) mediante pnorm().
+# e) Evalúe el grado de coincidencia entre la proporción empírica obtenida en la
+#    simulación y el valor teórico esperado.
+
+# Su código aquí:
+
+
+# Ejercicio N9
+# ------------
+# En estudios de dinámica poblacional e ictiología en la cuenca del Río San
+# Francisco (Jujuy), se evalúa la longitud estándar (cm) de juveniles de Sábalo
+# (Prochilodus lineatus). Se asume una distribución normal N(μ = 24.5, σ = 3.2).
+#
+#  X: Longitud estándar de juveniles de Prochilodus lineatus (cm)
+#  X ~ N(μ = 24.5, σ = 3.2)
+#
+# a) Simule una muestra de n = 1000 peces utilizando rnorm() para representar un
+#    muestreo biológico en época de cardumen.
+# b) Obtenga la media y el desvío estándar de la muestra generada.
+# c) Determine la proporción empírica de ejemplares que superan los 30.0 cm de
+#    longitud (talla mínima para un ensayo experimental de captura).
+# d) Compare la proporción empírica con la probabilidad teórica P(X > 30.0)
+#    calculada con pnorm().
+# e) Concluya sobre la utilidad de las simulaciones Monte Carlo para el diseño
+#    de planes de manejo pesquero y fiscalización ambiental.
+
+# Su código aquí:
+
+
+# Ejercicio N10
+# -------------
+# En evaluaciones de fitopatología agrícola en la Quebrada de Humahuaca, se
+# analiza la prevalencia de mildiu (Peronospora variabilis) en plantas de Quinoa.
+# La probabilidad individual de infección en una planta es p = 0.28. Un técnico
+# agrónomo inspecciona una muestra de n = 50 plantas independientes en un lote.
+#
+#  Variable original: X ~ Binomial(n = 50, p = 0.28)
+#
+# a) Verifique el cumplimiento de los requisitos para aplicar la aproximación
+#    Normal a la Binomial (n * p > 5 y n * (1 - p) > 5).
+# b) Calcule los parámetros de la distribución Normal aproximada:
+#    μ = n * p   y   σ = sqrt(n * p * (1 - p)).
+# c) Utilizando la aproximación Normal con corrección por continuidad (+0.5),
+#    calcule la probabilidad de que a lo sumo 18 plantas estén infectadas
+#    P(X <= 18) ≈ P(X' <= 18.5) mediante la función pnorm().
+# d) Si se inspeccionan N = 120 parcelas similares de n = 50 plantas cada una,
+#    ¿en cuántas parcelas se espera encontrar como máximo 18 plantas infectadas?
+# e) Elabore una síntesis comparativa sobre la ventaja analítica y computacional
+#    de emplear la aproximación Normal cuando el tamaño muestral es mediano a grande.
+
+# Su código aquí:
+
+
+# =============================================================================
+
+```
+
+
+

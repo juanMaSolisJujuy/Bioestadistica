@@ -14,6 +14,7 @@ book:
     - 04_estadistica_descriptiva.qmd
     - 05_probabilidad.qmd
     - 06_discretas.qmd
+    - 07_normal.qmd
     - herramientas.qmd
     - mi_primer_cuaderno_notebooklm.qmd
     - references.qmd
