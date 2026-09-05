@@ -100,11 +100,9 @@ el 68%, el 95% y el 99,7% de las observaciones se concentran dentro de
 propiedad puede además verificarse empíricamente simulando
 observaciones con `rnorm()`.
 
-Cabe destacar que, bajo ciertas condiciones, la distribución Normal
+Bajo ciertas condiciones, la distribución Normal
 también permite aproximar otras distribuciones de probabilidad, como
-la Binomial estudiada en la unidad anterior. Esta aproximación no
-forma parte de los contenidos prácticos de este Trabajo Práctico, pero
-será retomada más adelante en unidades futuras.
+la Binomial estudiada en la unidad anterior. 
 
 ```{mermaid}
 %%| fig-cap: "Marco conceptual de la Unidad de Distribución Normal"
@@ -114,7 +112,7 @@ flowchart LR
     C --> D["Z ~ N(0, 1)"]
     D --> E["pnorm() → Probabilidades<br/>qnorm() → Cuantiles"]
     B --> F["rnorm() → Simulación<br/>Regla empírica 68-95-99,7%"]
-    D -.->|Unidades futuras| G["Aproximación Normal de<br/>otras distribuciones (ej. Binomial)"]
+    D -.->|Aproximaciones| G["Aproximación Normal de<br/>otras distribuciones (ej. Binomial)"]
 ```
 
 ## **Actividad de pre-clase**
