@@ -320,7 +320,7 @@ La finalidad es familiarizarse con el análisis estadístico y con el uso de R a
 # Ejercicio B1
 # ------------
 # En un programa de conservación y restauración de bosques altoandinos en la
-# Puna jujeña (Cavi, departamento Susques), se evalúa la capacidad germinativa
+# Puna jujeña (departamento Susques), se evalúa la capacidad germinativa
 # de semillas de Queñoa (Polylepis tomentella). En ensayos de laboratorio bajo
 # condiciones de temperatura y humedad reguladas, la probabilidad de que una
 # semilla viable germine con éxito a los 21 días es p = 0.25. Un biólogo coloca
