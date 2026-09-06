@@ -204,8 +204,8 @@ knitr::include_graphics("./IMAGENES/DISCRETAS/ej2-M.jpeg")
 
 - **Marcelo, Gianella, Tania** (Ejercicio 2)
   - a) Modelo Binomial correcto: `n = 20`, `p = 0,12`.
-  - b) `P(X = 0) = 0,0776` (correcto).
-  - c) `2,0611` (incorrecto: revisar el cálculo)
+  - b) `P(X = 0) = 0,0776` (faltó).
+  - c) `2,0611e-09` (incorrecto: revisar el cálculo)
 
 ```{r eval=FALSE}
 

@@ -13,11 +13,11 @@ book:
     - 03_intro_R.qmd
     - 04_estadistica_descriptiva.qmd
     - 05_probabilidad.qmd
+    - mi_primer_cuaderno_notebooklm.qmd
     - 06_discretas.qmd
     - 07_normal.qmd
     - Primer_Parcial_2026.qmd
     - herramientas.qmd
-    - mi_primer_cuaderno_notebooklm.qmd
     - references.qmd
   page-footer: 
     center: Cátedra de Bioestadística y Diseño Experimental | Facultad de Ciencias Agrarias | Universidad Nacional de Jujuy 
