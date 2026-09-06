@@ -1,0 +1,36 @@
+
+# Primer Parcial | 2026 {.unnumbered}
+
+
+::: {style="background-color: lightblue; padding: 15px; border-radius: 10px;"}
+El primer `parcial de Bioestadística 2026` tendrá lugar durante la semana del 21 al 25 de septiembre de 2026: `Martes 22/09 de 14.00 a 16.00 (Comisión de la tarde)`, y `viernes 25/09 de 10.15 a 12.15 (Comisión de la mañana)`, en el **Aula 3A**.
+:::
+
+::: callout-important
+## Pautas
+
+- El parcial será **presencial,** y podrá ser realizado en grupos de hasta **2 (dos) personas**. Deberán contar con una computadora ya que deberán realizar cálculos estadísticos (tomar las previsiones con tiempo, *como tener cargada la computadora, o bien traer zapatilla*).
+
+- Al ingresar al Aula, **deberán dejar sus celulares en un recipiente que se les proporcionará.** No necesitarán conexión a internet para poder resolver el cuestionario. No obstante, la resolución será a "libro abierto", por lo que les resultará de utilidad conformar un "script madre" donde anoten todas las funciones que hayan utilizado en las actividades de entrenamiento, para utilizarlas durante el parcial.
+
+- El formato de entrega será **escrito, y deberán colocar todas las respuestas en la hoja suministrada**. Además de la entrega, los parciales deberán **ser defendidos/validados en forma oral**, para lo cual deberán acercarse a la cátedra hasta el día **viernes 09/10/2026**. Preferentemente en el horario de consulta, o bien coordinar con el profesor el horario para el resto de los días/horas de la semana.
+:::
+
+::: callout-tip
+## Clase de Consulta
+
+El día **jueves 10 de septiembre de 2026 de 14.00 a 16.00** tendremos una clase de consulta, en forma virtual. Se compartirá enlace a través del foro del Aula Virtual. Trabajaremos todos los temas vistos, hasta distribuciones discretas.
+
+No olviden completar `la encuesta de retroalimentación` disponible en el Aula Virtual hasta el lunes 07/09, para poder organizar mejor la clase de consulta.
+:::
+
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+
+htmltools::includeHTML('reloj.html')
+
+```
+
+
+
+

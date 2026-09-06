@@ -1,5 +1,21 @@
 # Pautas de cursada
 
+::: {style="background-color: #f4f4f4; padding: 15px; border-radius: 10px; border: 2px solid lightblue;"}
+
+Esta guía interactiva pretende ser un ordenador de las pautas y criterios propuestos para llevar adelante las actividades durante las clases prácticas de Bioestadística, a manera de síntesis de lo desarrollado en el libro **Apuntes de Bioestadística. Con ejercicios resueltos**, que será la principal fuente de referencia para las clases prácticas. No obstante, en el apartado de referencias podrán consultar otras fuentes sugeridas, las cuales están disponibles en la Pestaña de Trabajos Prácticos del Aula Virtual.
+
+Esta guía se irá actualizando paulatinamente con el recorrido de la cursada. Debido a que usualmente los tiempos de la clase presencial son acotados, una práctica de rutina que les pedimos seguir es **leer los objetivos de la clase, y la literatura específica sugerida, antes de cada clase práctica**, de forma tal que podamos comenzar la clase práctica sin necesidad de realizar un repaso de estos puntos y destinar esos minutos valiosos a la realización de actividades de clase, con un marco de referencia ya fijado.
+
+Asimismo, es posible que se les solicite realizar una actividad de **pre-clase** o **inter-clase**, la cual estará disponible con anticipación antes de cada clase práctica. Estas actividades son **obligatorias**.
+
+Finalmente, en esta guía contarán con recursos interactivos (como R en la web y Geogebra), como así también la devolución de algunas de las actividades realizadas a lo largo de la cursada.
+
+Por dudas, consultas, comentarios y aportes, no duden en escribir preferentemente por el foro del Aula Virtual, el grupo de whatsapp, o visitarnos en el Gabinete #403 en el tercer piso de la Facultad.
+
+:::
+
+<br>
+
 ## Modalidad: Aprendizaje Basado en Competencias
 
 ![Saber, saber hacer, saber ser (Imágen creada con IA)](IMAGENES/cirugia.png){#fig-enfoques}
@@ -11,7 +27,6 @@ flowchart LR
     A["[ CONOCIMIENTO ]<br/>(Saber qué)"] --> B["+"] --> C["[ HABILIDAD ]<br/>(Saber cómo)"] --> D["+"] --> E["[ ACTITUD ]<br/>(Saber ser)"] --> F["="] --> G["COMPETENCIA<br/>(Saber actuar)"]
 
 ```
-
 
 
 ::: callout-note

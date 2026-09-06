@@ -140,6 +140,130 @@ El ejercicio debe incluir incisos específicos para:
 ```
 
 
+## **Actividad de clase**
+
+**Notas de clase**
+
+- **Santiago, Paloma, Antonella** (Ejercicio 1)
+  - a) Identificación correcta: Modelo Binomial con `n = 80`, `p = 0,04`. `Nota: `faltó definir la variable aleatoria.
+  - b) `P(X = 10) = 0,00099` (correcto).
+  - c) `P(X ≥ 5) = 0,2164` (correcto, precisión decimal adecuada).
+  - d) `E(X) = 3,2`; `Var(X) = 3,072`; `DE(X) = 1,7527` (correctos en su totalidad).
+  
+```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width="40%"}
+knitr::include_graphics("./IMAGENES/DISCRETAS/ej1-M.jpeg")
+
+```
+  
+
+- **Arnaldo, Leandro, Kyara Avendaño, Veronica** (Ejercicio 3)
+  - a) Identificación correcta: Modelo Binomial con `n = 80`, `p = 0,04`.
+  - b) `P(X = 10) = 0,00099` (correcto).
+  - c) `P(X ≥ 5) = 0,22` (correcto por redondeo).
+  - d) `E(X) = 3,2` y `DE(X) = 1,75` (correctos). 
+  **Nota: Ustedes tenían que resolver el 3!** 
+  
+    
+```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width="40%"}
+knitr::include_graphics("./IMAGENES/DISCRETAS/ej3-M.jpeg")
+
+```
+
+- **Candela Carrizo, Benjamín Gómez** (Ejercicio 1)
+  - a) Modelo Binomial correcto: `n = 80`, `p = 0,04`. Variable aleatoria bien definida.
+  - b) `P(X = 10) != 0,99` (revisar decimales).
+  - c) `P(X ≥ 5) != 0,94` (revisar los cálculos)
+  
+```{r eval=FALSE}
+
+n=80; p=0.04
+1 - pbinom(4, n, p) # ¿por qué 4?
+
+```
+
+  
+d) No se pidió por falta de tiempo.
+
+    
+```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width="40%"}
+knitr::include_graphics("./IMAGENES/DISCRETAS/ej1-T.jpeg")
+
+```
+
+- **Julieta Martínez, Candela Díaz** (Ejercicio 2)
+
+  - a) Modelo Binomial correcto: `n = 20`, `p = 0,12`.
+  - b) `P(X = 0) = 0,0776` (correcto).
+  - c) `0,6281` (correcto).
+  - d) `0,0827` (correcto).
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width="40%"}
+knitr::include_graphics("./IMAGENES/DISCRETAS/ej2-M.jpeg")
+
+```
+
+- **Marcelo, Gianella, Tania** (Ejercicio 2)
+  - a) Modelo Binomial correcto: `n = 20`, `p = 0,12`.
+  - b) `P(X = 0) = 0,0776` (correcto).
+  - c) `2,0611` (incorrecto: revisar el cálculo)
+
+```{r eval=FALSE}
+
+n=20; p=0.12
+sum(dbinom(2:4,n,p))
+# o bien
+pbinom(4,n,p)-pbinom(1,n,p) # ¿por qué 1?
+
+```
+  - d) `1,69e-05` (incorrecto). Revisar el cálculo: `1 - pbinom(4, 20, 0.12)`.
+  
+```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width="40%"}
+knitr::include_graphics("./IMAGENES/DISCRETAS/ej2-T.jpeg")
+
+```
+
+- **Mariela Lima, Jimena Garcia, Serena Chauque** (Ejercicio 3)
+
+  - a) `P(Y = 4) = 0,189` (correcto; valor exacto 0,1898).
+  - b) `P(Y ≤ 2) = 0,17` (correcto; valor exacto 0,1736).
+  - c) `P(Y > 6) = 0,16` (incorrecto, revisen los cálculos):
+
+```{r eval=FALSE}
+
+lambda = 4.5
+1 - ppois(5, lambda) # ¿por qué 5?
+
+```
+
+
+d) No se pidió por falta de tiempo.
+  
+```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width="40%"}
+knitr::include_graphics("./IMAGENES/DISCRETAS/ej3-T.jpeg")
+
+```
+
+- **Irina Ritú, Cassandra Gutierrez Cortez, Iara Balanza, Rocío Cruz** (Ejercicio 4)
+
+  - a) `P(Y = 0) = 0,16` (correcto, a 4 decimales es 0,1653, por lo tanto 0,17 a dos decimales).
+  - b) `P(Y = 2) = 0,26` (correcto, pero el redondeo a dos decimales es 0,27, y a 4 decimales es 0,2678).
+  - c) `P(Y > 3) = 0,10` (revisar los cálculos):
+  
+
+```{r eval=FALSE}
+
+lambda = 1.8
+1 - ppois(2, lambda) # ¿por qué 2 y no 3?
+
+```
+
+  - d) `4` (Correcto)
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width="40%"}
+knitr::include_graphics("./IMAGENES/DISCRETAS/ej4-M.jpeg")
+
+```
+
 ## Micro-ejercicios de aplicación (optativos)
 
 Los siguientes micro-ejercicios te permitirán practicar los conceptos revisados en esta unidad.

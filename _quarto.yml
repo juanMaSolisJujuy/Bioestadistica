@@ -5,7 +5,7 @@ book:
   title: "| BIOSTADÍSTICA"
   subtitle: "Universidad Nacional de Jujuy | Facultad de Ciencias Agrarias | Lic. en Ciencias Biológicas"
   author: "Juan Manuel Solís"
-  date: "2026-08-31"
+  date: today
   chapters:
     - index.qmd
     - 01_pautas.qmd
@@ -15,6 +15,7 @@ book:
     - 05_probabilidad.qmd
     - 06_discretas.qmd
     - 07_normal.qmd
+    - Primer_Parcial_2026.qmd
     - herramientas.qmd
     - mi_primer_cuaderno_notebooklm.qmd
     - references.qmd
