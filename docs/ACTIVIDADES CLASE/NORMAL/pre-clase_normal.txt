@@ -1,0 +1,47 @@
+ {
+ayn: Vero Colodro,
+pregunta:Para el tema de la Distribución Normal, te sugiero la siguiente pregunta para hacerle al profesor al finalizar la clase:
+«Profesor, en el control de calidad bromatológico (por ejemplo, al evaluar la concentración de residuos de plaguicidas o la carga microbiana en un alimento), las variables biológicas son continuas pero están acotadas físicamente en cero y suelen presentar cierta asimetría hacia valores altos. ¿Hasta qué punto es confiable aplicar la regla empírica ($\mu \pm 3\sigma$)4 o la tipificación $Z$5 para calcular la probabilidad de rechazar un lote por exceso de contaminante si la distribución real se aleja levemente de la simetría gaussiana?»
+}
+{
+ayn: Paloma Muñoz,
+pregunta: Profesor, tomando como ejemplo variables biológicas continuas como el diámetro de colonias bacterianas, ¿qué limitaciones biológicas reales existen para aplicar la regla empírica cuando la media de una población está muy cerca de los límites físicos (como el cero), y cómo afectaría la tipificación de un dato si la distribución real de la especie no fuera perfectamente simétrica como propone el modelo de Gauss?"
+}
+{
+ayn: Kiara Avendaño,
+pregunta: En poblaciones naturales, muchas variables biológicas continuas (como el peso corporal, la concentración de una hormona o el nivel de contaminantes) son estrictamente positivas y suelen presentar asimetría a la derecha. En la práctica profesional, ¿cuándo se considera que la asimetría de un dato biológico es demasiado grave para aplicar la regla empírica (68-95-99,7%) y qué criterios elegimos para transformar los datos (por ejemplo, con logaritmos) antes de estandarizar.
+}
+{
+ayn: Candela Díaz,
+pregunta: Profesor, al estudiar una variable biológica continua en dos poblaciones distintas —por ejemplo, el peso de una especie de colibrí en dos microclimas distintos o la temperatura de organismos en gradientes ambientales—, si aplicamos la estandarización para comparar qué tan 'extremo' o atípico es un individuo respecto a su grupo, ¿de qué manera la diferencia en las variabilidades de cada hábitat puede sesgar o condicionar nuestra interpretación biológica sobre la adaptación de esas poblaciones?
+}
+{
+ayn: Julieta Martínez,
+pregunta: Profesor, si la regla empírica asume simetría y nos dice que aproximadamente el 95% de los datos se concentran en el intervalo ( μ±2σ) ¿qué ocurre o cómo debemos proceder cuando trabajamos con variables biológicas acotadas que no pueden ser negativas como la concentración de un contaminante en tejido o la masa de pequeños mamífero y la variabilidad es tan alta que el límite inferior calculado matemáticamente resulta en un valor negativo o biológicamente imposible?
+}
+{
+ayn: Irina Ritu,
+pregunta: En estudios ecológicos o ecofisiológicos de campo es muy común que variables morfométricas o químicas (como la concentración de un contaminante en tejidos o la tasa metabólica) presenten asimetría biológica natural. Si aplicamos la tipificación (Z) y la regla empírica (mu pm 2sigma) asumiendo un modelo normal sobre esos datos, ¿qué tan severo es el sesgo al estimar la probabilidad de hallar individuos en las colas extremas (por ejemplo, aquellos bajo riesgo de toxicidad o estrés fisiológico)?
+}
+{
+ayn: Iara Almada,
+pregunta: Profesor/a, en variables biológicas continuas que suelen presentar asimetría positiva en la naturaleza —como la concentración de un metal pesado en tejido hepático de peces o la tasa de expresión enzimática—, ¿cuándo es conveniente aplicar la tipificación Z y la regla empírica transformando la variable (por ejemplo, con escala logarítmica), y cómo afecta esa transformación a la interpretación biológica de la media y el desvío estándar en las unidades originales?
+}
+{
+ayn: Santiago Baldo,
+pregunta: «Profesor, en la investigación biológica muchas variables continuas (como la biomasa de una población, la concentración de un contaminante o el diámetro de colonias) tienen un límite estricto en cero y suelen presentar asimetría hacia la derecha. Dado que la Distribución Normal asume simetría teórica e intervalos continuos de -infinit a  +infiniti, ¿hasta qué punto es adecuado aplicar la tipificación Z y la regla empírica (\mu \pm 2\sigma) sin riesgo de asumir probabilidades en rangos biológicamente imposibles, y cuándo resulta indispensable transformar los datos (por ejemplo, a escala logarítmica) antes de asumir normalidad?»
+}
+{
+ayn: Casandra Gutiérrez,
+pregunta: Profesor, en biología muchas variables continuas —como la masa corporal, la concentración de un metal pesado en tejido o la actividad enzimática— tienen un límite físico infranqueable en cero. Si la desviación estándar es grande respecto a la media, al aplicar la regla empírica o estandarizar (Z), el modelo normal teórico puede proyectar probabilidades para valores negativos que son imposible que ocurran en la naturaleza. En la práctica profesional en ciencias biológicas, ¿cómo identificamos el límite en el que la asimetría exige transformar los datos (por ejemplo, mediante una transformación logarítmica) antes de poder asumir una distribución gaussiana?
+}
+{
+ayn: Gianella Martínez,
+pregunta: "Profesor, la regla empírica establece que aproximadamente el 95% de las observaciones caen dentro de dos desvíos estándar respecto a la media ( μ±2σ
+ ), lo cual asume una simetría perfecta en la campana de Gauss. Sin embargo, en poblaciones silvestres bajo presiones reales —como ocurre con la concentración de contaminantes en muestras de agua o el peso de frutos— es muy común encontrar asimetrías o sesgos en los datos. En la práctica biológica, ¿qué tan robustos siguen siendo la tipificación  Z
+  y los límites de la regla empírica ante estas asimetrías moderadas, y en qué punto un sesgo nos obliga metodológicamente a transformar los datos (por ejemplo, usando logaritmos) para poder forzar la normalidad?"
+}
+{
+ayn: Mariela Lima,
+pregunta: Profe, ¿Qué tan robustos siguen siendo los cálculos de probabilidad basados en el valor Z cuando la asimetría de los datos de campo desvía notablemente a la población de la campana teórica ideal? ¿Existe alguna pauta estadística formal que indique en qué punto debemos abandonar la tipificación directa y aplicar obligatoriamente una transformación de variables o bien optar por estadística no paramétrica?"
+}

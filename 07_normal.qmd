@@ -29,6 +29,9 @@ editor:
   </p>
 </div>
 
+
+
+
 ::: callout-important
 ## Lectura Sugerida para el Trabajo Práctico
 
@@ -132,6 +135,65 @@ Debes sugerirme UNA pregunta para hacerle al profesor al finalizar la clase. La 
 
 
 ```
+
+**Preguntas subidas al AV**
+
+*Comentarios generales*
+
+Durante la clase hemos respondido brevemente algunos de los aportes que han subido. A manera de síntesis, se observa que el cuaderno de géminis les propone una pregunta que de alguna manera trata de resolver la relación entre los datos empíricos (reales) y cuáles son las condiciones y/o limitaciones de tratar de modelarlos suponiendo que fueron generados por un proceso normal.
+Un aspecto que se repite con frecuencia en las preguntas se relaciona con las variables que en la naturaleza sólo pueden adoptar valores positivos, pero que al tratar de modelarlas por medio de una distribución gaussiana, ésta podría asumir valores negativos (por ejemplo, si el CV es elevado y $\mu$ es próximo a 0.
+
+Desde una perspectiva estadística, es necesario comprender los límites de validez de la aproximación normal. En esos casos, la contribución del análisis no consiste en descartar el modelo, sino en reconocer que la normalidad es una aproximación útil en el centro de la distribución, pero potencialmente poco representativa en los extremos de la distribución. La aplicación de transformaciones de la variable para aproximar a una distribución normal (por ejemplo la transformación logarítmica) debe ser utilizada con cautela en determinadas aplicaciones, se sugiere la lectura del ejemplo desarrollado sobre análisis de materia orgánica en el predio de Severino, en la guía Apuntes de Bioestadística con ejercicios resueltos.
+
+Con respecto a la tipificación $Z = \frac{X - \mu}{\sigma}$ y la regla empírica ($68\%,95\%,99,7\%$), asumamos un grado aceptable de robustez cuando el objetivo es estimar proporciones en la zona central de la distribución (alrededor de la media), aun en presencia de asimetrías moderadas. Pero si la asimetría observada en los datos es grande, las estimaciones de probabilidad son poco confiables bajo el supuesto de normalidad. Por el contrario, es posible presentar cuantiles en escala tipificada aún para variables no normales, como una forma de simplificar su lectura e interpretación. Se sugiere investigar acerca del Índice Estandarizado de Precipitaciones (SPI), como un ejemplo de lo anterior.
+
+[Preguntas generadas por la IA para este práctico (txt)](./ACTIVIDADES CLASE/NORMAL/pre-clase_normal.txt)
+
+## **Actividad de clase**
+
+- **Serena Chauque y Gianella Martínez** (Ejercicio 1)
+
+  - a) Parámetros correctos; en sintaxis de R raramente usaremos las notaciones $\mu$ y $\sigma$, sino algo como `mu = 3.5`, `sigma = 0.6`.
+  - b) `P(X ≤ 2.8) = 0,1217` (correcto).
+  - c) `P(X > 4.2) = 0,1217` (correcto; calculado mediante `1 - pnorm(4.2, 3.5, 0.6)`).
+  - d) `P(3.0 ≤ X ≤ 4.0) = 0,5953` (correcto; resta de acumuladas `pnorm(4, 3.5, 0.6) - pnorm(3, 3.5, 0.6)`).
+
+
+- **Baldo, Santiago; Muñoz, Paloma; Aramayo, Antonella** (Ejercicio 1)
+  - a) Parámetros correctos: `mu = 3.5`, `sigma = 0.6`; en sintaxis de R raramente usaremos las notaciones $\mu$ y $\sigma$, sino algo como `mu = 3.5`, `sigma = 0.6`.
+  - b) `P(X ≤ 2.8) = 0,1216` (12,16%) (correcto, cuidado con los decimales, estrictamente el resultado se aproxima a 0,1217).
+  - c) `P(X > 4.2) = 0,1216` (12,16%) (correcto, cuidado con los decimales, estrictamente el resultado se aproxima a 0,1217).
+  - d) `P(3.0 ≤ X ≤ 4.0) = 0,5953` (59,53%) (correcto).
+
+- **Martínez, Julieta; Diaz, Candela** (Ejercicio 2)
+  - a) `qnorm(0.10, 28.4, 3.2) = 24,2990` g/kg (correcto).
+  - b) `qnorm(0.95, 28.4, 3.2) = 33,6635` g/kg (correcto).
+  - c) Intervalo reportado `[24,29; 31,6]` (incorrecto). Para abarcar el 90% simétrico central corresponde evaluar percentiles 5 y 95: `qnorm(0.05, 28.4, 3.2) = 23,1365` y `qnorm(0.95, 28.4, 3.2) = 33,6635`. Intervalo correcto: `[23,14; 33,66]` g/kg.
+  - d) Interpretación conceptual adecuada, sin embargo no es estrictamente necesario el empleo de valores estandarizados o tipificados. 
+
+- **Jimenez, Antonela; Garcia, Jimena; Lima, Abigail** (Ejercicio 3)
+  - a) Estandarización manual: `z = (45.0 - 32.0) / 8.5 = 1,5294` (correcto).
+  - b) `P(Z ≤ 1,5294) = 0,9369` (correcto).
+  - c) Verificación en escala original: `pnorm(45, 32, 8.5) = 0,9369` (correcto).
+  - d)Faltó concluir sobre la posición del individuo dentro de la cola superior de la estructura del rodal.
+
+- **Gonzalez, Arnaldo; Avendaño, Kyara; Vega, Leandro; Colodro, Silvia** (Ejercicio 3)
+  - a) Estandarización manual: `z = (45.0 - 32.0) / 8.5 = 1,5294` (correcto).
+  - b) `P(Z ≤ 1,5294) = 0,9368` (93,68%) (correcto).
+  - c) Verificación directa: `pnorm(45, 32, 8.5) = 0,9368` (correcto).
+  - d) Está bien la interpretación, faltaría ajustarla. El individuo estudiado presenta una DAP elevado en relación a la distribución de la población, tanto que se estima en casi un 94% el porcentaje de individuos con DAP por debajo de 45 cm.
+
+- **Ritu, Irina; Balanza Almada, Iara; Gutierrez Cortez, Casandra** (Ejercicio B4)
+  - a) Sintaxis: `rnorm(60, 65.0, 11.2)` (correcto).
+  - b) Estadísticos muestrales simulados: media = `65,73` g, desvío estándar = `10,19` g (correctos, son valores plausibles en la distribución).
+  - c) Proporción empírica informada `< 50` g: `0,05` (5%) (faltaría indicar cómo llegaron a esa estimación).
+  - d) Probabilidad teórica: `P(X ≤ 50) = pnorm(50, 65, 11.2) = 0,0902` (9,02%) (correcto).
+
+**Producciones**
+
+[Producciones de la comisión del martes (PDF)](./ACTIVIDADES CLASE/NORMAL/normal.pdf)
+
+[Producciones de la comisión del viernes (PDF)](./ACTIVIDADES CLASE/NORMAL/normal2.pdf)
 
 
 ## Micro-ejercicios de aplicación (optativos)

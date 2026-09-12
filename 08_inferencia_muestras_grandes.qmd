@@ -1,0 +1,641 @@
+---
+title: "Trabajo Práctico 5: Inferencia con Muestras Grandes"
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+<div style="
+  background-color: #e3f2fd; 
+  border-radius: 15px; 
+  padding: 20px 25px; 
+  margin: 20px 0;
+  border-left: 5px solid #1e88e5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #0d3c5e;
+  line-height: 1.6;
+">
+  <p style="margin: 0; font-size: 1.05rem;">
+    <strong>Objetivos del Trabajo Práctico</strong><br><br>
+    El objetivo de esta unidad es que el estudiante construya las bases de la inferencia estadística a partir de muestras, comprendiendo el rol de la Ley de los Grandes Números y el Teorema Central del Límite como fundamentos teóricos. A partir de ellos, se busca que el estudiante sea capaz de: 
+    <strong>(1)</strong> Distinguir entre parámetros poblacionales y estadísticos muestrales, y entender su relación; 
+    <strong>(2)</strong> Utilizar estimadores puntuales y construir intervalos de confianza, interpretando correctamente su significado; 
+    <strong>(3)</strong> Formular y evaluar contrastes de hipótesis, incorporando los conceptos de nivel de significación y error; 
+    <strong>(4)</strong> Justificar, en términos probabilísticos, el uso de aproximaciones basadas en muestras grandes; y 
+    <strong>(5)</strong> Aplicar estos procedimientos en diferentes situaciones, evaluando la validez de los supuestos involucrados.
+  </p>
+</div>
+
+::: callout-important
+## Lectura Sugerida para el Trabajo Práctico
+
+Se recomienda a los estudiantes consultar el libro **«Apuntes de
+Bioestadística. Con ejercicios resueltos»** para profundizar los
+conceptos teóricos y metodológicos desarrollados en este marco:
+
+- **Unidad 7: Teorema Central del Límite y Ley de los Grandes
+  Números**: Consultar las condiciones de aplicabilidad de ambos
+  resultados, su interpretación, y el ajuste por corrección de
+  población finita cuando la muestra representa una fracción no
+  despreciable de la población.
+- **Unidad 7: Estimación Puntual, Intervalos de Confianza y Prueba de
+  Hipótesis**: Revisar las propiedades de un buen estimador (insesgadez,
+  error estándar), la construcción e interpretación de un intervalo
+  de confianza, y los pasos de una prueba de hipótesis (planteo de
+  hipótesis, nivel de significación, estadístico de prueba, regla de
+  decisión, y los errores de Tipo I y Tipo II).
+
+Como lecturas complementarias, se sugiere también revisar la unidad
+*«Estimación de Parámetros y Contraste de Hipótesis»* del libro
+**«Estadística y Biometría»** de Balzarini et al.; la unidad
+*«Inference»* del libro **«Data Analysis for the Life Sciences»** de
+Irizarry et al.; y las unidades *«Testing Hypotheses»* y
+*«Goodness-of-Fit Test»* del libro **«Biostatistics with R»** de Leps
+y Smilauer.
+:::
+
+## Generalidades
+
+En las unidades anteriores se trabajó con distribuciones de
+probabilidad cuyos parámetros se asumían conocidos. En la práctica, muchas veces esos parámetros poblacionales rara vez se conocen: lo habitual es contar únicamente con una muestra, y a partir de ella
+inferir las características de la población de la que proviene. La **Estadística Inferencial** es la rama de la estadística que se ocupa de estimar de forma inductiva características poblacionales (parámetros) a partir de lo observado en una muestra probabilística (estadísticos).
+
+### Muestras grandes
+
+El desarrollo de la inferencia a partir de muestras grandes se apoya
+en dos postulados teóricos: La **Ley de los Grandes
+Números** establece que, a medida que aumenta el tamaño de una
+muestra aleatoria, el promedio muestral converge en probabilidad al
+verdadero valor del parámetro poblacional que se busca estimar. Por su
+parte, el **Teorema Central del Límite (TCL)** establece que, si el
+tamaño muestral es suficientemente grande, la distribución del
+promedio muestral se aproxima a una distribución Normal,
+independientemente de cuál sea la distribución de la variable
+original. Ambos postulados permiten construir
+procedimientos de inferencia válidos aun sin conocer la distribución
+exacta de la variable en estudio, y son la razón por la cual esta
+unidad requiere trabajar con muestras de tamaño grande.
+
+### Parámetro, estadístico y estimador
+
+Para avanzar en la inferencia es necesario distinguir
+tres conceptos: Un **parámetro** es una característica de la
+población (por ejemplo, una media o una proporción poblacional) cuyo
+valor es constante pero, en general, desconocido. Un **estadístico**
+es cualquier función calculada a partir de una muestra aleatoria (por
+ejemplo, la media o la proporción muestral). Cuando ese estadístico se
+utiliza para aproximar el valor de un parámetro, se lo
+denomina **estimador** del mismo. A partir de esta distinción, existen
+tres formas de abordar la estimación de un parámetro: la
+**estimación puntual** (proponer un único valor que lo aproxime), la
+**estimación por intervalo de confianza** (proponer un rango de
+valores plausibles, asociado a un nivel de confianza), y la
+**prueba de hipótesis** (contrastar formalmente una conjetura sobre el
+parámetro frente a la evidencia muestral disponible, controlando la
+probabilidad de los errores de Tipo I y Tipo II).
+
+```{mermaid}
+%%| fig-cap: "Marco conceptual de la Unidad de Inferencia con Muestras Grandes"
+flowchart LR
+    A["Población<br/>Parámetro θ desconocido"] --> B["Muestra aleatoria<br/>(n grande, i.i.d.)"]
+    B --> C["TCL y Ley de los<br/>Grandes Números"]
+    C --> D["Estadístico / Estimador<br/>de θ"]
+    D --> E[Estimación Puntual]
+    D --> F["Intervalo de Confianza"]
+    D --> G["Prueba de Hipótesis"]
+```
+
+
+## **Actividad de pre-clase**
+
+Deberá copiar y pegar el siguiente *prompt* dentro del chat del cuaderno de *Notebooklm*. Luego deberá copiar y pegar la respuesta generada por la IA en un archivo .txt o bien en un documento de word o similar. `Se le solicitará la presentación del ejercicio durante la clase`.
+
+```{r, eval=FALSE, message=FALSE, warning=FALSE}
+
+Actúa como un asistente de Bioestadística de segundo año de la Licenciatura en Ciencias Biológicas. 
+La próxima clase veremos Inferencia con muestras grandes: 
+  - Inferencia de la media poblacional con muestras grandes o cuando se conoce sigma
+  - Inferencia de una proporción poblacional
+  - Inferencia de la comparación de 2 proporciones poblacionales.
+Debes sugerirme UNA pregunta para hacerle al profesor al finalizar la clase. La pregunta debe:
+- No ser una definición.
+- Vincular el tema con un problema biológico real.
+Nota: No proponer una pregunta por tema, elegir un tema y sobre el mismo proponer una pregunta.
+
+```
+
+
+## Micro-ejercicios de aplicación (optativos)
+
+Los siguientes micro-ejercicios te permitirán practicar los conceptos revisados en esta unidad.
+Puedes copiar y pegar las preguntas en un script de R local, o bien utilizar `webR`, que es la versión *online* de R, disponible en esta guía.
+
+`Nota`: los ejercicios están inspirados en trabajos científicos publicados, pero contienen datos simulados.
+Por lo tanto, los resultados obtenidos deben interpretarse únicamente con fines didácticos y no como evidencia científica.
+
+La finalidad es familiarizarse con el análisis estadístico y con el uso de R a partir de situaciones similares a las que pueden encontrarse en investigaciones reales.
+
+
+
+```{r eval = FALSE, collapse=TRUE}
+
+# =============================================================================
+# EJERCICIOS OPTATIVOS DE R: INFERENCIA ESTADISTICA EN MUESTRAS GRANDES
+# =============================================================================
+#
+# Este archivo contiene 15 ejercicios practicos divididos en 3 bloques
+# tematicos:
+#   - Bloque 1: Inferencia sobre la Media Poblacional (mu)              - 5 ejercicios
+#   - Bloque 2: Inferencia sobre una Proporcion Poblacional (p)         - 5 ejercicios
+#   - Bloque 3: Inferencia para Dos Proporciones Poblacionales (p1-p2)  - 5 ejercicios
+#
+# Cada ejercicio incluye contexto biologico, datos de entrada y consignas
+# especificas. Complete el codigo en R en los espacios indicados.
+
+
+# #############################################################################
+# BLOQUE 1: INFERENCIA SOBRE LA MEDIA POBLACIONAL (mu) CON MUESTRAS GRANDES
+# #############################################################################
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 1: Concentracion de Hemoglobina en Peces de un Rio Contaminado
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# Un equipo de ecotoxicologia evalua el impacto de efluentes industriales en
+# el bienestar fisiologico de una especie de pez nativo. 
+# Se sabe que la concentracion media normal de hemoglobina en
+# aguas no contaminadas es de mu_0 = 9.0 g/dL y sigma = 1.6 g/dL. Se toma una muestra aleatoria
+# de n = 120 peces en la zona afectada.
+#
+# Datos: n = 120, x_barra = 8.4 g/dL, sigma = 1.6 g/dL, alpha = 0.05.
+#
+# Consignas:
+# 1. Construya un intervalo de confianza del 95% para la concentracion
+#    media poblacional de hemoglobina (mu) en la zona afectada usando
+#    qnorm().
+# 2. Plantee y ejecute una prueba Z unilateral izquierda para determinar si
+#    la concentracion media es significativamente inferior a 9.0 g/dL.
+# 3. Calcule el valor p mediante pnorm() e indique la decision estadistica.
+
+n = 120
+x_bar = 8.4
+sigma = 1.6
+mu_0 = 9.0
+alpha = 0.05
+
+# 1. Intervalo de Confianza del 95% para mu
+# Su código aquí:
+
+
+
+# 2 y 3. Estadístico Z, valor p y decisión (H0: mu >= 9.0 vs H1: mu < 9.0)
+# Su código aquí:
+
+
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 2: Biomasa Seca de Plantulas de Pinus taeda bajo Fertilizante Organomineral
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# En un ensayo silvicultural, se aplica un biofertilizante a n = 150
+# plantulas de Pinus taeda. Transcurridos 6 meses, se mide el peso seco de
+# la parte aerea (en gramos). Se obtiene una media muestral de
+# x_barra = 14.8 g y s = 2.5 g.
+# Nota: aproxime s a sigma, por tamaño muestral.
+#
+# Datos: n = 150, x_barra = 14.8 g, s = 2.5 g, nivel de confianza = 99%.
+#
+# Consignas:
+# 1. Calcule el intervalo de confianza del 99% para la biomasa seca
+#    promedio poblacional.
+# 2. ¿Qué tamaño muestral n se requeriría si se desea estimar la biomasa
+#    media con un margen de error máximo de E = 0.30 g al 99% de
+#    confianza?
+
+n = 150
+x_bar = 14.8
+s = 2.5
+confianza = 0.99
+alpha = 1 - confianza
+
+# 1. Intervalo de Confianza del 99%
+# Su código aquí:
+
+
+
+# 2. Tamaño Muestral Necesario para E = 0.30 g
+E = 0.30
+# Su código aquí:
+
+
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 3: Tasa Metabolica Basal en Roedores Silvestres (Akodon azarae)
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# Un ecofisiologo evalua el consumo de oxigeno en reposo (mL O2 / g*h) en
+# una poblacion silvestre de Akodon azarae en invierno. El valor de
+# referencia historico de primavera es mu_0 = 2.00 mL O2 / g*h y sigma = 0.42 mL O2 / g*h. Se captura
+# y mide a n = 100 individuos.
+#
+# Datos: n = 100, x_barra = 2.15, sigma = 0.42, mu_0 = 2.00, alpha = 0.01.
+#
+# Consignas:
+# 1. Realice una prueba Z bilateral para determinar si la tasa metabolica
+#    difiere del valor de primavera.
+# 2. Calcule el valor p exacto empleando pnorm() e interprete la decision a
+#    un nivel alpha = 0.01.
+
+n = 100
+x_bar = 2.15
+sigma = 0.42
+mu_0 = 2.00
+alpha = 0.01
+
+# 1 y 2. Estadístico Z, valor p bilateral y decisión
+# Su código aquí:
+
+
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 4: Longitud Corporal de una Poblacion de Anuros Amenazados
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# En el marco de un programa de conservacion de anfibios, se mide la
+# longitud hocico-cloaca (LHC, en mm) de n = 200 ejemplares adultos
+# capturados y liberados. Se observa una media de x_barra = 54.2 mm y
+# s = 6.8 mm.
+# Nota: aproxime s con sigma, por tamaño muestral.
+#
+# Datos: n = 200, x_barra = 54.2 mm, s = 6.8 mm.
+#
+# Consignas:
+# 1. Obtenga los intervalos de confianza para la media poblacional mu al
+#    90% y 95%.
+# 2. Calcule y compare la amplitud de ambos intervalos. Explique el efecto
+#    de elevar la confianza.
+
+n = 200
+x_bar = 54.2
+s = 6.8
+
+# 1. IC del 90% e IC del 95%
+# Su código aquí:
+
+
+
+# 2. Amplitud de los intervalos
+# Su código aquí:
+
+
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 5: Concentracion de Clorofila a en Fitoplancton Estuarino
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# Se monitorea la densidad fitoplanctonica mediante la concentracion de
+# clorofila a (ug/L) en un estuario. Un nivel medio superior a
+# mu_0 = 11.5 ug/L indica un estado inicial de eutrofizacion. Se colectan
+# n = 180 muestras de agua independientes. Se considera que sigma = 3.1 ug/L.
+#
+# Datos: n = 180, x_barra = 12.3 ug/L, sigma = 3.1 ug/L, mu_0 = 11.5 ug/L,
+# alpha = 0.05.
+#
+# Consignas:
+# 1. Plantee las hipotesis para la prueba unilateral derecha
+#    (H0: mu <= 11.5 vs H1: mu > 11.5).
+# 2. Calcule el estadistico Z, el valor p y determine si hay evidencia de
+#    eutrofizacion.
+
+n = 180
+x_bar = 12.3
+sigma = 3.1
+mu_0 = 11.5
+alpha = 0.05
+
+# 1 y 2. Estadístico Z, valor p y conclusión
+# Su código aquí:
+
+
+
+# #############################################################################
+# BLOQUE 2: INFERENCIA SOBRE UNA PROPORCION POBLACIONAL (p) CON MUESTRAS GRANDES
+# #############################################################################
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 6: Prevalencia de un Hemoparasito en Aves Migratorias
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# Un estudio ornitologico analiza la presencia de Plasmodium relictum
+# mediante frotis sanguineo en n = 250 aves migratorias capturadas en una
+# estacion biologica. Se detecta la infeccion en x = 45 individuos.
+#
+# Datos: n = 250, x = 45, alpha = 0.05.
+#
+# Consignas:
+# 1. Calcule la estimacion puntual p_estimado y el intervalo de confianza
+#    del 95% de Wald (usando aproximacion normal).
+# 2. Obtenga el intervalo de confianza empleando la funcion prop.test() con
+#    correct = FALSE y compare los limites.
+
+n = 250
+x = 45
+alpha = 0.05
+
+# 1. Estimación puntual e IC de Wald (manual)
+# Su código aquí:
+
+
+
+# 2. IC utilizando prop.test()
+# Su código aquí:
+
+
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 7: Tasa de Germinacion de Semillas de Schinus molle bajo Estres Hidrico
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# Para evaluar el uso de Schinus molle en restauracion ecologica de zonas
+# aridas, se somete a n = 400 semillas a un potencial hidrico reducido. Se
+# busca probar si la tasa de germinacion supera el umbral minimo del 60%
+# (p_0 = 0.60). Al finalizar el ensayo, germinan x = 268 semillas.
+#
+# Datos: n = 400, x = 268, p_0 = 0.60, alpha = 0.05.
+#
+# Consignas:
+# 1. Formule la hipotesis unilateral derecha (H0: p <= 0.60 vs H1: p > 0.60).
+# 2. Calcule el estadistico de prueba Z usando el error estandar bajo H0 y
+#    halle el valor p correspondiente.
+
+n = 400
+x = 268
+p_0 = 0.60
+alpha = 0.05
+
+# 1 y 2. Estadístico Z bajo H0, valor p y decisión
+# Su código aquí:
+
+
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 8: Resistencia Antibiotica en Cepas Ambientales de Pseudomonas aeruginosa
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# Un laboratorio de microbiologia ambiental evalua la presencia de
+# resistencia a la ceftazidima en n = 300 cepas de Pseudomonas aeruginosa
+# aisladas de efluentes. Se observan x = 72 cepas resistentes.
+#
+# Datos: n = 300, x = 72, alpha = 0.01.
+#
+# Consignas:
+# 1. Construya el intervalo de confianza del 99% para la proporcion
+#    poblacional de cepas resistentes.
+# 2. Calcule el tamaño muestral necesario para una investigacion posterior
+#    si se desea estimar p con un margen de error maximo de E = 0.03 al
+#    95% de confianza, utilizando:
+#      a) La proporcion piloto estimada (p_estimado).
+#      b) El criterio conservador (p = 0.5).
+
+n = 300
+x = 72
+alpha_99 = 0.01
+
+# 1. IC del 99% para p
+# Su código aquí:
+
+
+
+# 2. Tamaños muestrales para E = 0.03 y confianza del 95%
+E = 0.03
+# Su código aquí:
+
+
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 9: Frecuencia del Fenotipo Melanico en Mariposas Urbanas
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# En un estudio de melanismo en lepidopteros, se monitorea la proporcion de
+# mariposas de fenotipo oscuro en un area industrializada. Registros
+# historicos reportan p_0 = 0.28. En la presente temporada se capturan
+# n = 500 mariposas, de las cuales x = 115 presentan fenotipo oscuro.
+#
+# Datos: n = 500, x = 115, p_0 = 0.28, alpha = 0.05.
+#
+# Consignas:
+# 1. Realice una prueba Z bilateral para verificar si la frecuencia del
+#    fenotipo ha variado respecto del valor historico.
+# 2. Calcule el valor p bilateral e interprete la decision estadistica a un
+#    nivel de significacion del 5%.
+
+n = 500
+x = 115
+p_0 = 0.28
+alpha = 0.05
+
+# 1 y 2. Estadístico Z, valor p bilateral y decisión
+# Su código aquí:
+
+
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 10: Ingestion de Microplasticos en Merluza del Atlantico Sur
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# Un estudio de contaminacion marina analiza el contenido estomacal de
+# n = 350 ejemplares de merluza (Merluccius hubbsi). Se constata presencia
+# de microplasticos en x = 189 individuos.
+#
+# Datos: n = 350, x = 189, alpha = 0.05.
+#
+# Consignas:
+# 1. Verifique en R si se cumplen las condiciones para la aproximacion
+#    normal: n * p_estimado >= 5 y n * (1 - p_estimado) >= 5.
+# 2. Construya un intervalo de confianza del 95% para la prevalencia
+#    poblacional de ingesta de microplasticos.
+
+n = 350
+x = 189
+alpha = 0.05
+
+# 1. Verificación analítica de supuestos
+# Su código aquí:
+
+
+
+# 2. Intervalo de Confianza del 95%
+# Su código aquí:
+
+
+
+# #############################################################################
+# BLOQUE 3: INFERENCIA PARA DOS PROPORCIONES POBLACIONALES (PI1 - PI2)
+# #############################################################################
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 11: Mortalidad Larvaria de Aedes aegypti con dos Larvicidas Biologicos
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# Se evalua la eficacia comparativa de dos tratamientos biologicos para el
+# control de Aedes aegypti:
+#   - Tratamiento 1 (Bacillus thuringiensis): n1 = 200 larvas, x1 = 168
+#     muertas.
+#   - Tratamiento 2 (Spinosad): n2 = 220 larvas, x2 = 154 muertas.
+#
+# Datos: n1 = 200, x1 = 168; n2 = 220, x2 = 154; alpha = 0.05.
+#
+# Consignas:
+# 1. Estime las proporciones muestrales de mortalidad p1_estimado y
+#    p2_estimado.
+# 2. Construya un intervalo de confianza del 95% para la diferencia de
+#    proporciones p1 - p2.
+# 3. Calcule la proporcion combinada p_combinada y realice la prueba Z para
+#    probar H0: p1 = p2 vs H1: p1 != p2.
+
+n1 = 200; x1 = 168
+n2 = 220; x2 = 154
+alpha = 0.05
+
+# 1, 2 y 3. Proporciones, IC del 95% para p1 - p2 y Prueba Z con p combinada
+# Su código aquí:
+
+
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 12: Seroprevalencia de Hantavirus en Roedores de Dos Habitats
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# Un estudio eco-epidemiologico compara la seroprevalencia de Hantavirus en
+# roedores silvestres en dos tipos de habitats:
+#   - Habitat 1 (Agroecosistema perturbado): n1 = 180, x1 = 36
+#     seropositivos.
+#   - Habitat 2 (Bosque nativo conservado): n2 = 160, x2 = 16
+#     seropositivos.
+#
+# Datos: n1 = 180, x1 = 36; n2 = 160, x2 = 16; alpha = 0.05.
+#
+# Consignas:
+# 1. Calcule la proporcion combinada p_combinada bajo la hipotesis de
+#    homogeneidad.
+# 2. Pruebe si la prevalencia es significativamente mayor en el
+#    agroecosistema (H0: p1 <= p2 vs H1: p1 > p2).
+
+n1 = 180; x1 = 36
+n2 = 160; x2 = 16
+alpha = 0.05
+
+# 1 y 2. Proporción combinada, estadístico Z y valor p unilateral derecho
+# Su código aquí:
+
+
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 13: Exito Reproductivo de Aves Marinas en Colonias Insulares vs. Costeras
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# Se evalua la tasa de exito reproductivo (nidos que logran emancipacion de
+# al menos un pichon) en colonias de cormoranes en dos ubicaciones:
+#   - Colonia Isla (protegida de depredadores terrestres): n1 = 310 nidos,
+#     x1 = 217 exitosos.
+#   - Colonia Costera (expuesta a disturbio humano): n2 = 290 nidos,
+#     x2 = 168 exitosos.
+#
+# Datos: n1 = 310, x1 = 217; n2 = 290, x2 = 168; alpha = 0.01.
+#
+# Consignas:
+# 1. Obtenga las tasas muestrales de exito reproductivo.
+# 2. Pruebe si la tasa de exito en la isla es mayor que en la costa a un
+#    nivel de significacion alpha = 0.01.
+
+n1 = 310; x1 = 217
+n2 = 290; x2 = 168
+alpha = 0.01
+
+# 1 y 2. Tasas muestrales, estadístico Z y conclusión
+# Su código aquí:
+
+
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 14: Resistencia a Acaricidas en Poblaciones de Acaros (Tetranychus urticae)
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# Se analiza la frecuencia de una mutacion genotipica asociada a
+# resistencia a acaricidas organofosforados en acaros fitofagos procedentes
+# de dos parcelas agricolas:
+#   - Parcela A (Manejo convencional intensivo): n1 = 400, x1 = 260
+#     resistentes.
+#   - Parcela B (Manejo organico/testigo): n2 = 350, x2 = 70 resistentes.
+#
+# Datos: n1 = 400, x1 = 260; n2 = 350, x2 = 70; alpha = 0.01.
+#
+# Consignas:
+# 1. Construya el intervalo de confianza del 99% para la diferencia de
+#    proporciones p1 - p2.
+# 2. Calcule el Riesgo Relativo estimado RR = p1_estimado / p2_estimado e
+#    interprételo biologicamente.
+
+n1 = 400; x1 = 260
+n2 = 350; x2 = 70
+alpha = 0.01
+
+# 1 y 2. IC del 99% para p1 - p2 y cálculo de Riesgo Relativo (RR)
+# Su código aquí:
+
+
+
+# -----------------------------------------------------------------------------
+# EJERCICIO 15: Blanqueamiento en Corales (Acropora palmata) bajo Estres Termico
+# -----------------------------------------------------------------------------
+
+# Contexto:
+# En un experimento de simulacion de cambio climatico, fragmentos de coral
+# (Acropora palmata) son expuestos a dos tratamientos termicos en acuarios
+# de flujo continuo:
+#   - Control (26 °C): n1 = 250 fragmentos, x1 = 25 presentan
+#     blanqueamiento.
+#   - Estres Termico (30 °C): n2 = 250 fragmentos, x2 = 115 presentan
+#     blanqueamiento.
+#
+# Datos: n1 = 250, x1 = 25; n2 = 250, x2 = 115; alpha = 0.05.
+#
+# Consignas:
+# 1. Ejecute la prueba de hipotesis bilateral utilizando prop.test() con
+#    correct = FALSE.
+# 2. Verifique analiticamente la relacion chi-cuadrado = Z^2 calculando el
+#    estadistico Z de dos proporciones al cuadrado.
+
+n1 = 250; x1 = 25
+n2 = 250; x2 = 115
+alpha = 0.05
+
+# 1 y 2. Prueba con prop.test() y verificación analítica de Chi-cuadrado vs Z^2
+# Su código aquí:
+
+
+
+# =============================================================================
+# FIN DEL ARCHIVO DE EJERCICIOS OPTATIVOS (GUIA DE TRABAJO)
+# =============================================================================
+
+
+
+```
+

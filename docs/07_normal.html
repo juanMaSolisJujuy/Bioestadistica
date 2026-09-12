@@ -111,6 +111,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -210,6 +239,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./08_inferencia_muestras_grandes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Trabajo Práctico 5: Inferencia con Muestras Grandes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./herramientas.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R en la web y Geogebra</span></a>
   </div>
@@ -237,7 +272,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#probabilidades-cuantiles-y-la-regla-empírica" id="toc-probabilidades-cuantiles-y-la-regla-empírica" class="nav-link" data-scroll-target="#probabilidades-cuantiles-y-la-regla-empírica"><span class="header-section-number">7.1.3</span> Probabilidades, cuantiles y la regla empírica</a></li>
   </ul></li>
   <li><a href="#actividad-de-pre-clase" id="toc-actividad-de-pre-clase" class="nav-link" data-scroll-target="#actividad-de-pre-clase"><span class="header-section-number">7.2</span> <strong>Actividad de pre-clase</strong></a></li>
-  <li><a href="#micro-ejercicios-de-aplicación-optativos" id="toc-micro-ejercicios-de-aplicación-optativos" class="nav-link" data-scroll-target="#micro-ejercicios-de-aplicación-optativos"><span class="header-section-number">7.3</span> Micro-ejercicios de aplicación (optativos)</a></li>
+  <li><a href="#actividad-de-clase" id="toc-actividad-de-clase" class="nav-link" data-scroll-target="#actividad-de-clase"><span class="header-section-number">7.3</span> <strong>Actividad de clase</strong></a></li>
+  <li><a href="#micro-ejercicios-de-aplicación-optativos" id="toc-micro-ejercicios-de-aplicación-optativos" class="nav-link" data-scroll-target="#micro-ejercicios-de-aplicación-optativos"><span class="header-section-number">7.4</span> Micro-ejercicios de aplicación (optativos)</a></li>
   </ul>
 </nav>
     </div>
@@ -343,9 +379,111 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>- No ser una definición.</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>- Vincular el tema con un problema biológico real.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p><strong>Preguntas subidas al AV</strong></p>
+<p><em>Comentarios generales</em></p>
+<p>Durante la clase hemos respondido brevemente algunos de los aportes que han subido. A manera de síntesis, se observa que el cuaderno de géminis les propone una pregunta que de alguna manera trata de resolver la relación entre los datos empíricos (reales) y cuáles son las condiciones y/o limitaciones de tratar de modelarlos suponiendo que fueron generados por un proceso normal. Un aspecto que se repite con frecuencia en las preguntas se relaciona con las variables que en la naturaleza sólo pueden adoptar valores positivos, pero que al tratar de modelarlas por medio de una distribución gaussiana, ésta podría asumir valores negativos (por ejemplo, si el CV es elevado y <span class="math inline">\(\mu\)</span> es próximo a 0.</p>
+<p>Desde una perspectiva estadística, es necesario comprender los límites de validez de la aproximación normal. En esos casos, la contribución del análisis no consiste en descartar el modelo, sino en reconocer que la normalidad es una aproximación útil en el centro de la distribución, pero potencialmente poco representativa en los extremos de la distribución. La aplicación de transformaciones de la variable para aproximar a una distribución normal (por ejemplo la transformación logarítmica) debe ser utilizada con cautela en determinadas aplicaciones, se sugiere la lectura del ejemplo desarrollado sobre análisis de materia orgánica en el predio de Severino, en la guía Apuntes de Bioestadística con ejercicios resueltos.</p>
+<p>Con respecto a la tipificación <span class="math inline">\(Z = \frac{X - \mu}{\sigma}\)</span> y la regla empírica (<span class="math inline">\(68\%,95\%,99,7\%\)</span>), asumamos un grado aceptable de robustez cuando el objetivo es estimar proporciones en la zona central de la distribución (alrededor de la media), aun en presencia de asimetrías moderadas. Pero si la asimetría observada en los datos es grande, las estimaciones de probabilidad son poco confiables bajo el supuesto de normalidad. Por el contrario, es posible presentar cuantiles en escala tipificada aún para variables no normales, como una forma de simplificar su lectura e interpretación. Se sugiere investigar acerca del Índice Estandarizado de Precipitaciones (SPI), como un ejemplo de lo anterior.</p>
+<p><a href="./ACTIVIDADES CLASE/NORMAL/pre-clase_normal.txt">Preguntas generadas por la IA para este práctico (txt)</a></p>
 </section>
-<section id="micro-ejercicios-de-aplicación-optativos" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="micro-ejercicios-de-aplicación-optativos"><span class="header-section-number">7.3</span> Micro-ejercicios de aplicación (optativos)</h2>
+<section id="actividad-de-clase" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="actividad-de-clase"><span class="header-section-number">7.3</span> <strong>Actividad de clase</strong></h2>
+<ul>
+<li><p><strong>Serena Chauque y Gianella Martínez</strong> (Ejercicio 1)</p>
+<ul>
+<li><ol type="a">
+<li>Parámetros correctos; en sintaxis de R raramente usaremos las notaciones <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\sigma\)</span>, sino algo como <code>mu = 3.5</code>, <code>sigma = 0.6</code>.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li><code>P(X ≤ 2.8) = 0,1217</code> (correcto).</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li><code>P(X &gt; 4.2) = 0,1217</code> (correcto; calculado mediante <code>1 - pnorm(4.2, 3.5, 0.6)</code>).</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li><code>P(3.0 ≤ X ≤ 4.0) = 0,5953</code> (correcto; resta de acumuladas <code>pnorm(4, 3.5, 0.6) - pnorm(3, 3.5, 0.6)</code>).</li>
+</ol></li>
+</ul></li>
+<li><p><strong>Baldo, Santiago; Muñoz, Paloma; Aramayo, Antonella</strong> (Ejercicio 1)</p>
+<ul>
+<li><ol type="a">
+<li>Parámetros correctos: <code>mu = 3.5</code>, <code>sigma = 0.6</code>; en sintaxis de R raramente usaremos las notaciones <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\sigma\)</span>, sino algo como <code>mu = 3.5</code>, <code>sigma = 0.6</code>.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li><code>P(X ≤ 2.8) = 0,1216</code> (12,16%) (correcto, cuidado con los decimales, estrictamente el resultado se aproxima a 0,1217).</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li><code>P(X &gt; 4.2) = 0,1216</code> (12,16%) (correcto, cuidado con los decimales, estrictamente el resultado se aproxima a 0,1217).</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li><code>P(3.0 ≤ X ≤ 4.0) = 0,5953</code> (59,53%) (correcto).</li>
+</ol></li>
+</ul></li>
+<li><p><strong>Martínez, Julieta; Diaz, Candela</strong> (Ejercicio 2)</p>
+<ul>
+<li><ol type="a">
+<li><code>qnorm(0.10, 28.4, 3.2) = 24,2990</code> g/kg (correcto).</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li><code>qnorm(0.95, 28.4, 3.2) = 33,6635</code> g/kg (correcto).</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Intervalo reportado <code>[24,29; 31,6]</code> (incorrecto). Para abarcar el 90% simétrico central corresponde evaluar percentiles 5 y 95: <code>qnorm(0.05, 28.4, 3.2) = 23,1365</code> y <code>qnorm(0.95, 28.4, 3.2) = 33,6635</code>. Intervalo correcto: <code>[23,14; 33,66]</code> g/kg.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Interpretación conceptual adecuada, sin embargo no es estrictamente necesario el empleo de valores estandarizados o tipificados.</li>
+</ol></li>
+</ul></li>
+<li><p><strong>Jimenez, Antonela; Garcia, Jimena; Lima, Abigail</strong> (Ejercicio 3)</p>
+<ul>
+<li><ol type="a">
+<li>Estandarización manual: <code>z = (45.0 - 32.0) / 8.5 = 1,5294</code> (correcto).</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li><code>P(Z ≤ 1,5294) = 0,9369</code> (correcto).</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Verificación en escala original: <code>pnorm(45, 32, 8.5) = 0,9369</code> (correcto).</li>
+</ol></li>
+<li>d)Faltó concluir sobre la posición del individuo dentro de la cola superior de la estructura del rodal.</li>
+</ul></li>
+<li><p><strong>Gonzalez, Arnaldo; Avendaño, Kyara; Vega, Leandro; Colodro, Silvia</strong> (Ejercicio 3)</p>
+<ul>
+<li><ol type="a">
+<li>Estandarización manual: <code>z = (45.0 - 32.0) / 8.5 = 1,5294</code> (correcto).</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li><code>P(Z ≤ 1,5294) = 0,9368</code> (93,68%) (correcto).</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Verificación directa: <code>pnorm(45, 32, 8.5) = 0,9368</code> (correcto).</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Está bien la interpretación, faltaría ajustarla. El individuo estudiado presenta una DAP elevado en relación a la distribución de la población, tanto que se estima en casi un 94% el porcentaje de individuos con DAP por debajo de 45 cm.</li>
+</ol></li>
+</ul></li>
+<li><p><strong>Ritu, Irina; Balanza Almada, Iara; Gutierrez Cortez, Casandra</strong> (Ejercicio B4)</p>
+<ul>
+<li><ol type="a">
+<li>Sintaxis: <code>rnorm(60, 65.0, 11.2)</code> (correcto).</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Estadísticos muestrales simulados: media = <code>65,73</code> g, desvío estándar = <code>10,19</code> g (correctos, son valores plausibles en la distribución).</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Proporción empírica informada <code>&lt; 50</code> g: <code>0,05</code> (5%) (faltaría indicar cómo llegaron a esa estimación).</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Probabilidad teórica: <code>P(X ≤ 50) = pnorm(50, 65, 11.2) = 0,0902</code> (9,02%) (correcto).</li>
+</ol></li>
+</ul></li>
+</ul>
+<p><strong>Producciones</strong></p>
+<p><a href="./ACTIVIDADES CLASE/NORMAL/normal.pdf">Producciones de la comisión del martes (PDF)</a></p>
+<p><a href="./ACTIVIDADES CLASE/NORMAL/normal2.pdf">Producciones de la comisión del viernes (PDF)</a></p>
+</section>
+<section id="micro-ejercicios-de-aplicación-optativos" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="micro-ejercicios-de-aplicación-optativos"><span class="header-section-number">7.4</span> Micro-ejercicios de aplicación (optativos)</h2>
 <p>Los siguientes micro-ejercicios te permitirán practicar los conceptos revisados en esta unidad. Puedes copiar y pegar las preguntas en un script de R local, o bien utilizar <code>webR</code>, que es la versión <em>online</em> de R, disponible en esta guía.</p>
 <p><code>Nota</code>: los ejercicios están inspirados en trabajos científicos publicados, pero contienen datos simulados. Por lo tanto, los resultados obtenidos deben interpretarse únicamente con fines didácticos y no como evidencia científica.</p>
 <p>La finalidad es familiarizarse con el análisis estadístico y con el uso de R a partir de situaciones similares a las que pueden encontrarse en investigaciones reales.</p>

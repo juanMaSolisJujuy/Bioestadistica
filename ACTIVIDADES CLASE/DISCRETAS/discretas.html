@@ -1,0 +1,69 @@
+<li style="margin-bottom: 12px;">
+  <strong>Santiago Botti, Eliana M.</strong> (Ejercicio 1)
+  <ul style="list-style-type: circle; padding-left: 18px; margin-top: 4px;">
+    <li>a) Identificación correcta: Modelo Binomial con <code>n = 80</code>, <code>p = 0,04</code>.</li>
+    <li>b) <code>P(X = 10) = 0,00099</code> (correcto).</li>
+    <li>c) <code>P(X &ge; 5) = 0,2164</code> (correcto, precisión decimal adecuada).</li>
+    <li>d) <code>E(X) = 3,2</code>; <code>Var(X) = 3,072</code>; <code>DE(X) = 1,7527</code> (correctos en su totalidad).</li>
+  </ul>
+</li>
+
+<li style="margin-bottom: 12px;">
+  <strong>Arnaldo Gonzalez, Leandro Vega, Kyan Avendaño, Veronica Colodro</strong> (Ejercicio 1)
+  <ul style="list-style-type: circle; padding-left: 18px; margin-top: 4px;">
+    <li>a) Identificación correcta: Modelo Binomial con <code>n = 80</code>, <code>p = 0,04</code>.</li>
+    <li>b) <code>P(X = 10) = 0,00099</code> (correcto).</li>
+    <li>c) <code>P(X &ge; 5) = 0,22</code> (correcto por redondeo).</li>
+    <li>d) <code>E(X) = 3,2</code> y <code>DE(X) = 1,75</code> (correctos). Omisión de la varianza <code>Var(X) = 3,072</code>.</li>
+  </ul>
+</li>
+
+<li style="margin-bottom: 12px;">
+  <strong>Gomez, Carrizo</strong> (Ejercicio 1)
+  <ul style="list-style-type: circle; padding-left: 18px; margin-top: 4px;">
+    <li>a) Modelo Binomial correcto: <code>n = 80</code>, <code>p = 0,04</code>. Variable aleatoria bien definida.</li>
+    <li>b) <code>P(X = 10) = 0,00099</code> (correcto).</li>
+    <li>c) <code>P(X &ge; 5) = 0,22</code> (correcto por redondeo).</li>
+    <li>d) Omisión de los cálculos explícitos de varianza y desvío estándar. Valores esperados: <code>E(X) = 3,2</code>, <code>Var(X) = 3,072</code>, <code>DE(X) = 1,7527</code>.</li>
+  </ul>
+</li>
+
+<li style="margin-bottom: 12px;">
+  <strong>Julieta Martinez, Candela Díaz</strong> (Ejercicio 2)
+  <ul style="list-style-type: circle; padding-left: 18px; margin-top: 4px;">
+    <li>a) Modelo Binomial correcto: <code>n = 20</code>, <code>p = 0,12</code>.</li>
+    <li>b) <code>P(X = 0) = 0,0776</code> (correcto).</li>
+    <li>c) <code>0,6281</code> (incorrecto). Se aplicó <code>pbinom(4, 20, 0.12) - dbinom(0, 20, 0.12)</code>. El cálculo correcto es <code>pbinom(4, 20, 0.12) - pbinom(1, 20, 0.12) = 0,5779</code>.</li>
+    <li>d) <code>0,0827</code> (incorrecto). Error en la formulación de la probabilidad del complemento. Cálculo correcto: <code>1 - pbinom(4, 20, 0.12) = 0,1330</code>.</li>
+  </ul>
+</li>
+
+<li style="margin-bottom: 12px;">
+  <strong>Martinez, Juarez, Sanchez, Huinchaca, Geronimo</strong> (Ejercicio 2)
+  <ul style="list-style-type: circle; padding-left: 18px; margin-top: 4px;">
+    <li>a) Modelo Binomial correcto: <code>n = 20</code>, <code>p = 0,12</code>.</li>
+    <li>b) <code>P(X = 0) = 0,0776</code> (correcto).</li>
+    <li>c) <code>2,0611</code> (incorrecto; una probabilidad no supera el valor 1). Resultado correcto: <code>P(2 &le; X &le; 4) = 0,5779</code>.</li>
+    <li>d) <code>1,69e-05</code> (incorrecto). Error de sintaxis en R al calcular la cola superior. Resultado correcto: <code>1 - pbinom(4, 20, 0.12) = 0,1330</code>.</li>
+  </ul>
+</li>
+
+<li style="margin-bottom: 12px;">
+  <strong>Lima, Irauzqui M., Garcia J., Champey S.</strong> (Ejercicio 3)
+  <ul style="list-style-type: circle; padding-left: 18px; margin-top: 4px;">
+    <li>a) <code>P(Y = 4) = 0,189</code> (correcto; valor exacto 0,1898).</li>
+    <li>b) <code>P(Y &le; 2) = 0,17</code> (correcto; valor exacto 0,1736).</li>
+    <li>c) <code>P(Y > 6) = 0,16</code> (incorrecto por truncamiento; valor exacto 0,1689, redondea a 0,169 o 0,17).</li>
+    <li>d) Indican <code>&lambda; = 4,5</code> pero omiten reescalar el parámetro a <code>0,50 m&sup2;</code> (<code>&lambda; = 9,0</code>) y el cálculo de <code>P(Y' &ge; 8) = 1 - ppois(7, 9) = 0,6761</code>.</li>
+  </ul>
+</li>
+
+<li style="margin-bottom: 12px;">
+  <strong>Bitú, Iring / Gutierrez Cortez, Cassandra / Balanza, Jara / Cruz, Rocío</strong> (Ejercicio 4)
+  <ul style="list-style-type: circle; padding-left: 18px; margin-top: 4px;">
+    <li>a) <code>P(Y = 0) = 0,16</code> (truncamiento excesivo de 0,1653).</li>
+    <li>b) <code>P(Y = 2) = 0,26</code> (redondeo impreciso de 0,2685; corresponde 0,27).</li>
+    <li>c) <code>P(Y > 3) = 0,10</code> (redondeo impreciso de 0,1087; corresponde 0,11).</li>
+    <li>d) Omisión del cálculo de cuantiles mediante <code>qpois(0.90, 1.8)</code>. Resultado esperado: <code>k = 3</code> (dado que <code>P(Y &le; 3) = 0,8913</code>).</li>
+  </ul>
+</li>

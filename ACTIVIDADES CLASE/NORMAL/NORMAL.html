@@ -1,0 +1,58 @@
+<li style="margin-bottom: 12px;">
+  <strong>Chancena</strong> (Ejercicio B1)
+  <ul style="list-style-type: circle; padding-left: 18px; margin-top: 4px;">
+    <li>a) Parámetros correctos: <code>mu = 3.5</code>, <code>sigma = 0.6</code>.</li>
+    <li>b) <code>P(X &le; 2.8) = 0,1217</code> (correcto).</li>
+    <li>c) <code>P(X > 4.2) = 0,1217</code> (correcto; calculado mediante <code>1 - pnorm(4.2, 3.5, 0.6)</code>).</li>
+    <li>d) <code>P(3.0 &le; X &le; 4.0) = 0,5953</code> (correcto; resta de acumuladas <code>pnorm(4, 3.5, 0.6) - pnorm(3, 3.5, 0.6)</code>).</li>
+  </ul>
+</li>
+
+<li style="margin-bottom: 12px;">
+  <strong>Baldo, Santiago; Muñoz, Paloma; Aramayo, Antonella</strong> (Ejercicio B1)
+  <ul style="list-style-type: circle; padding-left: 18px; margin-top: 4px;">
+    <li>a) Parámetros correctos: <code>mu = 3.5</code>, <code>sigma = 0.6</code>.</li>
+    <li>b) <code>P(X &le; 2.8) = 0,1216</code> (12,16%) (correcto).</li>
+    <li>c) <code>P(X > 4.2) = 0,1216</code> (12,16%) (correcto).</li>
+    <li>d) <code>P(3.0 &le; X &le; 4.0) = 0,5953</code> (59,53%) (correcto).</li>
+  </ul>
+</li>
+
+<li style="margin-bottom: 12px;">
+  <strong>Martínez, Julieta; Diaz, Candela</strong> (Ejercicio B2)
+  <ul style="list-style-type: circle; padding-left: 18px; margin-top: 4px;">
+    <li>a) <code>qnorm(0.10, 28.4, 3.2) = 24,2990</code> g/kg (correcto).</li>
+    <li>b) <code>qnorm(0.95, 28.4, 3.2) = 33,6635</code> g/kg (correcto).</li>
+    <li>c) Intervalo reportado <code>[24,29; 31,6]</code> (incorrecto). Para abarcar el 90% simétrico central corresponde evaluar percentiles 5 y 95: <code>qnorm(0.05, 28.4, 3.2) = 23,1365</code> y <code>qnorm(0.95, 28.4, 3.2) = 33,6635</code>. Intervalo correcto: <code>[23,14; 33,66]</code> g/kg.</li>
+    <li>d) Interpretación conceptual adecuada respecto del uso de cuantiles para fijar límites críticos de deficiencia nutricional.</li>
+  </ul>
+</li>
+
+<li style="margin-bottom: 12px;">
+  <strong>Jimenez, Antonela; Garcia, Diego</strong> (Ejercicio B3)
+  <ul style="list-style-type: circle; padding-left: 18px; margin-top: 4px;">
+    <li>a) Estandarización manual: <code>z = (45.0 - 32.0) / 8.5 = 1,5294</code> (correcto).</li>
+    <li>b) <code>P(Z &le; 1,5294) = 0,9369</code> (correcto).</li>
+    <li>c) Verificación en escala original: <code>pnorm(45, 32, 8.5) = 0,9369</code> (correcto).</li>
+    <li>d) Omisión de conclusión contextual explícita sobre la posición del individuo dentro de la cola superior de la estructura del rodal.</li>
+  </ul>
+</li>
+
+<li style="margin-bottom: 12px;">
+  <strong>Gonzalez, Arnaldo; Avendaño, Kyara; Vega, Leandro; Colodro, Silvia</strong> (Ejercicio B3)
+  <ul style="list-style-type: circle; padding-left: 18px; margin-top: 4px;">
+    <li>a) Estandarización manual: <code>z = (45.0 - 32.0) / 8.5 = 1,5294</code> (correcto).</li>
+    <li>b) <code>P(Z &le; 1,5294) = 0,9368</code> (93,68%) (correcto).</li>
+    <li>c) Verificación directa: <code>pnorm(45, 32, 8.5) = 0,9368</code> (correcto).</li>
+    <li>d) Interpretación biológica adecuada: ubica al individuo por encima del 93,68% del rodal analizado.</li>
+  </ul>
+</li>
+
+<li style="margin-bottom: 12px;">
+  <strong>Bitu, Irina; Balanza Almada, Jara; Gutierrez Cortez, Casandra</strong> (Ejercicio B4)
+  <ul style="list-style-type: circle; padding-left: 18px; margin-top: 4px;">
+    <li>a) Sintaxis de simulación: <code>rnorm(60, 65.0, 11.2)</code> (correcto).</li>
+    <li>b) Estadísticos muestrales simulados: media = <code>65,73</code> g, desvío estándar = <code>10,19</code> g (correctos para la muestra generada).</li>
+    <li>c) Proporción empírica observada <code>< 50</code> g: <code>0,05</code> (5%) (correcto).</li>
+    <li>d) Probabilidad teórica: <code>P(X &le; 50) = pnorm(50, 65, 11.2) = 0,0902</code> (9,02%) (correcto; comparación consistente entre la muestra y el modelo teórico).</li>
+  </ul>

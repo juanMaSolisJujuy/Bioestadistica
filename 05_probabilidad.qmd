@@ -95,7 +95,7 @@ ejemplo, evaluar si dos especies coexisten de forma independiente en
 un mismo microhábitat, o estimar la confiabilidad de una prueba
 diagnóstica en sanidad animal.
 
-### Por qué esta unidad es un marco para las siguientes
+### Objetivos de esta unidad
 
 El objetivo de este Trabajo Práctico es fijar un marco conceptual común desde el
 cual abordar las unidades siguientes. En particular, las nociones de

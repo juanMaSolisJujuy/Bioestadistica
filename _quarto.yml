@@ -17,6 +17,7 @@ book:
     - 06_discretas.qmd
     - 07_normal.qmd
     - Primer_Parcial_2026.qmd
+    - 08_inferencia_muestras_grandes.qmd
     - herramientas.qmd
     - references.qmd
   page-footer: 
