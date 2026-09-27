@@ -1,0 +1,173 @@
+---
+title: "Trabajo Práctico 6: Inferencia con Muestras Chicas: Distribución Chi Cuadrado"
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+<div style="
+  background-color: #e3f2fd; 
+  border-radius: 15px; 
+  padding: 20px 25px; 
+  margin: 20px 0;
+  border-left: 5px solid #1e88e5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #0d3c5e;
+  line-height: 1.6;
+">
+  <p style="margin: 0; font-size: 1.05rem;">
+    <strong>Objetivos del Trabajo Práctico</strong><br><br>
+    El objetivo de esta unidad es que el estudiante comprenda y utilice herramientas de inferencia estadística en contextos de muestras donde no es apropiado recurrir a aproximaciones normales. En particular, se busca que el estudiante sea capaz de: 
+    <strong>(1)</strong> Reconocer situaciones en las que el tamaño muestral limita el uso de resultados asintóticos como el Teorema Central del Límite; 
+    <strong>(2)</strong> Comprender el origen y las propiedades de la Distribución Chi-cuadrado, en relación con la variabilidad muestral; 
+    <strong>(3)</strong> Interpretar y utilizar el concepto de grados de libertad en la construcción de estadísticos y en la selección de distribuciones teóricas adecuadas; 
+    <strong>(4)</strong> Realizar inferencia sobre la varianza poblacional mediante estadísticos basados en la distribución Chi-cuadrado, incluyendo estimación por intervalos y contrastes de hipótesis; 
+    <strong>(5)</strong> Aplicar pruebas basadas en la distribución Chi-cuadrado en contextos de bondad de ajuste e independencia, reconociendo sus supuestos y limitaciones; y 
+    <strong>(6)</strong> Evaluar críticamente la adecuación de estos procedimientos en problemas reales, distinguiendo entre enfoques paramétricos y no paramétricos.
+  </p>
+</div>
+
+::: callout-important
+## Lectura Sugerida para el Trabajo Práctico
+
+Se recomienda a los estudiantes consultar la unidad 8 del libro **«Apuntes de
+Bioestadística. Con ejercicios resueltos»** para profundizar los
+conceptos metodológicos desarrollados en este marco:
+
+- **Unidad 8: Muestreo Exacto y Distribución Chi-Cuadrado**: Consultar
+  el concepto de grados de libertad, las propiedades de la
+  distribución (asimetría, campo de definición, comportamiento según
+  los grados de libertad) y las pruebas de normalidad (Shapiro-Wilk,
+  Kolmogorov-Smirnov, Q-Q plot) como condición previa de aplicación.
+- **Unidad 8: Inferencia de la Varianza Poblacional**: Revisar la
+  estimación puntual, la construcción de un intervalo de confianza y
+  el contraste de hipótesis para la varianza de una población normal.
+- **Unidad 8: Pruebas de Bondad de Ajuste e Independencia**: Prestar
+  atención al planteo de hipótesis, al cálculo de frecuencias
+  esperadas y al uso de la función `chisq.test()` para el ajuste a
+  proporciones teóricas y para tablas de contingencia.
+
+Como lecturas complementarias, se sugiere también revisar la unidad
+*«Inference / Association Tests»* del libro **«Data Analysis for the
+Life Sciences»** de Irizarry et al.; la unidad *«DNA Analysis with
+Microarrays»* del libro **«Introduction to Bioinformatics with R»** de
+Lin et al.; la unidad *«Chi-Squared Test»* de Weaver et al.; y la
+unidad *«Estudios de Correlación y Asociación»* del libro
+**«Estadística y Biometría»** de Balzarini et al.
+:::
+
+## Generalidades
+
+En la unidad anterior se trabajó con muestras suficientemente grandes
+como para apoyarse en el Teorema Central del Límite. Sin embargo,
+cuando el tamaño muestral es reducido, este resultado deja de ser
+confiable, y con él, la aproximación Normal de los estadísticos
+muestrales. Para esos casos, la **Teoría del Muestreo Exacto**
+proporciona un conjunto de distribuciones teóricas: Chi-cuadrado, t de
+Student y F de Fisher-Snedecor, que permiten realizar inferencia con
+validez exacta, sin depender de propiedades asintóticas. Todas ellas
+están estrechamente vinculadas a la distribución Normal y quedan
+definidas por un parámetro común: los **grados de libertad**.
+
+
+### Pruebas de normalidad
+
+Puesto que los métodos de esta unidad asumen (en lugar de aproximar)
+la normalidad poblacional, resulta indispensable verificar dicho
+supuesto antes de aplicarlos. Para ello se recurre a **pruebas de
+normalidad**: la prueba de Shapiro-Wilk, de uso extendido en muestras
+pequeñas y moderadas, y la prueba de Kolmogorov-Smirnov, que compara
+la distribución empírica con la distribución acumulada teórica
+Normal. De forma complementaria, el **gráfico Q-Q (cuantil-cuantil)**
+permite una evaluación visual: si los puntos se distribuyen en torno
+a la recta identidad, la distribución empírica de los datos puede
+considerarse aproximadamente Normal. Solo una vez verificado este
+supuesto tiene sentido avanzar hacia los procedimientos basados en la
+distribución Chi-cuadrado.
+
+### Aplicaciones de la distribución Chi-cuadrado
+
+La distribución Chi-cuadrado es asimétrica, se define exclusivamente
+por sus grados de libertad, y tiende a hacerse más simétrica a medida
+que estos aumentan. En Ciencias Biológicas, encuentra dos grandes
+campos de aplicación. Por un lado, un uso **paramétrico**: la
+inferencia sobre la **varianza poblacional** de una variable normal
+(estimación puntual, intervalo de confianza y prueba de hipótesis),
+por ejemplo comparar la variabilidad de una medida morfométrica normal frente a un valor de referencia. 
+Por otro lado, un uso **no paramétrico o de distribución libre**, orientado al análisis de
+frecuencias observadas: las **pruebas de bondad de ajuste**, que
+evalúan si una distribución de frecuencias (por ejemplo, de genotipos
+o fenotipos) se ajusta a una proporción teórica esperada, y las
+**pruebas de independencia**, que evalúan si dos variables de
+clasificación (por ejemplo, especie y hábitat, o raza y fecundidad)
+están asociadas entre sí a partir de una tabla de contingencia. Cabe
+mencionar que, cuando las tablas de contingencia son pequeñas (en
+particular las de 2x2 con frecuencias esperadas bajas), suelen
+emplearse ajustes como la corrección de continuidad de Yates y/o
+la prueba exacta de Fisher.
+
+```{mermaid}
+%%| fig-cap: "Marco conceptual de la Unidad de Inferencia con Muestras Chicas (Chi-Cuadrado)"
+flowchart LR
+    A["Muestra Chica<br/>(TCL no aplica)"] --> B["Teoría del<br/>Muestreo Exacto"]
+    B --> C["Verificar Normalidad<br/>(Shapiro-Wilk, KS, Q-Q plot)"]
+    C --> D["Distribución Chi-Cuadrado<br/>(grados de libertad)"]
+    D --> E["Uso Paramétrico<br/>Inferencia de la Varianza"]
+    D --> F["Uso No Paramétrico<br/>Bondad de Ajuste"]
+    D --> G["Uso No Paramétrico<br/>Prueba de Independencia"]
+    G -.->|Tablas 2x2 pequeñas| H["Corrección de Yates /<br/>Prueba Exacta de Fisher"]
+```
+
+## **Actividad de pre-clase**
+
+Deberá subir las siguientes producciones realizadas durante la cursada de Epistemología 2026 al cuaderno de *notebooklm*, y preguntarle cuál es la pregunta de investigación y los objetivos propuestos en cada uno. En clase se le pedirá que conteste a estas preguntas.
+
+- [GRUPO 3](./TRABAJOS EPIST/006_chi/Grupo 3_Sem 2_2026.docx)
+- [Ecology Journal-Vol. 6 No. 2 (2024)1738334681.pdf](./TRABAJOS EPIST/006_chi/Ecology Journal-Vol. 6 No. 2 (2024)1738334681.pdf)
+- [GRUPO 5](./TRABAJOS EPIST/006_chi/Grupo 5_SEMINARIO 2_22-06-26 (2).docx)
+- [GRUPO 12](./TRABAJOS EPIST/006_chi/GRUPO 12_SEMINARIO2_2026.docx)
+- [GRUPO 14](./TRABAJOS EPIST/006_chi/GRUPO 14_SEM2_2026.docx)
+- [SCRIPT DE R](./TRABAJOS EPIST/006_chi/006_chi_2026.r)
+
+
+## Micro-ejercicios de aplicación (optativos)
+
+Los siguientes son ejercicios tomados de algunos de los recursos bibliográficos sugeridos.
+
+
+```{r eval = FALSE, collapse=TRUE}
+# Inferencia de la varianza poblacional ($\sigma^2$ / desvío estándar):
+# 
+# Ejemplo 1: Estimación por IC del 95% para la varianza en residuos de plaguicidas en leche (Apuntes Bioestadística CER, pág. 358).
+# Ejemplo 2: Prueba de hipótesis para la desviación estándar en máquinas embotelladoras (Triola, pág. 438).
+# Ejemplo 3: Intervalo de confianza del 99% para la variabilidad del mamífero más pequeño del mundo (Triola, pág. 374).
+# Ejemplo 4: Estimación de la desviación estándar sobre el índice de masa corporal (IMC). (Triola, pág. 374).
+# 
+# Prueba de independencia (Tablas de contingencia):
+# 
+# Ejemplo 1: Asociación entre raza vacuna y éxito de fecundidad (Apuntes Bioestadística CER, pág. 363).
+# Ejemplo 2: Independencia entre contenido de sacarosa y aptitud industrial en caña de azúcar (Apuntes Bioestadística CER, pág. 370).
+# Ejemplo 3: Relación entre condición corporal de vacas y éxito en inseminación artificial (Balzarini et al., pág. 274).
+# Ejemplo 4: Evaluación de la exactitud de pruebas poligráficas (Triola, pág. 618).
+# Ejemplo 5: Prueba de detección de cáncer de vejiga mediante perros entrenados (Triola, pág. 618).
+# 
+# Ajuste a distribución teórica (Poisson, Binomial, Normal):
+# 
+# Ejemplo 1: Prueba de bondad de ajuste a un modelo discreto Binomial (n=3, p=1/3) (Triola, pág. 605).
+# Ejemplo 2: Ajuste de frecuencias observadas de CI a una distribución Normal (mu=100, sigma=15) (Triola, págs. 605-606).
+# Ejemplo 3: Prueba de concordancia de datos agrupados frente a una curva Normal (Triola, pág. 605).
+# 
+# Prueba de frecuencias esperadas (Proporciones teóricas / Equiprobabilidad / Vectores):
+# 
+# Ejemplo 1: Ajuste de proporciones fenotípicas observadas al ratio mendeliano 1:2:1 (Apuntes Bioestadística CER, pág. 362).
+# Ejemplo 2: Segregación independiente de 3 caracteres mendelianos con 8 clases fenotípicas (Balzarini et al., pág. 255).
+# Ejemplo 3: Prueba de equiprobabilidad en las 6 caras de un dado cargado (Triola, pág. 601).
+# Ejemplo 4: Verificación de frecuencias genotípicas observadas frente al modelo 25%-50%-25% (Triola, pág. 604).
+# Ejemplo 5: Contraste de frecuencias observadas de color de ojos frente a proporciones teóricas predichas (Triola, pág. 603).
+
+```
+
+
+

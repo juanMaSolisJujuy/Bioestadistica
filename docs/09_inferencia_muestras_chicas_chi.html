@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Competencias prácticas de la bioestadística – | BIOSTADÍSTICA</title>
+<title>9&nbsp; Trabajo Práctico 6: Inferencia con Muestras Chicas: Distribución Chi Cuadrado – | BIOSTADÍSTICA</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -36,8 +71,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./03_intro_R.html" rel="next">
-<link href="./01_pautas.html" rel="prev">
+<link href="./herramientas.html" rel="next">
+<link href="./08_inferencia_muestras_grandes.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -75,6 +110,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Buscar"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -88,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_competencias.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Competencias prácticas de la bioestadística</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_inferencia_muestras_chicas_chi.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Trabajo Práctico 6: Inferencia con Muestras Chicas: Distribución Chi Cuadrado</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -127,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_competencias.html" class="sidebar-item-text sidebar-link active">
+  <a href="./02_competencias.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Competencias prácticas de la bioestadística</span></span></a>
   </div>
 </li>
@@ -181,7 +219,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_inferencia_muestras_chicas_chi.html" class="sidebar-item-text sidebar-link">
+  <a href="./09_inferencia_muestras_chicas_chi.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Trabajo Práctico 6: Inferencia con Muestras Chicas: Distribución Chi Cuadrado</span></span></a>
   </div>
 </li>
@@ -207,16 +245,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#niveles-de-competencias" id="toc-niveles-de-competencias" class="nav-link active" data-scroll-target="#niveles-de-competencias"><span class="header-section-number">2.1</span> Niveles de competencias</a></li>
-  <li><a href="#evaluación-práctica" id="toc-evaluación-práctica" class="nav-link" data-scroll-target="#evaluación-práctica"><span class="header-section-number">2.2</span> Evaluación práctica</a></li>
-  <li><a href="#estrategia-pedagógica" id="toc-estrategia-pedagógica" class="nav-link" data-scroll-target="#estrategia-pedagógica"><span class="header-section-number">2.3</span> Estrategia pedagógica</a></li>
-  <li><a href="#estrategias-de-estudio" id="toc-estrategias-de-estudio" class="nav-link" data-scroll-target="#estrategias-de-estudio"><span class="header-section-number">2.4</span> Estrategias de estudio</a></li>
-  <li><a href="#inteligencia-artificial-generativa-pautas-de-trabajo-en-el-curso" id="toc-inteligencia-artificial-generativa-pautas-de-trabajo-en-el-curso" class="nav-link" data-scroll-target="#inteligencia-artificial-generativa-pautas-de-trabajo-en-el-curso"><span class="header-section-number">2.5</span> Inteligencia artificial generativa: Pautas de trabajo en el curso</a>
+  <li><a href="#generalidades" id="toc-generalidades" class="nav-link active" data-scroll-target="#generalidades"><span class="header-section-number">9.1</span> Generalidades</a>
   <ul class="collapse">
-  <li><a href="#qué-puede-aportar-la-ia-en-bioestadística" id="toc-qué-puede-aportar-la-ia-en-bioestadística" class="nav-link" data-scroll-target="#qué-puede-aportar-la-ia-en-bioestadística"><span class="header-section-number">2.5.1</span> ¿Qué puede aportar la IA en Bioestadística?</a></li>
-  <li><a href="#lo-que-la-ia-no-puede-hacer" id="toc-lo-que-la-ia-no-puede-hacer" class="nav-link" data-scroll-target="#lo-que-la-ia-no-puede-hacer"><span class="header-section-number">2.5.2</span> Lo que la IA NO puede hacer</a></li>
-  <li><a href="#esquema-de-trabajo-propuesto" id="toc-esquema-de-trabajo-propuesto" class="nav-link" data-scroll-target="#esquema-de-trabajo-propuesto"><span class="header-section-number">2.5.3</span> Esquema de trabajo propuesto</a></li>
+  <li><a href="#pruebas-de-normalidad" id="toc-pruebas-de-normalidad" class="nav-link" data-scroll-target="#pruebas-de-normalidad"><span class="header-section-number">9.1.1</span> Pruebas de normalidad</a></li>
+  <li><a href="#aplicaciones-de-la-distribución-chi-cuadrado" id="toc-aplicaciones-de-la-distribución-chi-cuadrado" class="nav-link" data-scroll-target="#aplicaciones-de-la-distribución-chi-cuadrado"><span class="header-section-number">9.1.2</span> Aplicaciones de la distribución Chi-cuadrado</a></li>
   </ul></li>
+  <li><a href="#actividad-de-pre-clase" id="toc-actividad-de-pre-clase" class="nav-link" data-scroll-target="#actividad-de-pre-clase"><span class="header-section-number">9.2</span> <strong>Actividad de pre-clase</strong></a></li>
+  <li><a href="#micro-ejercicios-de-aplicación-optativos" id="toc-micro-ejercicios-de-aplicación-optativos" class="nav-link" data-scroll-target="#micro-ejercicios-de-aplicación-optativos"><span class="header-section-number">9.3</span> Micro-ejercicios de aplicación (optativos)</a></li>
   </ul>
 </nav>
     </div>
@@ -225,7 +260,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Competencias prácticas de la bioestadística</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Trabajo Práctico 6: Inferencia con Muestras Chicas: Distribución Chi Cuadrado</span></h1>
 </div>
 
 
@@ -242,226 +277,118 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="niveles-de-competencias" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="niveles-de-competencias"><span class="header-section-number">2.1</span> Niveles de competencias</h2>
-<p>Se adopta la jerarquía de niveles de conocimiento estadístico propuesta por <strong>Ben-Zvi y Garfield (2005)</strong>: a) alfabetización estadística, b) razonamiento estadístico y c) pensamiento estadístico, como un continuo de desarrollo formativo, adaptado a un entorno de múltiples herramientas informáticas. Desde una perspectiva práctica, esto significa que cada nivel no solo se declara, sino que se pone en juego en la resolución concreta de los ejercicios propuestos. El motivo es que el profesional no sólo debe reconocer qué procedimiento estadístico es adecuado para cada situación, sino que también debe saber cómo implementarlo.</p>
-<p>Cada nivel de conocimiento estadístico se construye sobre el anterior, incorporando progresivamente elementos de niveles superiores a lo largo de la cursada.</p>
-<ul>
-<li><p><font style="color:darkcyan;">Alfabetización estadística</font>: representa la comprensión del “qué” (conceptos, gráficos, símbolos, funciones). En la práctica, supone reconocer el procedimiento o sintaxis necesarios para ejecutar una prueba, leer correctamente su salida y verificar que no haya errores de especificación en el software elegido. Constituye la base en las competencias estadísticas.</p></li>
-<li><p><font style="color:darkcyan;">Razonamiento estadístico</font>: capacidad de seleccionar y justificar procedimientos, interpretar resultados más allá de la consigna y detectar errores. En la práctica, supone tareas como elegir la prueba estadística adecuada ante un problema dado, explicar por qué se rechaza o no una hipótesis, o detectar que un gráfico generado por software no es apropiado para los datos analizados.</p></li>
-<li><p><font style="color:darkcyan;">Pensamiento estadístico</font>: comprensión del “para qué” y “en qué contexto”, formular problemas en términos estadísticos, reconocer la variabilidad como un aspecto inherente, evaluar supuestos, conectar datos con procesos generadores, tomar decisiones bajo incertidumbre, comunicar conclusiones con rigor disciplinar.</p></li>
-</ul>
-<p>&nbsp;</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div style="
+  background-color: #e3f2fd; 
+  border-radius: 15px; 
+  padding: 20px 25px; 
+  margin: 20px 0;
+  border-left: 5px solid #1e88e5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #0d3c5e;
+  line-height: 1.6;
+">
+<p style="margin: 0; font-size: 1.05rem;">
+<strong>Objetivos del Trabajo Práctico</strong><br><br> El objetivo de esta unidad es que el estudiante comprenda y utilice herramientas de inferencia estadística en contextos de muestras donde no es apropiado recurrir a aproximaciones normales. En particular, se busca que el estudiante sea capaz de: <strong>(1)</strong> Reconocer situaciones en las que el tamaño muestral limita el uso de resultados asintóticos como el Teorema Central del Límite; <strong>(2)</strong> Comprender el origen y las propiedades de la Distribución Chi-cuadrado, en relación con la variabilidad muestral; <strong>(3)</strong> Interpretar y utilizar el concepto de grados de libertad en la construcción de estadísticos y en la selección de distribuciones teóricas adecuadas; <strong>(4)</strong> Realizar inferencia sobre la varianza poblacional mediante estadísticos basados en la distribución Chi-cuadrado, incluyendo estimación por intervalos y contrastes de hipótesis; <strong>(5)</strong> Aplicar pruebas basadas en la distribución Chi-cuadrado en contextos de bondad de ajuste e independencia, reconociendo sus supuestos y limitaciones; y <strong>(6)</strong> Evaluar críticamente la adecuación de estos procedimientos en problemas reales, distinguiendo entre enfoques paramétricos y no paramétricos.
+</p>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Objetivo del curso (actividades prácticas)
+<span class="screen-reader-only">Importante</span>Lectura Sugerida para el Trabajo Práctico
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>El objetivo mínimo de este curso es que, al finalizar, cada estudiante demuestre al menos habilidades relacionadas con el <strong>razonamiento estadístico</strong> en problemas estructurados, y principios de <strong>pensamiento estadístico</strong> en problemas abiertos de su disciplina: no se exige dominio pleno del pensamiento estadístico, pero sí que el estudiante sea capaz de identificar cuándo el razonamiento no es suficiente y qué preguntas de contexto quedan abiertas.</p>
-</div>
-</div>
-<p>En virtud de lo anterior, ciertos contenidos usualmente incluidos en cursos introductorios de bioestadística (como algunos tipos de gráficos, ciertas distribuciones de probabilidad, etc.) han sido deliberadamente omitidos a fin de priorizar un tratamiento en mayor profundidad de aquellos conceptos y herramientas que se considera permiten desarrollar mejor los criterios de análisis, interpretación y toma de decisiones.</p>
-<hr>
-</section>
-<section id="evaluación-práctica" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="evaluación-práctica"><span class="header-section-number">2.2</span> Evaluación práctica</h2>
-<p>La propuesta didáctica de este material se inspira en recomendaciones internacionales para la enseñanza de la estadística, como el estándar <strong>GAISE</strong>, adaptándolas al contexto de formación situada en la provincia de Jujuy.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Metas del estándar GAISE
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Enseñar pensamiento estadístico.</li>
-<li>Enseñar la estadística como un proceso de investigación para la resolución de problemas y la toma de decisiones.</li>
-<li>Brindar a los estudiantes experiencia en pensamiento multivariable.</li>
-<li>Enfocarse en la comprensión conceptual.</li>
-<li>Integrar datos reales con un contexto y un propósito.</li>
-<li>Fomentar el aprendizaje activo.</li>
-<li>Utilizar la tecnología para explorar conceptos y analizar datos.</li>
-<li>Usar evaluaciones para mejorar y valorar el aprendizaje de los estudiantes.</li>
-</ol>
-</div>
-</div>
-<p>Con ese marco, al finalizar el curso, <strong>cada estudiante debe ser capaz de</strong>:</p>
+<p>Se recomienda a los estudiantes consultar la unidad 8 del libro <strong>«Apuntes de Bioestadística. Con ejercicios resueltos»</strong> para profundizar los conceptos metodológicos desarrollados en este marco:</p>
 <ul>
-<li><code>Seleccionar y aplicar correctamente</code>, de forma autónoma, una técnica estadística ante un problema concreto.</li>
-<li><code>Justificar su elección</code> (supuestos, limitaciones, alternativas).</li>
-<li><code>Ejecutar correctamente</code> la técnica estadística seleccionada en al menos un entorno de software (acción y resultado).</li>
-<li><code>Interpretar los resultados</code> tanto en términos estadísticos como disciplinares: agronomía, biología, ciencias ambientales, bromatología, etc.</li>
-<li>Poder <code>identificar al menos una fuente de variabilidad</code> no controlada en el problema.</li>
-<li><code>Señalar una limitación del análisis</code> que requeriría datos adicionales, un ajuste del diseño o un análisis diferente.</li>
+<li><strong>Unidad 8: Muestreo Exacto y Distribución Chi-Cuadrado</strong>: Consultar el concepto de grados de libertad, las propiedades de la distribución (asimetría, campo de definición, comportamiento según los grados de libertad) y las pruebas de normalidad (Shapiro-Wilk, Kolmogorov-Smirnov, Q-Q plot) como condición previa de aplicación.</li>
+<li><strong>Unidad 8: Inferencia de la Varianza Poblacional</strong>: Revisar la estimación puntual, la construcción de un intervalo de confianza y el contraste de hipótesis para la varianza de una población normal.</li>
+<li><strong>Unidad 8: Pruebas de Bondad de Ajuste e Independencia</strong>: Prestar atención al planteo de hipótesis, al cálculo de frecuencias esperadas y al uso de la función <code>chisq.test()</code> para el ajuste a proporciones teóricas y para tablas de contingencia.</li>
 </ul>
-<hr>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Advertencia</span>Modalidad de las evaluaciones
+<p>Como lecturas complementarias, se sugiere también revisar la unidad <em>«Inference / Association Tests»</em> del libro <strong>«Data Analysis for the Life Sciences»</strong> de Irizarry et al.; la unidad <em>«DNA Analysis with Microarrays»</em> del libro <strong>«Introduction to Bioinformatics with R»</strong> de Lin et al.; la unidad <em>«Chi-Squared Test»</em> de Weaver et al.; y la unidad <em>«Estudios de Correlación y Asociación»</em> del libro <strong>«Estadística y Biometría»</strong> de Balzarini et al.</p>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><p>Los parciales serán presenciales y podrán ser realizados en grupos de hasta 2 (dos) personas. Deberán contar con una computadora ya que deberán realizar cálculos estadísticos (tomar las previsiones con tiempo, informar a la cátedra si se dificulta contar con una computadora para tratar de resolver la situación). En función de la cantidad de estudiantes, el formato de entrega podrá ser escrito o bien mediante la entrega del script con la resolución de los ejercicios. Además de la entrega, los parciales deberán ser defendidos/validados en forma oral, cuya implementación será oportunamente consensuada.</p></li>
-<li><p>Los informes de análisis y tareas de campo deberán ser defendidas en forma oral, cuya implementación será oportunamente consensuada.</p></li>
-</ul>
-</div>
-</div>
-<hr>
+<section id="generalidades" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="generalidades"><span class="header-section-number">9.1</span> Generalidades</h2>
+<p>En la unidad anterior se trabajó con muestras suficientemente grandes como para apoyarse en el Teorema Central del Límite. Sin embargo, cuando el tamaño muestral es reducido, este resultado deja de ser confiable, y con él, la aproximación Normal de los estadísticos muestrales. Para esos casos, la <strong>Teoría del Muestreo Exacto</strong> proporciona un conjunto de distribuciones teóricas: Chi-cuadrado, t de Student y F de Fisher-Snedecor, que permiten realizar inferencia con validez exacta, sin depender de propiedades asintóticas. Todas ellas están estrechamente vinculadas a la distribución Normal y quedan definidas por un parámetro común: los <strong>grados de libertad</strong>.</p>
+<section id="pruebas-de-normalidad" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="pruebas-de-normalidad"><span class="header-section-number">9.1.1</span> Pruebas de normalidad</h3>
+<p>Puesto que los métodos de esta unidad asumen (en lugar de aproximar) la normalidad poblacional, resulta indispensable verificar dicho supuesto antes de aplicarlos. Para ello se recurre a <strong>pruebas de normalidad</strong>: la prueba de Shapiro-Wilk, de uso extendido en muestras pequeñas y moderadas, y la prueba de Kolmogorov-Smirnov, que compara la distribución empírica con la distribución acumulada teórica Normal. De forma complementaria, el <strong>gráfico Q-Q (cuantil-cuantil)</strong> permite una evaluación visual: si los puntos se distribuyen en torno a la recta identidad, la distribución empírica de los datos puede considerarse aproximadamente Normal. Solo una vez verificado este supuesto tiene sentido avanzar hacia los procedimientos basados en la distribución Chi-cuadrado.</p>
 </section>
-<section id="estrategia-pedagógica" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="estrategia-pedagógica"><span class="header-section-number">2.3</span> Estrategia pedagógica</h2>
-<p>Se propone una integración gradual entre la práctica guiada y la construcción del razonamiento. Desde la primera clase se combinan:</p>
-<ul>
-<li><strong>Secuencias simples de manipulación y análisis de datos</strong> con software estadístico especializado, como mecanismos de estímulo-respuesta (acción - resultado inmediato) que permiten al alumno asociar rápidamente una operación, como hacer click en un menú o ejecutar una línea de código, obteniendo una salida numérica o gráfica, generando así un primer anclaje sobre conceptos abstractos.</li>
-<li><strong>Ejercicios dirigidos</strong> (para fijar alfabetización y primeros pasos del razonamiento).</li>
-<li><strong>Preguntas de reflexión crítica</strong> (¿por qué un gráfico puede sugerir comportamientos atípicos? ¿qué pasaría si se modifican valores en el set de datos?).</li>
-<li><strong>Análisis y discusión de datos reales</strong> (para desarrollar un sentido crítico y razonamiento estadístico).</li>
-</ul>
-<p><code>Las clases prácticas se organizarán en dos etapas: la primera etapa, hasta el primer parcial, tendrá una orientación principalmente focalizada en lograr que los estudiantes adquieran destrezas procedimentales de análisis estadístico, tanto en el manejo conceptual de terminología estadística orientada a su aplicación, como la manipulación del software estadístico. Es por ello que se aplicará una estrategia de aprendizaje basado en problemas (ejercicios). Una vez finalizada esta etapa, se asumirá que el estudiante ya cuenta con las competencias básicas para avanzar hacia el desarrollo del razonamiento y el pensamiento estadístico, momento en que se incorporará, además, un enfoque basado en proyectos</code>.</p>
-<p>En este marco, se reconoce una progresión en los niveles de aprendizaje:</p>
-<ol type="1">
-<li>Cuando el estudiante se centra en la sintaxis de un programa o en la identificación de procedimientos adecuados, se encuentra en una etapa de <font style="color:darkcyan;">alfabetización estadística</font>.</li>
-<li>Cuando es capaz de justificar la elección de un método o modelo en función de los datos, avanza hacia el <font style="color:darkcyan;">razonamiento estadístico</font>.</li>
-<li>Cuando cuestiona la adecuación de ese modelo considerando los mecanismos subyacentes del fenómeno en estudio, incorpora elementos del <font style="color:darkcyan;">pensamiento estadístico</font>.</li>
-</ol>
-<p>Esta secuencia no debe interpretarse como etapas rígidas o lineales, sino como niveles que se superponen y retroalimentan a lo largo del proceso de aprendizaje.</p>
-<hr>
+<section id="aplicaciones-de-la-distribución-chi-cuadrado" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="aplicaciones-de-la-distribución-chi-cuadrado"><span class="header-section-number">9.1.2</span> Aplicaciones de la distribución Chi-cuadrado</h3>
+<p>La distribución Chi-cuadrado es asimétrica, se define exclusivamente por sus grados de libertad, y tiende a hacerse más simétrica a medida que estos aumentan. En Ciencias Biológicas, encuentra dos grandes campos de aplicación. Por un lado, un uso <strong>paramétrico</strong>: la inferencia sobre la <strong>varianza poblacional</strong> de una variable normal (estimación puntual, intervalo de confianza y prueba de hipótesis), por ejemplo comparar la variabilidad de una medida morfométrica normal frente a un valor de referencia. Por otro lado, un uso <strong>no paramétrico o de distribución libre</strong>, orientado al análisis de frecuencias observadas: las <strong>pruebas de bondad de ajuste</strong>, que evalúan si una distribución de frecuencias (por ejemplo, de genotipos o fenotipos) se ajusta a una proporción teórica esperada, y las <strong>pruebas de independencia</strong>, que evalúan si dos variables de clasificación (por ejemplo, especie y hábitat, o raza y fecundidad) están asociadas entre sí a partir de una tabla de contingencia. Cabe mencionar que, cuando las tablas de contingencia son pequeñas (en particular las de 2x2 con frecuencias esperadas bajas), suelen emplearse ajustes como la corrección de continuidad de Yates y/o la prueba exacta de Fisher.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A["Muestra Chica&lt;br/&gt;(TCL no aplica)"] --&gt; B["Teoría del&lt;br/&gt;Muestreo Exacto"]
+    B --&gt; C["Verificar Normalidad&lt;br/&gt;(Shapiro-Wilk, KS, Q-Q plot)"]
+    C --&gt; D["Distribución Chi-Cuadrado&lt;br/&gt;(grados de libertad)"]
+    D --&gt; E["Uso Paramétrico&lt;br/&gt;Inferencia de la Varianza"]
+    D --&gt; F["Uso No Paramétrico&lt;br/&gt;Bondad de Ajuste"]
+    D --&gt; G["Uso No Paramétrico&lt;br/&gt;Prueba de Independencia"]
+    G -.-&gt;|Tablas 2x2 pequeñas| H["Corrección de Yates /&lt;br/&gt;Prueba Exacta de Fisher"]
+</pre>
+</div>
+<p></p><figcaption> Marco conceptual de la Unidad de Inferencia con Muestras Chicas (Chi-Cuadrado)</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
 </section>
-<section id="estrategias-de-estudio" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="estrategias-de-estudio"><span class="header-section-number">2.4</span> Estrategias de estudio</h2>
-<p>Las siguientes estrategias están orientadas a fortalecer el razonamiento estadístico y mejorar la comunicación de resultados, priorizando la comprensión de los conceptos por sobre la aplicación mecánica de técnicas. Su objetivo es guiar el estudio y la preparación de evaluaciones, promoviendo una mirada integrada entre teoría, práctica e interpretación.</p>
-<ul>
-<li><font style="color:darkcyan;">Comprender antes de memorizar</font>: identificar qué problema estadístico resuelve cada método.</li>
-<li><font style="color:darkcyan;">Practicar interpretación</font>: explicar siempre qué significa un resultado en términos de un fenómeno real.</li>
-<li><font style="color:darkcyan;">Conectar conceptos</font>: vincular muestreo, inferencia, modelos y diseño experimental.</li>
-<li><font style="color:darkcyan;">Preparar ejemplos</font>: practicar la explicación con una o dos situaciones de ejemplo. Aplicar el lema: <em>“ejemplos, ejemplos y más ejemplos”</em>.</li>
-<li><font style="color:darkcyan;">Explicar supuestos</font>: todo método estadístico tiene condiciones de validez.</li>
-<li><font style="color:darkcyan;">Pensar como investigador</font>: preguntarse siempre cuál es la pregunta científica.</li>
-<li><font style="color:darkcyan;">Sostener el razonamiento</font>: si no se recuerda una fórmula exacta, explicar el razonamiento estadístico.</li>
-</ul>
-<p>&nbsp;</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Jerarquía para explicar un problema estadístico
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Es importante poder explicar cualquier problema estadístico en el siguiente orden jerárquico:</p>
-<ol type="1">
-<li><strong>Pregunta de investigación</strong> (o problema a resolver)</li>
-<li><strong>Datos</strong> (reconocer variables, estructura, procedencia, calidad, etc.)</li>
-<li><strong>Descripción</strong> (caracterizar estadísticamente los datos)</li>
-<li><strong>Método a utilizar</strong> (incluye especificar criterios de selección del método o modelo)</li>
-<li><strong>Resultado</strong></li>
-<li><strong>Interpretación</strong></li>
-<li><strong>Comunicación</strong></li>
-</ol>
-</div>
-</div>
-<hr>
 </section>
-<section id="inteligencia-artificial-generativa-pautas-de-trabajo-en-el-curso" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="inteligencia-artificial-generativa-pautas-de-trabajo-en-el-curso"><span class="header-section-number">2.5</span> Inteligencia artificial generativa: Pautas de trabajo en el curso</h2>
-<p>En 2024, la UNESCO (2024) publicó la <em>Guía para el uso de IA generativa en educación e investigación</em>. En ella, recomienda:</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Recomendación UNESCO (2024)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<blockquote class="blockquote">
-<p><em>“Evitar el uso de la IA generativa cuando pudiera privar a los estudiantes de oportunidades para desarrollar capacidades cognitivas a través del razonamiento lógico independiente.”</em></p>
-</blockquote>
-</div>
-</div>
-<p>Esta recomendación guiará el enfoque pedagógico adoptado en el presente curso, orientando el uso de estas herramientas hacia un rol complementario y no sustitutivo del aprendizaje.</p>
-<p>El desarrollo vertiginoso de la inteligencia artificial generativa (IAGEN o simplemente IA) supone la coexistencia de dos aspectos complementarios, inseparables, con implicancias profundas en el proceso de formación profesional:</p>
-<ol type="1">
-<li><strong>Oportunidad extraordinaria</strong>: permite lograr una formación técnica y profesional de mayor profundidad, superando limitaciones de accesibilidad a la información y aspectos técnicos u operativos para focalizar en las bases científicas y éticas del conocimiento.</li>
-<li><strong>Responsabilidad y desafío</strong>: exige desarrollar un uso crítico, reflexivo y éticamente fundamentado, evitando la delegación acrítica del razonamiento. Se vuelve central fortalecer la capacidad de formular problemas, evaluar la pertinencia de métodos, validar resultados y sostener una interpretación fundada en criterios disciplinares.</li>
-</ol>
-<section id="qué-puede-aportar-la-ia-en-bioestadística" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="qué-puede-aportar-la-ia-en-bioestadística"><span class="header-section-number">2.5.1</span> ¿Qué puede aportar la IA en Bioestadística?</h3>
+<section id="actividad-de-pre-clase" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="actividad-de-pre-clase"><span class="header-section-number">9.2</span> <strong>Actividad de pre-clase</strong></h2>
+<p>Deberá subir las siguientes producciones realizadas durante la cursada de Epistemología 2026 al cuaderno de <em>notebooklm</em>, y preguntarle cuál es la pregunta de investigación y los objetivos propuestos en cada uno. En clase se le pedirá que conteste a estas preguntas.</p>
 <ul>
-<li>Explicar qué hace una función, o interpretar un mensaje de error.</li>
-<li>Sugerir código o secuencias de análisis para resolver tareas analíticas.</li>
-<li>Reformular explicaciones estadísticas desde distintos enfoques.</li>
-<li>Proponer alternativas cuando un procedimiento no funciona.</li>
+<li><a href="./TRABAJOS EPIST/006_chi/Grupo 3_Sem 2_2026.docx">GRUPO 3</a></li>
+<li><a href="./TRABAJOS EPIST/006_chi/Ecology Journal-Vol. 6 No. 2 (2024)1738334681.pdf">Ecology Journal-Vol. 6 No.&nbsp;2 (2024)1738334681.pdf</a></li>
+<li><a href="./TRABAJOS EPIST/006_chi/Grupo 5_SEMINARIO 2_22-06-26 (2).docx">GRUPO 5</a></li>
+<li><a href="./TRABAJOS EPIST/006_chi/GRUPO 12_SEMINARIO2_2026.docx">GRUPO 12</a></li>
+<li><a href="./TRABAJOS EPIST/006_chi/GRUPO 14_SEM2_2026.docx">GRUPO 14</a></li>
+<li><a href="./TRABAJOS EPIST/006_chi/006_chi_2026.r">SCRIPT DE R</a></li>
 </ul>
 </section>
-<section id="lo-que-la-ia-no-puede-hacer" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="lo-que-la-ia-no-puede-hacer"><span class="header-section-number">2.5.2</span> Lo que la IA NO puede hacer</h3>
-<ul>
-<li><strong>Comprender</strong> el contexto específico del análisis, ni asumir las consecuencias de los resultados obtenidos.</li>
-<li><strong>Garantizar</strong> que el código generado o la secuencia de análisis propuesta sean correctos para un determinado problema.</li>
-<li><strong>Sustituir el criterio</strong> para elegir una medida o un método estadístico.</li>
-<li><strong>Interpretar resultados</strong> con fundamento disciplinar (agronómico, bromatológico, biológico o ambiental).</li>
-</ul>
-</section>
-<section id="esquema-de-trabajo-propuesto" class="level3" data-number="2.5.3">
-<h3 data-number="2.5.3" class="anchored" data-anchor-id="esquema-de-trabajo-propuesto"><span class="header-section-number">2.5.3</span> Esquema de trabajo propuesto</h3>
-<p>Se propone el siguiente esquema de trabajo con herramientas de IA (como <strong>NotebookLM</strong> de Google u opciones similares):</p>
-<ol type="1">
-<li><strong>Crear un espacio de trabajo</strong> (carpeta o notebook) y llamarlo con el nombre de la materia: <code>Bioestadística</code>.</li>
-<li><strong>Cargar los materiales del curso</strong>:
-<ul>
-<li>La guía: <em>Apuntes de Bioestadística con ejercicios resueltos</em>.</li>
-<li>La bibliografía sugerida por la cátedra.</li>
-</ul></li>
-<li><strong>Interactuar bajo el rol de asistente pedagógico</strong>:
-<ul>
-<li>Resolver dudas conceptuales.</li>
-<li>Guiar el aprendizaje mediante preguntas orientadoras.</li>
-<li>Generar explicaciones alternativas (analogías, ejemplos).</li>
-<li>Producir recursos complementarios (cuestionarios, esquemas, resúmenes, etc.).</li>
-<li>Entender mensajes de error.</li>
-<li>Comprender la sintaxis u opciones en diferentes programas estadísticos.</li>
-<li>Explorar alternativas de análisis.</li>
-</ul></li>
-</ol>
-<p>&nbsp;</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Advertencia</span>Criterios de precaución y verificación obligatoria
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><font style="color:darkcyan;">Naturaleza Probabilística</font>: Las herramientas de IA operan mediante modelos probabilísticos de lenguaje y no mediante algoritmos lógicos o fórmulas matemáticas cerradas. Por lo tanto, pueden generar “alucinaciones”, produciendo explicaciones que parecen técnicamente coherentes, pero que no siempre son coherentes con los fundamentos teóricos de la estadística.</li>
-<li><font style="color:darkcyan;">Prevalencia bibliográfica</font>: En caso de discrepancia entre una explicación generada por la IA y los marcos conceptuales desarrollados en la bibliografía propuesta por la cátedra, <strong>deben prevalecer siempre el contenido de la obra y la bibliografía académica</strong>.</li>
-<li><font style="color:darkcyan;">Criterio disciplinar</font>: El criterio del investigador es el único capaz de validar si una interpretación es agronómica, biológica, ambiental o bromatológicamente plausible, más allá de la corrección sintáctica del código sugerido.</li>
-<li><font style="color:darkcyan;">Verificación Obligatoria</font>: Todo código generado (especialmente en R, Python o Julia) debe ser verificado. Pequeños errores en funciones (por ejemplo, confundir parámetros de varianza con desvío estándar) pueden invalidar completamente una prueba.</li>
-</ul>
-</div>
+<section id="micro-ejercicios-de-aplicación-optativos" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="micro-ejercicios-de-aplicación-optativos"><span class="header-section-number">9.3</span> Micro-ejercicios de aplicación (optativos)</h2>
+<p>Los siguientes son ejercicios tomados de algunos de los recursos bibliográficos sugeridos.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inferencia de la varianza poblacional ($\sigma^2$ / desvío estándar):</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 1: Estimación por IC del 95% para la varianza en residuos de plaguicidas en leche (Apuntes Bioestadística CER, pág. 358).</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 2: Prueba de hipótesis para la desviación estándar en máquinas embotelladoras (Triola, pág. 438).</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 3: Intervalo de confianza del 99% para la variabilidad del mamífero más pequeño del mundo (Triola, pág. 374).</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 4: Estimación de la desviación estándar sobre el índice de masa corporal (IMC). (Triola, pág. 374).</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Prueba de independencia (Tablas de contingencia):</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 1: Asociación entre raza vacuna y éxito de fecundidad (Apuntes Bioestadística CER, pág. 363).</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 2: Independencia entre contenido de sacarosa y aptitud industrial en caña de azúcar (Apuntes Bioestadística CER, pág. 370).</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 3: Relación entre condición corporal de vacas y éxito en inseminación artificial (Balzarini et al., pág. 274).</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 4: Evaluación de la exactitud de pruebas poligráficas (Triola, pág. 618).</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 5: Prueba de detección de cáncer de vejiga mediante perros entrenados (Triola, pág. 618).</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste a distribución teórica (Poisson, Binomial, Normal):</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 1: Prueba de bondad de ajuste a un modelo discreto Binomial (n=3, p=1/3) (Triola, pág. 605).</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 2: Ajuste de frecuencias observadas de CI a una distribución Normal (mu=100, sigma=15) (Triola, págs. 605-606).</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 3: Prueba de concordancia de datos agrupados frente a una curva Normal (Triola, pág. 605).</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Prueba de frecuencias esperadas (Proporciones teóricas / Equiprobabilidad / Vectores):</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 1: Ajuste de proporciones fenotípicas observadas al ratio mendeliano 1:2:1 (Apuntes Bioestadística CER, pág. 362).</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 2: Segregación independiente de 3 caracteres mendelianos con 8 clases fenotípicas (Balzarini et al., pág. 255).</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 3: Prueba de equiprobabilidad en las 6 caras de un dado cargado (Triola, pág. 601).</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 4: Verificación de frecuencias genotípicas observadas frente al modelo 25%-50%-25% (Triola, pág. 604).</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 5: Contraste de frecuencias observadas de color de ojos frente a proporciones teóricas predichas (Triola, pág. 603).</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -918,13 +845,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./01_pautas.html" class="pagination-link" aria-label="Pautas de cursada">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pautas de cursada</span></span>
+      <a href="./08_inferencia_muestras_grandes.html" class="pagination-link" aria-label="Trabajo Práctico 5: Inferencia con Muestras Grandes">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Trabajo Práctico 5: Inferencia con Muestras Grandes</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03_intro_R.html" class="pagination-link" aria-label="Trabajo Práctico 0: Introducción al manejo de R">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Trabajo Práctico 0: Introducción al manejo de R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./herramientas.html" class="pagination-link" aria-label="R en la web y Geogebra">
+        <span class="nav-page-text">R en la web y Geogebra</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,0 +1,103 @@
+## Anotaciones del primer parcial de Bioestadística 2026 ##
+
+# Grupo Arnaldo González - Serena Chauque
+
+- Módulo 1 - Pregunta 1: corresponde escala de medición de razón
+- Módulo 1 - Pregunta 2: Ambas métricas son "certeras" a su manera. Si asumen que la distribución es simétrica, entonces están asumiendo que la media y la mediana son similares. Antes de la defensa, construyan el boxplot, eso los ayudará con la justificación.
+- Módulo 2 - Pregunta 4: ustedes aplicaron la regla aditiva especial; ahora apliquen la regla aditiva especial (¿por qué?) antes de la defensa.
+- Módulo 2 - Pregunta 5: faltó comparar P(A int B) con el producto P(A) . P(B). Practiquen eso antes de la defensa.
+- Módulo 3 - Pregunta 8: La estimación puntual está correcta; deben revisar la estimación de probabilidad acumulada por derecha.
+- Módulo 4 - Pregunta 11: Como les piden una probabilidad, el resultado necesariamente debe ser un valor en el intervalo [0,1] (recuerden los Axiomas de Kolmogorov). Recuerden además que toda probabilidad en un intervalo puede estimarse como una diferencia entre probabilidades acumuladas.
+
+# Grupo Kyara Avendaño y Leandro Vega Villafañe
+
+- Módulo 1 - Pregunta 2: La respuesta está correcta; analicen el boxplot antes de la defensa, así podemos terminar de describir la distribución de los datos en términos de su asimetría.
+- Módulo 1 - Pregunta 3: El cálculo está correcto; la interpretación es argumentable; revisen los límites que habíamos propuesto para los niveles de homogeneidad de los datos según el CV.
+- Módulo 2 - Pregunta 5: Cálculo correcto, faltó la interpretación. 
+- Módulo 4 - Pregunta 11: El valor calculado es correcto. Para la defensa oral les podremos solicitar la estimación por la vía de la estandarización previa.
+
+# Grupo Antonella Aramayo y Candela Díaz
+
+- Módulo 1 - Pregunta 1: Corresponde escala de medición de razón (el cero acá tiene un sentido físico, implica ausencia).
+
+- Módulo 1 - Pregunta 2: Les computé medio punto, pero la idea es que comenten por qué usarían la mediana para describir a sus datos en lugar de la media. Antes de la defensa oral, construyan el boxplot, eso las guiará.
+- Módulo 2 - Pregunta 4: Revisen el cálculo, apliquen la regla aditiva general.
+- Módulo 2 - Pregunta 5: repasen el concepto de probabilidad condicional.
+- Mödulo 2 - Pregunta 6: revisen los cálculos.
+- Módulo 3 - Pregunta 8: La probabilidad puntual está calculada correctamente; revisen el cálculo de la probabilidad acumulada por derecha, ustedes calcularon P(X>3), pero les pedían P(X>=3). 
+- Módulo 3 - Pregunta 9: Les computé un punto, pero la lectura más fina sería que "el número esperado de ranas infectadas en la muestra de 15 ranas es 4).
+- Módulo 4 - Pregunta 10: El valor calculado es correcto, faltó interpretar.
+- Módulo 4 - Pregunta 11: El valor calculado es correcto. Para la defensa oral les podremos solicitar la estimación por la vía de la estandarización previa.
+
+# Grupo Iara Balanza y Rocío Cruz
+
+- Módulo 1 - Pregunta 2: excelente!
+- Módulo 1 - Pregunta 3: faltó interpretar
+- Módulo 2 - Pregunta 5: les computé un punto, ya que la lectura probabilística se ajusta a las definiciones vistas en clase. Pero tratamos de que las lecturas/interpretaciones se realicen en el contexto del problema. Por ejemplo "la probabilidad de hallar individuos de R. rumbolli en sitios donde se ha verificado la presencia de G. christiani es 0,40" (esto representa 4 de cada 10 sitios donde se ha verificado la presencia de G. christiani).
+- Módulo 3 - Pregunta 7: la prueba binomial supone pruebas o eventos independientes (no provenientes acotados).
+- Módulo 3 - Pregunta 8: La probabilidad puntual está calculada correctamente; revisen el cálculo de la probabilidad acumulada por derecha, ustedes calcularon P(X>3), pero les pedían P(X>=3).
+- Módulo 4 - Pregunta 10: faltó interpretar
+- Módulo 4 - Pregunta 12: acá les pedían un percentil 90 en unidades de la variable (biomasa)
+
+# Grupo Paloma Muñoz y Santiago Baldo
+
+- Módulo 1 - Pregunta 2: Está muy bien la respuesta; el gráfico de cajas puede complementar su respuesta con mayor claridad.
+- Módulo 2 - Pregunta 5: excelente!
+- Módulo 2 - Pregunta 8: revisen la probabilidad acumulada por derecha.
+- Módulo 4 - Pregunta 10: Muy bien! una lectura más fina sería que una biomasa de 120 g/m2 representa una magnitud 1,35 desvíos estándar por debajo de la media poblacional.
+- Módulo 4 - Pregunta 11: El valor calculado es correcto. Para la defensa oral les podremos solicitar la estimación por la vía de la estandarización previa.
+
+# Grupo Silvia Colodro y Benjamín Gómez
+
+- Módulo 1 - Pregunta 1: Faltó determinar la escala de medición
+- Módulo 1 - Pregunta 2: Excelente!
+- Módulo 2 - Pregunta 4: revisen el cálculo, corresponde la regla aditiva especial
+- Módulo 2 - Pregunta 6: les computé 0,5 porque el planteo es correcto, y la interpretación se ajusta a los cálculos que obtuvieron. Sin embargo, deben revisar el producto de las probabilidades marginales, y luego revisar sus conclusiones nuevamente.
+- Módulo 2 - Pregunta 7: excelente! 
+- Módulo 3 - Pregunta 9: está muy bien la respuesta, pero no olviden que ese valor esperado aplicada a su muestra de tamaño 15 asumiendo que p = 0,27.
+
+
+# Grupo Mariela Lima y Jimena García
+
+- Módulo 1 - Pregunta 2: Excelente!
+- Módulo 2 - Pregunta 4: Revisen el cálculo
+- Módulo 3 - Pregunta 9: está bien la respuesta, pero no olviden que ese valor esperado aplicada a su muestra de tamaño 15 asumiendo que p = 0,27.
+- Módulo 3 - Pregunta 10: Faltó la interpretación.
+
+
+# Grupo Casandra Gutiérrez e Irina Ritú
+
+- Módulo 1 - Pregunta 2: se entiende lo que trataron de argumentar, pero en el oral tratemos de asociar con un gráfico de cajas para darle mayor claridad al argumento (por ejemplo, la mediana también contempla a los valores atípicos).
+- Módulo 1 - Pregunta 3: faltó la interpretación en el contexto del problema; trabajemos la lectura del CV.
+- Módulo 2 - Pregunta 7: Los parámetros son únicamente n y p; n no necesariamente debe ser pequeño (recuerden que es posible aproximar una binomial a una Poisson cuando n es grande).
+- Módulo 3 - Pregunta 9: la respuesta está bien, pero cuando hablamos de prevalencia nos referimos a una proporción; en este caso estamos hablando un número (un conteo) esperado de ranas infectadas en mi muestra de tamaño 15.
+- Módulo 4 - Pregunta 10: faltó la interpretación
+- Módulo 4 - Pregunta 11: Como les piden una probabilidad, el resultado necesariamente debe ser un valor en el intervalo [0,1] (recuerden los Axiomas de Kolmogorov). Recuerden además que toda probabilidad en un intervalo puede estimarse como una diferencia entre probabilidades acumuladas.
+
+# Grupo Antonella Jiménez
+
+- Módulo 1 - Pregunta 1: faltó identificar la escala de medición (e identificar la variable).
+- Módulo 1 - Pregunta 3: faltó interpretar
+- Módulo 3 - Pregunta 8: revisar el cálculo de probabilidad acumulada por derecha (incluye al 3).
+- Módulo 4 - Pregunta 10: el cálculo de z no es correcto; no obstante, la interpretación que has hecho sobre el valor obtenido es correcta. Revisa nuevamente el cálculo.
+- Módulo 4 - Pregunta 11: Revisa el cálculo de la probabilidad del intervalo.
+- Módulo 4 - Pregunta 12: revisa el resultado (no has utilizado los valores de los parámetros indicados en la consigna); no obstante, la función empleada es la correcta. Realiza nuevamente el cálculo.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

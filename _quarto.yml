@@ -18,6 +18,7 @@ book:
     - 07_normal.qmd
     - Primer_Parcial_2026.qmd
     - 08_inferencia_muestras_grandes.qmd
+    - 09_inferencia_muestras_chicas_chi.qmd
     - herramientas.qmd
     - references.qmd
   page-footer: 
