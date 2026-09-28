@@ -534,7 +534,7 @@
     "href": "herramientas.html",
     "title": "R en la web y Geogebra",
     "section": "",
-    "text": "R en la web\nEn este entorno podrás ejecutar algunas funciones de R.",
+    "text": "R en la web\nEn este entorno podrás ejecutar algunas funciones de R.\nLa cátedra de Bioestadística y Diseño Experimental de la UNJu ha desarrollado el paquete estadístico {resumiR}, con funciones que permiten obtener rápidamente una serie de medidas de resumen y gráficos para datos numéricos discretos o continuos en series simples. También permite obtener tablas de frecuencia clásicas y gráficos cuando se desea realizar un análisis de series agrupadas. Su objetivo es de aplicación didáctica para la clase instroductoria de Bioestadística utilizando el software R, para las carreras de grado las carreras de grado y otras ofertas educativas de la Facultad de Ciencias Agrarias de la UNJu.",
     "crumbs": [
       "R en la web y Geogebra"
     ]
