@@ -119,6 +119,11 @@ Los siguientes micro-ejercicios te permitirán practicar los conceptos revisados
 Puedes copiar y pegar las preguntas en un script de R local, o bien utilizar `webR`, que es la versión *online* de R, disponible en esta guía.
 
 
+`Nota`: los ejercicios están inspirados en trabajos científicos publicados, pero contienen datos simulados.
+Por lo tanto, los resultados obtenidos deben interpretarse únicamente con fines didácticos y no como evidencia científica.
+
+La finalidad es familiarizarse con el análisis estadístico y con el uso de R a partir de situaciones similares a las que pueden encontrarse en investigaciones reales.
+
 ```{r eval = FALSE, collapse=TRUE}
 
 
