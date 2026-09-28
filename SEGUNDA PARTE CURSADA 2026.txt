@@ -1,0 +1,24 @@
+Hasta ahora, durante la primera parte de Bioestadística, hemos destinado gran parte de nuestros esfuerzos en aprender a resolver ejercicios, realizar cálculos, estimaciones, etc. El objetivo era incorporar gran parte del vocabulario estadístico y desarrollar las competencias básicas en el manejo del software de análisis. 
+Pero la tarea estadística empieza bastante antes, cuando nos preguntamos qué queremos saber, qué datos tenemos y qué podemos afirmar a partir de ellos
+
+Por eso, en esta segunda parte de la cursada vamos a reorientar el foco. Vamos a partir de sus trabajos finales en la cursada de Epistemología. Allí formularon problemas, preguntas de investigación y posibles formas de aproximarse a fenómenos de interés para estas disciplinas. Ahora vamos a volver sobre esas producciones, pero con una mirada estadística.
+
+Vamos a identificar algunas preguntas que puedan ser abordadas mediante herramientas de estadística inferencial y correlacional, y vamos a analizar y aplicar los métodos que podría ayudarnos a responderlas.
+
+Ahora, lo importante será poder tomar una decisión razonada: ¿qué técnica corresponde a este problema?, ¿por qué?, ¿qué supuestos estamos haciendo?, ¿qué limitaciones tiene?, ¿qué alternativa podríamos considerar?
+
+Además, el resultado de un análisis estadístico no define la conclusión de un trabajo. Tenemos que poder volver a la pregunta original y decir, en términos de nuestra disciplina, qué significa ese resultado.
+
+Porque ustedes van a trabajar con problemas de biología, donde abunda la variabilidad y donde hay factores que podemos controlar y otros que no; hay información que tenemos y otra que nos falta; hay decisiones de diseño que condicionan lo que después podremos concluir.
+
+Por eso, hacia el final del curso, el objetivo es que tengan las herramientas básicas para que puedan enfrentarse a un problema concreto, reconocer qué herramienta necesitan, justificar por qué la utilizan, aplicarla correctamente, interpretar el resultado y, al mismo tiempo, reconocer hasta dónde ese resultado permite llegar.
+
+En otras palabras, debemos pasar de:
+
+“Sé resolver este ejercicio”
+
+a
+
+“Sé qué pregunta tengo, qué análisis necesito para abordarla y qué puedo concluir a partir de los datos”.
+
+Ese es el desafío de esta segunda parte de Bioestadística.

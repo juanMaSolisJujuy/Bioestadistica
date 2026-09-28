@@ -25,7 +25,7 @@ No olviden completar `la encuesta de retroalimentación` disponible en el Aula V
 :::
 
 
-```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', eval=FALSE}
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', eval=TRUE,out.width="50%"}
 
 htmltools::includeHTML('reloj.html')
 
