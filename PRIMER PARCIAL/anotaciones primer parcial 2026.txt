@@ -83,7 +83,17 @@
 - Módulo 4 - Pregunta 11: Revisa el cálculo de la probabilidad del intervalo.
 - Módulo 4 - Pregunta 12: revisa el resultado (no has utilizado los valores de los parámetros indicados en la consigna); no obstante, la función empleada es la correcta. Realiza nuevamente el cálculo.
 
+# Grupo Gianella Martínez
 
+- Módulo 1 - Pregunta 1: faltó identificar la escala de medición (escala de razón).
+- Módulo 1 - Pregunta 3: está correcta la respuesta; en lugar de poner que "la muestra es heterogénea pero no demasiado", se puede indicar que son "datos poco homogéneos".
+- Módulo 2 - Pregunta 4: revisar el cálculo
+- Módulo 2 - Pregunta 5: Prestar atención: se pide la probabilidad de hallar A, sabiendo que se encuentra B.
+- Módulo 2 - Pregunta 6: Revisar el cálculo.
+- Módulo 3 - Pregunta 8: Revisar la probabilidad acumulada por derecha.
+- Módulo 4 - Pregunta 10: Faltó interpretar
+- Módulo 4 - Pregunta 11: Revisar cálculos
+- Módulo 4 - Pregunta 12: La función es correcta, pero no corresponde x sino p; por ese motivo el resultado correcto es otro.
 
 
 

@@ -33,6 +33,28 @@ raiz = c(
 # a) ¿Se puede asumir que la población de longitudes radiculares de plántulas de diferentes genotipos de porotos es normal?
 # b) ¿Se puede asumir que dicha población es homogénea? Realice una estimación de la variancia poblacional.
 
+shapiro.test(raiz)
+
+media_muestral = mean(raiz)
+cv_limite = 15
+sigma2 = (media_muestral * cv_limite / 100)^2
+s = sd(raiz)
+s2 = s^2
+s2 < sigma2
+s2; sigma2
+
+# H0: sigma2 <= 0.29
+# H1: sigma2 > 0.29 (inverti la pregunta: mis datos son heterogeneos?)
+alfa = 0.05
+n = length(raiz); n
+chi2 = (n-1)*s2/ sigma2
+(1-pchisq(chi2, n-1)) < alfa
+(1-pchisq(chi2, n-1))
+chi2_tabla = qchisq(c(0.975, 0.025),n-1); chi2_tabla
+sigma2_teorico = (n-1) * s2 / chi2_tabla; sigma2_teorico
+
+
+
 
 # ============================================================================
 # EJEMPLO 2
@@ -62,6 +84,16 @@ tabla
 # c) ¿En este ejercicio corresponde hacer una prueba de normalidad?
 # d) ¿Corresponde realizar un ajuste por continuidad?
 
+library(car)
+addmargins(tabla)
+
+N = sum(tabla) ; N
+
+# H0: el ambiente es independiente de las variaciones
+# H1: el ambiente no es independiente de las variaciones
+
+chisq.test(tabla)
+
 # ============================================================================
 # EJEMPLO 3
 # Trabajo: "Influencia del alumbrado LED sobre poblaciones de lepidópteros
@@ -80,10 +112,22 @@ tabla
 
 polillas = c("0" = 40, "1" = 32, "2" = 18, "3" = 7, "4" = 3)
 polillas
+sum(polillas)
 
 # a) ¿Se puede asumir que el número de polillas capturadas por trampa sigue
 #    una distribución de Poisson con lambda = 1?
 # b) Calcule las frecuencias esperadas bajo el modelo Poisson.
+
+p = dpois(0:4, lambda = 1); p
+
+chisq.test(polillas, p)
+
+# H0: los datos se ajustan a una P(1)
+# H1: los datos no se ajustan a una P(1)
+ # Como p-valor > alfa, no hay evidencia para rechazar H0
+# Mis datos se pueden modelar como una P(1)
+
+dpois(5, 1) * 500
 
 # ============================================================================
 # EJEMPLO 4
@@ -107,6 +151,12 @@ regeneracion
 #    entre los cuatro niveles de cobertura?
 # b) Aplique la prueba de chi-cuadrado de bondad de ajuste a frecuencias
 #    teóricas y concluya.
+
+N = sum(regeneracion); N
+p = c(0.25, 0.25, 0.25, 0.25)
+p = rep(0.25,4)
+p
+chisq.test(regeneracion, p = p)
 
 # ============================================================================
 # EJERCICIOS DE CLASE
