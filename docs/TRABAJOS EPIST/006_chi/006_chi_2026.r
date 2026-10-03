@@ -29,32 +29,38 @@ raiz = c(
   2.31, 2.86, 3.20, 3.00, 3.83, 2.65, 3.57, 3.67, 4.06,
   4.10, 4.43
 )
+raiz
+N = length(raiz)
+N
 
 # a) ¿Se puede asumir que la población de longitudes radiculares de plántulas de diferentes genotipos de porotos es normal?
-# b) ¿Se puede asumir que dicha población es homogénea? Realice una estimación de la variancia poblacional.
+# b) ¿Se puede asumir que dicha población tiene una varianza mayor a 0,28? Realice una estimación de la variancia poblacional.
 
+# a)
+hist(raiz, breaks = 8)
 shapiro.test(raiz)
 
-media_muestral = mean(raiz)
-cv_limite = 15
-sigma2 = (media_muestral * cv_limite / 100)^2
-s = sd(raiz)
-s2 = s^2
-s2 < sigma2
-s2; sigma2
+# b)
 
-# H0: sigma2 <= 0.29
-# H1: sigma2 > 0.29 (inverti la pregunta: mis datos son heterogeneos?)
-alfa = 0.05
-n = length(raiz); n
-chi2 = (n-1)*s2/ sigma2
-(1-pchisq(chi2, n-1)) < alfa
-(1-pchisq(chi2, n-1))
-chi2_tabla = qchisq(c(0.975, 0.025),n-1); chi2_tabla
-sigma2_teorico = (n-1) * s2 / chi2_tabla; sigma2_teorico
+sigma2 = 0.28 # Parámetro de dispersión
+s2 = var(raiz)
+sigma2; s2
 
+# H0: sigma2 <= 0.28
+# H1: sigma2 > 0.28
 
+alfa = 0.05 # nivel de significación
 
+chi2 = (N-1)* s2 / sigma2; chi2
+1 - pchisq(chi2, N-1)
+
+(1 - pchisq(chi2, N-1)) < alfa
+
+# Decisión: se rechaza H0
+# Conclusión: Hay evidencia estadística para afirmar que \\
+# los datos provienen de una población con varianza > 0,28
+
+(N-1)* s2 / c(qchisq(0.975,N-1), qchisq(0.025,N-1))
 
 # ============================================================================
 # EJEMPLO 2
@@ -84,15 +90,10 @@ tabla
 # c) ¿En este ejercicio corresponde hacer una prueba de normalidad?
 # d) ¿Corresponde realizar un ajuste por continuidad?
 
-library(car)
-addmargins(tabla)
-
-N = sum(tabla) ; N
-
-# H0: el ambiente es independiente de las variaciones
-# H1: el ambiente no es independiente de las variaciones
+# a)
 
 chisq.test(tabla)
+addmargins(tabla)
 
 # ============================================================================
 # EJEMPLO 3
@@ -117,10 +118,11 @@ sum(polillas)
 # a) ¿Se puede asumir que el número de polillas capturadas por trampa sigue
 #    una distribución de Poisson con lambda = 1?
 # b) Calcule las frecuencias esperadas bajo el modelo Poisson.
-
+options(decimal=2)
 p = dpois(0:4, lambda = 1); p
-
-chisq.test(polillas, p)
+p[5] = 1 - sum(dpois(0:3, lambda = 1))
+sum(p)
+chisq.test(polillas, p = p)
 
 # H0: los datos se ajustan a una P(1)
 # H1: los datos no se ajustan a una P(1)
