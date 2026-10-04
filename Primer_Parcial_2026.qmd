@@ -98,7 +98,6 @@ parcial |>
 ```
 
 
-- [CORRECCIONES](./PRIMER PARCIAL/correcciones1er parcial BIO 2026.pdf)
 - [PROPUESTA DE RESOLUCIÓN](./PRIMER PARCIAL/RESOLUCIÓN PARCIAL 1.R)
 - [DEVOLUCIÓN](./PRIMER PARCIAL/anotaciones primer parcial 2026.txt)
 

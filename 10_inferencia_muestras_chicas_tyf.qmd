@@ -1,0 +1,346 @@
+---
+title: "Trabajo Práctico 7: Inferencia con Muestras Chicas: Distribuciones F de Snedecor y t de Student"
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+<div style="
+  background-color: #e3f2fd; 
+  border-radius: 15px; 
+  padding: 20px 25px; 
+  margin: 20px 0;
+  border-left: 5px solid #1e88e5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #0d3c5e;
+  line-height: 1.6;
+">
+  <p style="margin: 0; font-size: 1.05rem;">
+    <strong>Objetivos del Trabajo Práctico</strong><br><br>
+    Al finalizar esta unidad, el estudiante deberá comprender y utilizar las distribuciones F y t de Student como técnicas de inferencia en muestras pequeñas provenientes de poblaciones normales. En particular, se busca que el estudiante sea capaz de: 
+    <strong>(1)</strong> Reconocer los contextos en los que corresponde utilizar cada distribución, en función del tamaño muestral, el tipo de parámetro de interés y la información disponible; 
+    <strong>(2)</strong> Comprender la construcción de los estadísticos asociados a ambas distribuciones y el rol de los grados de libertad en su comportamiento; 
+    <strong>(3)</strong> Aplicar la distribución t en la estimación de medias (intervalos de confianza) y en contrastes de hipótesis para una y dos muestras, interpretando correctamente los resultados; 
+    <strong>(4)</strong> Utilizar la distribución F para comparar varianzas, como base del análisis de varianza (ANOVA); 
+    <strong>(5)</strong> Interpretar los resultados de los contrastes en términos del problema aplicado, evitando una lectura meramente mecánica del p-valor; y 
+    <strong>(6)</strong> Evaluar los supuestos involucrados (normalidad, independencia, homogeneidad de varianzas) y su impacto sobre la validez de las conclusiones.
+  </p>
+</div>
+
+::: callout-important
+## Lectura Sugerida para el Trabajo Práctico
+
+Se recomienda a los estudiantes consultar los siguientes recursos para
+profundizar los conceptos metodológicos desarrollados en este marco:
+
+- **Solís, J.M.** *«Apuntes de Bioestadística, Con Ejercicios Resueltos»*: unidad 9
+  *«Inferencia Estadística con muestras pequeñas. Distribuciones F y t.»*.
+- **Irizarry, R. A.** *«Data Analysis for the Life Sciences»*: unidad
+  *«Inference»*.
+- **Weaver et al.**: unidad *«t-test»*.
+- **Lepš, J. y Šmilauer, P.** *«Biostatistics with R»*: unidades 5 y 6.
+- **Balzarini et al.** *«Estadística y Biometría»*: unidad
+  *«Comparación de dos poblaciones»*.
+
+<!-- COMPLETAR: verificar título exacto y edición de cada libro, y
+agregar páginas si se desea. -->
+:::
+
+## Generalidades
+
+En la unidad anterior se presentó la Teoría del Muestreo Exacto a
+partir de la distribución Chi-cuadrado. En esta unidad se completa ese
+marco con dos distribuciones más: la **F de Snedecor** y la **t de
+Student**. Ambas permiten realizar inferencia con validez exacta en
+muestras pequeñas, siempre que la variable de interés provenga de una
+población **normal**, y ambas quedan definidas por sus **grados de
+libertad**.
+
+### La distribución F de Snedecor
+
+La distribución F es la distribución del cociente entre dos variables
+Chi-cuadrado. Su aplicación central es la **comparación de varianzas**
+entre grupos: dadas dos muestras independientes de poblaciones
+normales, el cociente de sus varianzas muestrales sigue una
+distribución F con dos parámetros, los grados de libertad del
+numerador y del denominador. Es una distribución asimétrica positiva,
+y su alcance excede la comparación de dos varianzas: es la base de los
+contrastes en el **análisis de varianza (ANOVA)** y en regresión, que
+serán retomados en unidades posteriores. Una advertencia importante es
+que la prueba F es especialmente sensible a los desvíos de la
+normalidad.
+
+### La distribución t de Student
+
+La distribución t es la alternativa para la inferencia sobre
+**medias** cuando la variable es normal, el tamaño muestral es pequeño
+(o no es aplicable el Teorema Central del Límite) y el desvío estándar
+poblacional es **desconocido**. Es simétrica, con forma de campana
+similar a la Normal pero con colas más pesadas, y se aproxima a la
+Normal a medida que aumentan los grados de libertad. Con ella es
+posible realizar estimación puntual, intervalos de confianza y
+contrastes de hipótesis para una media, y para la diferencia entre dos
+medias en tres situaciones: grupos independientes con varianzas
+homogéneas, grupos independientes con varianzas heterogéneas, y
+grupos apareados.
+
+### Supuestos y orden de trabajo
+
+Los procedimientos de esta unidad asumen normalidad, independencia de
+las observaciones (salvo en el caso de grupos apareados, donde se
+trabaja sobre las diferencias) y, en una de las versiones de la
+prueba t para dos muestras, homogeneidad de varianzas. Por ello,
+resulta indispensable **verificar los supuestos antes de inferir**: la
+normalidad mediante la prueba de Shapiro-Wilk y el gráfico Q-Q, y la
+homogeneidad de varianzas mediante la prueba F.
+
+La comparación de varianzas puede ser un **objetivo en sí mismo** (por ejemplo,
+evaluar si un tratamiento modifica la variabilidad de una respuesta),
+pero también funciona como **prueba a priori** al comparar dos medias
+de grupos independientes: su resultado indica qué versión de la prueba
+t corresponde aplicar, con varianza combinada si las varianzas son
+homogéneas, o con grados de libertad ajustados (Satterthwaite) si no
+lo son.
+
+Finalmente, en todos los casos el resultado de cada contraste debe
+interpretarse en términos del problema aplicado, y no limitarse a
+comparar el p-valor con el nivel de significación.
+
+```{mermaid}
+%%| fig-cap: "Marco conceptual de la Unidad de Inferencia con Muestras Chicas (F y t)"
+flowchart TD
+    A["Muestra chica<br/>Variable normal, σ desconocido"] --> B["Verificar supuestos<br/>(Shapiro-Wilk, Q-Q plot)"]
+    B --> C["Una media<br/>t para una muestra"]
+    B --> D["Dos medias, grupos apareados<br/>t sobre las diferencias"]
+    B --> E["Dos grupos independientes"]
+    E --> F["Prueba F<br/>Cociente de varianzas"]
+    F -->|"Objetivo en sí mismo"| G["Comparar la variabilidad<br/>entre grupos"]
+    F -->|"Prueba a priori"| H{"¿Varianzas<br/>homogéneas?"}
+    H -->|"Sí (no se rechaza H0)"| I["Comparación de medias:<br/>t con varianza combinada o 'pooled'"]
+    H -->|"No (se rechaza H0)"| J["Comparación de medias:<br/>t con Satterthwaite (Prueba de Welch)"]
+    F -.->|"Extensión"| K["ANOVA"]
+```
+
+
+
+## **Actividad de pre-clase**
+
+Deberá subir las siguientes producciones realizadas durante la cursada de Epistemología 2026 al cuaderno de *notebooklm*, y preguntarle cuál es la pregunta de investigación y los objetivos propuestos en cada uno de los trabajos de los grupos 6 y 14. En clase se le pedirá que conteste a estas preguntas. 
+Además, deberá pedirle a la IA, basándose en los ejercicios guiados de la primera parte del script de R, que construya un flujo de trabajo común, transversal a las 5 situaciones ejemplificadas, que le permitan esquematizar sus análisis.
+
+```{r echo=FALSE, warning=FALSE, message=FALSE,results='asis'}
+# Carpeta común donde están todos los documentos de referencia
+carpeta_ref <- "./TRABAJOS EPIST/tyf2026"
+
+# Listar todos los archivos de la carpeta
+archivos <- list.files(carpeta_ref, full.names = FALSE)
+
+# Generar los enlaces en formato Markdown usando el nombre del documento
+for (archivo in archivos) {
+  ruta <- file.path(carpeta_ref, archivo)
+  cat(sprintf("- [%s](%s)\n", archivo, ruta))
+}
+```
+
+
+
+## Micro-ejercicios de aplicación (optativos)
+
+Los siguientes son ejercicios tomados de algunos de los recursos bibliográficos sugeridos.
+
+
+```{r eval = FALSE, collapse=TRUE}
+
+# Identifique en cada caso la prueba estadística adecuada.
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJERCICIO 1 - PESO DE 100 SEMILLAS DE QUINUA (Chenopodium quinoa)
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# Se evalúa la calidad fisiológica de un ecotipo de quinua (Chenopodium quinoa) cultivado en la Puna jujeña. El peso estándar promedio de referencia para 100 semillas de esta variedad es µ₀ = 3.20 g. Un investigador toma una muestra aleatoria de 12 lotes de 100 semillas.
+#
+# Peso de 100 semillas de quinua en gramos (g):
+peso_quinua = c(3.12, 3.08, 3.15, 3.05, 3.10, 3.14, 3.07, 3.09, 3.11, 3.06, 3.13, 3.08)
+#
+# a) Identifique la variable aleatoria bajo estudio, su tipo y el parámetro de interés.
+# b) Plantee las hipótesis nula (H0) y alternativa (H₁) para determinar si el peso medio difiere del estándar de 3.20 g a un nivel α = 0.05.
+# c) Calcule manualmente la media muestral, la desviación estándar y el estadístico de prueba t.
+# d) Determine el p-valor, tome una decisión estadística y construya el intervalo de confianza bilateral del 95%.
+# e) Verifique sus resultados utilizando la función t.test() de R e interprete la conclusión en el contexto agronómico.
+
+# Su código aquí:
+
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJERCICIO 2 - Comparación de variabilidad en el peso de frutos de pimiento
+# ─────────────────────────────────────────────────────────────────────────────
+# Un horticultor desea saber si dos modalidades de fertirriego (Sistemas A y B)
+# producen diferencias en la uniformidad (variabilidad) del peso de los frutos.
+#
+# a) Formule las hipótesis correspondientes únicamente para evaluar la variabilidad (varianzas).
+# b) Defina la variable respuesta y el factor en estudio.
+# c) Aplique la prueba F de Snedecor en R con α = 0.05.
+# d) Responda si uno de los sistemas produce frutos de peso más uniforme que el otro.
+#
+# Datos de peso de fruto (g):
+x1 = c(185, 190, 188, 182, 187, 189)   # Sistema A
+x2 = c(170, 205, 165, 210, 180, 195)   # Sistema B
+
+# Su código aquí:
+
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJERCICIO 3 - Efecto de un inoculante micorrícico en la masa radicular (Apareado)
+# ─────────────────────────────────────────────────────────────────────────────
+# Para evaluar el efecto de un inoculante con micorrizas, se midió el volumen
+# radicular (cm³) en plantines de tomate en un diseño de pares formados por
+# similitud de tamaño inicial. Un individuo de cada par recibió inoculante y el otro actuó como control.
+#
+# a) ¿Por qué este diseño requiere una prueba t de Student para muestras apareadas?
+# b) Plantee H0 y H₁ para evaluar si el inoculante incrementa el volumen radicular.
+# c) Ejecute la prueba t apareada en R usando alfa = 0.01.
+# d) Redacte la conclusión biológica en función del p-valor hallado.
+#
+# Datos de volumen radicular (cm³):
+x1 = c(12.3, 14.1, 11.5, 13.0, 15.2, 12.8)   # Control
+x2 = c(15.0, 16.8, 13.9, 15.5, 18.0, 15.1)   # Inoculado
+
+# Su código aquí:
+
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJERCICIO 4 - Comparación de la capacidad de germinación en dos lotes de semilla
+# ─────────────────────────────────────────────────────────────────────────────
+# Un laboratorio de análisis de semillas evalúa el vigor germinativo (%) de dos
+# lotes de semillas de maíz (Lote 1 y Lote 2) almacenados bajo distintas condiciones.
+#
+# a) Identifique las variables, los objetivos y plantee las hipótesis H0 y H₁.
+# b) Verifique la homogeneidad de varianzas entre ambos lotes con la prueba F (α = 0.05).
+# c) Realice la prueba t de Student adecuada según el resultado de las varianzas.
+# d) Interprete el p-valor obtenido y elabore una conclusión técnico-agronómica.
+#
+# Datos de porcentaje de germinación (%):
+x1 = c(88, 92, 85, 89, 90, 87)   # Lote 1
+x2 = c(78, 82, 80, 75, 84, 79)   # Lote 2
+
+# Su código aquí:
+
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJERCICIO 5 - DIÁMETRO A LA ALTURA DEL PECHO EN ALGARROBO BLANCO (Prosopis alba)
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# En un proyecto de restauración ecológica en la cuenca del Río Grande, se mide el Diámetro a la Altura del Pecho (DAP) en una parcela de regeneración de algarrobo blanco (Prosopis alba). Se desea verificar si el DAP medio difiere del valor objetivo de desarrollo de 12.0 cm fijado para esa etapa fenológica.
+#
+# Diámetro a la Altura del Pecho (DAP) en centímetros (cm):
+dap_algarrobo = c(11.2, 11.8, 12.1, 11.5, 11.9, 11.4, 11.7, 12.0, 11.3, 11.6, 11.8, 11.5, 12.2, 11.6)
+#
+# a) Defina la variable de interés, la unidad de medida y la hipótesis estadística a contrastar.
+# b) Plantee la prueba t para una muestra con α = 0.05.
+# c) Obtenga el estadístico t calculado, los grados de libertad y el p-valor correspondiente.
+# d) Construya e interprete el intervalo de confianza del 95% para el DAP promedio poblacional.
+# e) Redacte una síntesis técnica dirigida al equipo de manejo forestal.
+
+# Su código aquí:
+
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJERCICIO 6 - Resistencia a la penetración del suelo con dos tipos de labranza
+# ─────────────────────────────────────────────────────────────────────────────
+# Se desea comprobar si la labranza reducida genera una mayor resistencia a la
+# penetración del suelo (MPa) a 20 cm de profundidad en comparación con la labranza
+# convencional. Se tomaron muestras pequeñas independientes en parcelas contiguas.
+#
+# a) Defina el tipo de prueba (unilateral o bilateral) e identifique el parámetro a comparar.
+# b) Formule H0 y H₁ considerando α = 0.05.
+# c) Evalúe la hipótesis de igualdad de varianzas.
+# d) Ejecute la prueba t para dos muestras independientes e indique la decisión final.
+#
+# Datos de resistencia a la penetración (MPa):
+x1 = c(2.4, 2.7, 2.9, 2.5, 2.8)   # Labranza Reducida
+x2 = c(1.8, 2.1, 1.9, 2.0, 1.7)   # Labranza Convencional
+
+# Su código aquí:
+
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJERCICIO 7 - CONCENTRACIÓN DE CLOROFILA TOTAL EN Nicotiana tabacum
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# Se evalúa el efecto del estrés hídrico moderado en plantas de tabaco (Nicotiana tabacum). En condiciones normales de riego, la concentración media histórica de clorofila total es de µ₀ = 45.0 µg/cm². Se mide la concentración foliar de clorofila en 10 plantas sometidas al tratamiento hídrico restringido.
+#
+# Concentración de clorofila total medida en microgramos por centímetro cuadrado (µg/cm²):
+clorofila = c(41.2, 43.5, 39.8, 42.0, 40.5, 41.8, 42.2, 38.9, 40.1, 41.0)
+#
+# a) Indique la variable explicativa y la variable respuesta, detallando la escala de medición.
+# b) Formule las hipótesis H0 y H₁ con notación matemática adecuada (µ₀ = 45.0 µg/cm²).
+# c) Implemente en R el cálculo manual del estadístico tc, p-valor e intervalo de confianza del 95%.
+# d) Aplique la función t.test() para contrastar los resultados obtenidos manualmente.
+# e) ¿Qué efecto biológico sobre el aparato fotosintético sugiere la evidencia observada?
+
+# Su código aquí:
+
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJERCICIO 8 - TIEMPO DE METAMORFOSIS EN RENACUAJOS DE Gastrotheca christiani
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# En un estudio ecofisiológico en bosques de Yungas, se registra la duración en días de la fase larval de la rana marsupial (Gastrotheca christiani). El tiempo medio de metamorfosis reportado como patrón de referencia es µ₀ = 60 días. Se analizan 15 individuos criado en condiciones de microhábitat controlado.
+#
+# Tiempo de metamorfosis registrado en días (días):
+dias_metamorfosis = c(56, 58, 55, 57, 59, 54, 58, 56, 57, 55, 60, 56, 57, 58, 55)
+#
+# a) Identifique la unidad experimental, la variable medida y el tamaño de muestra (n).
+# b) Establezca las hipótesis estadísticas bilaterales a un nivel de significación del 5% (α = 0.05).
+# c) Calcule el estadístico de prueba t y determine si cae en la región de rechazo.
+# d) Construya el intervalo de confianza bilateral al 95% para la media del tiempo de metamorfosis.
+# e) Elabore la conclusión biológica vinculando el resultado con las condiciones del microhábitat.
+
+# Su código aquí:
+
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJERCICIO 9 - CONCENTRACIÓN DE FLAVONOIDES TOTALES EN Polylepis tomentella
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# Se analiza el contenido de metabolitos secundarios (flavonoides totales) en extractos foliares de queñoa (Polylepis tomentella) provenientes de la Prepuna. El estándar de calidad para extractos medicinales requiere un nivel medio de µ₀ = 18.50 mg/g de tejido seco. Se analiza una muestra de 11 arbustos.
+#
+# Concentración de flavonoides en miligramos por gramo de tejido seco (mg/g):
+flavonoides = c(16.8, 17.2, 16.5, 17.0, 16.9, 17.4, 16.6, 17.1, 16.7, 17.3, 16.8)
+#
+# a) Plantee las hipótesis nula y alternativa para el contenido medio de flavonoides a α = 0.05.
+# b) Compute la media muestral, el desvío estándar muestral y el error estándar de la media.
+# c) Calcule el valor del estadístico t, los grados de libertad y el p-valor bilateral.
+# d) Indique si la concentración media observada satisface el estándar de calidad requerido (µ₀ = 18.50 mg/g).
+# e) Ejecute la verificación mediante t.test() en R y redacte la síntesis final del problema.
+
+# Su código aquí:
+
+# =============================================================================
+
+```
+
+
+
+
+
+
