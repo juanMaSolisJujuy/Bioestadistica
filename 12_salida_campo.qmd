@@ -51,7 +51,7 @@ Luego, aplicaremos los métodos estadísticos necesarios para responderlas, lo c
 
 
 ::: callout-note
-## Lectura obligatoria antes de la salida a campo
+## Lectura obligatoria antes de la salida a campo.
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE,results='asis'}
 # Carpeta común donde están todos los documentos de referencia
