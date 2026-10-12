@@ -1,0 +1,74 @@
+---
+title: "Actividad de campo: inventario forestal en una parcela en el Campo Experimental Emilio Navea - Severino"
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+<div style="
+  background-color: #e3f2fd; 
+  border-radius: 15px; 
+  padding: 20px 25px; 
+  margin: 20px 0;
+  border-left: 5px solid #1e88e5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #0d3c5e;
+  line-height: 1.6;
+">
+  <p style="margin: 0; font-size: 1.05rem;">
+    <strong>Objetivos del Trabajo Práctico</strong><br><br>
+    En esta actividad vamos a realizar algunas de las mediciones usualmente requeridas en un inventario forestal. En particular, vamos a tomar las medidas *perímetro a la altura del pecho* (en caso de contar con forcípula y/o con cinta diamétrica, tomaremos el *Diámetro a la altura del pecho* o DAP), *altura de fuste* y *posición sociológica*. Sólo trabajaremos con individuos cuyo DAP sea mayor a 10 cm.
+    Este trabajo fue realizado anteriormente por la cohorte 2023 de estudiantes de biología. Por lo tanto, vampos a proponer las siguientes preguntas de investigación orientadoras: 
+    
+    1. ¿Existe un crecimiento en el área transversal media entre momentos? (Según cada tipo de parcela). Nota 1: en clase vamos a definir esta variable. Nota 2: llamaremos momento 1 a 2023 y momento 2 a 2026.
+    
+    2. ¿Hay diferencias en la composición de las categorías de posición sociológicas entre momentos?
+    
+    3. ¿Hay diferencias en las estimaciones de área transversal media según el tipo de parcela?
+    
+    4. ¿Puede asumirse una relación o asociación entre el DAP y la altura de fuste de tipo lineal? 
+    
+Luego, aplicaremos los métodos estadísticos necesarios para responderlas, lo cual constituye el objetivo central de este trabajo. 
+
+**NOTA IMPORTANTE: ** A campo no realizaremos ningún cálculo. Las actividades de campo se realizan únicamente para recopilar datos en forma directa a partir de los instrumentos correspondientes (salvo casos muy puntuales).
+  </p>
+</div>
+
+<div style="text-align:center; margin: 20px 0;">
+  <video id="miVideo" width="80%" controls autoplay muted loop>
+    <source src="SALIDA_A_CAMPO/Película.mp4" type="video/mp4">
+    Tu navegador no soporta el elemento video.
+  </video>
+</div>
+
+<script>
+  document.getElementById('miVideo').addEventListener('loadedmetadata', function() {
+    this.playbackRate = 2.5;
+  });
+</script>
+
+
+::: callout-note
+## Lectura obligatoria antes de la salida a campo
+
+```{r echo=FALSE, warning=FALSE, message=FALSE,results='asis'}
+# Carpeta común donde están todos los documentos de referencia
+carpeta_ref <- "./SALIDA_A_CAMPO"
+
+# Listar todos los archivos de la carpeta
+archivos <- list.files(carpeta_ref, full.names = FALSE, pattern = "pdf")
+
+# Generar los enlaces en formato Markdown usando el nombre del documento
+for (archivo in archivos) {
+  ruta <- file.path(carpeta_ref, archivo)
+  cat(sprintf("- [%s](%s)\n", archivo, ruta))
+}
+```
+
+:::
+
+
+
+

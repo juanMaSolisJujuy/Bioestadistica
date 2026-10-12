@@ -1,0 +1,298 @@
+---
+title: "Trabajo Práctico 8: Análisis de Correlación y Regresión"
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+<div style="
+  background-color: #e3f2fd; 
+  border-radius: 15px; 
+  padding: 20px 25px; 
+  margin: 20px 0;
+  border-left: 5px solid #1e88e5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #0d3c5e;
+  line-height: 1.6;
+">
+  <p style="margin: 0; font-size: 1.05rem;">
+    <strong>Objetivos del Trabajo Práctico</strong><br><br>
+    Esta unidad tiene como objetivos que el estudiante sea capaz de: 
+    <strong>(1)</strong> Cuantificar e interpretar la intensidad y dirección de la asociación lineal entre dos variables numéricas mediante el coeficiente de correlación de Pearson, distinguiendo entre asociación y causalidad; 
+    <strong>(2)</strong> Formular, estimar e interpretar un modelo de regresión lineal simple, identificando el significado de sus parámetros (pendiente e intercepto) en el contexto del problema; 
+    <strong>(3)</strong> Evaluar la calidad del ajuste del modelo mediante medidas como el coeficiente de determinación $R^2$, analizando su alcance y limitaciones; 
+    <strong>(4)</strong> Analizar los supuestos del modelo de regresión lineal (linealidad, independencia, homocedasticidad y normalidad de los errores) a partir de herramientas gráficas y analíticas; y 
+    <strong>(5)</strong> Utilizar el modelo ajustado para realizar predicciones e inferencias, interpretando los resultados en términos del fenómeno estudiado y reconociendo el alcance de la extrapolación.
+  </p>
+</div>
+
+::: callout-important
+## Lectura Sugerida para el Trabajo Práctico
+
+Se recomienda a los estudiantes consultar los siguientes recursos para
+profundizar los conceptos metodológicos desarrollados en este marco:
+
+- **Solís, J.M.** *«Apuntes de Bioestadística, Con Ejercicios Resueltos»*: unidad 10
+  *«Análisis de correlación y regresión.»*.
+- **Lepš, J. y Šmilauer, P.** *«Biostatistics with R»*: unidades 12 y 13.
+- **Weaver et al.**: unidades 10 y 11.
+- **Balzarini et al.** *«Estadística y Biometría»*: unidad
+  *«Análisis de regresión»*.
+
+<!-- COMPLETAR: verificar título exacto y edición de cada libro, y
+agregar el título de las unidades de Lepš y Šmilauer y de Weaver et al.,
+y páginas si se desea. -->
+:::
+
+## Generalidades
+
+En esta unidad se extiende el análisis a poblaciones **bivariantes**,
+es decir, aquellas en las que cada unidad elemental aporta dos
+mediciones numéricas. En la unidad de Chi-cuadrado ya se había
+realizado un tratamiento bivariado, pero con variables categóricas
+(pruebas de independencia y de homogeneidad). Ahora ambas variables son
+cuantitativas, y la asociación entre ellas puede abordarse desde dos
+enfoques complementarios: el **análisis de correlación lineal** y el
+**análisis de regresión**. En este Trabajo Práctico se trabaja con el
+caso más simple, la regresión lineal con una única variable
+predictora.
+
+### Correlación lineal: concepto
+
+La correlación lineal es una medida del grado y el sentido de la
+asociación lineal entre dos variables numéricas: indica si, cuando una
+variable cambia, la otra tiende a cambiar también de forma lineal y en
+una dirección determinada. En este enfoque no se distingue entre
+variable dependiente e independiente. Se cuantifica mediante el
+**coeficiente de correlación de Pearson (r)**, estimador del
+coeficiente poblacional (ρ), y es posible contrastar mediante una
+prueba de hipótesis si la correlación poblacional es distinta de cero,
+positiva o negativa. El primer paso de cualquier análisis bivariado es
+el **diagrama de dispersión**, cuyo patrón de puntos informa sobre la
+fuerza y la dirección de la relación antes de calcular cualquier
+medida. Cabe recordar que una correlación mide asociación, no
+causalidad.
+
+### Estimación del modelo de Regresión lineal simple
+
+La regresión lineal simple busca la recta que mejor ajusta a los
+datos, para estimar la media de una variable respuesta (Y) a partir de
+una variable predictora (X) cuando la relación entre ambas es lineal.
+Se trata de una relación con una compornente determinística y una componente no determinística: a la parte explicada por la recta se le suma un término aleatorio (el residuo), sobre el que se
+asume normalidad, independencia y varianza constante. Los parámetros
+del modelo tienen una lectura directa en el problema: la **pendiente**
+indica cuántas unidades cambia Y por cada incremento unitario de X, y
+el **intercepto** es el valor esperado de Y cuando X vale cero. La
+calidad del ajuste se resume con el **coeficiente de determinación
+($R^2$)**, que expresa la proporción de la variabilidad de Y explicada
+por X; un $R^2$ bajo indica que, aun siendo válido el modelo, su
+utilidad práctica puede ser limitada. Por ejemplo, la relación entre el
+ancho y el largo de las hojas de un árbol, o entre la biomasa y el
+rendimiento de un cultivo, pueden abordarse con este esquema.
+
+### Diagnóstico, predicción y sus límites
+
+Antes de interpretar un modelo es necesario evaluar si es adecuado.
+Para ello se examinan gráficamente los **residuos estudentizados frente
+a los valores predichos**: bajo los supuestos del modelo, deben
+distribuirse al azar en torno a cero, sin patrones reconocibles. De
+forma complementaria, la **distancia de Cook** permite identificar
+observaciones influyentes, es decir, aquellas cuya presencia o ausencia
+modifica los coeficientes ajustados en forma notoria; este punto se
+menciona aquí como anticipo y se retoma en la guía de la unidad.
+
+Una vez ajustado el modelo, puede utilizarse para predecir. Según el
+interés de la investigación, la estimación se expresa de dos maneras:
+mediante un **intervalo de confianza** para la respuesta media de todas
+las unidades con un mismo valor de X, o mediante un **intervalo de
+predicción** para una nueva observación individual, que siempre es más
+amplio porque incorpora la variabilidad aleatoria propia de cada
+individuo. Ambos se estrechan alrededor de los valores medios de X e Y,
+y se ensanchan hacia los extremos. Por último, las predicciones solo
+son confiables dentro del rango de valores de X observado: fuera de
+él, la **extrapolación** carece de respaldo en los datos. En la guía,
+estos análisis se resuelven con las funciones `cor.test()`, `lm()` y
+`predict()` de R, y se muestran también procedimientos equivalentes en
+InfoStat, LibreOffice Calc, Python y Julia.
+
+```{mermaid}
+%%| fig-cap: "Marco conceptual de la Unidad de Análisis de Correlación y Regresión"
+flowchart TD
+    A["Dos variables numéricas<br/>(X, Y) en cada unidad"] --> B["Diagrama de dispersión"]
+    B --> C["Correlación lineal<br/>r de Pearson"]
+    C --> D["Prueba de hipótesis<br/>sobre ρ"]
+    B --> E["Regresión lineal simple<br/>Y = β₀ + β₁X + ε"]
+    E --> F["Pendiente e intercepto<br/>(interpretación)"]
+    E --> G["Calidad del ajuste: R²"]
+    E --> H["Diagnóstico de supuestos<br/>(residuos, distancia de Cook)"]
+    H --> I["Predicción:<br/>IC de la media / IP individual"]
+    I -.->|"Precaución"| J["Extrapolación"]
+```
+
+
+## **Actividad de pre-clase**
+
+Deberá subir los siguientes archivos al cuaderno de *notebooklm*, y preguntarle cuál es la pregunta de investigación y los objetivos propuestos en el trabajo del grupo 14. 
+
+Además, deberá pedirle a la IA, basándose en los ejercicios guiados de la primera parte del script de R, que construya un flujo de trabajo común que le permitan esquematizar sus análisis (la dinámica de la clase será similar a la clase anterior).
+
+```{r echo=FALSE, warning=FALSE, message=FALSE,results='asis'}
+# Carpeta común donde están todos los documentos de referencia
+carpeta_ref <- "./TRABAJOS EPIST/reg"
+
+# Listar todos los archivos de la carpeta
+archivos <- list.files(carpeta_ref, full.names = FALSE)
+
+# Generar los enlaces en formato Markdown usando el nombre del documento
+for (archivo in archivos) {
+  ruta <- file.path(carpeta_ref, archivo)
+  cat(sprintf("- [%s](%s)\n", archivo, ruta))
+}
+```
+
+
+## Micro-ejercicios de aplicación (optativos)
+
+Los siguientes micro-ejercicios te permitirán practicar los conceptos revisados en esta unidad.
+Puedes copiar y pegar las preguntas en un script de R local, o bien utilizar `webR`, que es la versión *online* de R, disponible en esta guía.
+
+`Nota`: los ejercicios están inspirados en trabajos científicos publicados, pero contienen datos simulados.
+Por lo tanto, los resultados obtenidos deben interpretarse únicamente con fines didácticos y no como evidencia científica.
+
+La finalidad es familiarizarse con el análisis estadístico y con el uso de R a partir de situaciones similares a las que pueden encontrarse en investigaciones reales.
+
+
+```{r eval = FALSE, collapse=TRUE}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJERCICIO 1 - LIBERACIÓN DE NITRÓGENO Y FÓSFORO SEGÚN LA PROFUNDIDAD EN EMBALSES
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# Contexto: En un estudio sobre dinámica de nutrientes en embalses de agua dulce, se evalúa la relación entre la profundidad del punto de muestreo (m) y la concentración de fósforo total (mg/L) presente en la columna de agua.
+# Referencia: GRUPO 4 - Liberación de Nitrógeno y Fósforo por el sedimento de los embalses.
+# (Datos simulados con fines didácticos)
+#
+# Profundidad de muestreo (m):
+profundidad = c(1, 3, 5, 8, 10, 12, 15, 18, 20, 22, 25)
+
+# Concentración de Fósforo (mg/L):
+fosfatos = c(0.012, 0.018, 0.022, 0.035, 0.041, 0.050, 0.068, 0.082, 0.095, 0.108, 0.125)
+
+# a) Identifique la pregunta de investigación, los objetivos, la variable respuesta y la variable predictora.
+# b) Genere un gráfico de dispersión e interprete la relación observada entre la profundidad y la concentración de fósforo.
+# c) Calcule el coeficiente de correlación lineal de Pearson (r) e interprete su signo y magnitud.
+# d) Plantee las hipótesis H0 y H1 para evaluar si la correlación es positiva significativa (α = 0.05). Ejecute cor.test().
+# e) Justifique si corresponde ajustar un modelo de regresión lineal simple. De ser así, obtenga la recta de ajuste y R2.
+# f) Rehaga el gráfico de dispersión agregando la recta ajustada. Prediga la concentración de fósforo a 14 m de profundidad.
+
+# Su código aquí:
+
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJERCICIO 2 - RELACIÓN ENTRE TURBIDEZ Y pH EN AMBIENTES PERIGLACIARES
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# Contexto: En un monitoreo de calidad de agua en arroyos de alta montaña, se investiga si existe relación entre la profundidad de visibilidad del Disco de Secchi (cm, indicador inverso de turbidez) y el pH del agua en cuencas con influencia minera.
+# Referencia: GRUPO 6 - Calidad de agua en ambientes periglaciares: comparación entre áreas con y sin actividad minera.
+# (Datos simulados con fines didácticos)
+#
+# Profundidad de Disco de Secchi (cm):
+secchi = c(45, 50, 60, 65, 75, 80, 90, 95, 105, 110, 120)
+
+# pH del agua:
+ph = c(5.2, 5.4, 5.8, 6.0, 6.3, 6.5, 6.8, 7.0, 7.1, 7.3, 7.5)
+
+# a) Defina la variable dependiente (y) y la variable independiente (x) en este ensayo ecotoxicológico.
+# b) Realice el diagrama de dispersión inicial y estime el coeficiente de correlación r.
+# c) Plantee H0 y H1 para comprobar si la correlación lineal es distinta de cero (prueba bilateral, α = 0.05).
+# d) Ajuste el modelo de regresión lineal simple y determine la recta estimada y el coeficiente R2.
+# e) Grafique los puntos junto con la línea de regresión y estime el pH esperado para una transparencia de Secchi de 85 cm.
+
+# Su código aquí:
+
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJERCICIO 3 - CRECIMIENTO DE POROTO EN REGOLITO MARCIANO SIMULADO
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# Contexto: En un ensayo de exobiología agrícola, se analiza cómo se relaciona la proporción de regolito marciano simulado (%) mezclado con sustrato orgánico y la altura final del tallo (cm) en Phaseolus vulgaris en estadio fenológico V4.
+# Referencia: GRUPO 9 - Evaluación del crecimiento vegetativo de Phaseolus vulgaris en regolito marciano simulado.
+# (Datos simulados con fines didácticos)
+#
+# Proporción de regolito marciano (%):
+regolito = c(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
+
+# Altura del tallo a los 30 días (cm):
+altura_tallo = c(28.5, 27.2, 25.8, 24.1, 22.0, 19.8, 17.5, 15.2, 12.9, 10.1, 7.5)
+
+# a) Reconozca la variable predictora, la variable respuesta y el objetivo del ensayo.
+# b) Elabore el gráfico de dispersión inicial y calcule el coeficiente de correlación r.
+# c) Efectúe la prueba t para r con hipótesis alternativa unilateral izquierda (α = 0.05).
+# d) Calcule e interprete la pendiente (b1), la ordenada al origen (b0) y el coeficiente de determinación (R2).
+# e) Rehaga el gráfico con la recta de ajuste y calcule la altura estimada para un sustrato con 45% de regolito.
+
+# Su código aquí:
+
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJERCICIO 4 - RESISTENCIA BACTERIANA: DOSIS DE AMOXICILINA Y HALO DE INHIBICIÓN
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# Contexto: Se evalúa la respuesta de cepas de Streptococcus pyogenes frente a concentraciones crecientes de Amoxicilina (µg/mL) en ensayos de antibiograma, registrando el diámetro del halo de inhibición (mm).
+# Referencia: GRUPO 11 - Análisis de la resistencia bacteriana de Streptococcus pyogenes por administración de Amoxicilina.
+# (Datos simulados con fines didácticos)
+#
+# Concentración de Amoxicilina (µg/mL):
+dosis = c(2, 4, 8, 16, 32, 64, 128, 256)
+
+# Diámetro del halo de inhibición (mm):
+halo = c(12.5, 15.0, 18.2, 21.5, 24.8, 27.2, 30.1, 33.0)
+
+# a) Identifique las variables y explicite el tipo de escala de medición de cada una.
+# b) Represente gráficamente los datos mediante un diagrama de dispersión.
+# c) Determine la fuerza y sentido de la asociación mediante el coeficiente r de Pearson.
+# d) Plantee las hipótesis estadísticas bilaterales (α = 0.01) y decida sobre la significación de la correlación.
+# e) Ajuste el modelo lineal por lm(), reporte el R2 e interprete la pendiente del modelo en el contexto microbiológico.
+
+# Su código aquí:
+
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJERCICIO 5 - TEMPERATURA MEDIA Y GERMINACIÓN EN ECOTIPOS DE QUINUA
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# Contexto: En un estudio ecofisiológico en la Puna jujeña, se analiza la relación entre la temperatura media de incubación (°C) y el tiempo necesario para alcanzar el 50% de germinación (horas) en semillas de quinua (Chenopodium quinoa).
+# (Datos simulados con fines didácticos)
+#
+# Temperatura de incubación (°C):
+temp = c(8, 10, 12, 15, 18, 20, 22, 25, 28, 30)
+
+# Tiempo para alcanzar T50 de germinación (horas):
+t50_horas = c(96, 82, 70, 55, 42, 35, 28, 22, 18, 15)
+
+# a) Defina la variable independiente (x) y la variable dependiente (y).
+# b) Construya el diagrama de dispersión inicial e interprete la tendencia de los puntos.
+# c) Obtenga el coeficiente de correlación de Pearson (r) y realice la prueba t de significación unilateral izquierda (α = 0.05).
+# d) Estime la ecuación de regresión lineal y el coeficiente R2.
+# e) Superponga la recta de ajuste sobre el gráfico de dispersión y estime el T50 a una temperatura de 16 °C.
+
+# Su código aquí:
+
+# =============================================================================
+
+```
+
+
+
+
+
