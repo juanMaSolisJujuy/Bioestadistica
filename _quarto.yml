@@ -1,6 +1,9 @@
 project:
   type: book
   output-dir: docs
+  resources: 
+    - "AVATAR/*.mp4"
+    - "AVATAR/*.mp3"
 book:
   title: "| BIOSTADÍSTICA"
   subtitle: "Universidad Nacional de Jujuy | Facultad de Ciencias Agrarias | Lic. en Ciencias Biológicas"
