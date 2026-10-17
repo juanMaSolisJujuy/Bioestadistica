@@ -260,7 +260,7 @@
 \subtitle{Universidad Nacional de Jujuy \textbar{} Facultad de Ciencias
 Agrarias \textbar{} Lic. en Ciencias Biológicas}
 \author{Juan Manuel Solís}
-\date{2026-10-12}
+\date{2026-10-17}
 \begin{document}
 \maketitle
 
@@ -6869,6 +6869,322 @@ investigaciones reales.
 \CommentTok{\# Su código aquí:}
 
 \CommentTok{\# =============================================================================}
+\end{Highlighting}
+\end{Shaded}
+
+\bookmarksetup{startatroot}
+
+\chapter{Actividad de campo: inventario forestal en una parcela en el
+Campo Experimental Emilio Navea -
+Severino}\label{actividad-de-campo-inventario-forestal-en-una-parcela-en-el-campo-experimental-emilio-navea---severino}
+
+Objetivos del Trabajo Práctico En esta actividad vamos a realizar
+algunas de las mediciones usualmente requeridas en un inventario
+forestal. En particular, vamos a tomar las medidas \emph{perímetro a la
+altura del pecho} (en caso de contar con forcípula y/o con cinta
+diamétrica, tomaremos el \emph{Diámetro a la altura del pecho} o DAP),
+\emph{altura de fuste} y \emph{posición sociológica}. Sólo trabajaremos
+con individuos cuyo DAP sea mayor a 10 cm. Este trabajo fue realizado
+anteriormente por la cohorte 2023 de estudiantes de biología. Por lo
+tanto, vampos a proponer las siguientes preguntas de investigación
+orientadoras:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  ¿Existe un crecimiento en el área transversal media entre momentos?
+  (Según cada tipo de parcela). Nota 1: en clase vamos a definir esta
+  variable. Nota 2: llamaremos momento 1 a 2023 y momento 2 a 2026.
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{1}
+  \item
+    ¿Hay diferencias en la composición de las categorías de posición
+    sociológicas entre momentos?
+  \item
+    ¿Hay diferencias en las estimaciones de área transversal media según
+    el tipo de parcela?
+  \item
+    ¿Puede asumirse una relación o asociación entre el DAP y la altura
+    de fuste de tipo lineal?
+  \end{enumerate}
+\end{enumerate}
+
+Luego, aplicaremos los métodos estadísticos necesarios para
+responderlas, lo cual constituye el objetivo central de este trabajo.
+
+\textbf{NOTA IMPORTANTE: } A campo no realizaremos ningún cálculo. Las
+actividades de campo se realizan únicamente para recopilar datos en
+forma directa a partir de los instrumentos correspondientes (salvo casos
+muy puntuales).
+
+Tu navegador no soporta el elemento video.
+
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Lectura obligatoria antes de la salida a campo.}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
+
+\begin{itemize}
+\tightlist
+\item
+  \href{./SALIDA_A_CAMPO/BIO2026_SALIDA_A_CAMPO.pdf}{BIO2026\_SALIDA\_A\_CAMPO.pdf}
+\end{itemize}
+
+\end{tcolorbox}
+
+\bookmarksetup{startatroot}
+
+\chapter{Trabajo Práctico 9: Métodos No Paramétricos o de Distribución
+Libre}\label{trabajo-pruxe1ctico-9-muxe9todos-no-paramuxe9tricos-o-de-distribuciuxf3n-libre}
+
+Objetivos del Trabajo Práctico El objetivo de esta unidad es que el
+estudiante comprenda y aplique métodos de inferencia estadística cuando
+no se cumplen los supuestos de los enfoques paramétricos. En particular,
+que sea capaz de: (1) Reconocer situaciones en las que no es apropiado
+utilizar pruebas paramétricas, ya sea por el tamaño muestral, la
+presencia de asimetría o la existencia de valores atípicos; (2)
+Comprender los fundamentos de las pruebas de distribución libre y su
+diferencia conceptual con los métodos paramétricos; (3) Seleccionar e
+implementar pruebas no paramétricas adecuadas según el tipo de variable
+(ordinal, nominal o cuantitativa no normal) y el diseño del estudio; (4)
+Interpretar los resultados de pruebas basadas en rangos o frecuencias,
+vinculándolos con el problema aplicado; y (5) Comparar el desempeño de
+métodos paramétricos y no paramétricos, evaluando ventajas y
+limitaciones y en distintos contextos.
+
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-important-color!10!white, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Lectura Sugerida para el Trabajo Práctico}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
+
+Se recomienda a los estudiantes consultar los siguientes recursos para
+profundizar los conceptos metodológicos desarrollados en este marco:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Solís, J.M. (2025).} \emph{«Notas de Bioestadística con
+  ejercicios resueltos:»} Unidad 11.
+\item
+  \textbf{Irizarry, R.A. y Love, M.I.} \emph{«Data Analysis for the Life
+  Sciences»}: unidad \emph{«Robust Summaries»}.
+\item
+  \textbf{Weaver et al.} \emph{«An Introduction to Statistical Analysis
+  in Research: With Applications in the Biological and Life Sciences»}:
+  unidades 7 y 10.
+\item
+  \textbf{Lepš, J. y Šmilauer, P.} \emph{«Biostatistics with R: An
+  Introductory Guide for Field Biologists»}: unidad 7.
+\end{itemize}
+
+\end{tcolorbox}
+
+\section{Generalidades}\label{generalidades-7}
+
+Hasta este punto, la mayor parte de los métodos de inferencia se
+apoyaron en el supuesto de que los datos provienen de poblaciones con
+una distribución específica, principalmente la Normal. Las pruebas que
+exigen este tipo de supuestos sobre los parámetros de la población se
+denominan \textbf{pruebas paramétricas} (la prueba t de Student, la
+prueba F o la regresión lineal simple, por ejemplo). En esta unidad se
+aborda qué hacer cuando esos supuestos no se cumplen.
+
+\subsection{Cuándo no es apropiado el enfoque
+paramétrico}\label{cuuxe1ndo-no-es-apropiado-el-enfoque-paramuxe9trico}
+
+En las ciencias de la vida, como la agronomía o la biología, es
+frecuente encontrar situaciones en las que los supuestos paramétricos no
+se sostienen: muestras tan pequeñas que no es posible verificar la
+normalidad ni recurrir al Teorema Central del Límite; distribuciones con
+fuerte asimetría o con valores muy atípicos; o variables de respuesta
+medidas en escala ordinal (por ejemplo, grados de infestación de una
+plaga) o disponibles solo como frecuencias. En estos casos, la media y
+la varianza dejan de ser resúmenes adecuados de los datos, y resulta más
+conveniente describirlos mediante medidas robustas: de posición, basadas
+en rangos o basadas en frecuencias observadas.
+
+\subsection{Qué son los métodos de distribución
+libre}\label{quuxe9-son-los-muxe9todos-de-distribuciuxf3n-libre}
+
+Los métodos de \textbf{distribución libre} o \textbf{no paramétricos} no
+asumen que los datos sigan una distribución poblacional específica. En
+lugar de trabajar con los valores exactos de las observaciones (y con
+sus medias y varianzas), basan sus cálculos en el orden de las
+observaciones, es decir, en sus \textbf{rangos}, o en las
+\textbf{frecuencias observadas}. Esto los hace más robustos y flexibles,
+pero tienen una contrapartida: cuando los supuestos de las pruebas
+paramétricas sí se cumplen, son menos potentes, es decir, tienen menor
+probabilidad de rechazar una hipótesis nula falsa. Por eso, la elección
+del método debe argumentarse y justificarse.
+
+\subsection{Cuatro pruebas para cuatro situaciones de
+diseño}\label{cuatro-pruebas-para-cuatro-situaciones-de-diseuxf1o}
+
+En la guía se estudian cuatro de las pruebas no paramétricas más
+utilizadas, cada una asociada a un tipo de variable y a un diseño del
+estudio:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Prueba U de Mann-Whitney}: equivalente no paramétrico de la
+  prueba t para dos muestras independientes; compara los rangos de ambos
+  grupos.
+\item
+  \textbf{Prueba de rangos con signo de Wilcoxon}: equivalente de la
+  prueba t para muestras apareadas (por ejemplo, mediciones antes y
+  después en los mismos individuos); trabaja con los rangos de las
+  diferencias, que deben ser aproximadamente simétricas.
+\item
+  \textbf{Prueba de McNemar}: para variables dicotómicas en muestras
+  apareadas (por ejemplo, presencia o ausencia de un patógeno en los
+  mismos individuos antes y después de un tratamiento); se organiza en
+  una tabla 2x2 y se centra en los pares discordantes, es decir, en los
+  que cambiaron de estado.
+\item
+  \textbf{Correlación por rangos de Spearman}: análogo no paramétrico
+  del coeficiente de Pearson; mide la asociación monotónica (no
+  necesariamente lineal) entre dos variables al menos ordinales.
+\end{itemize}
+
+En la guía, cada prueba se resuelve con las funciones
+\texttt{wilcox.test()}, \texttt{mcnemar.test()} y \texttt{cor.test()} de
+R, y se muestran también procedimientos equivalentes en InfoStat,
+LibreOffice Calc, Python y Julia.
+
+\includegraphics[width=13.47in,height=4.42in]{12_no_param_files/figure-latex/mermaid-figure-1.png}
+
+Marco conceptual de la Unidad de Métodos No Paramétricos
+
+\section{\texorpdfstring{\textbf{Actividad de
+pre-clase}}{Actividad de pre-clase}}\label{actividad-de-pre-clase-6}
+
+Deberá subir los siguientes archivos al cuaderno de \emph{notebooklm}, y
+preguntarle cuál es la pregunta de investigación y los objetivos
+propuestos en los trabajos.
+
+Además, deberá pedirle a la IA, basándose en los ejercicios guiados de
+la primera parte del script de R, que construya un flujo de trabajo
+común que le permitan esquematizar sus análisis (la dinámica de la clase
+será similar a la clase anterior).
+
+\begin{itemize}
+\tightlist
+\item
+  \href{./TRABAJOS\%20EPIST/np/009_pruebas_no_parametricas.R}{009\_pruebas\_no\_parametricas.R}
+\item
+  \href{./TRABAJOS\%20EPIST/np/GRUPO\%201_SEM2_2026.docx}{GRUPO
+  1\_SEM2\_2026.docx}
+\item
+  \href{./TRABAJOS\%20EPIST/np/Grupo\%2010_\%20Seminario\%202_2026.docx}{Grupo
+  10\_ Seminario 2\_2026.docx}
+\item
+  \href{./TRABAJOS\%20EPIST/np/GRUPO\%2011_SEMINARIO\%202_2026.docx}{GRUPO
+  11\_SEMINARIO 2\_2026.docx}
+\item
+  \href{./TRABAJOS\%20EPIST/np/Grupo\%203_Sem\%202_2026.docx}{Grupo
+  3\_Sem 2\_2026.docx}
+\end{itemize}
+
+\section{Micro-ejercicios de aplicación
+(optativos)}\label{micro-ejercicios-de-aplicaciuxf3n-optativos-9}
+
+Los siguientes micro-ejercicios te permitirán practicar los conceptos
+revisados en esta unidad. Puedes copiar y pegar las preguntas en un
+script de R local, o bien utilizar \texttt{webR}, que es la versión
+\emph{online} de R, disponible en esta guía.
+
+\texttt{Nota}: los ejercicios están inspirados en trabajos científicos
+publicados, pero contienen datos simulados. Por lo tanto, los resultados
+obtenidos deben interpretarse únicamente con fines didácticos y no como
+evidencia científica.
+
+La finalidad es familiarizarse con el análisis estadístico y con el uso
+de R a partir de situaciones similares a las que pueden encontrarse en
+investigaciones reales.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\CommentTok{\# =============================================================================}
+\CommentTok{\# EJERCICIO 1 {-} Germinación de poroto bajo estrés salino (U de Mann{-}Whitney)}
+\CommentTok{\# =============================================================================}
+\CommentTok{\# Pregunta estadística: ¿Difiere la mediana de semillas germinadas entre el}
+\CommentTok{\# control (0 mM) y el tratamiento salino (100 mM NaCl)?}
+\CommentTok{\#}
+\CommentTok{\# Consignas:}
+\CommentTok{\# 1. Identificar la variable respuesta (y) y la variable de grupo (x), indicando}
+\CommentTok{\#    su tipo.}
+\CommentTok{\# 2. Realizar un boxplot comparativo entre ambos grupos y calcular medianas e IQR.}
+\CommentTok{\# 3. Plantear las hipótesis (H0 y H1) y el nivel de significancia.}
+\CommentTok{\# 4. Aplicar la prueba U de Mann{-}Whitney y concluir con la decisión estadística.}
+
+\NormalTok{germinadas\_control }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{18}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{17}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{19}\NormalTok{)}
+\NormalTok{germinadas\_sal     }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{12}\NormalTok{)}
+
+
+\CommentTok{\# =============================================================================}
+\CommentTok{\# EJERCICIO 2 {-} Calidad de agua en ambientes periglaciares (Wilcoxon apareado)}
+\CommentTok{\# =============================================================================}
+\CommentTok{\# Pregunta estadística: ¿Difiere la mediana del índice biótico antes y después}
+\CommentTok{\# del inicio de la exploración minera en las mismas estaciones?}
+\CommentTok{\#}
+\CommentTok{\# Consignas:}
+\CommentTok{\# 1. Indicar por qué las observaciones son apareadas y qué tipo de variable es}
+\CommentTok{\#    el índice biótico.}
+\CommentTok{\# 2. Graficar las diferencias (antes {-} después) por estación y calcular medianas.}
+\CommentTok{\# 3. Plantear las hipótesis y el nivel de significancia.}
+\CommentTok{\# 4. Aplicar la prueba de rangos con signo de Wilcoxon y concluir.}
+
+\NormalTok{indice\_antes   }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{)}
+\NormalTok{indice\_despues }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+
+
+\CommentTok{\# =============================================================================}
+\CommentTok{\# EJERCICIO 3 {-} Desinfección de patógenos en frutos de naranjo (McNemar)}
+\CommentTok{\# =============================================================================}
+\CommentTok{\# Pregunta estadística: ¿Cambia la proporción de superficies con patógenos}
+\CommentTok{\# presentes antes y después del tratamiento térmico?}
+\CommentTok{\#}
+\CommentTok{\# Consignas:}
+\CommentTok{\# 1. Armar la tabla 2x2 de datos apareados (antes/después) y justificar por qué}
+\CommentTok{\#    corresponde McNemar y no Chi{-}cuadrado de independencia.}
+\CommentTok{\# 2. Plantear las hipótesis y el nivel de significancia.}
+\CommentTok{\# 3. Aplicar la prueba de McNemar (sin y con corrección de continuidad).}
+\CommentTok{\# 4. Interpretar el resultado en función de los pares discordantes.}
+
+\NormalTok{tabla\_patogenos }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{16}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{,}
+                         \AttributeTok{dimnames =} \FunctionTok{list}\NormalTok{(}\AttributeTok{Antes =} \FunctionTok{c}\NormalTok{(}\StringTok{"Presente"}\NormalTok{, }\StringTok{"Ausente"}\NormalTok{),}
+                                         \AttributeTok{Despues =} \FunctionTok{c}\NormalTok{(}\StringTok{"Presente"}\NormalTok{, }\StringTok{"Ausente"}\NormalTok{)))}
+
+
+\CommentTok{\# =============================================================================}
+\CommentTok{\# EJERCICIO 4 {-} Altitud y tolerancia al frío en ecotipos de quinua (Spearman)}
+\CommentTok{\# =============================================================================}
+\CommentTok{\# Pregunta estadística: ¿Existe asociación monotónica positiva entre la altitud}
+\CommentTok{\# del sitio de origen y la tolerancia a la germinación en frío?}
+\CommentTok{\#}
+\CommentTok{\# Consignas:}
+\CommentTok{\# 1. Identificar la variable independiente y la dependiente, indicando su tipo.}
+\CommentTok{\# 2. Realizar el diagrama de dispersión entre ambas variables.}
+\CommentTok{\# 3. Plantear las hipótesis y el nivel de significancia.}
+\CommentTok{\# 4. Aplicar la correlación de Spearman e interpretar el coeficiente y la}
+\CommentTok{\#    decisión estadística.}
+
+\NormalTok{altitud         }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{2200}\NormalTok{, }\DecValTok{2500}\NormalTok{, }\DecValTok{2800}\NormalTok{, }\DecValTok{3100}\NormalTok{, }\DecValTok{3400}\NormalTok{, }\DecValTok{3700}\NormalTok{, }\DecValTok{4000}\NormalTok{, }\DecValTok{4200}\NormalTok{)}
+\NormalTok{tolerancia\_frio }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+
+
+\CommentTok{\# =============================================================================}
+\CommentTok{\# EJERCICIO 5 {-} Macroinvertebrados en arroyos puneños (U de Mann{-}Whitney)}
+\CommentTok{\# =============================================================================}
+\CommentTok{\# Pregunta estadística: ¿Es mayor la mediana de riqueza taxonómica en tramos}
+\CommentTok{\# sin pastoreo que en tramos con pastoreo de camélidos?}
+\CommentTok{\#}
+\CommentTok{\# Consignas:}
+\CommentTok{\# 1. Formular la pregunta de investigación e identificar las variables (y, x).}
+\CommentTok{\# 2. Realizar el boxplot comparativo y calcular medianas e IQR.}
+\CommentTok{\# 3. Plantear las hipótesis y el nivel de significancia.}
+\CommentTok{\# 4. Aplicar la prueba U de Mann{-}Whitney y concluir sobre el efecto del pastoreo.}
+
+\NormalTok{con\_pastoreo }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\NormalTok{sin\_pastoreo }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{10}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 

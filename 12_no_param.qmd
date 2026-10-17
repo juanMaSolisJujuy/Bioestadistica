@@ -1,0 +1,243 @@
+---
+title: "Trabajo Práctico 9: Métodos No Paramétricos o de Distribución Libre"
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+<div style="
+  background-color: #e3f2fd; 
+  border-radius: 15px; 
+  padding: 20px 25px; 
+  margin: 20px 0;
+  border-left: 5px solid #1e88e5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #0d3c5e;
+  line-height: 1.6;
+">
+  <p style="margin: 0; font-size: 1.05rem;">
+    <strong>Objetivos del Trabajo Práctico</strong><br><br>
+    El objetivo de esta unidad es que el estudiante comprenda y aplique métodos de inferencia estadística cuando no se cumplen los supuestos de los enfoques paramétricos. En particular, que sea capaz de: 
+    <strong>(1)</strong> Reconocer situaciones en las que no es apropiado utilizar pruebas paramétricas, ya sea por el tamaño muestral, la presencia de asimetría o la existencia de valores atípicos; 
+    <strong>(2)</strong> Comprender los fundamentos de las pruebas de distribución libre y su diferencia conceptual con los métodos paramétricos; 
+    <strong>(3)</strong> Seleccionar e implementar pruebas no paramétricas adecuadas según el tipo de variable (ordinal, nominal o cuantitativa no normal) y el diseño del estudio; 
+    <strong>(4)</strong> Interpretar los resultados de pruebas basadas en rangos o frecuencias, vinculándolos con el problema aplicado; y 
+    <strong>(5)</strong> Comparar el desempeño de métodos paramétricos y no paramétricos, evaluando ventajas y limitaciones y en distintos contextos.
+  </p>
+</div>
+
+::: callout-important
+## Lectura Sugerida para el Trabajo Práctico
+
+Se recomienda a los estudiantes consultar los siguientes recursos para
+profundizar los conceptos metodológicos desarrollados en este marco:
+
+- **Solís, J.M. (2025).** *«Notas de Bioestadística con ejercicios resueltos:»* Unidad 11.
+- **Irizarry, R.A. y Love, M.I.** *«Data Analysis for the Life Sciences»*:
+  unidad *«Robust Summaries»*.
+- **Weaver et al.** *«An Introduction to Statistical Analysis in Research:
+  With Applications in the Biological and Life Sciences»*: unidades 7 y 10.
+- **Lepš, J. y Šmilauer, P.** *«Biostatistics with R: An Introductory Guide
+  for Field Biologists»*: unidad 7.
+
+<!-- COMPLETAR: indicar la unidad de Solís (2025) correspondiente a este
+Trabajo Práctico y verificar el título exacto del libro. -->
+:::
+
+## Generalidades
+
+Hasta este punto, la mayor parte de los métodos de inferencia se
+apoyaron en el supuesto de que los datos provienen de poblaciones con
+una distribución específica, principalmente la Normal. Las pruebas que
+exigen este tipo de supuestos sobre los parámetros de la población se
+denominan **pruebas paramétricas** (la prueba t de Student, la prueba F
+o la regresión lineal simple, por ejemplo). En esta unidad se aborda
+qué hacer cuando esos supuestos no se cumplen.
+
+### Cuándo no es apropiado el enfoque paramétrico
+
+En las ciencias de la vida, como la agronomía o la biología, es
+frecuente encontrar situaciones en las que los supuestos paramétricos
+no se sostienen: muestras tan pequeñas que no es posible verificar la
+normalidad ni recurrir al Teorema Central del Límite; distribuciones
+con fuerte asimetría o con valores muy atípicos; o variables de
+respuesta medidas en escala ordinal (por ejemplo, grados de
+infestación de una plaga) o disponibles solo como frecuencias. En
+estos casos, la media y la varianza dejan de ser resúmenes adecuados
+de los datos, y resulta más conveniente describirlos mediante medidas
+robustas: de posición, basadas en rangos o basadas en frecuencias
+observadas.
+
+### Qué son los métodos de distribución libre
+
+Los métodos de **distribución libre** o **no paramétricos** no asumen
+que los datos sigan una distribución poblacional específica. En lugar
+de trabajar con los valores exactos de las observaciones (y con sus
+medias y varianzas), basan sus cálculos en el orden de las
+observaciones, es decir, en sus **rangos**, o en las **frecuencias
+observadas**. Esto los hace más robustos y flexibles, pero tienen una
+contrapartida: cuando los supuestos de las pruebas paramétricas sí se
+cumplen, son menos potentes, es decir, tienen menor probabilidad de
+rechazar una hipótesis nula falsa. Por eso, la elección del método
+debe argumentarse y justificarse.
+
+### Cuatro pruebas para cuatro situaciones de diseño
+
+En la guía se estudian cuatro de las pruebas no paramétricas más
+utilizadas, cada una asociada a un tipo de variable y a un diseño del
+estudio:
+
+- **Prueba U de Mann-Whitney**: equivalente no paramétrico de la prueba
+  t para dos muestras independientes; compara los rangos de ambos grupos.
+- **Prueba de rangos con signo de Wilcoxon**: equivalente de la prueba t
+  para muestras apareadas (por ejemplo, mediciones antes y después en
+  los mismos individuos); trabaja con los rangos de las diferencias, que
+  deben ser aproximadamente simétricas.
+- **Prueba de McNemar**: para variables dicotómicas en muestras apareadas
+  (por ejemplo, presencia o ausencia de un patógeno en los mismos
+  individuos antes y después de un tratamiento); se organiza en una
+  tabla 2x2 y se centra en los pares discordantes, es decir, en los que
+  cambiaron de estado.
+- **Correlación por rangos de Spearman**: análogo no paramétrico del
+  coeficiente de Pearson; mide la asociación monotónica (no
+  necesariamente lineal) entre dos variables al menos ordinales.
+
+En la guía, cada prueba se resuelve con las funciones `wilcox.test()`,
+`mcnemar.test()` y `cor.test()` de R, y se muestran también
+procedimientos equivalentes en InfoStat, LibreOffice Calc, Python y
+Julia.
+
+```{mermaid}
+%%| fig-cap: "Marco conceptual de la Unidad de Métodos No Paramétricos"
+flowchart LR
+    A["¿Se cumplen los supuestos<br/>paramétricos?<br/>(normalidad, tamaño, atípicos)"] -->|Sí| B["Pruebas paramétricas<br/>(t, F, Pearson)<br/>más potentes"]
+    A -->|No| C["Métodos de<br/>distribución libre"]
+    C --> D{"Tipo de variable<br/>y diseño"}
+    D -->|"Ordinal o cuantitativa no normal<br/>2 muestras independientes"| E["U de Mann-Whitney"]
+    D -->|"Ordinal o cuantitativa no normal<br/>muestras apareadas"| F["Rangos con signo<br/>de Wilcoxon"]
+    D -->|"Dicotómica<br/>muestras apareadas"| G["McNemar"]
+    D -->|"Asociación entre dos variables<br/>(monotónica)"| H["Correlación de Spearman"]
+```
+
+
+## **Actividad de pre-clase**
+
+Deberá subir los siguientes archivos al cuaderno de *notebooklm*, y preguntarle cuál es la pregunta de investigación y los objetivos propuestos en los trabajos. 
+
+Además, deberá pedirle a la IA, basándose en los ejercicios guiados de la primera parte del script de R, que construya un flujo de trabajo común que le permitan esquematizar sus análisis (la dinámica de la clase será similar a la clase anterior).
+
+```{r echo=FALSE, warning=FALSE, message=FALSE,results='asis'}
+# Carpeta común donde están todos los documentos de referencia
+carpeta_ref <- "./TRABAJOS EPIST/np"
+
+# Listar todos los archivos de la carpeta
+archivos <- list.files(carpeta_ref, full.names = FALSE)
+
+# Generar los enlaces en formato Markdown usando el nombre del documento
+for (archivo in archivos) {
+  ruta <- file.path(carpeta_ref, archivo)
+  cat(sprintf("- [%s](%s)\n", archivo, ruta))
+}
+```
+
+## Micro-ejercicios de aplicación (optativos)
+
+Los siguientes micro-ejercicios te permitirán practicar los conceptos revisados en esta unidad.
+Puedes copiar y pegar las preguntas en un script de R local, o bien utilizar `webR`, que es la versión *online* de R, disponible en esta guía.
+
+`Nota`: los ejercicios están inspirados en trabajos científicos publicados, pero contienen datos simulados.
+Por lo tanto, los resultados obtenidos deben interpretarse únicamente con fines didácticos y no como evidencia científica.
+
+La finalidad es familiarizarse con el análisis estadístico y con el uso de R a partir de situaciones similares a las que pueden encontrarse en investigaciones reales.
+
+
+```{r eval = FALSE, collapse=TRUE}
+
+# =============================================================================
+# EJERCICIO 1 - Germinación de poroto bajo estrés salino (U de Mann-Whitney)
+# =============================================================================
+# Pregunta estadística: ¿Difiere la mediana de semillas germinadas entre el
+# control (0 mM) y el tratamiento salino (100 mM NaCl)?
+#
+# Consignas:
+# 1. Identificar la variable respuesta (y) y la variable de grupo (x), indicando
+#    su tipo.
+# 2. Realizar un boxplot comparativo entre ambos grupos y calcular medianas e IQR.
+# 3. Plantear las hipótesis (H0 y H1) y el nivel de significancia.
+# 4. Aplicar la prueba U de Mann-Whitney y concluir con la decisión estadística.
+
+germinadas_control = c(18, 19, 20, 17, 19, 20, 18, 19)
+germinadas_sal     = c(12, 10, 14, 11, 9, 13, 10, 12)
+
+
+# =============================================================================
+# EJERCICIO 2 - Calidad de agua en ambientes periglaciares (Wilcoxon apareado)
+# =============================================================================
+# Pregunta estadística: ¿Difiere la mediana del índice biótico antes y después
+# del inicio de la exploración minera en las mismas estaciones?
+#
+# Consignas:
+# 1. Indicar por qué las observaciones son apareadas y qué tipo de variable es
+#    el índice biótico.
+# 2. Graficar las diferencias (antes - después) por estación y calcular medianas.
+# 3. Plantear las hipótesis y el nivel de significancia.
+# 4. Aplicar la prueba de rangos con signo de Wilcoxon y concluir.
+
+indice_antes   = c(8, 9, 7, 8, 9, 8, 10, 7, 8)
+indice_despues = c(5, 6, 4, 6, 5, 7, 6, 5, 4)
+
+
+# =============================================================================
+# EJERCICIO 3 - Desinfección de patógenos en frutos de naranjo (McNemar)
+# =============================================================================
+# Pregunta estadística: ¿Cambia la proporción de superficies con patógenos
+# presentes antes y después del tratamiento térmico?
+#
+# Consignas:
+# 1. Armar la tabla 2x2 de datos apareados (antes/después) y justificar por qué
+#    corresponde McNemar y no Chi-cuadrado de independencia.
+# 2. Plantear las hipótesis y el nivel de significancia.
+# 3. Aplicar la prueba de McNemar (sin y con corrección de continuidad).
+# 4. Interpretar el resultado en función de los pares discordantes.
+
+tabla_patogenos = matrix(c(3, 16, 1, 5), nrow = 2, byrow = TRUE,
+                         dimnames = list(Antes = c("Presente", "Ausente"),
+                                         Despues = c("Presente", "Ausente")))
+
+
+# =============================================================================
+# EJERCICIO 4 - Altitud y tolerancia al frío en ecotipos de quinua (Spearman)
+# =============================================================================
+# Pregunta estadística: ¿Existe asociación monotónica positiva entre la altitud
+# del sitio de origen y la tolerancia a la germinación en frío?
+#
+# Consignas:
+# 1. Identificar la variable independiente y la dependiente, indicando su tipo.
+# 2. Realizar el diagrama de dispersión entre ambas variables.
+# 3. Plantear las hipótesis y el nivel de significancia.
+# 4. Aplicar la correlación de Spearman e interpretar el coeficiente y la
+#    decisión estadística.
+
+altitud         = c(2200, 2500, 2800, 3100, 3400, 3700, 4000, 4200)
+tolerancia_frio = c(2, 3, 4, 6, 7, 8, 9, 10)
+
+
+# =============================================================================
+# EJERCICIO 5 - Macroinvertebrados en arroyos puneños (U de Mann-Whitney)
+# =============================================================================
+# Pregunta estadística: ¿Es mayor la mediana de riqueza taxonómica en tramos
+# sin pastoreo que en tramos con pastoreo de camélidos?
+#
+# Consignas:
+# 1. Formular la pregunta de investigación e identificar las variables (y, x).
+# 2. Realizar el boxplot comparativo y calcular medianas e IQR.
+# 3. Plantear las hipótesis y el nivel de significancia.
+# 4. Aplicar la prueba U de Mann-Whitney y concluir sobre el efecto del pastoreo.
+
+con_pastoreo = c(4, 5, 3, 6, 4, 3, 5, 4)
+sin_pastoreo = c(9, 11, 8, 12, 10, 9, 11, 10)
+
+```
+

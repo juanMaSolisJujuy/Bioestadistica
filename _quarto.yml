@@ -26,6 +26,7 @@ book:
     - 10_inferencia_muestras_chicas_tyf.qmd
     - 11_corryreg.qmd
     - 12_salida_campo.qmd
+    - 12_no_param.qmd
     - herramientas.qmd
     - references.qmd
   page-footer: 
