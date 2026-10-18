@@ -145,6 +145,11 @@ for (archivo in archivos) {
 ```
 
 
+## Actividad de clase: repaso de actividad guiada
+
+A continuación se presenta un repaso de 2 de las actividades realizadas en clase. El objetivo es reconocer el flujo de trabajo general en las pruebas inferenciales.
+
+{{< video https://www.youtube.com/watch?v=bInX_mJg_MQ >}}
 
 ## Micro-ejercicios de aplicación (optativos)
 

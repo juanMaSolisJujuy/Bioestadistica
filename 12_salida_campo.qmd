@@ -58,7 +58,9 @@ Luego, aplicaremos los métodos estadísticos necesarios para responderlas, lo c
 carpeta_ref <- "./SALIDA_A_CAMPO"
 
 # Listar todos los archivos de la carpeta
-archivos <- list.files(carpeta_ref, full.names = FALSE, pattern = "pdf")
+archivos <- list.files(carpeta_ref, full.names = FALSE,
+                       pattern = "\\.(pdf|kmz)$",
+                       ignore.case = TRUE)
 
 # Generar los enlaces en formato Markdown usando el nombre del documento
 for (archivo in archivos) {
@@ -69,6 +71,10 @@ for (archivo in archivos) {
 
 :::
 
+## Carga de coordenadas en el celular
+
+
+{{< video https://www.youtube.com/watch?v=w40YSiauXBo >}}
 
 
 
