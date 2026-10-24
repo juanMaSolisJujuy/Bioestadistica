@@ -1,0 +1,31 @@
+# Devolución de producciones de clase
+
+{
+Ayn : Paloma Muñoz
+Devolución: Paso 1: la interpretación es correcta (se podría indicar que con cada incremento unitario en la concentración de NaCl, la longitud radicular disminuye en forma linealmente proporcional). Pasos 2 a 8 está descrito en forma excelente. En el caso de la interpretación del coeficiente, se dice que hay una correlación lineal imperfecta negativa. Solo una observación en la conclusión o síntesis: lo que surge del análisis realizado no solo confirma que la concentración salina reduce el desarrollo vegetal, sino que lo hace en forma linealmente proporcional (al menos a la luz de los datos simulados).
+} 
+{
+Ayn: Lima Mariela y  García Jimena
+Devolución: Paso 1: Usualmente nos referimos a Beta 0 como la ordenada al origen o intercepto. Donde dice "Relación imperfecta negativa … ", sería "Relación lineal imperfecta negativa ….". Además sería adecuado realizar una interpretación más completa.
+Paso 2: En la interpretación de beta 1, donde dice "Indica que por cada incremento de NaCl en el medio …", habría que aclarar "Indica que por cada incremento unitario de NaCl en el medio …". En el caso de la interpretación del coeficiente, se dice que hay una correlación lineal imperfecta negativa. La aclaración en el paso 7 en relación al error en valores ajustados es muy pertinente. En el paso 8 haría la misma aclaración que a Paloma: si bien está correcta la interpretación en el contexto del análisis, lo principal de esta prueba es que esa relación entre salinidad y crecimiento radicular es de naturaleza lineal, y es fuerte.
+}
+{
+Ayn: Arnaldo Gutiérrez
+Devolución: Paso 2: En el caso de la interpretación del coeficiente, se dice que hay una correlación lineal imperfecta negativa (aunque muy fuerte). El estadístico de prueba es "t", que se construye utilizando r y n; el estadístico de prueba no es r. En la prueba de hipótesis has incluido la función de R con la cual realizamos los cálculos de la prueba; asócialo con los pasos de la prueba de hipótesis. El resto correcto.
+}
+{
+Ayn: Santiago Baldo
+Devolución: Paso 2: En el caso de la interpretación del coeficiente, se dice que hay una correlación lineal imperfecta negativa (aunque muy fuerte). El resto está muy bien argumentado e interpretado.
+}
+{
+Ayn: Verónica Colodro
+Observaciones: Impecable. Además realizas algunos comentarios como el hecho de que las estimaciones operan sobre la población, y aclaras que las conclusiones se basan en el modelo ajustado específico que se ajustó.
+}
+{
+Ayn: Irina Ritu, Casandra Gutiérrez, Rocío Cruz
+Observaciones: Paso 2: En el caso de la interpretación del coeficiente, se dice que hay una correlación lineal imperfecta negativa (aunque muy fuerte). El resto está muy bien, muy claro y conciso.
+}
+
+
+
+
