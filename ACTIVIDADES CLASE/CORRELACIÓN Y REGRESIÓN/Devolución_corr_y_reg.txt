@@ -27,5 +27,3 @@ Observaciones: Paso 2: En el caso de la interpretación del coeficiente, se dice
 }
 
 
-
-

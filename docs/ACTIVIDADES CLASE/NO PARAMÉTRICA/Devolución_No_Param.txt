@@ -1,0 +1,31 @@
+## Devoluciones Pruebas No Paramétricas
+
+{
+Ayn: Paloma Muñoz y Santiago Baldo
+Observaciones: 1) La variable analizada no es una variable ordinal; sin embargo, aplicamos la transformación rango cuando no se cumplen los supuestos requeridos para aplicar la prueba t para muestras apareadas (por ejemplo el gráfico nos muestra que la distribución de las diferencias no puede aproximarse a una normal). Revisen la salida de la prueba de de Wilcoxon apareada.
+}
+{
+Ayn: Kyara Avendaño y Leandro Vega
+Devolución: Bien resuelto. El único comentario tiene que ver con la interpretación/conclusión. Se espera una síntesis integradora, relacionada con el efecto del tratamiento término, no tanto con la lectura de cada una de las frecuencias de las categorías discordantes.
+}
+{
+Ayn: Rocío Cruz, Casandra Gutierrez
+Devolución: la resolución está correcta; una práctica mínima que aconsejaría es que, aún cuando no se pida, realizar una breve lectura o interpretación del gráfico, ya que el mismo es construido para explorar visualmente las características de la distribución de los datos de los grupos comparados, a fin de, entre otros fines, justificar la prueba seleccionada.
+}
+{
+Ayn: Irina Ritu y Arnaldo González
+Observación: La resolución está correcta; la conclusión final sería que hay evidencias de una relación monotónica POSITIVA entre las variables (ustedes colocaron únicamente que hay una relación monotónica.
+}
+{
+Ayn: Silvia Colodro
+Devolución: Está muy bien la presentación, el flujo de trabajo muy claro. Con respecto a la conclusión final, la misma observación que al grupo de Kyara y Leandro.
+}
+{
+Ayn: Iara Almada
+Observaciones: el desarrollo es claro; si r_spearman = 1, y viendo el gráfico de dispersión, ¿usarías spearman o Pearson para describir la correlación entre estas variables?
+}
+{
+Ayn: Benjamin Gomez
+Observación: la resolución es correcta; Una observación es que trates de vincular el código y la salida generada, con los elementos de la prueba de hipótesis.
+}
+
