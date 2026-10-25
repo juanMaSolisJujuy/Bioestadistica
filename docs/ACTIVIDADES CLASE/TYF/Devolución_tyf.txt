@@ -1,0 +1,22 @@
+# Devolución de producciones de clase
+
+{
+Ayn : Silvia Colodro
+Devolución: muy claro
+} 
+{
+Ayn: Benjamín Gómez
+Observaciones: Está bien el desarrollo. Además de la interpretación del intervalo de confianza, hay que informar los límites de confianza y su lectura.
+}
+{
+Ayn: Gianella Martínez
+Devolución: La resolución está correcta; faltó tiempo para la interpretación en el contexto de la situación analizada.
+}
+{
+Ayn: Paloma Muñoz, Candela Díaz, Santiago Baldo
+Devolución: La resolución es correcta en general; dos observaciones: 1) Le lectura del intervalo de confianza sería "La probabilidad de que el verdadero valor de la longitud media de la radícula esté contenida en el intervalo aleatorio 6,76 y 7,08 obtenido con una muestra de tamaño 15 en las mismas condiciones del ensayo es de, al menos, 0.95"; 2) En la conclusión ustedes realizaron la interpretación por menor, pero la prueba es bilateral.
+}
+{
+Ayn: Irina Ritu, Casandra Gutiérrez, Irina Balanza, Rocío Cruz
+Devolución: Faltó responder "Por qué este diseño requiere una prueba t de Student para muestras apareadas". La interpretación del intervalo de confianza es correcta, sin embargo faltaría realizar la lectura (ver el comentario al grupo anterior).
+}
