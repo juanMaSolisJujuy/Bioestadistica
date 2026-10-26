@@ -1,0 +1,137 @@
+---
+title: "Trabajo Práctico 10: Modelos Lineales Generalizados"
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+<div style="
+  background-color: #e3f2fd; 
+  border-radius: 15px; 
+  padding: 20px 25px; 
+  margin: 20px 0;
+  border-left: 5px solid #1e88e5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #0d3c5e;
+  line-height: 1.6;
+">
+  <p style="margin: 0; font-size: 1.05rem;">
+    <strong>Objetivos del Trabajo Práctico</strong><br><br>
+    Esta unidad tiene como objetivos que el estudiante sea capaz de: 
+    <strong>(1)</strong> Reconocer situaciones en las que el modelo lineal con errores normales no resulta adecuado, por tratarse de una variable respuesta binaria (proporciones) o de conteos; 
+    <strong>(2)</strong> Identificar los componentes de un Modelo Lineal Generalizado: la distribución de la variable respuesta, el predictor lineal y la función de enlace; 
+    <strong>(3)</strong> Ajustar e interpretar un modelo de regresión logística para datos binomiales agrupados, interpretando los coeficientes y las razones de odds; 
+    <strong>(4)</strong> Ajustar e interpretar un modelo de regresión de Poisson para datos de conteos, interpretando los coeficientes y los conteos esperados estimados por el modelo; 
+    <strong>(5)</strong> Evaluar el ajuste de los modelos a partir de la deviance residual y obtener predicciones en la escala de la variable respuesta; y 
+    <strong>(6)</strong> Interpretar los resultados en términos del fenómeno biológico o ambiental estudiado.
+  </p>
+</div>
+
+::: callout-important
+## Lectura Sugerida para el Trabajo Práctico
+
+Se recomienda a los estudiantes consultar el siguiente recurso para
+profundizar los conceptos metodológicos desarrollados en este marco:
+
+- **Agresti, A.** *«Introducción al análisis de datos categóricos»*.
+
+<!-- COMPLETAR: indicar los capítulos de Agresti que corresponden a este
+Trabajo Práctico y verificar la edición. -->
+:::
+
+## Generalidades
+
+En la unidad de regresión se trabajó con una variable
+respuesta numérica, con errores normales y varianza constante. Sin
+embargo, en Ciencias Biológicas es habitual que la variable de interés
+sea una **proporción** (por ejemplo, la fracción de individuos de una
+muestra que presenta una condición) o un **conteo** (por ejemplo, el
+número de individuos registrados por transecta). En ambos casos la
+varianza no es constante: depende de la media, y los supuestos del
+modelo lineal clásico dejan de cumplirse. Los **Modelos Lineales
+Generalizados (GLM)** extienden la regresión lineal para tratar estos
+casos. En este Trabajo Práctico se trabaja con dos de ellos: la
+regresión logística para datos binomiales agrupados y la regresión de
+Poisson para conteos.
+
+### Características del modelo lineal generalizado
+
+Un GLM se construye con tres componentes. El primero es la
+distribución de la variable respuesta (nososotros trabajaremos con variables Binomial o Poisson). El
+segundo es el **predictor lineal**, que combina las variables
+explicativas de la misma forma que en la regresión lineal:
+$\eta = \beta_0 + \beta_1 x_i$. El tercero es la **función de enlace**
+$g(\mu)$, que vincula el predictor lineal con la media de la respuesta:
+$\eta = g(\mu)$, y cuya inversa permite volver a la escala de la
+respuesta: $\mu = g^{-1}(\eta)$. Cuando el enlace corresponde al
+parámetro natural $\theta$ de la distribución, se lo denomina enlace
+**canónico**. La regresión lineal puede pensarse como el caso
+particular de respuesta normal y enlace identidad.
+
+### Regresión logística para datos binomiales agrupados
+
+El esquema binomial describe un experimento con *n* ensayos
+independientes, cada uno con dos resultados posibles (éxito o fracaso)
+y con una probabilidad de éxito *p* constante. Cuando los datos se
+presentan agrupados, es decir, como el número de éxitos y de fracasos
+observados en cada combinación de las variables explicativas, la
+respuesta puede analizarse como la proporción de éxitos, cuya media es
+*p*. Para evitar que las predicciones salgan del intervalo entre 0 y
+1, se utiliza el enlace **logit**, canónico para la Binomial. Los
+coeficientes se interpretan en la escala del logit; al exponenciarlos
+se obtienen **razones de odds**, y las predicciones en la escala de la
+respuesta son proporciones esperadas. 
+
+### Regresión de Poisson para conteos y evaluación del ajuste
+
+La distribución de Poisson describe conteos de eventos que ocurren al
+azar en un período de tiempo o en un espacio determinado, y se
+caracteriza porque su media y su varianza son iguales a $\lambda$. Para
+garantizar que los valores esperados sean positivos, se utiliza el
+enlace **logarítmico**, canónico para la Poisson, y las predicciones
+son **conteos esperados**. Por ejemplo, el modelo permite relacionar el
+número de individuos de una especie por transecta con el tipo de
+ambiente. En ambos modelos, el ajuste se evalúa mediante la **deviance
+residual**, que se compara con una distribución Chi-cuadrado con los
+grados de libertad residuales del modelo. Los modelos se
+ajustan con la función `glm()` de R (con `family = binomial` o
+`family = poisson`) y las predicciones en la escala de la respuesta se
+obtienen con `predict()`.
+
+```{mermaid}
+%%| fig-cap: "Marco conceptual de la Unidad de Modelos Lineales Generalizados"
+flowchart TD
+    A["Variable respuesta no normal<br/>(proporciones o conteos)"] --> B["Modelo Lineal<br/>Generalizado"]
+    B --> C["Predictor lineal<br/>η = β₀ + β₁x"]
+    B --> D["Función de enlace<br/>η = g(μ)"]
+    B --> E["Distribución de<br/>la respuesta"]
+    E --> F["Binomial"]
+    E --> G["Poisson"]
+    F --> H["Regresión logística<br/>(enlace logit)"]
+    G --> I["Regresión de Poisson<br/>(enlace logarítmico)"]
+    H --> J["Coeficientes, razones de odds<br/>y proporciones esperadas"]
+    I --> K["Coeficientes y<br/>conteos esperados"]
+    H --> L["Evaluación del ajuste:<br/>deviance residual"]
+    I --> L
+```
+
+
+## **Actividad de clase**
+
+
+
+```{r echo=FALSE, warning=FALSE, message=FALSE,results='asis'}
+# Carpeta común donde están todos los documentos de referencia
+carpeta_ref <- "./GLM"
+
+# Listar todos los archivos de la carpeta
+archivos <- list.files(carpeta_ref, full.names = FALSE)
+
+# Generar los enlaces en formato Markdown usando el nombre del documento
+for (archivo in archivos) {
+  ruta <- file.path(carpeta_ref, archivo)
+  cat(sprintf("- [%s](%s)\n", archivo, ruta))
+}
+```

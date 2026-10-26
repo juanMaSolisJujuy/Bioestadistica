@@ -9,6 +9,8 @@ book:
   subtitle: "Universidad Nacional de Jujuy | Facultad de Ciencias Agrarias | Lic. en Ciencias Biológicas"
   author: "Juan Manuel Solís"
   date: today
+  output-file: "Bioestadistica_UNJu_2026"
+  downloads: [pdf]
   chapters:
     - index.qmd
     - 01_pautas.qmd
@@ -27,6 +29,7 @@ book:
     - 11_corryreg.qmd
     - 12_salida_campo.qmd
     - 12_no_param.qmd
+    - 13_glm.qmd
     - herramientas.qmd
     - references.qmd
   page-footer: 

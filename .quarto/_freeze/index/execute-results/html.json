@@ -3,7 +3,9 @@
   "result": {
     "engine": "knitr",
     "markdown": "# {.unnumbered}\n\n\n::: {.cell layout-align=\"center\"}\n::: {.cell-output-display}\n![](LOGO_MATERIA.png){fig-align='center' width=100%}\n:::\n:::\n\n\n::: {style=\"background-color: AliceBlue; padding: 15px; border-radius: 10px;\"}\n\n\n**Equipo de cátedra**\n\n- Responsable de Cátedra: Prof. Asociado Ing. Agr. Jorge Quiquinto\n\n*Responsables del dictado de Bioestadística 2026*\n\n- Prof. Adjunta Ing. Agr. Marta Leaño\n\n- Jefe de Trabajos Prácticos Mg. Ing. Agr. Juan Manuel Solís\n\n- Ayudante de Segunda: Sr. Daniel Vilca\n\n:::\n\n\n**Atención: esta guía se irá actualizando paulatinamente.**",
-    "supporting": [],
+    "supporting": [
+      "index_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

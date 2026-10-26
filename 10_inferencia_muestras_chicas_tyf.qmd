@@ -154,7 +154,7 @@ A continuación se presenta un repaso de 2 de las actividades realizadas en clas
 
 ## **Actividad de clase**
 
-Devolución a sus producciones de clase (subidas al AV)
+Devolución a sus producciones de clase (entregadas en físico)
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE,results='asis'}
 # Carpeta común donde están todos los documentos de referencia
