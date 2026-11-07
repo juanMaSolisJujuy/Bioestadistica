@@ -1,10 +1,5 @@
----
-title: "Trabajo Práctico 3: Distribuciones Discretas"
-format: html
-editor: 
-  markdown: 
-    wrap: 72
----
+
+# Trabajo Práctico 3: Distribuciones Discretas
 
 <div style="
   background-color: #e3f2fd; 
@@ -124,7 +119,7 @@ flowchart LR
 Deberá copiar y pegar el siguiente *prompt* dentro del chat del cuaderno de *Notebooklm* creado luego de la clase anterior. Luego deberá copiar y pegar el ejercicio generado por la IA en un archivo .txt o bien en un documento de word o similar. 
 `Se le solicitará la presentación del ejercicio durante la clase`.
 
-```{html}
+```{=html}
 
 Actúa como un docente de Bioestadística de la Licenciatura en Ciencias Biológicas. 
 Genera 1 único ejercicio basado en un caso de aplicación de estudio biológico que pueda ser resuelto utilizando las distribuciones Binomial y Poisson.

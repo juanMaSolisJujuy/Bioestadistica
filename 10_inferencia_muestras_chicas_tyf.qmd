@@ -1,10 +1,4 @@
----
-title: "Trabajo Práctico 7: Inferencia con Muestras Chicas: Distribuciones F de Snedecor y t de Student"
-format: html
-editor: 
-  markdown: 
-    wrap: 72
----
+# Trabajo Práctico 7: Inferencia con Muestras Chicas: Distribuciones F de Snedecor y t de Student
 
 <div style="
   background-color: #e3f2fd; 

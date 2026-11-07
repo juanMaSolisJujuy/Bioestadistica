@@ -1,10 +1,4 @@
----
-title: "Trabajo Práctico 5: Inferencia con Muestras Grandes"
-format: html
-editor: 
-  markdown: 
-    wrap: 72
----
+# Trabajo Práctico 5: Inferencia con Muestras Grandes
 
 <div style="
   background-color: #e3f2fd; 

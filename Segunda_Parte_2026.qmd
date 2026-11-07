@@ -5,6 +5,9 @@
 
 
 ```{=html}
+#| label: audio-galton
+#| eval: false
+
 <br>
 <div style="display: flex; align-items: center; gap: 20px;">
 

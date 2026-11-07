@@ -1,0 +1,78 @@
+# Segundo Parcial | 2026 {.unnumbered}
+
+
+::: {style="background-color: lightblue; padding: 15px; border-radius: 10px;"}
+El segundo `parcial de Bioestadística 2026` se llevará a cabo el `viernes 06/11/2026` para ambas comisiones, en el Aula 3A, de 10.15 a 13.00 horas.
+:::
+
+::: callout-important
+## Pautas
+
+- El parcial es **presencial,** y puede ser realizado en grupos de hasta **2 (dos) personas**.
+
+- El formato de entrega es **escrito**. A diferencia del primer parcial, en este caso no es necesario defenderlo oralmente.
+:::
+
+
+## Resultados del segundo parcial
+
+Se presentan las calificaciones obtenidas de los estudiantes que aprobaron el segundo parcial de Bioestadística 2026, en su formato escrito. Quienes no alcanzaron la nota de aprobación, podrán realizar su recuperación en forma oral durante el período de recuperaciones, en horario a coordinar.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+# ============================================================================
+# Dataframe con los datos de los alumnos del Segundo Parcial de Bioestadística
+# Facultad de Ciencias Agrarias - UNJu - 6 de noviembre de 2026
+# ============================================================================
+
+parcial <- data.frame(
+  Apellido_y_Nombre = c(
+    "Martínez, Gianella",
+    "Avendaño, Kiara Celeste; Vega Villafañe, Leandro",
+    "Lima, Mariela; García, Jimena",
+    "Gutiérrez Cortez, Casandra; Ritú, Irina Leticia",
+    "González, Arnaldo; Chauque, Serena Josefina",
+    "Colodro, Silvia Verónica; Gómez, Benjamín Alejandro",
+    "Balanza, Iara Guadalupe; Cruz, Rocío Belén",
+    "Aramayo, Antonella; Díaz, Candela",
+    "Baldo, Santiago; Muñoz, Paloma"
+  ),
+  Comision = c(
+    "2",
+    "1",
+    "2",
+    "1",
+    "1 / 2",
+    "2",
+    "1",
+    "1",
+    "1"
+  ),
+  Nota = c(8.5, 8.0, 9.5, 7.5, 9.5, 9.5, 10.0, 9.5, 9.5)
+)
+
+
+# ============================================================================
+# Tabla con kable y kableExtra para HTML
+# ============================================================================
+
+library(knitr)
+library(kableExtra)
+
+parcial |>
+  kbl(
+    caption = "Calificaciones del Segundo Parcial de Bioestadística - FCA UNJu 2026",
+    col.names = c("Apellido y Nombre", "Comisión", "Nota"),
+    align = c("l", "c", "c")
+  ) |>
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width = FALSE,
+    position = "center"
+  ) |>
+  row_spec(0, bold = TRUE, background = "#D9E1F2") |>
+  column_spec(3, bold = TRUE) 
+
+```
+
+- [DEVOLUCIÓN](./SEGUNDO PARCIAL/DEVOLUCIONES_SEGUNDO_PARCIAL_2026.txt)

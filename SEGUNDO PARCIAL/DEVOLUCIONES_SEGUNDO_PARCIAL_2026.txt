@@ -1,0 +1,77 @@
+## Devolución a las producciones del Segundo Parcial de Bioestadística 2026 ##
+## Referencias: M1: Módulo1, M2: Módulo 2, M3: Módulo 3, M4: Módulo 4 (Cada uno vale 2,5 pts)
+
+---------------------------------------------------------------------------------------------
+* MARTINEZ GIANELLA: 8,5 PTS
+
+M1: 2 pts. El factor es el sitio (A o B) del río donde se tomó la muestra, asociado al efecto contaminante industrial. La conclusión es correcta, se podría expresar como "hay evidencias estadísticas para afirmar que existe una reducción en la actividad de la enzima catalasa en aguas contaminadas".
+M2: 1,5 pts. La H0 postula que las categorías analizadas son independientes, y la H1 que no lo son. Ello implica que hemos contrastado todas las frecuencias esperadas con las observadas (no únicamente la frecuencia de 30). En la pregunta 2 se pedía comparar la salida de chisq.test(datos)$expected[1,1], con el cálculo (90 * 100) / 300 = 30, o frecuencia esperada de la celda Criolla con mancha. La conclusión también estaba relacionada con la independencia evaluada en todas las frecuencias observadas y esperadas, no solo la de valor 30.
+M3: 2,5 pts Nota: el valor predicho es 1,618 (no 1,68)
+M4: 2,5 pts
+
+* KYARA AVENDAÑO, LEANDRO VEGA: 8 PTS
+
+M1: 2 pts. F = Var(A) / Var(B) (ustedes plantearon Var(B) / Var(A)). De todas formas en este caso se plantea la prueba bilateral, llegarían a la misma conclusión. Faltó calcular el estadístico t (o, al menos, reconocerlo en la salida de R). Concluyeron correctamente, faltó hacer explícito el criterio de decisión (por p-valor o por punto crítico).
+M2: 2 pts. Si la variable es frecuencia de plantas con mancha foliar, entonces no es cualitativa nominal.
+M3: 1,5 pts. Faltó interpretar R2 y la pendiente
+M4: 2,5 pts
+
+* JIMENA GARCÍA, ABIGAIL LIMA: 9,5 PTS
+
+M1: 2,5 pts F = Var(A) / Var(B) (ustedes plantearon Var(B) / Var(A)). De todas formas en este caso se plantea la prueba bilateral, llegarían a la misma conclusión.
+M2: 2 pts Si la variable se define como "frecuencia …", no puede ser cualitativa nominal.
+M3: 2,5 pts
+M4: 2,5 pts
+
+* IRINA RITU Y CASANDRA GUTIERREZ: 7,5 PTS
+
+M1: 1,5 PTS. Faltó definir el factor. El valor del estadístico tcalc = 7,51 (es un dato de la consigna).
+M2: 1 PTS. La variable sería la frecuencia de plantas con mancha foliar, según la variedad de planta. Si no se rechaza H0, entonces los factores son independientes.
+M3: 2,5 PTS
+M4: 2,5 PTS.
+
+* ARNALDO GONZALEZ, SERENA CHAUQUE: 9,5 pts
+
+A1: 2 pts Faltó definir el factor. Identificaron bien el valor del estadístico t, también es posible mostrar cómo se calcula, para interpretar su comportamiento.
+A2: 2,5 pts
+A3: 2,5 pts Está bien planteado; también podrían haber planteado una H1 unilateral derecha
+A4: 2,5 pts
+
+* BENJAMIN GOMEZ, SILVIA COLODRO: 9,5 pts
+
+A1: 2,5 pts F = Var(A) / Var(B) (ustedes plantearon Var(B) / Var(A)). De todas formas en este caso se plantea la prueba bilateral, llegarían a la misma conclusión.
+A2: 2,5 pts
+A3: 2 pts Está bien planteado; también podrían haber planteado una H1 unilateral derecha. Faltó estimar y para x = 8.
+A4: 2,5 pts
+
+* IARA BALANZA, ROCIO CRUZ: 10 pts
+
+A1: 2,5 pts Identificaron bien el valor del estadístico t, también es posible mostrar cómo se calcula, para interpretar su comportamiento. 
+M2: 2,5 pts
+M3: 2,5 pts
+M4: 2,5 pts
+
+
+* ANTONELLA ARAMAYO, CANDELA DIAZ: 9,5 pts
+
+M1: 2 PTS F = Var(A) / Var(B) (ustedes plantearon Var(B) / Var(A)). De todas formas en este caso se plantea la prueba bilateral, llegarían a la misma conclusión. Identificaron bien el valor del estadístico t, también es posible mostrar cómo se calcula, para interpretar su comportamiento.
+M2: 2,5 En H1 planteamos la hipótesis de falta de independencia únicamente (no hablamos de homogeneidad en este caso).
+M3: 2,5
+M4: 2,5
+
+* PALOMA MUÑOZ, SANTIAGO BALDO: 9,5 PTS
+
+M1: 2 PTS F = Var(A) / Var(B) (ustedes plantearon Var(B) / Var(A)). De todas formas en este caso se plantea la prueba bilateral, llegarían a la misma conclusión. Identificaron bien el valor del estadístico t, también es posible mostrar cómo se calcula, para interpretar su comportamiento. 
+M2: 2,5 
+M3: 2,5
+M4: 2,5
+
+
+
+
+
+
+
+
+
+

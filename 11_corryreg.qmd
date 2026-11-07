@@ -1,10 +1,4 @@
----
-title: "Trabajo Práctico 8: Análisis de Correlación y Regresión"
-format: html
-editor: 
-  markdown: 
-    wrap: 72
----
+# Trabajo Práctico 8: Análisis de Correlación y Regresión
 
 <div style="
   background-color: #e3f2fd; 

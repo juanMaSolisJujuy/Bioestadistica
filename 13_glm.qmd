@@ -1,10 +1,4 @@
----
-title: "Trabajo Práctico 10: Modelos Lineales Generalizados"
-format: html
-editor: 
-  markdown: 
-    wrap: 72
----
+# Modelos lineales generalizados
 
 <div style="
   background-color: #e3f2fd; 

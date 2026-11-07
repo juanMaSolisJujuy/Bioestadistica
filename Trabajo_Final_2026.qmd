@@ -1,0 +1,59 @@
+# Trabajo Final | 2026 {.unnumbered}
+
+
+## Pautas generales
+
+Por favor *lean detenidamente las pautas de trabajo y de presentación* antes de comenzar con su resolución.
+
+Insistimos, por favor *lean detenidamente las pautas de trabajo y de presentación* antes de comenzar con su resolución.
+
+
+
+::: callout-tip
+
+## Antes de comenzar, tómense un tiempo para pensar
+
+No se apresuren a ejecutar procedimientos estadísticos apenas comiencen a leer las consignas. Lean detenidamente todas las situaciones planteadas, identifiquen qué se pregunta en cada una, qué variables intervienen y qué tipo de análisis permitiría responder a cada problema. Eso les permitirá crear un "mapa mental" ordenado de lo que deben hacer. La lectura (y relectura) paciente de las consignas podría tomar hasta 40 minutos (una hora en el peor de los casos). Si lo piensan, no es demasiado. Incluso, podrían destinar un momento solo para leer el trabajo final, y luego organizarse para resolverlo en otro momento.
+
+**La organización también tiene que ver con otras materias o actividades de su cotidianeidad que deban atender**. Nuestra disciplina "funciona mejor" cuando le dedicamos "su propio tiempo", cuando es 'exclusivo'. Si logran organizarse bien, una jornada de trabajo es más que suficiente para resolver la actividad completa. **En estadística, un análisis apurado es un camino seguro hacia la invalidez. Recuerden que primero evaluamos la validez del método, y luego su interpretación.** 
+
+Además de organizarse, dediquen unos minutos a establecer un criterio de resolución y justificar las decisiones metodológicas antes de pasar a la ejecución. Propongan alternativas (plan "b", plan "c"). **Escribanlo en un papel**. Usualmente, elegir un procedimiento por ensayo y error no es efectivo. Un tip: pídanle a sus cuadernos de gemini notebooklm que les cree un mapa conceptual acerca de los métodos vistos durante la cursada, incluyendo los problemas que resuelve, supuestos y condiciones de aplicación. Sobre ese mapa, realicen una selección preliminar de los métodos que podrían serles útiles.
+
+Recueden: Primero comprendan el problema, después decidan y finalmente analicen. La calidad del análisis tiene mucho que ver con el criterio y la validez de las decisiones que los orientan.
+
+:::
+
+
+```{r echo=FALSE, warning=FALSE, message=FALSE,results='asis'}
+# Carpeta común donde están todos los documentos de referencia
+carpeta_ref <- "./TRABAJO FINAL"
+
+# Listar todos los archivos de la carpeta
+archivos <- list.files(carpeta_ref, full.names = FALSE)
+
+# Generar los enlaces en formato Markdown usando el nombre del documento
+for (archivo in archivos) {
+  ruta <- file.path(carpeta_ref, archivo)
+  cat(sprintf("- [%s](%s)\n", archivo, ruta))
+}
+```
+
+
+::: callout-note
+
+## Orden de defensas propuesto
+
+* Turno 1 (10:00): Ritú, Irina Leticia; Gutiérrez Cortez, Casandra; Cruz, Rocío Belén
+* Turno 2 (10:30): Baldo, Santiago; Muñoz, Paloma
+* Turno 3 (11:00): Aramayo, Antonella; Díaz, Candela
+* Turno 4 (11:30): González, Arnaldo; Chauque, Serena Josefina
+* Turno 5 (12:00): Avendaño, Kiara Celeste; Vega Villafañe, Leandro
+* Turno 6 (12:30): Gómez, Benjamín Alejandro; Colodro, Silvia Verónica; Balanza, Iara Guadalupe
+* Turno 7 (13:00): Lima, Mariela Abigail; García, Jimena
+* Turno 8 (13:30): Martínez, Gianella
+
+:::
+
+Quienes no alcanzaron la nota de aprobación durante el segundo parcial, podrán realizar la defensa del Trabajo Final junto con la defensa del segundo parcial, durante el período de recuperaciones.
+
+

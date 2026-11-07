@@ -1,10 +1,5 @@
----
-title: "Trabajo Práctico 2: Probabilidad"
-format: html
-editor: 
-  markdown: 
-    wrap: 72
----
+
+# Trabajo Práctico 2: Probabilidad
 
 <div style="
   background-color: #e3f2fd; 

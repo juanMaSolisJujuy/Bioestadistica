@@ -344,7 +344,7 @@
     "href": "06_discretas.html#actividad-de-pre-clase",
     "title": "6  Trabajo Práctico 3: Distribuciones Discretas",
     "section": "6.2 Actividad de pre-clase",
-    "text": "6.2 Actividad de pre-clase\nDeberá copiar y pegar el siguiente prompt dentro del chat del cuaderno de Notebooklm creado luego de la clase anterior. Luego deberá copiar y pegar el ejercicio generado por la IA en un archivo .txt o bien en un documento de word o similar. Se le solicitará la presentación del ejercicio durante la clase.\n\n\nActúa como un docente de Bioestadística de la Licenciatura en Ciencias Biológicas. \nGenera 1 único ejercicio basado en un caso de aplicación de estudio biológico que pueda ser resuelto utilizando las distribuciones Binomial y Poisson.\nEl ejercicio debe incluir incisos específicos para:\n- Identificar la variable aleatoria y fundamentar los supuestos de ambos modelos.\n- Definir los parámetros de cada distribución (n, p, lambda).\n- Calcular la esperanza, varianza y desvío estándar para ambos modelos.\n- Calcular probabilidades puntuales y acumuladas.\n- Evaluar las condiciones de aplicabilidad de la aproximación de la Binomial por Poisson.\n- Proporciona únicamente la consigna completa redactada de forma clara y directa. No generes la solución.",
+    "text": "6.2 Actividad de pre-clase\nDeberá copiar y pegar el siguiente prompt dentro del chat del cuaderno de Notebooklm creado luego de la clase anterior. Luego deberá copiar y pegar el ejercicio generado por la IA en un archivo .txt o bien en un documento de word o similar. Se le solicitará la presentación del ejercicio durante la clase.\n\nActúa como un docente de Bioestadística de la Licenciatura en Ciencias Biológicas. \nGenera 1 único ejercicio basado en un caso de aplicación de estudio biológico que pueda ser resuelto utilizando las distribuciones Binomial y Poisson.\nEl ejercicio debe incluir incisos específicos para:\n- Identificar la variable aleatoria y fundamentar los supuestos de ambos modelos.\n- Definir los parámetros de cada distribución (n, p, lambda).\n- Calcular la esperanza, varianza y desvío estándar para ambos modelos.\n- Calcular probabilidades puntuales y acumuladas.\n- Evaluar las condiciones de aplicabilidad de la aproximación de la Binomial por Poisson.\n- Proporciona únicamente la consigna completa redactada de forma clara y directa. No generes la solución.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Trabajo Práctico 3: Distribuciones Discretas</span>"
     ]
@@ -394,7 +394,7 @@
     "href": "07_normal.html#actividad-de-pre-clase",
     "title": "7  Trabajo Práctico 4: Distribución Normal",
     "section": "7.2 Actividad de pre-clase",
-    "text": "7.2 Actividad de pre-clase\nDeberá copiar y pegar el siguiente prompt dentro del chat del cuaderno de Notebooklm. Luego deberá copiar y pegar la respuesta generada por la IA en un archivo .txt o bien en un documento de word o similar. Se le solicitará la presentación del ejercicio durante la clase.\n\n\nActúa como un asistente de Bioestadística de segundo año de la Licenciatura en Ciencias Biológicas. \nLa próxima clase veremos Distribución Normal o Gaussiana: propiedades, regla empírica, tipificación y cálculo de probabilidades.\n\nDebes sugerirme UNA pregunta para hacerle al profesor al finalizar la clase. La pregunta debe:\n- No ser una definición.\n- Vincular el tema con un problema biológico real.\n\nPreguntas subidas al AV\nComentarios generales\nDurante la clase hemos respondido brevemente algunos de los aportes que han subido. A manera de síntesis, se observa que el cuaderno de géminis les propone una pregunta que de alguna manera trata de resolver la relación entre los datos empíricos (reales) y cuáles son las condiciones y/o limitaciones de tratar de modelarlos suponiendo que fueron generados por un proceso normal. Un aspecto que se repite con frecuencia en las preguntas se relaciona con las variables que en la naturaleza sólo pueden adoptar valores positivos, pero que al tratar de modelarlas por medio de una distribución gaussiana, ésta podría asumir valores negativos (por ejemplo, si el CV es elevado y \\(\\mu\\) es próximo a 0.\nDesde una perspectiva estadística, es necesario comprender los límites de validez de la aproximación normal. En esos casos, la contribución del análisis no consiste en descartar el modelo, sino en reconocer que la normalidad es una aproximación útil en el centro de la distribución, pero potencialmente poco representativa en los extremos de la distribución. La aplicación de transformaciones de la variable para aproximar a una distribución normal (por ejemplo la transformación logarítmica) debe ser utilizada con cautela en determinadas aplicaciones, se sugiere la lectura del ejemplo desarrollado sobre análisis de materia orgánica en el predio de Severino, en la guía Apuntes de Bioestadística con ejercicios resueltos.\nCon respecto a la tipificación \\(Z = \\frac{X - \\mu}{\\sigma}\\) y la regla empírica (\\(68\\%,95\\%,99,7\\%\\)), asumamos un grado aceptable de robustez cuando el objetivo es estimar proporciones en la zona central de la distribución (alrededor de la media), aun en presencia de asimetrías moderadas. Pero si la asimetría observada en los datos es grande, las estimaciones de probabilidad son poco confiables bajo el supuesto de normalidad. Por el contrario, es posible presentar cuantiles en escala tipificada aún para variables no normales, como una forma de simplificar su lectura e interpretación. Se sugiere investigar acerca del Índice Estandarizado de Precipitaciones (SPI), como un ejemplo de lo anterior.\nPreguntas generadas por la IA para este práctico (txt)",
+    "text": "7.2 Actividad de pre-clase\nDeberá copiar y pegar el siguiente prompt dentro del chat del cuaderno de Notebooklm. Luego deberá copiar y pegar la respuesta generada por la IA en un archivo .txt o bien en un documento de word o similar. Se le solicitará la presentación del ejercicio durante la clase.\n\nActúa como un asistente de Bioestadística de segundo año de la Licenciatura en Ciencias Biológicas. \nLa próxima clase veremos Distribución Normal o Gaussiana: propiedades, regla empírica, tipificación y cálculo de probabilidades.\n\nDebes sugerirme UNA pregunta para hacerle al profesor al finalizar la clase. La pregunta debe:\n- No ser una definición.\n- Vincular el tema con un problema biológico real.\n\n\nPreguntas subidas al AV\nComentarios generales\nDurante la clase hemos respondido brevemente algunos de los aportes que han subido. A manera de síntesis, se observa que el cuaderno de géminis les propone una pregunta que de alguna manera trata de resolver la relación entre los datos empíricos (reales) y cuáles son las condiciones y/o limitaciones de tratar de modelarlos suponiendo que fueron generados por un proceso normal. Un aspecto que se repite con frecuencia en las preguntas se relaciona con las variables que en la naturaleza sólo pueden adoptar valores positivos, pero que al tratar de modelarlas por medio de una distribución gaussiana, ésta podría asumir valores negativos (por ejemplo, si el CV es elevado y \\(\\mu\\) es próximo a 0.\nDesde una perspectiva estadística, es necesario comprender los límites de validez de la aproximación normal. En esos casos, la contribución del análisis no consiste en descartar el modelo, sino en reconocer que la normalidad es una aproximación útil en el centro de la distribución, pero potencialmente poco representativa en los extremos de la distribución. La aplicación de transformaciones de la variable para aproximar a una distribución normal (por ejemplo la transformación logarítmica) debe ser utilizada con cautela en determinadas aplicaciones, se sugiere la lectura del ejemplo desarrollado sobre análisis de materia orgánica en el predio de Severino, en la guía Apuntes de Bioestadística con ejercicios resueltos.\nCon respecto a la tipificación \\(Z = \\frac{X - \\mu}{\\sigma}\\) y la regla empírica (\\(68\\%,95\\%,99,7\\%\\)), asumamos un grado aceptable de robustez cuando el objetivo es estimar proporciones en la zona central de la distribución (alrededor de la media), aun en presencia de asimetrías moderadas. Pero si la asimetría observada en los datos es grande, las estimaciones de probabilidad son poco confiables bajo el supuesto de normalidad. Por el contrario, es posible presentar cuantiles en escala tipificada aún para variables no normales, como una forma de simplificar su lectura e interpretación. Se sugiere investigar acerca del Índice Estandarizado de Precipitaciones (SPI), como un ejemplo de lo anterior.\nPreguntas generadas por la IA para este práctico (txt)",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Trabajo Práctico 4: Distribución Normal</span>"
     ]
@@ -484,7 +484,7 @@
     "href": "Segunda_Parte_2026.html",
     "title": "Segunda Parte de la Cursada | 2026",
     "section": "",
-    "text": "¡¡¡Le damos las gracias a los profes de Epistemología!!!\nDr. Marcos Vaira, Dr. José Urquizo, Dra. Sofía Alcalde",
+    "text": "#| label: audio-galton\n#| eval: false\n\n\n\n\n  \n  \n    \n  \n\n  \n  \n    \n    \n      \n    \n\n    \n      \n    \n\n    \n      \n    \n\n  \n\n\n\n\n¡¡¡Le damos las gracias a los profes de Epistemología!!!\nDr. Marcos Vaira, Dr. José Urquizo, Dra. Sofía Alcalde",
     "crumbs": [
       "Segunda Parte de la Cursada | 2026"
     ]
@@ -650,6 +650,16 @@
     ]
   },
   {
+    "objectID": "12_salida_campo.html#algunas-fotos-de-la-salida",
+    "href": "12_salida_campo.html#algunas-fotos-de-la-salida",
+    "title": "12  Actividad de campo: inventario forestal en una parcela en el Campo Experimental Emilio Navea - Severino",
+    "section": "12.2 Algunas fotos de la salida …",
+    "text": "12.2 Algunas fotos de la salida …\n\nWhatsApp Image 2026-10-22 at 19.42.28.jpeg\n\nWhatsApp Image 2026-10-22 at 19.42.29.jpeg\n\nWhatsApp Image 2026-11-03 at 16.51.42.jpeg\n\nWhatsApp Image 2026-11-03 at 16.51.45.jpeg\n\nWhatsApp Image 2026-11-03 at 16.51.51.jpeg\n\nWhatsApp Image 2026-11-03 at 16.51.52.jpeg\n\nWhatsApp Image 2026-11-03 at 16.51.52_.jpeg\n\nWhatsApp Image 2026-11-03 at 16.51.55.jpeg\n\nWhatsApp Image 2026-11-03 at 16.51.56.jpeg\n\nWhatsApp Image 2026-11-03 at 16.51.57.jpeg\n\nWhatsApp Image 2026-11-03 at 16.54.22.jpeg",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Actividad de campo: inventario forestal en una parcela en el Campo Experimental Emilio Navea - Severino</span>"
+    ]
+  },
+  {
     "objectID": "12_no_param.html",
     "href": "12_no_param.html",
     "title": "13  Trabajo Práctico 9: Métodos No Paramétricos o de Distribución Libre",
@@ -702,31 +712,71 @@
   {
     "objectID": "13_glm.html",
     "href": "13_glm.html",
-    "title": "14  Trabajo Práctico 10: Modelos Lineales Generalizados",
+    "title": "14  Modelos lineales generalizados",
     "section": "",
     "text": "14.1 Generalidades\nEn la unidad de regresión se trabajó con una variable respuesta numérica, con errores normales y varianza constante. Sin embargo, en Ciencias Biológicas es habitual que la variable de interés sea una proporción (por ejemplo, la fracción de individuos de una muestra que presenta una condición) o un conteo (por ejemplo, el número de individuos registrados por transecta). En ambos casos la varianza no es constante: depende de la media, y los supuestos del modelo lineal clásico dejan de cumplirse. Los Modelos Lineales Generalizados (GLM) extienden la regresión lineal para tratar estos casos. En este Trabajo Práctico se trabaja con dos de ellos: la regresión logística para datos binomiales agrupados y la regresión de Poisson para conteos.",
     "crumbs": [
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Trabajo Práctico 10: Modelos Lineales Generalizados</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Modelos lineales generalizados</span>"
     ]
   },
   {
     "objectID": "13_glm.html#generalidades",
     "href": "13_glm.html#generalidades",
-    "title": "14  Trabajo Práctico 10: Modelos Lineales Generalizados",
+    "title": "14  Modelos lineales generalizados",
     "section": "",
     "text": "14.1.1 Características del modelo lineal generalizado\nUn GLM se construye con tres componentes. El primero es la distribución de la variable respuesta (nososotros trabajaremos con variables Binomial o Poisson). El segundo es el predictor lineal, que combina las variables explicativas de la misma forma que en la regresión lineal: \\(\\eta = \\beta_0 + \\beta_1 x_i\\). El tercero es la función de enlace \\(g(\\mu)\\), que vincula el predictor lineal con la media de la respuesta: \\(\\eta = g(\\mu)\\), y cuya inversa permite volver a la escala de la respuesta: \\(\\mu = g^{-1}(\\eta)\\). Cuando el enlace corresponde al parámetro natural \\(\\theta\\) de la distribución, se lo denomina enlace canónico. La regresión lineal puede pensarse como el caso particular de respuesta normal y enlace identidad.\n\n\n14.1.2 Regresión logística para datos binomiales agrupados\nEl esquema binomial describe un experimento con n ensayos independientes, cada uno con dos resultados posibles (éxito o fracaso) y con una probabilidad de éxito p constante. Cuando los datos se presentan agrupados, es decir, como el número de éxitos y de fracasos observados en cada combinación de las variables explicativas, la respuesta puede analizarse como la proporción de éxitos, cuya media es p. Para evitar que las predicciones salgan del intervalo entre 0 y 1, se utiliza el enlace logit, canónico para la Binomial. Los coeficientes se interpretan en la escala del logit; al exponenciarlos se obtienen razones de odds, y las predicciones en la escala de la respuesta son proporciones esperadas.\n\n\n14.1.3 Regresión de Poisson para conteos y evaluación del ajuste\nLa distribución de Poisson describe conteos de eventos que ocurren al azar en un período de tiempo o en un espacio determinado, y se caracteriza porque su media y su varianza son iguales a \\(\\lambda\\). Para garantizar que los valores esperados sean positivos, se utiliza el enlace logarítmico, canónico para la Poisson, y las predicciones son conteos esperados. Por ejemplo, el modelo permite relacionar el número de individuos de una especie por transecta con el tipo de ambiente. En ambos modelos, el ajuste se evalúa mediante la deviance residual, que se compara con una distribución Chi-cuadrado con los grados de libertad residuales del modelo. Los modelos se ajustan con la función glm() de R (con family = binomial o family = poisson) y las predicciones en la escala de la respuesta se obtienen con predict().\n\n\n\n\n\nflowchart TD\n    A[\"Variable respuesta no normal&lt;br/&gt;(proporciones o conteos)\"] --&gt; B[\"Modelo Lineal&lt;br/&gt;Generalizado\"]\n    B --&gt; C[\"Predictor lineal&lt;br/&gt;η = β₀ + β₁x\"]\n    B --&gt; D[\"Función de enlace&lt;br/&gt;η = g(μ)\"]\n    B --&gt; E[\"Distribución de&lt;br/&gt;la respuesta\"]\n    E --&gt; F[\"Binomial\"]\n    E --&gt; G[\"Poisson\"]\n    F --&gt; H[\"Regresión logística&lt;br/&gt;(enlace logit)\"]\n    G --&gt; I[\"Regresión de Poisson&lt;br/&gt;(enlace logarítmico)\"]\n    H --&gt; J[\"Coeficientes, razones de odds&lt;br/&gt;y proporciones esperadas\"]\n    I --&gt; K[\"Coeficientes y&lt;br/&gt;conteos esperados\"]\n    H --&gt; L[\"Evaluación del ajuste:&lt;br/&gt;deviance residual\"]\n    I --&gt; L\n\n\n Marco conceptual de la Unidad de Modelos Lineales Generalizados",
     "crumbs": [
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Trabajo Práctico 10: Modelos Lineales Generalizados</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Modelos lineales generalizados</span>"
     ]
   },
   {
     "objectID": "13_glm.html#actividad-de-clase",
     "href": "13_glm.html#actividad-de-clase",
-    "title": "14  Trabajo Práctico 10: Modelos Lineales Generalizados",
+    "title": "14  Modelos lineales generalizados",
     "section": "14.2 Actividad de clase",
     "text": "14.2 Actividad de clase\n\n2026_glm.pdf",
     "crumbs": [
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Trabajo Práctico 10: Modelos Lineales Generalizados</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Modelos lineales generalizados</span>"
+    ]
+  },
+  {
+    "objectID": "Segundo_parcial_2026.html",
+    "href": "Segundo_parcial_2026.html",
+    "title": "Segundo Parcial | 2026",
+    "section": "",
+    "text": "Resultados del segundo parcial\nSe presentan las calificaciones obtenidas de los estudiantes que aprobaron el segundo parcial de Bioestadística 2026, en su formato escrito. Quienes no alcanzaron la nota de aprobación, podrán realizar su recuperación en forma oral durante el período de recuperaciones, en horario a coordinar.\nCalificaciones del Segundo Parcial de Bioestadística - FCA UNJu 2026\n\n\nApellido y Nombre\nComisión\nNota\n\n\n\n\nMartínez, Gianella\n2\n8.5\n\n\nAvendaño, Kiara Celeste; Vega Villafañe, Leandro\n1\n8.0\n\n\nLima, Mariela; García, Jimena\n2\n9.5\n\n\nGutiérrez Cortez, Casandra; Ritú, Irina Leticia\n1\n7.5\n\n\nGonzález, Arnaldo; Chauque, Serena Josefina\n1 / 2\n9.5\n\n\nColodro, Silvia Verónica; Gómez, Benjamín Alejandro\n2\n9.5\n\n\nBalanza, Iara Guadalupe; Cruz, Rocío Belén\n1\n10.0\n\n\nAramayo, Antonella; Díaz, Candela\n1\n9.5\n\n\nBaldo, Santiago; Muñoz, Paloma\n1\n9.5",
+    "crumbs": [
+      "Segundo Parcial | 2026"
+    ]
+  },
+  {
+    "objectID": "Segundo_parcial_2026.html#resultados-del-segundo-parcial",
+    "href": "Segundo_parcial_2026.html#resultados-del-segundo-parcial",
+    "title": "Segundo Parcial | 2026",
+    "section": "",
+    "text": "DEVOLUCIÓN",
+    "crumbs": [
+      "Segundo Parcial | 2026"
+    ]
+  },
+  {
+    "objectID": "Trabajo_Final_2026.html",
+    "href": "Trabajo_Final_2026.html",
+    "title": "Trabajo Final | 2026",
+    "section": "",
+    "text": "Pautas generales\nPor favor lean detenidamente las pautas de trabajo y de presentación antes de comenzar con su resolución.\nInsistimos, por favor lean detenidamente las pautas de trabajo y de presentación antes de comenzar con su resolución.\nQuienes no alcanzaron la nota de aprobación durante el segundo parcial, podrán realizar la defensa del Trabajo Final junto con la defensa del segundo parcial, durante el período de recuperaciones.",
+    "crumbs": [
+      "Trabajo Final | 2026"
+    ]
+  },
+  {
+    "objectID": "Trabajo_Final_2026.html#pautas-generales",
+    "href": "Trabajo_Final_2026.html#pautas-generales",
+    "title": "Trabajo Final | 2026",
+    "section": "",
+    "text": "TipAntes de comenzar, tómense un tiempo para pensar\n\n\n\nNo se apresuren a ejecutar procedimientos estadísticos apenas comiencen a leer las consignas. Lean detenidamente todas las situaciones planteadas, identifiquen qué se pregunta en cada una, qué variables intervienen y qué tipo de análisis permitiría responder a cada problema. Eso les permitirá crear un “mapa mental” ordenado de lo que deben hacer. La lectura (y relectura) paciente de las consignas podría tomar hasta 40 minutos (una hora en el peor de los casos). Si lo piensan, no es demasiado. Incluso, podrían destinar un momento solo para leer el trabajo final, y luego organizarse para resolverlo en otro momento.\nLa organización también tiene que ver con otras materias o actividades de su cotidianeidad que deban atender. Nuestra disciplina “funciona mejor” cuando le dedicamos “su propio tiempo”, cuando es ‘exclusivo’. Si logran organizarse bien, una jornada de trabajo es más que suficiente para resolver la actividad completa. En estadística, un análisis apurado es un camino seguro hacia la invalidez. Recuerden que primero evaluamos la validez del método, y luego su interpretación.\nAdemás de organizarse, dediquen unos minutos a establecer un criterio de resolución y justificar las decisiones metodológicas antes de pasar a la ejecución. Propongan alternativas (plan “b”, plan “c”). Escribanlo en un papel. Usualmente, elegir un procedimiento por ensayo y error no es efectivo. Un tip: pídanle a sus cuadernos de gemini notebooklm que les cree un mapa conceptual acerca de los métodos vistos durante la cursada, incluyendo los problemas que resuelve, supuestos y condiciones de aplicación. Sobre ese mapa, realicen una selección preliminar de los métodos que podrían serles útiles.\nRecueden: Primero comprendan el problema, después decidan y finalmente analicen. La calidad del análisis tiene mucho que ver con el criterio y la validez de las decisiones que los orientan.\n\n\n\nds.RData\nTrabajo_Final_Bioestadistica_2026_.pdf\n\n\n\n\n\n\n\nNotaOrden de defensas propuesto\n\n\n\n\nTurno 1 (10:00): Ritú, Irina Leticia; Gutiérrez Cortez, Casandra; Cruz, Rocío Belén\nTurno 2 (10:30): Baldo, Santiago; Muñoz, Paloma\nTurno 3 (11:00): Aramayo, Antonella; Díaz, Candela\nTurno 4 (11:30): González, Arnaldo; Chauque, Serena Josefina\nTurno 5 (12:00): Avendaño, Kiara Celeste; Vega Villafañe, Leandro\nTurno 6 (12:30): Gómez, Benjamín Alejandro; Colodro, Silvia Verónica; Balanza, Iara Guadalupe\nTurno 7 (13:00): Lima, Mariela Abigail; García, Jimena\nTurno 8 (13:30): Martínez, Gianella",
+    "crumbs": [
+      "Trabajo Final | 2026"
     ]
   },
   {

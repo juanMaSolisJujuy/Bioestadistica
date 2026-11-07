@@ -1,10 +1,4 @@
----
-title: "Trabajo Práctico 1: Estadística Descriptiva"
-format: html
-editor: 
-  markdown: 
-    wrap: 72
----
+# Trabajo Práctico 1: Estadística Descriptiva
 
 <div style="
   background-color: #e3f2fd; 

@@ -1,10 +1,4 @@
----
-title: "Trabajo Práctico 9: Métodos No Paramétricos o de Distribución Libre"
-format: html
-editor: 
-  markdown: 
-    wrap: 72
----
+# Trabajo Práctico 9: Métodos No Paramétricos o de Distribución Libre
 
 <div style="
   background-color: #e3f2fd; 

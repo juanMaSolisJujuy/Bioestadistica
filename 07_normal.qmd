@@ -1,10 +1,5 @@
----
-title: "Trabajo Práctico 4: Distribución Normal"
-format: html
-editor: 
-  markdown: 
-    wrap: 72
----
+
+# Trabajo Práctico 4: Distribución Normal
 
 <div style="
   background-color: #e3f2fd; 
@@ -124,7 +119,7 @@ Deberá copiar y pegar el siguiente *prompt* dentro del chat del cuaderno de *No
 `Se le solicitará la presentación del ejercicio durante la clase`.
 
 
-```{html}
+```{=html}
 
 Actúa como un asistente de Bioestadística de segundo año de la Licenciatura en Ciencias Biológicas. 
 La próxima clase veremos Distribución Normal o Gaussiana: propiedades, regla empírica, tipificación y cálculo de probabilidades.

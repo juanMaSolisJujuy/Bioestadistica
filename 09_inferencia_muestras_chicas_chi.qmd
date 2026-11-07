@@ -1,10 +1,4 @@
----
-title: "Trabajo Práctico 6: Inferencia con Muestras Chicas: Distribución Chi Cuadrado"
-format: html
-editor: 
-  markdown: 
-    wrap: 72
----
+# Trabajo Práctico 6: Inferencia con Muestras Chicas: Distribución Chi Cuadrado
 
 <div style="
   background-color: #e3f2fd; 

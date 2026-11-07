@@ -30,6 +30,8 @@ book:
     - 12_salida_campo.qmd
     - 12_no_param.qmd
     - 13_glm.qmd
+    - Segundo_parcial_2026.QMD
+    - Trabajo_Final_2026.qmd
     - herramientas.qmd
     - references.qmd
   page-footer: 
@@ -53,6 +55,8 @@ format:
       source: false
       toggle: true
   pdf:
+    execute:
+      eval: false
     documentclass: scrreprt
 
 # Configuración global de webR para todo el libro

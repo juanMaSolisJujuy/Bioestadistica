@@ -1,10 +1,4 @@
----
-title: "Actividad de campo: inventario forestal en una parcela en el Campo Experimental Emilio Navea - Severino"
-format: html
-editor: 
-  markdown: 
-    wrap: 72
----
+# Actividad de campo: inventario forestal en una parcela en el Campo Experimental Emilio Navea - Severino
 
 <div style="
   background-color: #e3f2fd; 
@@ -77,4 +71,21 @@ for (archivo in archivos) {
 {{< video https://www.youtube.com/watch?v=w40YSiauXBo >}}
 
 
+## Algunas fotos de la salida ...
 
+```{r echo=FALSE, warning=FALSE, message=FALSE,results='asis'}
+# Carpeta común donde están todos los documentos de referencia
+carpeta_ref <- "./SALIDA_A_CAMPO/FOTOS"
+
+# Listar todos los archivos de la carpeta
+archivos <- list.files(carpeta_ref, full.names = FALSE,
+                       ignore.case = TRUE)
+
+# Generar las imágenes en formato Markdown al 50% de su tamaño
+for (archivo in archivos) {
+  ruta <- file.path(carpeta_ref, archivo)
+  # Usar sintaxis HTML para controlar el tamaño (50%)
+  cat(sprintf('<img src="%s" alt="%s" style="width:50%%; height:auto;">\n\n', ruta, archivo))
+  cat(sprintf('*%s*\n\n', archivo))
+}
+```
