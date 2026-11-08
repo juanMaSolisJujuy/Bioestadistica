@@ -23,6 +23,7 @@ Recueden: Primero comprendan el problema, después decidan y finalmente analicen
 
 :::
 
+`Nota:` Tomen esta segunda versión del trabajo final, donde deben utilizar el archivo *ds_enriched.RData*, en lugar del archivo *ds.RData* (ya que este último requiere instalar una librería).
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE,results='asis'}
 # Carpeta común donde están todos los documentos de referencia
