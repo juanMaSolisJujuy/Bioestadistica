@@ -1,0 +1,40 @@
+{
+Ayn: Silvia Veronica Colodro
+Devolución: Muy completo y detallado. Bien estructurado el planteo y la interpretación del modelo binomial para droga vs placebo. Correcta la transformación de los coeficientes logit a probabilidades.
+}
+{
+Ayn: Rocío Belén Cruz
+Devolución: Correcta la identificación del modelo y las variables. Bien el planteo de hipótesis y la interpretación del OR (6.0).
+}
+{
+Ayn: Arnaldo González
+Devolución: Buena iniciativa de aplicarlo en el tema que escogiste para el trabajo final. Buen trabajo de comparación entre el modelo Poisson (para conteos de hojas) y Binomial (para estadio V4), justificando la elección de los enlaces log y logit. Muy completa la explicación teórica del ajuste y la evaluación de la devianza.
+}
+{
+Ayn: Paloma Muñoz
+Devolución: Se presenta de forma concisa y correcta las aplicaciones. Faltó algún comentario e interpretación.
+}
+{
+Ayn: Candela Díaz
+Devolución: Se presenta de forma concisa y correcta las aplicaciones. Faltó algún comentario e interpretación.
+}
+{
+Ayn: Santiago Baldo
+Devolución: Se presenta de forma concisa y correcta las aplicaciones, incluyendo las conclusiones.
+}
+{
+Ayn: Irina Ritu
+Devolución: Muy completo y adecuado el desarrollo, como así también las interpretaciones y las conclusiones.
+}
+{
+Ayn: Leandro Vega
+Devolución: Se presenta de forma desarrollada y correcta las aplicaciones, como así también las conclusiones.
+}
+{
+Ayn: Iara Balanza
+Devolución: Al igual que Leandro, se presenta de forma bien desarrollada y correcta las aplicaciones y las conclusiones.
+}
+{
+Ayn: Benjamín Gómez
+Devolución: Bien aplicado. Faltó algún comentario sobre qué factor fue relevante para predecir la variable respuesta.
+}

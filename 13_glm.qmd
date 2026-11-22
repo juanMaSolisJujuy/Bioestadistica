@@ -129,3 +129,20 @@ for (archivo in archivos) {
   cat(sprintf("- [%s](%s)\n", archivo, ruta))
 }
 ```
+
+## Producciones
+
+```{r echo=FALSE, warning=FALSE, message=FALSE,results='asis'}
+# Carpeta común donde están todos los documentos de referencia
+carpeta_ref <- "./GLM/CLASE_GLM"
+
+# Listar todos los archivos de la carpeta
+archivos <- list.files(carpeta_ref, full.names = FALSE)
+
+# Generar los enlaces en formato Markdown usando el nombre del documento
+for (archivo in archivos) {
+  ruta <- file.path(carpeta_ref, archivo)
+  cat(sprintf("- [%s](%s)\n", archivo, ruta))
+}
+```
+
